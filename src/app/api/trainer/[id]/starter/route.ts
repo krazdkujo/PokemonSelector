@@ -48,24 +48,18 @@ export async function POST(request: NextRequest, { params }: RouteParams) {
       return NextResponse.json(error, { status: 400 });
     }
 
-    // Try to claim the Pokemon
+    // Select the Pokemon and generate a unique instance UUID
     const { data: updatedTrainer, error: updateError } = await supabase
       .from('trainers')
-      .update({ starter_pokemon_id: pokemonId })
+      .update({
+        starter_pokemon_id: pokemonId,
+        starter_pokemon_uuid: crypto.randomUUID(),
+      })
       .eq('id', trainerId)
       .select()
       .single();
 
     if (updateError) {
-      // Check if it's a unique constraint violation
-      if (updateError.code === '23505') {
-        const error: ApiError = {
-          error: 'POKEMON_CLAIMED',
-          message: 'This Pokemon has already been claimed by another trainer.',
-        };
-        return NextResponse.json(error, { status: 409 });
-      }
-
       console.error('Database error:', updateError);
       const error: ApiError = {
         error: 'DATABASE_ERROR',

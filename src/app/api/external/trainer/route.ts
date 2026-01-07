@@ -55,7 +55,7 @@ export async function GET(request: NextRequest) {
 
     const { data: trainer, error: trainerError } = await supabase
       .from('trainers')
-      .select('id, name, starter_pokemon_id')
+      .select('id, name, starter_pokemon_id, starter_pokemon_uuid')
       .ilike('name', trainerName)
       .limit(1)
       .single();
@@ -72,10 +72,11 @@ export async function GET(request: NextRequest) {
     // T005: Enrich with Pokemon details
     let pokemon: ExternalTrainerResponse['pokemon'] = null;
 
-    if (trainer.starter_pokemon_id) {
+    if (trainer.starter_pokemon_id && trainer.starter_pokemon_uuid) {
       const pokemonData = getPokemonById(trainer.starter_pokemon_id);
       if (pokemonData) {
         pokemon = {
+          uuid: trainer.starter_pokemon_uuid,
           number: pokemonData.number,
           name: pokemonData.name,
           types: pokemonData.types,

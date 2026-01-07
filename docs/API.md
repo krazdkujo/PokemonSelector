@@ -98,6 +98,7 @@ console.log("Pokemon:", data.pokemon?.name ?? "None selected");
   "trainer_id": "550e8400-e29b-41d4-a716-446655440000",
   "trainer_name": "Ash",
   "pokemon": {
+    "uuid": "7f3b8c2a-1234-5678-9abc-def012345678",
     "number": 25,
     "name": "Pikachu",
     "types": ["Electric"]
@@ -122,6 +123,7 @@ console.log("Pokemon:", data.pokemon?.name ?? "None selected");
 | `trainer_id` | string | Your unique trainer ID (UUID format) |
 | `trainer_name` | string | Your display name |
 | `pokemon` | object or null | Your selected Pokemon, or null if none selected |
+| `pokemon.uuid` | string | Your Pokemon's unique instance ID (UUID format) |
 | `pokemon.number` | integer | Pokemon national dex number (1-151) |
 | `pokemon.name` | string | Pokemon name |
 | `pokemon.types` | array | List of Pokemon types (e.g., ["Fire"], ["Water", "Ice"]) |
