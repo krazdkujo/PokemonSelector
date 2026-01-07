@@ -55,7 +55,7 @@ export async function GET(request: NextRequest) {
 
     const { data: trainer, error: trainerError } = await supabase
       .from('trainers')
-      .select('id, name, starter_pokemon_id, starter_pokemon_uuid')
+      .select('id, name, starter_pokemon_id, starter_pokemon_uuid, starter_pokemon_nickname')
       .ilike('name', trainerName)
       .limit(1)
       .single();
@@ -80,6 +80,7 @@ export async function GET(request: NextRequest) {
           number: pokemonData.number,
           name: pokemonData.name,
           types: pokemonData.types,
+          nickname: trainer.starter_pokemon_nickname ?? null,
         };
       }
     }

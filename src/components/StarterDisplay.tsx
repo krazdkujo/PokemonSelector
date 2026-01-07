@@ -5,9 +5,10 @@ import type { Pokemon } from '@/lib/types';
 
 interface StarterDisplayProps {
   pokemon: Pokemon;
+  nickname?: string | null;
 }
 
-export function StarterDisplay({ pokemon }: StarterDisplayProps) {
+export function StarterDisplay({ pokemon, nickname }: StarterDisplayProps) {
   return (
     <div className="bg-white rounded-xl shadow-lg p-6 text-center">
       <h2 className="text-xl font-bold text-gray-800 mb-4">Your Starter Pokemon</h2>
@@ -15,7 +16,7 @@ export function StarterDisplay({ pokemon }: StarterDisplayProps) {
       <div className="relative w-48 h-48 mx-auto mb-4">
         <Image
           src={pokemon.sprites.main}
-          alt={pokemon.name}
+          alt={nickname || pokemon.name}
           fill
           className="object-contain"
           sizes="192px"
@@ -23,9 +24,20 @@ export function StarterDisplay({ pokemon }: StarterDisplayProps) {
         />
       </div>
 
-      <h3 className="text-2xl font-bold text-gray-800 mb-2">
-        {pokemon.name}
-      </h3>
+      {nickname ? (
+        <>
+          <h3 className="text-2xl font-bold text-gray-800 mb-1">
+            {nickname}
+          </h3>
+          <p className="text-lg text-gray-600 mb-2">
+            ({pokemon.name})
+          </p>
+        </>
+      ) : (
+        <h3 className="text-2xl font-bold text-gray-800 mb-2">
+          {pokemon.name}
+        </h3>
+      )}
 
       <p className="text-gray-500 mb-3">#{pokemon.number.toString().padStart(3, '0')}</p>
 

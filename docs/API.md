@@ -63,9 +63,14 @@ print(f"Trainer ID: {data['trainer_id']}")
 print(f"Trainer Name: {data['trainer_name']}")
 
 if data['pokemon']:
-    print(f"Pokemon: {data['pokemon']['name']}")
-    print(f"Number: {data['pokemon']['number']}")
-    print(f"Types: {', '.join(data['pokemon']['types'])}")
+    pokemon = data['pokemon']
+    # Display nickname if set, otherwise just the species name
+    if pokemon['nickname']:
+        print(f"Pokemon: {pokemon['nickname']} ({pokemon['name']})")
+    else:
+        print(f"Pokemon: {pokemon['name']}")
+    print(f"Number: {pokemon['number']}")
+    print(f"Types: {', '.join(pokemon['types'])}")
 else:
     print("No Pokemon selected yet")
 ```
@@ -82,7 +87,16 @@ const response = await fetch("https://your-app.vercel.app/api/external/trainer",
 
 const data = await response.json();
 console.log("Trainer ID:", data.trainer_id);
-console.log("Pokemon:", data.pokemon?.name ?? "None selected");
+
+if (data.pokemon) {
+  // Display nickname if set, otherwise just the species name
+  const displayName = data.pokemon.nickname
+    ? `${data.pokemon.nickname} (${data.pokemon.name})`
+    : data.pokemon.name;
+  console.log("Pokemon:", displayName);
+} else {
+  console.log("Pokemon: None selected");
+}
 ```
 
 ---
@@ -91,7 +105,7 @@ console.log("Pokemon:", data.pokemon?.name ?? "None selected");
 
 ### Success Response (200 OK)
 
-**With Pokemon selected:**
+**With Pokemon selected (with nickname):**
 
 ```json
 {
@@ -101,7 +115,24 @@ console.log("Pokemon:", data.pokemon?.name ?? "None selected");
     "uuid": "7f3b8c2a-1234-5678-9abc-def012345678",
     "number": 25,
     "name": "Pikachu",
-    "types": ["Electric"]
+    "types": ["Electric"],
+    "nickname": "Sparky"
+  }
+}
+```
+
+**With Pokemon selected (no nickname):**
+
+```json
+{
+  "trainer_id": "550e8400-e29b-41d4-a716-446655440000",
+  "trainer_name": "Ash",
+  "pokemon": {
+    "uuid": "7f3b8c2a-1234-5678-9abc-def012345678",
+    "number": 25,
+    "name": "Pikachu",
+    "types": ["Electric"],
+    "nickname": null
   }
 }
 ```
@@ -127,6 +158,7 @@ console.log("Pokemon:", data.pokemon?.name ?? "None selected");
 | `pokemon.number` | integer | Pokemon national dex number (1-151) |
 | `pokemon.name` | string | Pokemon name |
 | `pokemon.types` | array | List of Pokemon types (e.g., ["Fire"], ["Water", "Ice"]) |
+| `pokemon.nickname` | string or null | Custom nickname set by trainer, or null if not set |
 
 ---
 

@@ -16,6 +16,7 @@ export interface Trainer {
   role: 'trainer' | 'admin';
   starter_pokemon_id: number | null;
   starter_pokemon_uuid: string | null;
+  starter_pokemon_nickname: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -53,5 +54,6 @@ export interface ExternalTrainerResponse {
     number: number;
     name: string;
     types: string[];
+    nickname: string | null;
   } | null;
 }

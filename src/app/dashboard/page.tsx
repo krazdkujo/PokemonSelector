@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { TrainerInfo } from '@/components/TrainerInfo';
 import { StarterDisplay } from '@/components/StarterDisplay';
+import { NicknameEditor } from '@/components/NicknameEditor';
 import { getTrainerId, clearTrainerId } from '@/lib/session';
 import type { TrainerWithStarter } from '@/lib/types';
 
@@ -86,6 +87,15 @@ export default function DashboardPage() {
     );
   }
 
+  const handleNicknameChange = (nickname: string | null) => {
+    if (trainer) {
+      setTrainer({
+        ...trainer,
+        starter_pokemon_nickname: nickname,
+      });
+    }
+  };
+
   if (!trainer || !trainer.starter) {
     return null;
   }
@@ -107,7 +117,17 @@ export default function DashboardPage() {
 
         <div className="grid md:grid-cols-2 gap-6">
           <TrainerInfo trainer={trainer} />
-          <StarterDisplay pokemon={trainer.starter} />
+          <div>
+            <StarterDisplay
+              pokemon={trainer.starter}
+              nickname={trainer.starter_pokemon_nickname}
+            />
+            <NicknameEditor
+              trainerId={trainer.id}
+              currentNickname={trainer.starter_pokemon_nickname}
+              onNicknameChange={handleNicknameChange}
+            />
+          </div>
         </div>
 
         {trainer.role === 'admin' && (

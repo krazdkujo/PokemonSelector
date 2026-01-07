@@ -1,0 +1,278 @@
+openapi: 3.0.3
+info:
+  title: Pokemon Nickname API
+  description: API contracts for Pokemon nickname feature
+  version: 1.0.0
+
+paths:
+  /api/trainer/{id}/nickname:
+    put:
+      summary: Set or update Pokemon nickname
+      description: |
+        Sets or updates the nickname for the trainer's selected Pokemon.
+        Requires the trainer to have a Pokemon selected.
+        Nickname is trimmed of leading/trailing whitespace.
+      operationId: setNickname
+      tags:
+        - Nickname
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Trainer UUID
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetNicknameRequest'
+            examples:
+              setNickname:
+                summary: Set a nickname
+                value:
+                  nickname: "Sparky"
+              clearNickname:
+                summary: Clear nickname
+                value:
+                  nickname: null
+      responses:
+        '200':
+          description: Nickname updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrainerWithStarter'
+        '400':
+          description: Validation error or no Pokemon selected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+              examples:
+                noPokemon:
+                  value:
+                    error: "NO_POKEMON"
+                    message: "You must select a Pokemon before setting a nickname"
+                invalidNickname:
+                  value:
+                    error: "VALIDATION_ERROR"
+                    message: "Nickname must be between 1 and 20 characters"
+        '404':
+          description: Trainer not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+
+    delete:
+      summary: Remove Pokemon nickname
+      description: Clears the nickname for the trainer's Pokemon
+      operationId: clearNickname
+      tags:
+        - Nickname
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Trainer UUID
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Nickname cleared successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrainerWithStarter'
+        '404':
+          description: Trainer not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+
+  /api/external/trainer:
+    get:
+      summary: Get trainer data (external API)
+      description: |
+        Returns trainer data including Pokemon details and nickname.
+        Requires API key authentication via X-API-Key header.
+      operationId: getExternalTrainer
+      tags:
+        - External
+      parameters:
+        - name: X-API-Key
+          in: header
+          required: true
+          description: API secret key
+          schema:
+            type: string
+        - name: X-Trainer-Name
+          in: header
+          required: true
+          description: Trainer name (case-insensitive)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Trainer data retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExternalTrainerResponse'
+              examples:
+                withNickname:
+                  summary: Pokemon with nickname
+                  value:
+                    trainer_id: "550e8400-e29b-41d4-a716-446655440000"
+                    trainer_name: "Ash"
+                    pokemon:
+                      uuid: "7f3b8c2a-1234-5678-9abc-def012345678"
+                      number: 25
+                      name: "Pikachu"
+                      types: ["Electric"]
+                      nickname: "Sparky"
+                withoutNickname:
+                  summary: Pokemon without nickname
+                  value:
+                    trainer_id: "550e8400-e29b-41d4-a716-446655440000"
+                    trainer_name: "Ash"
+                    pokemon:
+                      uuid: "7f3b8c2a-1234-5678-9abc-def012345678"
+                      number: 25
+                      name: "Pikachu"
+                      types: ["Electric"]
+                      nickname: null
+                noPokemon:
+                  summary: No Pokemon selected
+                  value:
+                    trainer_id: "550e8400-e29b-41d4-a716-446655440001"
+                    trainer_name: "Gary"
+                    pokemon: null
+        '400':
+          description: Missing trainer name header
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '401':
+          description: Invalid or missing API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Trainer not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+
+components:
+  schemas:
+    SetNicknameRequest:
+      type: object
+      required:
+        - nickname
+      properties:
+        nickname:
+          type: string
+          maxLength: 20
+          nullable: true
+          description: |
+            The nickname to set. Must be 1-20 characters when provided.
+            Set to null or empty string to clear the nickname.
+
+    TrainerWithStarter:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        role:
+          type: string
+          enum: [trainer, admin]
+        starter_pokemon_id:
+          type: integer
+          nullable: true
+        starter_pokemon_uuid:
+          type: string
+          format: uuid
+          nullable: true
+        starter_pokemon_nickname:
+          type: string
+          maxLength: 20
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        starter:
+          $ref: '#/components/schemas/Pokemon'
+
+    Pokemon:
+      type: object
+      nullable: true
+      properties:
+        number:
+          type: integer
+          minimum: 1
+          maximum: 151
+        name:
+          type: string
+        types:
+          type: array
+          items:
+            type: string
+        sprites:
+          type: object
+          properties:
+            main:
+              type: string
+            sprite:
+              type: string
+
+    ExternalTrainerResponse:
+      type: object
+      properties:
+        trainer_id:
+          type: string
+          format: uuid
+        trainer_name:
+          type: string
+        pokemon:
+          type: object
+          nullable: true
+          properties:
+            uuid:
+              type: string
+              format: uuid
+            number:
+              type: integer
+            name:
+              type: string
+            types:
+              type: array
+              items:
+                type: string
+            nickname:
+              type: string
+              maxLength: 20
+              nullable: true
+              description: Custom nickname set by trainer, or null if not set
+
+    ApiError:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
