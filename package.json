@@ -1,0 +1,13 @@
+{
+  "name": "pokemonselector",
+  "version": "0.1.0",
+  "description": "Pokemon Starter Selection web app",
+  "type": "module",
+  "scripts": {
+    "sanitize-pokemon": "tsx scripts/sanitize-pokemon.ts"
+  },
+  "devDependencies": {
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.0"
+  }
+}
