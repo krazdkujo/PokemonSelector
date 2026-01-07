@@ -1,1207 +1,1727 @@
 [
   {
-    "name": "Bulbasaur",
     "number": 1,
+    "name": "Bulbasaur",
+    "types": [
+      "Grass",
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
     }
   },
   {
-    "name": "Ivysaur",
     "number": 2,
+    "name": "Ivysaur",
+    "types": [
+      "Grass",
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png"
     }
   },
   {
-    "name": "Venusaur",
     "number": 3,
+    "name": "Venusaur",
+    "types": [
+      "Grass",
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png"
     }
   },
   {
-    "name": "Charmander",
     "number": 4,
+    "name": "Charmander",
+    "types": [
+      "Fire"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
     }
   },
   {
-    "name": "Charmeleon",
     "number": 5,
+    "name": "Charmeleon",
+    "types": [
+      "Fire"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/5.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png"
     }
   },
   {
-    "name": "Charizard",
     "number": 6,
+    "name": "Charizard",
+    "types": [
+      "Fire",
+      "Flying"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
     }
   },
   {
-    "name": "Squirtle",
     "number": 7,
+    "name": "Squirtle",
+    "types": [
+      "Water"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
     }
   },
   {
-    "name": "Wartortle",
     "number": 8,
+    "name": "Wartortle",
+    "types": [
+      "Water"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/8.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png"
     }
   },
   {
-    "name": "Blastoise",
     "number": 9,
+    "name": "Blastoise",
+    "types": [
+      "Water"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png"
     }
   },
   {
-    "name": "Caterpie",
     "number": 10,
+    "name": "Caterpie",
+    "types": [
+      "Bug"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png"
     }
   },
   {
-    "name": "Metapod",
     "number": 11,
+    "name": "Metapod",
+    "types": [
+      "Bug"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/11.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png"
     }
   },
   {
-    "name": "Butterfree",
     "number": 12,
+    "name": "Butterfree",
+    "types": [
+      "Bug",
+      "Flying"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/12.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/12.png"
     }
   },
   {
-    "name": "Weedle",
     "number": 13,
+    "name": "Weedle",
+    "types": [
+      "Bug",
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/13.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/13.png"
     }
   },
   {
-    "name": "Kakuna",
     "number": 14,
+    "name": "Kakuna",
+    "types": [
+      "Bug",
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/14.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/14.png"
     }
   },
   {
-    "name": "Beedrill",
     "number": 15,
+    "name": "Beedrill",
+    "types": [
+      "Bug",
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/15.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/15.png"
     }
   },
   {
-    "name": "Pidgey",
     "number": 16,
+    "name": "Pidgey",
+    "types": [
+      "Normal",
+      "Flying"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/16.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/16.png"
     }
   },
   {
-    "name": "Pidgeotto",
     "number": 17,
+    "name": "Pidgeotto",
+    "types": [
+      "Normal",
+      "Flying"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/17.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/17.png"
     }
   },
   {
-    "name": "Pidgeot",
     "number": 18,
+    "name": "Pidgeot",
+    "types": [
+      "Normal",
+      "Flying"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/18.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/18.png"
     }
   },
   {
-    "name": "Rattata",
     "number": 19,
+    "name": "Rattata",
+    "types": [
+      "Normal"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/19.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/19.png"
     }
   },
   {
-    "name": "Raticate",
     "number": 20,
+    "name": "Raticate",
+    "types": [
+      "Normal"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/20.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/20.png"
     }
   },
   {
-    "name": "Spearow",
     "number": 21,
+    "name": "Spearow",
+    "types": [
+      "Normal",
+      "Flying"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/21.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/21.png"
     }
   },
   {
-    "name": "Fearow",
     "number": 22,
+    "name": "Fearow",
+    "types": [
+      "Normal",
+      "Flying"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/22.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/22.png"
     }
   },
   {
-    "name": "Ekans",
     "number": 23,
+    "name": "Ekans",
+    "types": [
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/23.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/23.png"
     }
   },
   {
-    "name": "Arbok",
     "number": 24,
+    "name": "Arbok",
+    "types": [
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/24.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/24.png"
     }
   },
   {
-    "name": "Pikachu",
     "number": 25,
+    "name": "Pikachu",
+    "types": [
+      "Electric"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
     }
   },
   {
-    "name": "Raichu",
     "number": 26,
+    "name": "Raichu",
+    "types": [
+      "Electric"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/26.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/26.png"
     }
   },
   {
-    "name": "Sandshrew",
     "number": 27,
+    "name": "Sandshrew",
+    "types": [
+      "Ground"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/27.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png"
     }
   },
   {
-    "name": "Sandslash",
     "number": 28,
+    "name": "Sandslash",
+    "types": [
+      "Ground"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/28.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/28.png"
     }
   },
   {
-    "name": "Nidoran ♀",
     "number": 29,
+    "name": "Nidoran ♀",
+    "types": [
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/29.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/29.png"
     }
   },
   {
-    "name": "Nidorina",
     "number": 30,
+    "name": "Nidorina",
+    "types": [
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/30.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/30.png"
     }
   },
   {
-    "name": "Nidoqueen",
     "number": 31,
+    "name": "Nidoqueen",
+    "types": [
+      "Poison",
+      "Ground"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/31.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/31.png"
     }
   },
   {
-    "name": "Nidoran ♂",
     "number": 32,
+    "name": "Nidoran ♂",
+    "types": [
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/32.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/32.png"
     }
   },
   {
-    "name": "Nidorino",
     "number": 33,
+    "name": "Nidorino",
+    "types": [
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/33.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/33.png"
     }
   },
   {
-    "name": "Nidoking",
     "number": 34,
+    "name": "Nidoking",
+    "types": [
+      "Poison",
+      "Ground"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/34.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/34.png"
     }
   },
   {
-    "name": "Clefairy",
     "number": 35,
+    "name": "Clefairy",
+    "types": [
+      "Fairy"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/35.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png"
     }
   },
   {
-    "name": "Clefable",
     "number": 36,
+    "name": "Clefable",
+    "types": [
+      "Fairy"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/36.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/36.png"
     }
   },
   {
-    "name": "Vulpix",
     "number": 37,
+    "name": "Vulpix",
+    "types": [
+      "Fire"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/37.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/37.png"
     }
   },
   {
-    "name": "Ninetales",
     "number": 38,
+    "name": "Ninetales",
+    "types": [
+      "Fire"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/38.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/38.png"
     }
   },
   {
-    "name": "Jigglypuff",
     "number": 39,
+    "name": "Jigglypuff",
+    "types": [
+      "Normal",
+      "Fairy"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/39.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/39.png"
     }
   },
   {
-    "name": "Wigglytuff",
     "number": 40,
+    "name": "Wigglytuff",
+    "types": [
+      "Normal",
+      "Fairy"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/40.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/40.png"
     }
   },
   {
-    "name": "Zubat",
     "number": 41,
+    "name": "Zubat",
+    "types": [
+      "Poison",
+      "Flying"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/41.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/41.png"
     }
   },
   {
-    "name": "Golbat",
     "number": 42,
+    "name": "Golbat",
+    "types": [
+      "Poison",
+      "Flying"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/42.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/42.png"
     }
   },
   {
-    "name": "Oddish",
     "number": 43,
+    "name": "Oddish",
+    "types": [
+      "Grass",
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/43.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/43.png"
     }
   },
   {
-    "name": "Gloom",
     "number": 44,
+    "name": "Gloom",
+    "types": [
+      "Grass",
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/44.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/44.png"
     }
   },
   {
-    "name": "Vileplume",
     "number": 45,
+    "name": "Vileplume",
+    "types": [
+      "Grass",
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/45.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/45.png"
     }
   },
   {
-    "name": "Paras",
     "number": 46,
+    "name": "Paras",
+    "types": [
+      "Bug",
+      "Grass"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/46.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/46.png"
     }
   },
   {
-    "name": "Parasect",
     "number": 47,
+    "name": "Parasect",
+    "types": [
+      "Bug",
+      "Grass"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/47.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/47.png"
     }
   },
   {
-    "name": "Venonat",
     "number": 48,
+    "name": "Venonat",
+    "types": [
+      "Bug",
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/48.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/48.png"
     }
   },
   {
-    "name": "Venomoth",
     "number": 49,
+    "name": "Venomoth",
+    "types": [
+      "Bug",
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/49.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/49.png"
     }
   },
   {
-    "name": "Diglett",
     "number": 50,
+    "name": "Diglett",
+    "types": [
+      "Ground"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/50.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/50.png"
     }
   },
   {
-    "name": "Dugtrio",
     "number": 51,
+    "name": "Dugtrio",
+    "types": [
+      "Ground"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/51.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/51.png"
     }
   },
   {
-    "name": "Meowth",
     "number": 52,
+    "name": "Meowth",
+    "types": [
+      "Normal"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/52.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/52.png"
     }
   },
   {
-    "name": "Persian",
     "number": 53,
+    "name": "Persian",
+    "types": [
+      "Normal"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/53.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/53.png"
     }
   },
   {
-    "name": "Psyduck",
     "number": 54,
+    "name": "Psyduck",
+    "types": [
+      "Water"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/54.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/54.png"
     }
   },
   {
-    "name": "Golduck",
     "number": 55,
+    "name": "Golduck",
+    "types": [
+      "Water"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/55.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/55.png"
     }
   },
   {
-    "name": "Mankey",
     "number": 56,
+    "name": "Mankey",
+    "types": [
+      "Fighting"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/56.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/56.png"
     }
   },
   {
-    "name": "Primeape",
     "number": 57,
+    "name": "Primeape",
+    "types": [
+      "Fighting"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/57.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/57.png"
     }
   },
   {
-    "name": "Growlithe",
     "number": 58,
+    "name": "Growlithe",
+    "types": [
+      "Fire"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/58.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/58.png"
     }
   },
   {
-    "name": "Arcanine",
     "number": 59,
+    "name": "Arcanine",
+    "types": [
+      "Fire"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/59.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/59.png"
     }
   },
   {
-    "name": "Poliwag",
     "number": 60,
+    "name": "Poliwag",
+    "types": [
+      "Water"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/60.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/60.png"
     }
   },
   {
-    "name": "Poliwhirl",
     "number": 61,
+    "name": "Poliwhirl",
+    "types": [
+      "Water"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/61.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/61.png"
     }
   },
   {
-    "name": "Poliwrath",
     "number": 62,
+    "name": "Poliwrath",
+    "types": [
+      "Water",
+      "Fighting"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/62.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/62.png"
     }
   },
   {
-    "name": "Abra",
     "number": 63,
+    "name": "Abra",
+    "types": [
+      "Psychic"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/63.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/63.png"
     }
   },
   {
-    "name": "Kadabra",
     "number": 64,
+    "name": "Kadabra",
+    "types": [
+      "Psychic"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/64.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/64.png"
     }
   },
   {
-    "name": "Alakazam",
     "number": 65,
+    "name": "Alakazam",
+    "types": [
+      "Psychic"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/65.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/65.png"
     }
   },
   {
-    "name": "Machop",
     "number": 66,
+    "name": "Machop",
+    "types": [
+      "Fighting"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/66.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/66.png"
     }
   },
   {
-    "name": "Machoke",
     "number": 67,
+    "name": "Machoke",
+    "types": [
+      "Fighting"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/67.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/67.png"
     }
   },
   {
-    "name": "Machamp",
     "number": 68,
+    "name": "Machamp",
+    "types": [
+      "Fighting"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/68.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/68.png"
     }
   },
   {
-    "name": "Bellsprout",
     "number": 69,
+    "name": "Bellsprout",
+    "types": [
+      "Grass",
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/69.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/69.png"
     }
   },
   {
-    "name": "Weepinbell",
     "number": 70,
+    "name": "Weepinbell",
+    "types": [
+      "Grass",
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/70.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/70.png"
     }
   },
   {
-    "name": "Victreebel",
     "number": 71,
+    "name": "Victreebel",
+    "types": [
+      "Grass",
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/71.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/71.png"
     }
   },
   {
-    "name": "Tentacool",
     "number": 72,
+    "name": "Tentacool",
+    "types": [
+      "Water",
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/72.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/72.png"
     }
   },
   {
-    "name": "Tentacruel",
     "number": 73,
+    "name": "Tentacruel",
+    "types": [
+      "Water",
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/73.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/73.png"
     }
   },
   {
-    "name": "Geodude",
     "number": 74,
+    "name": "Geodude",
+    "types": [
+      "Rock",
+      "Ground"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/74.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/74.png"
     }
   },
   {
-    "name": "Graveler",
     "number": 75,
+    "name": "Graveler",
+    "types": [
+      "Rock",
+      "Ground"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/75.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/75.png"
     }
   },
   {
-    "name": "Golem",
     "number": 76,
+    "name": "Golem",
+    "types": [
+      "Rock",
+      "Ground"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/76.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/76.png"
     }
   },
   {
-    "name": "Ponyta",
     "number": 77,
+    "name": "Ponyta",
+    "types": [
+      "Fire"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/77.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/77.png"
     }
   },
   {
-    "name": "Rapidash",
     "number": 78,
+    "name": "Rapidash",
+    "types": [
+      "Fire"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/78.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/78.png"
     }
   },
   {
-    "name": "Slowpoke",
     "number": 79,
+    "name": "Slowpoke",
+    "types": [
+      "Water",
+      "Psychic"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/79.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/79.png"
     }
   },
   {
-    "name": "Slowbro",
     "number": 80,
+    "name": "Slowbro",
+    "types": [
+      "Water",
+      "Psychic"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/80.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/80.png"
     }
   },
   {
-    "name": "Magnemite",
     "number": 81,
+    "name": "Magnemite",
+    "types": [
+      "Electric",
+      "Steel"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/81.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/81.png"
     }
   },
   {
-    "name": "Magneton",
     "number": 82,
+    "name": "Magneton",
+    "types": [
+      "Electric",
+      "Steel"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/82.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/82.png"
     }
   },
   {
-    "name": "Farfetch'd",
     "number": 83,
+    "name": "Farfetch'd",
+    "types": [
+      "Normal",
+      "Flying"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/83.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/83.png"
     }
   },
   {
-    "name": "Doduo",
     "number": 84,
+    "name": "Doduo",
+    "types": [
+      "Normal",
+      "Flying"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/84.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/84.png"
     }
   },
   {
-    "name": "Dodrio",
     "number": 85,
+    "name": "Dodrio",
+    "types": [
+      "Normal",
+      "Flying"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/85.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/85.png"
     }
   },
   {
-    "name": "Seel",
     "number": 86,
+    "name": "Seel",
+    "types": [
+      "Water"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/86.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/86.png"
     }
   },
   {
-    "name": "Dewgong",
     "number": 87,
+    "name": "Dewgong",
+    "types": [
+      "Water",
+      "Ice"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/87.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/87.png"
     }
   },
   {
-    "name": "Grimer",
     "number": 88,
+    "name": "Grimer",
+    "types": [
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/88.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/88.png"
     }
   },
   {
-    "name": "Muk",
     "number": 89,
+    "name": "Muk",
+    "types": [
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/89.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/89.png"
     }
   },
   {
-    "name": "Shellder",
     "number": 90,
+    "name": "Shellder",
+    "types": [
+      "Water"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/90.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/90.png"
     }
   },
   {
-    "name": "Cloyster",
     "number": 91,
+    "name": "Cloyster",
+    "types": [
+      "Water",
+      "Ice"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/91.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/91.png"
     }
   },
   {
-    "name": "Gastly",
     "number": 92,
+    "name": "Gastly",
+    "types": [
+      "Ghost",
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/92.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/92.png"
     }
   },
   {
-    "name": "Haunter",
     "number": 93,
+    "name": "Haunter",
+    "types": [
+      "Ghost",
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/93.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/93.png"
     }
   },
   {
-    "name": "Gengar",
     "number": 94,
+    "name": "Gengar",
+    "types": [
+      "Ghost",
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png"
     }
   },
   {
-    "name": "Onix",
     "number": 95,
+    "name": "Onix",
+    "types": [
+      "Rock",
+      "Ground"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/95.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/95.png"
     }
   },
   {
-    "name": "Drowzee",
     "number": 96,
+    "name": "Drowzee",
+    "types": [
+      "Psychic"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/96.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/96.png"
     }
   },
   {
-    "name": "Hypno",
     "number": 97,
+    "name": "Hypno",
+    "types": [
+      "Psychic"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/97.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/97.png"
     }
   },
   {
-    "name": "Krabby",
     "number": 98,
+    "name": "Krabby",
+    "types": [
+      "Water"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/98.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/98.png"
     }
   },
   {
-    "name": "Kingler",
     "number": 99,
+    "name": "Kingler",
+    "types": [
+      "Water"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/99.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/99.png"
     }
   },
   {
-    "name": "Voltorb",
     "number": 100,
+    "name": "Voltorb",
+    "types": [
+      "Electric"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/100.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/100.png"
     }
   },
   {
-    "name": "Electrode",
     "number": 101,
+    "name": "Electrode",
+    "types": [
+      "Electric"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/101.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/101.png"
     }
   },
   {
-    "name": "Exeggcute",
     "number": 102,
+    "name": "Exeggcute",
+    "types": [
+      "Grass",
+      "Psychic"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/102.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/102.png"
     }
   },
   {
-    "name": "Exeggutor",
     "number": 103,
+    "name": "Exeggutor",
+    "types": [
+      "Grass",
+      "Psychic"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/103.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/103.png"
     }
   },
   {
-    "name": "Cubone",
     "number": 104,
+    "name": "Cubone",
+    "types": [
+      "Ground"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/104.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/104.png"
     }
   },
   {
-    "name": "Marowak",
     "number": 105,
+    "name": "Marowak",
+    "types": [
+      "Ground"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/105.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/105.png"
     }
   },
   {
-    "name": "Hitmonlee",
     "number": 106,
+    "name": "Hitmonlee",
+    "types": [
+      "Fighting"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/106.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/106.png"
     }
   },
   {
-    "name": "Hitmonchan",
     "number": 107,
+    "name": "Hitmonchan",
+    "types": [
+      "Fighting"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/107.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/107.png"
     }
   },
   {
-    "name": "Lickitung",
     "number": 108,
+    "name": "Lickitung",
+    "types": [
+      "Normal"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/108.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/108.png"
     }
   },
   {
-    "name": "Koffing",
     "number": 109,
+    "name": "Koffing",
+    "types": [
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/109.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/109.png"
     }
   },
   {
-    "name": "Weezing",
     "number": 110,
+    "name": "Weezing",
+    "types": [
+      "Poison"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/110.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/110.png"
     }
   },
   {
-    "name": "Rhyhorn",
     "number": 111,
+    "name": "Rhyhorn",
+    "types": [
+      "Ground",
+      "Rock"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/111.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/111.png"
     }
   },
   {
-    "name": "Rhydon",
     "number": 112,
+    "name": "Rhydon",
+    "types": [
+      "Ground",
+      "Rock"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/112.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/112.png"
     }
   },
   {
-    "name": "Chansey",
     "number": 113,
+    "name": "Chansey",
+    "types": [
+      "Normal"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/113.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/113.png"
     }
   },
   {
-    "name": "Tangela",
     "number": 114,
+    "name": "Tangela",
+    "types": [
+      "Grass"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/114.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/114.png"
     }
   },
   {
-    "name": "Kangaskhan",
     "number": 115,
+    "name": "Kangaskhan",
+    "types": [
+      "Normal"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/115.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/115.png"
     }
   },
   {
-    "name": "Horsea",
     "number": 116,
+    "name": "Horsea",
+    "types": [
+      "Water"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/116.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/116.png"
     }
   },
   {
-    "name": "Seadra",
     "number": 117,
+    "name": "Seadra",
+    "types": [
+      "Water"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/117.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/117.png"
     }
   },
   {
-    "name": "Goldeen",
     "number": 118,
+    "name": "Goldeen",
+    "types": [
+      "Water"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/118.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/118.png"
     }
   },
   {
-    "name": "Seaking",
     "number": 119,
+    "name": "Seaking",
+    "types": [
+      "Water"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/119.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/119.png"
     }
   },
   {
-    "name": "Staryu",
     "number": 120,
+    "name": "Staryu",
+    "types": [
+      "Water"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/120.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/120.png"
     }
   },
   {
-    "name": "Starmie",
     "number": 121,
+    "name": "Starmie",
+    "types": [
+      "Water",
+      "Psychic"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/121.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/121.png"
     }
   },
   {
-    "name": "Mr. Mime",
     "number": 122,
+    "name": "Mr. Mime",
+    "types": [
+      "Psychic",
+      "Fairy"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/122.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/122.png"
     }
   },
   {
-    "name": "Scyther",
     "number": 123,
+    "name": "Scyther",
+    "types": [
+      "Bug",
+      "Flying"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/123.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/123.png"
     }
   },
   {
-    "name": "Jynx",
     "number": 124,
+    "name": "Jynx",
+    "types": [
+      "Ice",
+      "Psychic"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/124.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/124.png"
     }
   },
   {
-    "name": "Electabuzz",
     "number": 125,
+    "name": "Electabuzz",
+    "types": [
+      "Electric"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/125.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/125.png"
     }
   },
   {
-    "name": "Magmar",
     "number": 126,
+    "name": "Magmar",
+    "types": [
+      "Fire"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/126.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/126.png"
     }
   },
   {
-    "name": "Pinsir",
     "number": 127,
+    "name": "Pinsir",
+    "types": [
+      "Bug"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/127.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/127.png"
     }
   },
   {
-    "name": "Tauros",
     "number": 128,
+    "name": "Tauros",
+    "types": [
+      "Normal"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/128.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/128.png"
     }
   },
   {
-    "name": "Magikarp",
     "number": 129,
+    "name": "Magikarp",
+    "types": [
+      "Water"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/129.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/129.png"
     }
   },
   {
-    "name": "Gyarados",
     "number": 130,
+    "name": "Gyarados",
+    "types": [
+      "Water",
+      "Flying"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/130.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/130.png"
     }
   },
   {
-    "name": "Lapras",
     "number": 131,
+    "name": "Lapras",
+    "types": [
+      "Water",
+      "Ice"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/131.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/131.png"
     }
   },
   {
-    "name": "Ditto",
     "number": 132,
+    "name": "Ditto",
+    "types": [
+      "Normal"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
     }
   },
   {
-    "name": "Eevee",
     "number": 133,
+    "name": "Eevee",
+    "types": [
+      "Normal"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png"
     }
   },
   {
-    "name": "Vaporeon",
     "number": 134,
+    "name": "Vaporeon",
+    "types": [
+      "Water"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/134.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/134.png"
     }
   },
   {
-    "name": "Jolteon",
     "number": 135,
+    "name": "Jolteon",
+    "types": [
+      "Electric"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/135.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png"
     }
   },
   {
-    "name": "Flareon",
     "number": 136,
+    "name": "Flareon",
+    "types": [
+      "Fire"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/136.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/136.png"
     }
   },
   {
-    "name": "Porygon",
     "number": 137,
+    "name": "Porygon",
+    "types": [
+      "Normal"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/137.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/137.png"
     }
   },
   {
-    "name": "Omanyte",
     "number": 138,
+    "name": "Omanyte",
+    "types": [
+      "Rock",
+      "Water"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/138.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/138.png"
     }
   },
   {
-    "name": "Omastar",
     "number": 139,
+    "name": "Omastar",
+    "types": [
+      "Rock",
+      "Water"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/139.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/139.png"
     }
   },
   {
-    "name": "Kabuto",
     "number": 140,
+    "name": "Kabuto",
+    "types": [
+      "Rock",
+      "Water"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/140.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/140.png"
     }
   },
   {
-    "name": "Kabutops",
     "number": 141,
+    "name": "Kabutops",
+    "types": [
+      "Rock",
+      "Water"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/141.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/141.png"
     }
   },
   {
-    "name": "Aerodactyl",
     "number": 142,
+    "name": "Aerodactyl",
+    "types": [
+      "Rock",
+      "Flying"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/142.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/142.png"
     }
   },
   {
-    "name": "Snorlax",
     "number": 143,
+    "name": "Snorlax",
+    "types": [
+      "Normal"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/143.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png"
     }
   },
   {
-    "name": "Articuno",
     "number": 144,
+    "name": "Articuno",
+    "types": [
+      "Ice",
+      "Flying"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/144.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/144.png"
     }
   },
   {
-    "name": "Zapdos",
     "number": 145,
+    "name": "Zapdos",
+    "types": [
+      "Electric",
+      "Flying"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/145.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/145.png"
     }
   },
   {
-    "name": "Moltres",
     "number": 146,
+    "name": "Moltres",
+    "types": [
+      "Fire",
+      "Flying"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/146.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png"
     }
   },
   {
-    "name": "Dratini",
     "number": 147,
+    "name": "Dratini",
+    "types": [
+      "Dragon"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/147.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/147.png"
     }
   },
   {
-    "name": "Dragonair",
     "number": 148,
+    "name": "Dragonair",
+    "types": [
+      "Dragon"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/148.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/148.png"
     }
   },
   {
-    "name": "Dragonite",
     "number": 149,
+    "name": "Dragonite",
+    "types": [
+      "Dragon",
+      "Flying"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/149.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/149.png"
     }
   },
   {
-    "name": "Mewtwo",
     "number": 150,
+    "name": "Mewtwo",
+    "types": [
+      "Psychic"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png"
     }
   },
   {
-    "name": "Mew",
     "number": 151,
+    "name": "Mew",
+    "types": [
+      "Psychic"
+    ],
     "sprites": {
       "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/151.png",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png"

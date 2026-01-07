@@ -1,0 +1,171 @@
+openapi: 3.0.3
+info:
+  title: Pokemon Starter Selector - External API
+  description: |
+    External API for students to retrieve their trainer information.
+    Requires a shared secret key provided by the instructor.
+  version: 1.0.0
+  contact:
+    name: Instructor
+
+servers:
+  - url: https://your-app.vercel.app
+    description: Production (Vercel)
+  - url: http://localhost:3000
+    description: Local development
+
+security:
+  - ApiKeyAuth: []
+
+paths:
+  /api/external/trainer:
+    get:
+      summary: Get trainer by name
+      description: |
+        Retrieves trainer information including their selected starter Pokemon.
+        Requires valid API key and trainer name in headers.
+      operationId: getTrainerByName
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: X-Trainer-Name
+          in: header
+          required: true
+          description: The trainer's name (case-insensitive)
+          schema:
+            type: string
+            minLength: 1
+            maxLength: 20
+          example: "Ash"
+      responses:
+        '200':
+          description: Trainer found successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExternalTrainerResponse'
+              examples:
+                withPokemon:
+                  summary: Trainer with starter Pokemon
+                  value:
+                    trainer_id: "550e8400-e29b-41d4-a716-446655440000"
+                    trainer_name: "Ash"
+                    pokemon:
+                      number: 25
+                      name: "Pikachu"
+                      types: ["Electric"]
+                withoutPokemon:
+                  summary: Trainer without starter selected
+                  value:
+                    trainer_id: "550e8400-e29b-41d4-a716-446655440001"
+                    trainer_name: "Gary"
+                    pokemon: null
+        '400':
+          description: Bad request - missing trainer name
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+              example:
+                error: "BAD_REQUEST"
+                message: "X-Trainer-Name header is required"
+        '401':
+          description: Unauthorized - invalid or missing API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+              example:
+                error: "UNAUTHORIZED"
+                message: "Invalid or missing API key"
+        '404':
+          description: Trainer not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+              example:
+                error: "TRAINER_NOT_FOUND"
+                message: "No trainer found with that name"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+              example:
+                error: "INTERNAL_ERROR"
+                message: "An unexpected error occurred"
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: Shared secret key provided by instructor
+
+  schemas:
+    ExternalTrainerResponse:
+      type: object
+      required:
+        - trainer_id
+        - trainer_name
+        - pokemon
+      properties:
+        trainer_id:
+          type: string
+          format: uuid
+          description: Unique trainer identifier
+          example: "550e8400-e29b-41d4-a716-446655440000"
+        trainer_name:
+          type: string
+          description: Trainer's display name
+          example: "Ash"
+        pokemon:
+          oneOf:
+            - $ref: '#/components/schemas/PokemonDetails'
+            - type: 'null'
+          description: Selected starter Pokemon, or null if not selected
+
+    PokemonDetails:
+      type: object
+      required:
+        - number
+        - name
+        - types
+      properties:
+        number:
+          type: integer
+          minimum: 1
+          maximum: 151
+          description: Pokemon national dex number
+          example: 25
+        name:
+          type: string
+          description: Pokemon name
+          example: "Pikachu"
+        types:
+          type: array
+          items:
+            type: string
+          description: Pokemon types
+          example: ["Electric"]
+
+    ApiError:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          description: Machine-readable error code
+          enum:
+            - BAD_REQUEST
+            - UNAUTHORIZED
+            - TRAINER_NOT_FOUND
+            - INTERNAL_ERROR
+        message:
+          type: string
+          description: Human-readable error message

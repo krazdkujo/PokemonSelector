@@ -1,0 +1,306 @@
+openapi: 3.0.3
+info:
+  title: Pokemon Starter Selector API
+  description: API for the Pokemon Starter Selection application
+  version: 1.0.0
+
+servers:
+  - url: /api
+    description: Application API routes
+
+paths:
+  /trainer:
+    post:
+      summary: Create a new trainer
+      description: Creates a new trainer record with the given name
+      operationId: createTrainer
+      tags:
+        - Trainers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  minLength: 1
+                  maxLength: 20
+                  description: Trainer name (1-20 characters, whitespace trimmed)
+                  example: "Ash"
+      responses:
+        '201':
+          description: Trainer created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trainer'
+        '400':
+          description: Invalid name (empty, too long, or whitespace only)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /trainer/{id}:
+    get:
+      summary: Get trainer by ID
+      description: Returns trainer details including selected starter Pokemon
+      operationId: getTrainer
+      tags:
+        - Trainers
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Trainer UUID
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Trainer found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrainerWithStarter'
+        '404':
+          description: Trainer not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /trainer/{id}/starter:
+    post:
+      summary: Select starter Pokemon
+      description: Sets the trainer's starter Pokemon (can only be done once)
+      operationId: selectStarter
+      tags:
+        - Trainers
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Trainer UUID
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - pokemon_id
+              properties:
+                pokemon_id:
+                  type: integer
+                  minimum: 1
+                  maximum: 151
+                  description: Pokemon number (1-151)
+                  example: 25
+      responses:
+        '200':
+          description: Starter selected successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrainerWithStarter'
+        '400':
+          description: Invalid Pokemon ID or trainer already has a starter
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Trainer not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Pokemon already claimed by another trainer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /trainers:
+    get:
+      summary: List all trainers (Admin only)
+      description: Returns all trainers with their selected starters. Requires admin role.
+      operationId: listTrainers
+      tags:
+        - Admin
+      parameters:
+        - name: X-Trainer-ID
+          in: header
+          required: true
+          description: Current trainer's UUID (must have admin role)
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: List of all trainers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TrainerWithStarter'
+        '401':
+          description: Missing trainer ID header
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Not authorized (not an admin)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /pokemon:
+    get:
+      summary: List all Pokemon
+      description: Returns all available Pokemon for selection
+      operationId: listPokemon
+      tags:
+        - Pokemon
+      parameters:
+        - name: type
+          in: query
+          required: false
+          description: Filter by Pokemon type
+          schema:
+            type: string
+            example: "Fire"
+      responses:
+        '200':
+          description: List of Pokemon
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pokemon'
+
+  /pokemon/types:
+    get:
+      summary: List all Pokemon types
+      description: Returns all unique Pokemon types for filtering
+      operationId: listPokemonTypes
+      tags:
+        - Pokemon
+      responses:
+        '200':
+          description: List of type names
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                example: ["Normal", "Fire", "Water", "Grass", "Electric"]
+
+components:
+  schemas:
+    Trainer:
+      type: object
+      required:
+        - id
+        - name
+        - role
+        - created_at
+        - updated_at
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique trainer identifier
+        name:
+          type: string
+          minLength: 1
+          maxLength: 20
+          description: Trainer display name
+        role:
+          type: string
+          enum: [trainer, admin]
+          description: User role
+        starter_pokemon_id:
+          type: integer
+          nullable: true
+          description: Selected starter Pokemon number (null if not selected)
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    TrainerWithStarter:
+      allOf:
+        - $ref: '#/components/schemas/Trainer'
+        - type: object
+          properties:
+            starter:
+              $ref: '#/components/schemas/Pokemon'
+              nullable: true
+              description: Full Pokemon details (null if not selected)
+
+    Pokemon:
+      type: object
+      required:
+        - number
+        - name
+        - types
+        - sprites
+      properties:
+        number:
+          type: integer
+          minimum: 1
+          maximum: 151
+          description: Pokemon national dex number
+        name:
+          type: string
+          description: Pokemon name
+        types:
+          type: array
+          items:
+            type: string
+          description: Pokemon types
+          example: ["Fire", "Flying"]
+        sprites:
+          type: object
+          required:
+            - main
+            - sprite
+          properties:
+            main:
+              type: string
+              format: uri
+              description: Official artwork URL
+            sprite:
+              type: string
+              format: uri
+              description: Pixel sprite URL
+
+    Error:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Human-readable error message

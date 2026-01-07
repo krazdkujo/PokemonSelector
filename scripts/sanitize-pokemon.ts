@@ -2,27 +2,28 @@
  * Pokemon Data Sanitization Script
  *
  * Transforms pokemon/pokemon.json to contain only the first 151 Pokemon
- * with minimal fields: name, number, and sprites (non-shiny only).
+ * with fields: name, number, types, and sprites (non-shiny only).
+ * Fetches type data from PokeAPI.
  */
 
 import { readFileSync, writeFileSync, statSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-// TypeScript Interfaces (T003)
+// TypeScript Interfaces
 interface Sprites {
-  main: string;    // Official artwork URL
-  sprite: string;  // Small sprite URL
+  main: string;
+  sprite: string;
 }
 
 interface Pokemon {
-  name: string;    // Display name
-  number: number;  // Pokedex number (1-151)
+  number: number;
+  name: string;
+  types: string[];
   sprites: Sprites;
 }
 
 // Source Pokemon structure (from original file)
-// Note: The source file uses "media" not "sprites" for image URLs
 interface SourceMedia {
   main?: string;
   sprite?: string;
@@ -31,11 +32,22 @@ interface SourceMedia {
 }
 
 interface SourcePokemon {
-  id: string;        // Lowercase identifier (e.g., "bulbasaur")
+  id: string;
   name: string;
   number: number;
-  media?: SourceMedia;  // Images are under "media" in source
-  [key: string]: unknown; // Allow other fields we'll ignore
+  media?: SourceMedia;
+  [key: string]: unknown;
+}
+
+// PokeAPI response structure
+interface PokeAPIType {
+  type: {
+    name: string;
+  };
+}
+
+interface PokeAPIResponse {
+  types: PokeAPIType[];
 }
 
 // Get directory paths
@@ -45,17 +57,36 @@ const projectRoot = join(__dirname, '..');
 
 // File paths
 const INPUT_FILE = join(projectRoot, 'pokemon', 'pokemon.json');
-const OUTPUT_FILE = join(projectRoot, 'pokemon', 'pokemon-sanitized.json');
+const OUTPUT_FILE = join(projectRoot, 'src', 'data', 'pokemon.json');
 
-// T004: Read source file
+// Fetch types from PokeAPI
+async function fetchTypes(pokemonNumber: number): Promise<string[]> {
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNumber}`);
+    if (!response.ok) {
+      console.warn(`Failed to fetch types for Pokemon #${pokemonNumber}`);
+      return [];
+    }
+    const data = await response.json() as PokeAPIResponse;
+    return data.types.map(t => capitalize(t.type.name));
+  } catch (error) {
+    console.warn(`Error fetching types for Pokemon #${pokemonNumber}:`, error);
+    return [];
+  }
+}
+
+function capitalize(str: string): string {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+// Read source file
 function readSourceFile(): SourcePokemon[] {
   console.log(`Reading source file: ${INPUT_FILE}`);
   const content = readFileSync(INPUT_FILE, 'utf-8');
   return JSON.parse(content) as SourcePokemon[];
 }
 
-// T005: Filter to Gen 1 only (numbers 1-151), keeping only first occurrence of each number
-// This excludes regional variants (Alolan, Galarian, Paldean) which share the same number
+// Filter to Gen 1 only (numbers 1-151)
 function filterGen1(pokemon: SourcePokemon[]): SourcePokemon[] {
   const seen = new Set<number>();
   return pokemon.filter(p => {
@@ -67,53 +98,36 @@ function filterGen1(pokemon: SourcePokemon[]): SourcePokemon[] {
   });
 }
 
-// T006 & T007: Transform to minimal structure (exclude shiny variants)
-// Note: Source uses "media" field, output uses "sprites" field
-function transformPokemon(source: SourcePokemon): Pokemon {
+// Transform to minimal structure with types
+async function transformPokemon(source: SourcePokemon): Promise<Pokemon> {
+  const types = await fetchTypes(source.number);
+
   const sprites: Sprites = {
-    main: source.media?.main || '',
-    sprite: source.media?.sprite || ''
+    main: source.media?.main || `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${source.number}.png`,
+    sprite: source.media?.sprite || `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${source.number}.png`
   };
 
   return {
-    name: source.name,
     number: source.number,
+    name: source.name,
+    types,
     sprites
   };
 }
 
-// T008: Sort by Pokemon number ascending
+// Sort by Pokemon number ascending
 function sortByNumber(pokemon: Pokemon[]): Pokemon[] {
   return [...pokemon].sort((a, b) => a.number - b.number);
 }
 
-// T011 & T012: Validate image URLs
-function validatePokemon(pokemon: Pokemon[]): { valid: boolean; warnings: string[] } {
-  const warnings: string[] = [];
-
-  for (const p of pokemon) {
-    if (!p.sprites.main) {
-      warnings.push(`Warning: ${p.name} (#${p.number}) missing main artwork URL`);
-    }
-    if (!p.sprites.sprite) {
-      warnings.push(`Warning: ${p.name} (#${p.number}) missing sprite URL`);
-    }
-  }
-
-  return {
-    valid: warnings.length === 0,
-    warnings
-  };
-}
-
-// T009: Write output file
+// Write output file
 function writeOutputFile(pokemon: Pokemon[]): void {
   const content = JSON.stringify(pokemon, null, 2);
   writeFileSync(OUTPUT_FILE, content, 'utf-8');
   console.log(`Output written to: ${OUTPUT_FILE}`);
 }
 
-// T010: Report statistics
+// Report statistics
 function reportStats(inputFile: string, outputFile: string, count: number): void {
   const inputSize = statSync(inputFile).size;
   const outputSize = statSync(outputFile).size;
@@ -127,7 +141,7 @@ function reportStats(inputFile: string, outputFile: string, count: number): void
 }
 
 // Main execution
-function main(): void {
+async function main(): Promise<void> {
   try {
     // Read source data
     const sourceData = readSourceFile();
@@ -137,17 +151,27 @@ function main(): void {
     const gen1Data = filterGen1(sourceData);
     console.log(`Filtered to ${gen1Data.length} Gen 1 Pokemon`);
 
-    // Transform to minimal structure
-    const transformed = gen1Data.map(transformPokemon);
+    // Transform with types (with rate limiting)
+    console.log('Fetching types from PokeAPI...');
+    const transformed: Pokemon[] = [];
+    for (let i = 0; i < gen1Data.length; i++) {
+      const pokemon = await transformPokemon(gen1Data[i]);
+      transformed.push(pokemon);
+      if ((i + 1) % 10 === 0) {
+        console.log(`  Processed ${i + 1}/${gen1Data.length} Pokemon`);
+      }
+      // Small delay to avoid rate limiting
+      await new Promise(resolve => setTimeout(resolve, 100));
+    }
 
     // Sort by number
     const sorted = sortByNumber(transformed);
 
-    // Validate
-    const validation = validatePokemon(sorted);
-    if (validation.warnings.length > 0) {
-      console.log('\nValidation warnings:');
-      validation.warnings.forEach(w => console.log(`  ${w}`));
+    // Validate types
+    const missingTypes = sorted.filter(p => p.types.length === 0);
+    if (missingTypes.length > 0) {
+      console.warn(`\nWarning: ${missingTypes.length} Pokemon missing types`);
+      missingTypes.forEach(p => console.warn(`  - ${p.name} (#${p.number})`));
     }
 
     // Write output
@@ -162,8 +186,9 @@ function main(): void {
       process.exit(1);
     }
 
-    console.log('\nFirst Pokemon:', sorted[0].name, `#${sorted[0].number}`);
-    console.log('Last Pokemon:', sorted[150].name, `#${sorted[150].number}`);
+    console.log('\nSample output:');
+    console.log('First:', sorted[0].name, `#${sorted[0].number}`, sorted[0].types);
+    console.log('Last:', sorted[150].name, `#${sorted[150].number}`, sorted[150].types);
   } catch (error) {
     console.error('Error during sanitization:', error);
     process.exit(1);
