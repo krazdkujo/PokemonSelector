@@ -24,9 +24,22 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(error, { status: 400 });
     }
 
-    // Create trainer in database
     const supabase = await createClient();
-    const { data: trainer, error: dbError } = await supabase
+
+    // Check if trainer already exists (case-insensitive)
+    const { data: existingTrainer } = await supabase
+      .from('trainers')
+      .select()
+      .ilike('name', name)
+      .single();
+
+    if (existingTrainer) {
+      // Login: return existing trainer
+      return NextResponse.json(existingTrainer as Trainer, { status: 200 });
+    }
+
+    // Register: create new trainer
+    const { data: newTrainer, error: dbError } = await supabase
       .from('trainers')
       .insert({ name })
       .select()
@@ -41,7 +54,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(error, { status: 500 });
     }
 
-    return NextResponse.json(trainer as Trainer, { status: 201 });
+    return NextResponse.json(newTrainer as Trainer, { status: 201 });
   } catch (err) {
     console.error('Unexpected error:', err);
     const error: ApiError = {

@@ -57,7 +57,13 @@ export default function LoginPage() {
 
       const trainer = data as Trainer;
       setTrainerId(trainer.id);
-      router.push('/select');
+
+      // Redirect based on whether trainer has a starter
+      if (trainer.starter_pokemon_id) {
+        router.push('/dashboard');
+      } else {
+        router.push('/select');
+      }
     } catch (err) {
       setIsLoading(false);
       throw err;
