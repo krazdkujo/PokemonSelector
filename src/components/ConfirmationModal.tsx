@@ -7,6 +7,7 @@ interface ConfirmationModalProps {
   pokemon: Pokemon;
   isOpen: boolean;
   isLoading?: boolean;
+  error?: string | null;
   onConfirm: () => void;
   onCancel: () => void;
 }
@@ -15,6 +16,7 @@ export function ConfirmationModal({
   pokemon,
   isOpen,
   isLoading = false,
+  error,
   onConfirm,
   onCancel,
 }: ConfirmationModalProps) {
@@ -60,6 +62,12 @@ export function ConfirmationModal({
             This choice is final and cannot be changed!
           </p>
         </div>
+
+        {error && (
+          <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+            <p className="text-red-600 text-sm">{error}</p>
+          </div>
+        )}
 
         <div className="flex gap-3">
           <button

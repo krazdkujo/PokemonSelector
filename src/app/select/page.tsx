@@ -146,6 +146,7 @@ export default function SelectPage() {
           pokemon={selectedPokemon}
           isOpen={isModalOpen}
           isLoading={isSubmitting}
+          error={error}
           onConfirm={handleConfirm}
           onCancel={handleCancel}
         />
