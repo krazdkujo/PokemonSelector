@@ -330,3 +330,34 @@ export interface MovePreview {
   effectiveness: TypeEffectiveness;
   has_stab: boolean;
 }
+
+// ============================================
+// Admin Dashboard Types (009-admin-dashboard-api)
+// ============================================
+
+// Statistics summary for admin dashboard display
+export interface TrainerStatsSummary {
+  battles_won: number;
+  battles_lost: number;
+  pokemon_captured: number;
+  pokemon_count: number;
+}
+
+// Extended trainer type with statistics for admin dashboard
+export interface TrainerWithStats extends Trainer {
+  starter: Pokemon | null;
+  stats: TrainerStatsSummary | null;
+}
+
+// Request body for role assignment endpoint
+export interface RoleUpdateRequest {
+  role: 'trainer' | 'admin';
+}
+
+// Response from role assignment endpoint
+export interface RoleUpdateResponse {
+  trainer_id: string;
+  previous_role: 'trainer' | 'admin';
+  new_role: 'trainer' | 'admin';
+  updated_at: string;
+}

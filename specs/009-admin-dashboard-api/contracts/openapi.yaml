@@ -1,0 +1,817 @@
+openapi: 3.0.3
+info:
+  title: Pokemon Starter Selector API
+  description: |
+    External API for the Pokemon Starter Selector platform. This API allows authenticated
+    users to interact with their trainer account, manage Pokemon, and participate in battles.
+
+    ## Authentication
+
+    All endpoints (except where noted) require authentication via an API key. Include your
+    secret key in the `X-API-Key` header with each request.
+
+    To obtain an API key:
+    1. Log in to the Pokemon Starter Selector web application
+    2. Navigate to your Dashboard
+    3. Click "Generate API Key" in the Secret Key section
+    4. Copy and securely store your key (it cannot be retrieved again)
+
+    ## Rate Limiting
+
+    There are currently no rate limits enforced. Please be respectful of server resources.
+
+    ## Error Handling
+
+    All errors follow a consistent format with an error code and human-readable message.
+  version: 1.0.0
+  contact:
+    name: API Support
+  license:
+    name: MIT
+
+servers:
+  - url: https://your-app.vercel.app
+    description: Production server (replace with actual URL)
+
+security:
+  - ApiKeyAuth: []
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: Your personal API key obtained from the dashboard
+
+  schemas:
+    Error:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          description: Machine-readable error code
+          example: UNAUTHORIZED
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid or missing API key
+
+    Pokemon:
+      type: object
+      properties:
+        number:
+          type: integer
+          description: National Pokedex number (1-151)
+          example: 25
+        name:
+          type: string
+          example: Pikachu
+        types:
+          type: array
+          items:
+            type: string
+          example: ["Electric"]
+
+    PokemonOwned:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        pokemon_id:
+          type: integer
+        name:
+          type: string
+        types:
+          type: array
+          items:
+            type: string
+        level:
+          type: integer
+        sr:
+          type: number
+          description: Species Rating (0-1)
+        is_starter:
+          type: boolean
+        is_active:
+          type: boolean
+        selected_moves:
+          type: array
+          items:
+            type: string
+        sprite_url:
+          type: string
+
+    Trainer:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        role:
+          type: string
+          enum: [trainer, admin]
+        created_at:
+          type: string
+          format: date-time
+
+    TrainerStats:
+      type: object
+      properties:
+        money:
+          type: integer
+        items:
+          type: object
+          additionalProperties:
+            type: integer
+        battles_won:
+          type: integer
+        battles_lost:
+          type: integer
+        pokemon_captured:
+          type: integer
+
+    WildPokemon:
+      type: object
+      properties:
+        pokemon_id:
+          type: integer
+        name:
+          type: string
+        level:
+          type: integer
+        sr:
+          type: number
+        types:
+          type: array
+          items:
+            type: string
+        current_hp:
+          type: integer
+        sprite_url:
+          type: string
+
+    Battle:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+        player_pokemon_id:
+          type: string
+          format: uuid
+        wild_pokemon:
+          $ref: '#/components/schemas/WildPokemon'
+        difficulty:
+          type: string
+          enum: [easy, medium, hard]
+        zone:
+          type: string
+          nullable: true
+        player_wins:
+          type: integer
+        wild_wins:
+          type: integer
+        capture_attempts:
+          type: integer
+        status:
+          type: string
+          enum: [active, player_won, wild_won, captured, fled]
+        seed:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        ended_at:
+          type: string
+          format: date-time
+          nullable: true
+
+    Move:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+
+    Zone:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        types:
+          type: array
+          items:
+            type: string
+        color:
+          type: string
+
+    ExperienceGained:
+      type: object
+      properties:
+        xp_awarded:
+          type: integer
+        previous_level:
+          type: integer
+        new_level:
+          type: integer
+        previous_experience:
+          type: integer
+        new_experience:
+          type: integer
+        levels_gained:
+          type: integer
+
+paths:
+  /api/external/trainer:
+    get:
+      summary: Get Your Trainer Data
+      description: Retrieve your trainer information including active Pokemon and statistics.
+      tags: [Trainer]
+      responses:
+        '200':
+          description: Trainer data retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  trainer:
+                    $ref: '#/components/schemas/Trainer'
+                  active_pokemon:
+                    $ref: '#/components/schemas/PokemonOwned'
+                    nullable: true
+                  stats:
+                    $ref: '#/components/schemas/TrainerStats'
+                    nullable: true
+                  pokemon_count:
+                    type: integer
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Trainer not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/dashboard:
+    get:
+      summary: Get Dashboard Data
+      description: Returns aggregated dashboard data including active Pokemon, stats, and battle status.
+      tags: [Trainer]
+      responses:
+        '200':
+          description: Dashboard data retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  trainer_name:
+                    type: string
+                  active_pokemon:
+                    $ref: '#/components/schemas/PokemonOwned'
+                    nullable: true
+                  pokemon_count:
+                    type: integer
+                  stats:
+                    $ref: '#/components/schemas/TrainerStats'
+                  has_active_battle:
+                    type: boolean
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/pokecenter:
+    get:
+      summary: Get Pokemon Collection
+      description: Returns all Pokemon owned by the authenticated user.
+      tags: [Pokemon]
+      responses:
+        '200':
+          description: Pokemon collection retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pokemon:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PokemonOwned'
+                  active_pokemon_id:
+                    type: string
+                    format: uuid
+                    nullable: true
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/pokecenter/swap:
+    post:
+      summary: Swap Active Pokemon
+      description: Changes which Pokemon is currently active for battles.
+      tags: [Pokemon]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - pokemon_id
+              properties:
+                pokemon_id:
+                  type: string
+                  format: uuid
+                  description: ID of the Pokemon to make active
+      responses:
+        '200':
+          description: Active Pokemon swapped successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  active_pokemon:
+                    $ref: '#/components/schemas/PokemonOwned'
+        '400':
+          description: Cannot swap during battle or validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Pokemon not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/pokedex:
+    get:
+      summary: Get Pokedex
+      description: Returns all 151 Pokemon with seen/caught status for the user.
+      tags: [Pokemon]
+      responses:
+        '200':
+          description: Pokedex retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pokedex:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        number:
+                          type: integer
+                        name:
+                          type: string
+                        types:
+                          type: array
+                          items:
+                            type: string
+                        sprite_url:
+                          type: string
+                        status:
+                          type: string
+                          enum: [unknown, seen, caught]
+                  stats:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                      caught:
+                        type: integer
+                      seen:
+                        type: integer
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/moves:
+    get:
+      summary: Get Available Moves
+      description: Returns available and selected moves for the active Pokemon.
+      tags: [Moves]
+      responses:
+        '200':
+          description: Moves retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  available_moves:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Move'
+                  selected_moves:
+                    type: array
+                    items:
+                      type: string
+                  pokemon_id:
+                    type: string
+                    format: uuid
+                  pokemon_level:
+                    type: integer
+        '400':
+          description: No active Pokemon
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    put:
+      summary: Update Selected Moves
+      description: Updates the 4 selected moves for the active Pokemon.
+      tags: [Moves]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - moves
+              properties:
+                moves:
+                  type: array
+                  items:
+                    type: string
+                  minItems: 4
+                  maxItems: 4
+                  description: Array of exactly 4 move IDs
+      responses:
+        '200':
+          description: Moves updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  selected_moves:
+                    type: array
+                    items:
+                      type: string
+        '400':
+          description: Invalid moves or no active Pokemon
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/zones:
+    get:
+      summary: List Combat Zones
+      description: Returns all available combat zones.
+      tags: [Zones]
+      security: []
+      responses:
+        '200':
+          description: Zones retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  zones:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Zone'
+
+  /api/zones/{zoneId}/preview:
+    get:
+      summary: Get Zone Preview
+      description: Returns preview information for a zone including example Pokemon at each difficulty.
+      tags: [Zones]
+      parameters:
+        - name: zoneId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Zone identifier
+      responses:
+        '200':
+          description: Zone preview retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  zone:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      types:
+                        type: array
+                        items:
+                          type: string
+                  difficulties:
+                    type: object
+                    properties:
+                      easy:
+                        type: object
+                        properties:
+                          description:
+                            type: string
+                          example_pokemon:
+                            type: array
+                            items:
+                              type: string
+                          pokemon_count:
+                            type: integer
+                      medium:
+                        type: object
+                      hard:
+                        type: object
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Zone not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/battle:
+    get:
+      summary: Get Current Battle
+      description: Returns the current active battle or null if none exists.
+      tags: [Battle]
+      responses:
+        '200':
+          description: Current battle state
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/Battle'
+                  - type: 'null'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    post:
+      summary: Start a Battle
+      description: |
+        Starts a new battle encounter. Supports two modes:
+        - Zone-based: Specify zone_id and difficulty (easy/medium/hard)
+        - Legacy random: Specify only difficulty (easy/normal/difficult)
+      tags: [Battle]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - difficulty
+              properties:
+                zone_id:
+                  type: string
+                  description: Zone identifier for zone-based battles
+                difficulty:
+                  type: string
+                  description: For zone battles (easy/medium/hard), for legacy (easy/normal/difficult)
+      responses:
+        '201':
+          description: Battle started successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Battle'
+        '400':
+          description: Validation error or battle already in progress
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/battle/round:
+    post:
+      summary: Execute Battle Round
+      description: Executes a single battle round with the specified move.
+      tags: [Battle]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - move_id
+              properties:
+                move_id:
+                  type: string
+                  description: ID of the move to use
+      responses:
+        '200':
+          description: Round executed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  round:
+                    type: object
+                    properties:
+                      round_number:
+                        type: integer
+                      player_move:
+                        type: string
+                      winner:
+                        type: string
+                        enum: [player, wild]
+                      roll:
+                        type: integer
+                      dc:
+                        type: integer
+                      base_chance:
+                        type: number
+                      type_effectiveness:
+                        type: string
+                      had_stab:
+                        type: boolean
+                  battle:
+                    $ref: '#/components/schemas/Battle'
+                  battle_ended:
+                    type: boolean
+                  experience_gained:
+                    $ref: '#/components/schemas/ExperienceGained'
+        '400':
+          description: No active battle or invalid move
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/capture:
+    get:
+      summary: Get Capture Eligibility
+      description: Returns the current capture DC and eligibility status for the active battle.
+      tags: [Battle]
+      responses:
+        '200':
+          description: Capture eligibility info
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dc:
+                    type: integer
+                    description: Difficulty Class for capture roll
+                  can_capture:
+                    type: boolean
+                  player_wins:
+                    type: integer
+                  wild_pokemon:
+                    type: string
+                  already_owned:
+                    type: boolean
+                  ownership_message:
+                    type: string
+                    nullable: true
+        '400':
+          description: No active battle
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    post:
+      summary: Attempt Capture
+      description: Attempts to capture the wild Pokemon in the current battle.
+      tags: [Battle]
+      responses:
+        '200':
+          description: Capture attempt result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      success:
+                        type: boolean
+                      roll:
+                        type: integer
+                      dc:
+                        type: integer
+                      fled:
+                        type: boolean
+                  battle:
+                    $ref: '#/components/schemas/Battle'
+                  captured_pokemon:
+                    $ref: '#/components/schemas/PokemonOwned'
+                    description: Only present if capture succeeded
+                  experience_gained:
+                    $ref: '#/components/schemas/ExperienceGained'
+                    description: Only present if capture succeeded
+        '400':
+          description: No active battle, not enough wins, or already owned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+tags:
+  - name: Trainer
+    description: Trainer account and profile operations
+  - name: Pokemon
+    description: Pokemon collection management
+  - name: Moves
+    description: Move selection and management
+  - name: Zones
+    description: Combat zones information
+  - name: Battle
+    description: Battle system operations

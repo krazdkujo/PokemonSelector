@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { SecretKeyManager } from '@/components/SecretKeyManager';
 import { getTrainerId, clearTrainerId } from '@/lib/session';
 import type { Dashboard } from '@/lib/types';
 
@@ -12,19 +11,16 @@ export default function DashboardPage() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
   const [dashboard, setDashboard] = useState<Dashboard | null>(null);
-  const [trainerId, setTrainerId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const loadDashboardData = async () => {
-      const storedTrainerId = getTrainerId();
+      const trainerId = getTrainerId();
 
-      if (!storedTrainerId) {
+      if (!trainerId) {
         router.replace('/');
         return;
       }
-
-      setTrainerId(storedTrainerId);
 
       try {
         const response = await fetch('/api/dashboard');
@@ -251,21 +247,15 @@ export default function DashboardPage() {
             <div className="text-sm opacity-75">View Trainers</div>
           </Link>
 
-          <a
-            href="/docs/api/openapi.yaml"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/api-docs"
             className="bg-gray-600 hover:bg-gray-700 text-white rounded-lg p-4 text-center transition"
           >
             <div className="text-2xl mb-1">API Docs</div>
-            <div className="text-sm opacity-75">OpenAPI Spec</div>
-          </a>
+            <div className="text-sm opacity-75">Documentation</div>
+          </Link>
         </div>
 
-        {/* Secret Key Manager */}
-        <div className="mt-8">
-          {trainerId && <SecretKeyManager trainerId={trainerId} />}
-        </div>
       </div>
     </div>
   );
