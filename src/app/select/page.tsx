@@ -6,8 +6,8 @@ import { PokemonGrid } from '@/components/PokemonGrid';
 import { TypeFilter } from '@/components/TypeFilter';
 import { ConfirmationModal } from '@/components/ConfirmationModal';
 import { getTrainerId } from '@/lib/session';
-import { getPokemon, getUniqueTypes } from '@/lib/pokemon';
-import type { Pokemon, Trainer, ApiError } from '@/lib/types';
+import { getStarterPokemon, getStarterTypes } from '@/lib/pokemon';
+import type { Pokemon, ApiError } from '@/lib/types';
 
 export default function SelectPage() {
   const router = useRouter();
@@ -19,8 +19,9 @@ export default function SelectPage() {
   const [error, setError] = useState<string | null>(null);
   const [trainerId, setTrainerIdState] = useState<string | null>(null);
 
-  const allPokemon = getPokemon();
-  const types = getUniqueTypes();
+  // Only show starter-eligible Pokemon (SR <= 0.5)
+  const starterPokemon = getStarterPokemon();
+  const types = getStarterTypes();
 
   // Check session on mount
   useEffect(() => {
@@ -31,18 +32,27 @@ export default function SelectPage() {
         return;
       }
 
-      // Check if trainer already has a starter
+      // Check if trainer exists and already has a starter
       try {
-        const response = await fetch(`/api/trainer/${id}`);
-        if (response.ok) {
-          const trainer: Trainer = await response.json();
-          if (trainer.starter_pokemon_id) {
+        // First check if trainer exists
+        const trainerResponse = await fetch(`/api/trainer/${id}`);
+        if (trainerResponse.status === 404) {
+          router.replace('/');
+          return;
+        }
+        if (!trainerResponse.ok) {
+          router.replace('/');
+          return;
+        }
+
+        // Check dashboard to see if they have an active Pokemon (more reliable than starter_pokemon_id)
+        const dashResponse = await fetch('/api/dashboard');
+        if (dashResponse.ok) {
+          const dashboard = await dashResponse.json();
+          if (dashboard.active_pokemon) {
             router.replace('/dashboard');
             return;
           }
-        } else if (response.status === 404) {
-          router.replace('/');
-          return;
         }
       } catch {
         router.replace('/');
@@ -132,11 +142,11 @@ export default function SelectPage() {
       />
 
       <div className="mb-4 text-sm text-gray-500">
-        Showing {selectedType ? `${allPokemon.filter(p => p.types.includes(selectedType)).length} ${selectedType}` : allPokemon.length} Pokemon
+        Showing {selectedType ? `${starterPokemon.filter(p => p.types.some(t => t.toLowerCase() === selectedType.toLowerCase())).length} ${selectedType}` : starterPokemon.length} starter-eligible Pokemon (SR 0.5 or less)
       </div>
 
       <PokemonGrid
-        pokemon={allPokemon}
+        pokemon={starterPokemon}
         selectedType={selectedType}
         onPokemonSelect={handlePokemonSelect}
       />
