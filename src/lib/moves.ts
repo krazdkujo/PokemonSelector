@@ -37,21 +37,10 @@ const allPokemon = pokemonData as PokemonDataWithMoves[];
 const allMoves = movesData as MoveData[];
 
 /**
- * Level thresholds for move availability
- * Maps condensed levels (1-10) to move level tiers
+ * All move tiers available for Pokemon
+ * Note: Level filtering has been removed - all moves are now available regardless of level
  */
-const LEVEL_TO_MOVE_TIER: Record<number, string[]> = {
-  1: ['start'],
-  2: ['start', 'level2'],
-  3: ['start', 'level2'],
-  4: ['start', 'level2', 'level6'],
-  5: ['start', 'level2', 'level6'],
-  6: ['start', 'level2', 'level6', 'level10'],
-  7: ['start', 'level2', 'level6', 'level10'],
-  8: ['start', 'level2', 'level6', 'level10', 'level14'],
-  9: ['start', 'level2', 'level6', 'level10', 'level14'],
-  10: ['start', 'level2', 'level6', 'level10', 'level14', 'level18'],
-};
+const ALL_MOVE_TIERS: string[] = ['start', 'level2', 'level6', 'level10', 'level14', 'level18'];
 
 /**
  * Get the pre-evolution Pokemon for inheritance
@@ -82,17 +71,16 @@ function getPreEvolution(pokemon: PokemonDataWithMoves): PokemonDataWithMoves | 
 }
 
 /**
- * Collect all move IDs available at a given level, including evolution inheritance
+ * Collect all move IDs available to a Pokemon, including evolution inheritance
+ * Note: All moves are available regardless of level (level filtering removed)
  * @param pokemon Pokemon data
- * @param level Current level (1-10)
  * @returns Array of move IDs
  */
-function collectMoveIds(pokemon: PokemonDataWithMoves, level: number): string[] {
+function collectMoveIds(pokemon: PokemonDataWithMoves): string[] {
   const moveIds = new Set<string>();
-  const tiers = LEVEL_TO_MOVE_TIER[Math.min(10, Math.max(1, level))] || ['start'];
 
-  // Add moves from current Pokemon
-  for (const tier of tiers) {
+  // Add ALL moves from current Pokemon (no level filtering)
+  for (const tier of ALL_MOVE_TIERS) {
     const tierMoves = pokemon.moves[tier as keyof typeof pokemon.moves];
     if (tierMoves) {
       tierMoves.forEach(m => moveIds.add(m));
@@ -103,7 +91,7 @@ function collectMoveIds(pokemon: PokemonDataWithMoves, level: number): string[] 
   const preEvo = getPreEvolution(pokemon);
   if (preEvo) {
     // Pre-evolution contributes all its moves
-    for (const tier of Object.keys(preEvo.moves)) {
+    for (const tier of ALL_MOVE_TIERS) {
       const tierMoves = preEvo.moves[tier as keyof typeof preEvo.moves];
       if (tierMoves) {
         tierMoves.forEach(m => moveIds.add(m));
@@ -115,52 +103,53 @@ function collectMoveIds(pokemon: PokemonDataWithMoves, level: number): string[] 
 }
 
 /**
- * Get available moves for a Pokemon at a given level
+ * Get all available moves for a Pokemon
+ * Note: Returns ALL learnable moves regardless of level
  * @param pokemonId Pokemon number
- * @param level Current level (1-10)
  * @returns Array of Move objects
  */
-export function getAvailableMoves(pokemonId: number, level: number): Move[] {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function getAvailableMoves(pokemonId: number, _level?: number): Move[] {
   const pokemon = allPokemon.find(p => p.number === pokemonId);
   if (!pokemon) {
     return [];
   }
 
-  const moveIds = collectMoveIds(pokemon, level);
+  const moveIds = collectMoveIds(pokemon);
 
-  return moveIds
-    .map(id => {
-      const moveData = allMoves.find(m => m.id === id);
-      if (!moveData) {
-        return null;
-      }
-      return {
+  const moves: Move[] = [];
+  for (const id of moveIds) {
+    const moveData = allMoves.find(m => m.id === id);
+    if (moveData) {
+      moves.push({
         id: moveData.id,
         name: moveData.name,
         type: moveData.type,
         description: moveData.flavor || moveData.description,
-      };
-    })
-    .filter((m): m is Move => m !== null);
+      });
+    }
+  }
+  return moves;
 }
 
 /**
  * Validate that selected moves are available to the Pokemon
+ * Note: Validates against full move pool (no level filtering)
  * @param pokemonId Pokemon number
- * @param level Current level
+ * @param _level Current level (kept for API compatibility, not used)
  * @param selectedMoves Array of selected move IDs
  * @returns Object with valid flag and invalid move IDs
  */
 export function validateSelectedMoves(
   pokemonId: number,
-  level: number,
+  _level: number,
   selectedMoves: string[]
 ): { valid: boolean; invalidMoves: string[] } {
   if (selectedMoves.length !== 4) {
     return { valid: false, invalidMoves: [] };
   }
 
-  const availableMoveIds = getAvailableMoves(pokemonId, level).map(m => m.id);
+  const availableMoveIds = getAvailableMoves(pokemonId).map(m => m.id);
   const invalidMoves = selectedMoves.filter(id => !availableMoveIds.includes(id));
 
   return {
@@ -190,10 +179,10 @@ export function getMoveById(moveId: string): Move | undefined {
 /**
  * Get default moves for a Pokemon (first 4 available)
  * @param pokemonId Pokemon number
- * @param level Current level
  * @returns Array of 4 move IDs
  */
-export function getDefaultMoves(pokemonId: number, level: number): string[] {
-  const available = getAvailableMoves(pokemonId, level);
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function getDefaultMoves(pokemonId: number, _level?: number): string[] {
+  const available = getAvailableMoves(pokemonId);
   return available.slice(0, 4).map(m => m.id);
 }

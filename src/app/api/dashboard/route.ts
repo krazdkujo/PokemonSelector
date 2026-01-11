@@ -7,6 +7,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { getPokemonById } from '@/lib/battle';
+import { getExperienceToNext } from '@/lib/experience';
 import type { ApiError, Dashboard, PokemonOwnedWithDetails, UserStats } from '@/lib/types';
 
 /**
@@ -83,6 +84,7 @@ export async function GET(request: NextRequest) {
           types: pokemonData.type,
           sr: pokemonData.sr,
           sprite_url: pokemonData.media.sprite,
+          experience_to_next: getExperienceToNext(activePokemon),
         };
       }
     }

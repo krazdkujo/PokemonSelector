@@ -14,7 +14,8 @@ import {
   getPokemonById,
 } from '@/lib/battle';
 import { getMoveById } from '@/lib/moves';
-import type { ApiError, RoundResult } from '@/lib/types';
+import { calculateExperienceGained, applyExperience } from '@/lib/experience';
+import type { ApiError, RoundResult, ExperienceGained } from '@/lib/types';
 
 /**
  * POST /api/battle/round
@@ -211,6 +212,8 @@ export async function POST(request: NextRequest) {
     }
 
     // Update user stats if battle ended
+    let experienceGained: ExperienceGained | undefined;
+
     if (newStatus !== 'active') {
       const statField = newStatus === 'player_won' ? 'battles_won' : 'battles_lost';
 
@@ -236,6 +239,44 @@ export async function POST(request: NextRequest) {
             .eq('user_id', trainerId);
         }
       }
+
+      // Grant experience on battle end (win or loss)
+      if (newStatus === 'player_won' || newStatus === 'wild_won') {
+        // Win: use formula, Loss: 1 XP consolation
+        const xpAwarded = newStatus === 'player_won'
+          ? calculateExperienceGained(playerPokemon.level, battle.wild_pokemon.level)
+          : 1;
+
+        const previousLevel = playerPokemon.level;
+        const previousExperience = playerPokemon.experience || 0;
+
+        // Apply experience and handle level-ups
+        const levelUpResult = applyExperience(playerPokemon, xpAwarded);
+
+        // Update Pokemon in database
+        const { error: xpUpdateError } = await supabase
+          .from('pokemon_owned')
+          .update({
+            experience: levelUpResult.newExperience,
+            level: levelUpResult.newLevel,
+          })
+          .eq('id', playerPokemon.id);
+
+        if (xpUpdateError) {
+          console.error('Failed to update Pokemon experience:', xpUpdateError);
+        } else {
+          experienceGained = {
+            xp_awarded: xpAwarded,
+            previous_level: previousLevel,
+            new_level: levelUpResult.newLevel,
+            previous_experience: previousExperience,
+            new_experience: levelUpResult.newExperience,
+            levels_gained: levelUpResult.levelsGained,
+          };
+
+          console.log('Experience granted:', experienceGained);
+        }
+      }
     }
 
     // Build response
@@ -250,11 +291,23 @@ export async function POST(request: NextRequest) {
       had_stab: calculation.hasStab,
     };
 
-    return NextResponse.json({
+    // Build response with optional experience_gained
+    const response: {
+      round: RoundResult;
+      battle: typeof updatedBattle;
+      battle_ended: boolean;
+      experience_gained?: ExperienceGained;
+    } = {
       round: roundResult,
       battle: updatedBattle,
       battle_ended: newStatus !== 'active',
-    });
+    };
+
+    if (experienceGained) {
+      response.experience_gained = experienceGained;
+    }
+
+    return NextResponse.json(response);
   } catch (err) {
     console.error('Unexpected error:', err);
     const error: ApiError = {

@@ -69,6 +69,7 @@ export interface PokemonOwned {
   user_id: string;
   pokemon_id: number;
   level: number;
+  experience: number;
   selected_moves: string[];
   is_active: boolean;
   is_starter: boolean;
@@ -180,6 +181,24 @@ export interface PokemonOwnedWithDetails extends PokemonOwned {
   types: string[];
   sr: number;
   sprite_url: string;
+  experience_to_next: number;
+}
+
+// Experience information for display
+export interface ExperienceInfo {
+  current: number;
+  required: number;
+  isMaxLevel: boolean;
+}
+
+// Experience gained result from battle API
+export interface ExperienceGained {
+  xp_awarded: number;
+  previous_level: number;
+  new_level: number;
+  previous_experience: number;
+  new_experience: number;
+  levels_gained: number;
 }
 
 // Move data from moves-cleaned.json
@@ -253,6 +272,7 @@ export interface ZoneDifficultyPreview {
   description: string;
   example_pokemon: string[];
   pokemon_count: number;
+  all_pokemon?: string[];
 }
 
 export interface ZonePreviewResponse {
@@ -262,4 +282,51 @@ export interface ZonePreviewResponse {
     medium: ZoneDifficultyPreview;
     hard: ZoneDifficultyPreview;
   };
+}
+
+// ============================================
+// Combat Refinement Types (008-combat-refinement)
+// ============================================
+
+// Post-battle summary for XP and level-up display
+export interface PostBattleSummary {
+  outcome: 'victory' | 'defeat' | 'capture' | 'fled';
+  wild_pokemon: {
+    name: string;
+    level: number;
+    sprite_url: string;
+  };
+  experience: ExperienceGained;
+  score: {
+    player_wins: number;
+    wild_wins: number;
+  };
+}
+
+// Capture eligibility check response
+export interface CaptureEligibility {
+  dc: number;
+  can_capture: boolean;
+  player_wins: number;
+  wild_pokemon: string;
+  already_owned: boolean;
+  ownership_message: string | null;
+}
+
+// Move preview with DC calculation
+export interface MovePreview {
+  move_id: string;
+  move_name: string;
+  move_type: string;
+  dc: number;
+  win_chance: number;
+  factors: {
+    base: number;
+    level_bonus: number;
+    sr_bonus: number;
+    type_bonus: number;
+    stab_bonus: number;
+  };
+  effectiveness: TypeEffectiveness;
+  has_stab: boolean;
 }

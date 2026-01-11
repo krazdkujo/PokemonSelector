@@ -8,7 +8,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { getZoneById, isValidZoneId, getDifficultyDescription } from '@/lib/zones';
-import { getZoneExamplePokemon, countZonePokemon, getPokemonById } from '@/lib/battle';
+import { getZoneExamplePokemon, countZonePokemon, getAllZonePokemon, getPokemonById } from '@/lib/battle';
 import type { ApiError, ZonePreviewResponse } from '@/lib/types';
 
 /**
@@ -72,18 +72,21 @@ export async function GET(
     const difficulties: ZonePreviewResponse['difficulties'] = {
       easy: {
         description: getDifficultyDescription('easy'),
-        example_pokemon: getZoneExamplePokemon(zoneId, 'easy', playerSR, 3),
+        example_pokemon: getZoneExamplePokemon(zoneId, 'easy', playerSR, 5),
         pokemon_count: countZonePokemon(zoneId, 'easy', playerSR),
+        all_pokemon: getAllZonePokemon(zoneId, 'easy', playerSR),
       },
       medium: {
         description: getDifficultyDescription('medium'),
-        example_pokemon: getZoneExamplePokemon(zoneId, 'medium', playerSR, 3),
+        example_pokemon: getZoneExamplePokemon(zoneId, 'medium', playerSR, 5),
         pokemon_count: countZonePokemon(zoneId, 'medium', playerSR),
+        all_pokemon: getAllZonePokemon(zoneId, 'medium', playerSR),
       },
       hard: {
         description: getDifficultyDescription('hard'),
-        example_pokemon: getZoneExamplePokemon(zoneId, 'hard', playerSR, 3),
+        example_pokemon: getZoneExamplePokemon(zoneId, 'hard', playerSR, 5),
         pokemon_count: countZonePokemon(zoneId, 'hard', playerSR),
+        all_pokemon: getAllZonePokemon(zoneId, 'hard', playerSR),
       },
     };
 

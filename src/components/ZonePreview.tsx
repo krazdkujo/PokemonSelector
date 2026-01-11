@@ -101,6 +101,7 @@ export function ZonePreview({ zoneId, onClose }: ZonePreviewProps) {
           {difficulties.map(difficulty => {
             const info = preview.difficulties[difficulty];
             const colors = difficultyColors[difficulty];
+            const pokemonList = info.all_pokemon || info.example_pokemon;
 
             return (
               <div
@@ -110,16 +111,22 @@ export function ZonePreview({ zoneId, onClose }: ZonePreviewProps) {
                 <div className="flex justify-between items-center mb-2">
                   <h3 className={`font-bold ${colors.text} capitalize`}>{difficulty}</h3>
                   <span className="text-sm text-gray-600">
-                    {info.pokemon_count} Pokemon available
+                    {info.pokemon_count} Pokemon
                   </span>
                 </div>
                 <p className="text-sm text-gray-600 mb-2">{info.description}</p>
-                {info.example_pokemon.length > 0 && (
-                  <div>
-                    <span className="text-xs text-gray-500">Examples: </span>
-                    <span className="text-sm text-gray-700">
-                      {info.example_pokemon.join(', ')}
-                    </span>
+                {pokemonList.length > 0 && (
+                  <div className="max-h-32 overflow-y-auto">
+                    <div className="flex flex-wrap gap-1">
+                      {pokemonList.map(name => (
+                        <span
+                          key={name}
+                          className="px-2 py-0.5 text-xs rounded bg-white bg-opacity-60 text-gray-700"
+                        >
+                          {name}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>

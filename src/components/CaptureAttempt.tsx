@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import type { PokemonOwnedWithDetails } from '@/lib/types';
+import type { PokemonOwnedWithDetails, ExperienceGained } from '@/lib/types';
 
 interface CaptureAttemptProps {
   battleId: string;
@@ -13,7 +13,10 @@ interface CaptureAttemptProps {
     dc: number;
     fled: boolean;
     captured_pokemon?: PokemonOwnedWithDetails;
+    experience_gained?: ExperienceGained;
   }) => void;
+  alreadyOwned?: boolean;
+  ownershipMessage?: string;
 }
 
 export function CaptureAttempt({
@@ -21,15 +24,25 @@ export function CaptureAttempt({
   wildPokemonName,
   playerWins,
   onCapture,
+  alreadyOwned = false,
+  ownershipMessage,
 }: CaptureAttemptProps) {
   const [captureDC, setCaptureDC] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isAttempting, setIsAttempting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isOwned, setIsOwned] = useState(alreadyOwned);
+  const [ownedMessage, setOwnedMessage] = useState(ownershipMessage);
 
   useEffect(() => {
     loadCaptureDC();
   }, [battleId, playerWins]);
+
+  // Update owned state from props
+  useEffect(() => {
+    setIsOwned(alreadyOwned);
+    setOwnedMessage(ownershipMessage);
+  }, [alreadyOwned, ownershipMessage]);
 
   async function loadCaptureDC() {
     try {
@@ -39,6 +52,11 @@ export function CaptureAttempt({
       if (response.ok) {
         const data = await response.json();
         setCaptureDC(data.dc);
+        // Also update ownership from API response
+        if (data.already_owned !== undefined) {
+          setIsOwned(data.already_owned);
+          setOwnedMessage(data.ownership_message);
+        }
       }
     } catch (err) {
       console.error('Failed to load capture DC:', err);
@@ -59,6 +77,11 @@ export function CaptureAttempt({
       const data = await response.json();
 
       if (!response.ok) {
+        // Handle ALREADY_OWNED error specially
+        if (data.error === 'ALREADY_OWNED') {
+          setIsOwned(true);
+          setOwnedMessage(data.message);
+        }
         setError(data.message || 'Failed to attempt capture');
         return;
       }
@@ -69,6 +92,7 @@ export function CaptureAttempt({
         dc: data.result.dc,
         fled: data.result.fled,
         captured_pokemon: data.captured_pokemon,
+        experience_gained: data.experience_gained,
       });
     } catch {
       setError('An unexpected error occurred');
@@ -94,6 +118,24 @@ export function CaptureAttempt({
     if (dc <= 19) return 'Very Difficult';
     return 'Extremely Difficult';
   };
+
+  // Show ownership message if already owned
+  if (isOwned) {
+    return (
+      <div className="bg-gray-100 rounded-lg p-4 border border-gray-300">
+        <h3 className="font-semibold text-gray-600 mb-2">Capture Unavailable</h3>
+        <div className="flex items-center gap-2 text-gray-600">
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span>{ownedMessage || 'Already caught - can only knock out'}</span>
+        </div>
+        <p className="text-sm text-gray-500 mt-2">
+          You already have {wildPokemonName} in your collection. Defeat it for XP instead!
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-purple-50 rounded-lg p-4 border border-purple-200">

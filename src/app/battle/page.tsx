@@ -5,14 +5,18 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { BattleArena } from '@/components/BattleArena';
 import { CaptureAttempt } from '@/components/CaptureAttempt';
+import { PostBattleScreen } from '@/components/PostBattleScreen';
 import { ZoneSelector } from '@/components/ZoneSelector';
+import { PokemonSearch } from '@/components/PokemonSearch';
 import { getTrainerId } from '@/lib/session';
 import { getAvailableMoves } from '@/lib/moves';
 import { getZoneById, getDifficultyDescription } from '@/lib/zones';
-import type { Battle, Move, RoundResult, ZoneDifficulty, Zone } from '@/lib/types';
+import type { Battle, Move, RoundResult, ZoneDifficulty, Zone, MovePreview, ExperienceGained } from '@/lib/types';
+import { calculateRoundWinChance, getPokemonById } from '@/lib/battle';
 
 type EnrichedBattle = Battle & {
   zone?: string | null;
+  wild_pokemon_owned?: boolean;
   player_pokemon?: {
     pokemon_id: number;
     name: string;
@@ -36,6 +40,10 @@ export default function BattlePage() {
   // Zone selection state
   const [selectedZone, setSelectedZone] = useState<string | null>(null);
   const [selectedZoneData, setSelectedZoneData] = useState<Zone | null>(null);
+  // DC Preview state (for showing DC before roll)
+  const [pendingMove, setPendingMove] = useState<MovePreview | null>(null);
+  // Experience tracking for post-battle screen
+  const [experienceGained, setExperienceGained] = useState<ExperienceGained | null>(null);
 
   async function loadBattle() {
     try {
@@ -140,6 +148,61 @@ export default function BattlePage() {
     }
   }
 
+  // Calculate DC preview for a move (client-side calculation)
+  function calculateMovePreview(moveId: string): MovePreview | null {
+    if (!battle || !battle.player_pokemon) return null;
+
+    const move = availableMoves.find(m => m.id === moveId);
+    if (!move) return null;
+
+    // Get player Pokemon data for SR
+    const playerPokemonData = getPokemonById(battle.player_pokemon.pokemon_id);
+    if (!playerPokemonData) return null;
+
+    // Calculate round win chance
+    const calculation = calculateRoundWinChance({
+      playerLevel: battle.player_pokemon.level,
+      playerSR: playerPokemonData.sr,
+      playerTypes: battle.player_pokemon.types,
+      wildLevel: battle.wild_pokemon.level,
+      wildSR: battle.wild_pokemon.sr,
+      wildTypes: battle.wild_pokemon.types,
+      moveType: move.type,
+    });
+
+    // Convert win chance to DC
+    const dc = Math.round(21 - (calculation.totalChance * 20));
+
+    return {
+      move_id: moveId,
+      move_name: move.name,
+      move_type: move.type,
+      dc,
+      win_chance: calculation.totalChance,
+      factors: {
+        base: calculation.baseChance,
+        level_bonus: calculation.levelBonus,
+        sr_bonus: calculation.srBonus,
+        type_bonus: calculation.typeEffectiveness - 1,
+        stab_bonus: calculation.stabBonus,
+      },
+      effectiveness: calculation.effectivenessLabel,
+      has_stab: calculation.hasStab,
+    };
+  }
+
+  // Handle move preview (show DC before roll)
+  function handleMovePreview(moveId: string) {
+    const preview = calculateMovePreview(moveId);
+    setPendingMove(preview);
+    setLastRound(null); // Clear last round when previewing new move
+  }
+
+  // Cancel move preview
+  function handleCancelPreview() {
+    setPendingMove(null);
+  }
+
   async function executeRound(moveId: string) {
     if (!battle) return;
 
@@ -161,7 +224,13 @@ export default function BattlePage() {
       }
 
       setLastRound(data.round);
+      setPendingMove(null); // Clear pending move after execution
       setBattle(prev => prev ? { ...prev, ...data.battle } : null);
+
+      // Track experience gained if battle ended
+      if (data.experience_gained) {
+        setExperienceGained(data.experience_gained);
+      }
     } catch {
       setError('An unexpected error occurred');
     } finally {
@@ -199,6 +268,8 @@ export default function BattlePage() {
                 {error}
               </div>
             )}
+
+            <PokemonSearch />
 
             <div className="bg-white rounded-lg shadow-lg p-6">
               <ZoneSelector onSelect={handleZoneSelect} disabled={isStarting} />
@@ -305,54 +376,52 @@ export default function BattlePage() {
     );
   }
 
-  // Battle ended - show results
+  // Battle ended - show PostBattleScreen with XP and level-up info
   if (battle.status !== 'active') {
-    const isVictory = battle.status === 'player_won' || battle.status === 'captured';
+    // Map battle status to outcome
+    const outcomeMap: Record<string, 'victory' | 'defeat' | 'capture' | 'fled'> = {
+      player_won: 'victory',
+      wild_won: 'defeat',
+      captured: 'capture',
+      fled: 'fled',
+    };
+    const outcome = outcomeMap[battle.status] || 'defeat';
+
+    // Build post-battle summary
+    const summary = {
+      outcome,
+      wild_pokemon: {
+        name: battle.wild_pokemon.name,
+        level: battle.wild_pokemon.level,
+        sprite_url: battle.wild_pokemon.sprite_url,
+      },
+      experience: experienceGained || {
+        xp_awarded: 0,
+        previous_level: battle.player_pokemon?.level || 1,
+        new_level: battle.player_pokemon?.level || 1,
+        previous_experience: 0,
+        new_experience: 0,
+        levels_gained: 0,
+      },
+      score: {
+        player_wins: battle.player_wins,
+        wild_wins: battle.wild_wins,
+      },
+    };
+
+    const handleNewBattle = () => {
+      setBattle(null);
+      setLastRound(null);
+      setSelectedZone(null);
+      setSelectedZoneData(null);
+      setPendingMove(null);
+      setExperienceGained(null);
+    };
 
     return (
       <div className="min-h-screen py-8">
         <div className="max-w-2xl mx-auto px-4">
-          <div className="bg-white rounded-lg shadow-lg p-8 text-center">
-            <div className={`text-6xl mb-4 ${isVictory ? 'text-green-500' : 'text-red-500'}`}>
-              {isVictory ? 'Victory!' : 'Defeat'}
-            </div>
-
-            <h2 className={`text-2xl font-bold mb-4 ${isVictory ? 'text-green-700' : 'text-red-700'}`}>
-              {battle.status === 'player_won' && 'You defeated the wild Pokemon!'}
-              {battle.status === 'captured' && `You captured ${battle.wild_pokemon.name}!`}
-              {battle.status === 'wild_won' && 'The wild Pokemon won...'}
-              {battle.status === 'fled' && 'The wild Pokemon fled!'}
-            </h2>
-
-            <div className="mb-6">
-              <p className="text-gray-600">
-                Final Score: {battle.player_wins} - {battle.wild_wins}
-              </p>
-              <p className="text-gray-600">
-                Opponent: {battle.wild_pokemon.name} (Level {battle.wild_pokemon.level})
-              </p>
-            </div>
-
-            <div className="flex justify-center gap-4">
-              <Link
-                href="/dashboard"
-                className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-              >
-                Return to Dashboard
-              </Link>
-              <button
-                onClick={() => {
-                  setBattle(null);
-                  setLastRound(null);
-                  setSelectedZone(null);
-                  setSelectedZoneData(null);
-                }}
-                className="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700"
-              >
-                New Battle
-              </button>
-            </div>
-          </div>
+          <PostBattleScreen summary={summary} onNewBattle={handleNewBattle} />
         </div>
       </div>
     );
@@ -383,7 +452,10 @@ export default function BattlePage() {
           availableMoves={availableMoves}
           lastRound={lastRound}
           onMoveSelect={executeRound}
+          onMovePreview={handleMovePreview}
+          onCancelPreview={handleCancelPreview}
           isExecuting={isExecuting}
+          pendingMove={pendingMove}
         />
 
         {/* Capture option if player has wins */}
@@ -394,12 +466,18 @@ export default function BattlePage() {
                 battleId={battle.id}
                 wildPokemonName={battle.wild_pokemon.name}
                 playerWins={battle.player_wins}
+                alreadyOwned={battle.wild_pokemon_owned}
+                ownershipMessage={battle.wild_pokemon_owned ? 'Already caught - can only knock out' : undefined}
                 onCapture={(result) => {
                   // Update battle status based on result
                   if (result.fled) {
                     setBattle(prev => prev ? { ...prev, status: 'fled' } : null);
                   } else if (result.success) {
                     setBattle(prev => prev ? { ...prev, status: 'captured' } : null);
+                    // Track experience gained from capture
+                    if (result.experience_gained) {
+                      setExperienceGained(result.experience_gained);
+                    }
                   } else {
                     // Failed capture - update wild wins
                     setBattle(prev => {

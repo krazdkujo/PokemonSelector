@@ -50,6 +50,28 @@ export function PokemonCollection({
               <div className="flex-1 min-w-0">
                 <h3 className="font-bold text-gray-800 truncate">{p.name}</h3>
                 <p className="text-sm text-gray-600">Level {p.level}</p>
+                {/* XP Progress Display */}
+                {p.level >= 10 ? (
+                  <p className="text-xs text-purple-600 font-medium">MAX LEVEL</p>
+                ) : (() => {
+                  const currentXp = p.experience || 0;
+                  const totalXp = currentXp + (p.experience_to_next || 0);
+                  const progressPercent = totalXp > 0 ? (currentXp / totalXp) * 100 : 0;
+                  return (
+                    <div className="mt-1">
+                      <div className="flex justify-between text-xs text-gray-500 mb-0.5">
+                        <span>XP</span>
+                        <span>{currentXp} / {totalXp}</span>
+                      </div>
+                      <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-blue-500 rounded-full transition-all"
+                          style={{ width: `${progressPercent}%` }}
+                        />
+                      </div>
+                    </div>
+                  );
+                })()}
                 <div className="flex gap-1 mt-1">
                   {p.types.map((type) => (
                     <span

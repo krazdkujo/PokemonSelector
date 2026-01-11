@@ -10,6 +10,8 @@ Auto-generated from all feature plans. Last updated: 2026-01-07
 - Supabase Postgres (existing infrastructure) (005-expand-constitution)
 - TypeScript 5.x (strict mode) + Next.js 14.2, React 18, @supabase/supabase-js, @supabase/ssr, seedrandom (006-combat-zones)
 - Supabase Postgres (existing `battles` table with JSONB `wild_pokemon` field) (006-combat-zones)
+- Supabase Postgres (existing `pokemon_owned` and `battles` tables) (007-experience-leveling)
+- Supabase Postgres (existing `battles`, `pokemon_owned`, `battle_rounds` tables) (008-combat-refinement)
 
 - TypeScript 5.x (or Node.js script) + None (pure JSON transformation, native fs/JSON APIs) (001-sanitize-pokemon-data)
 
@@ -29,9 +31,9 @@ npm test; npm run lint
 TypeScript 5.x (or Node.js script): Follow standard conventions
 
 ## Recent Changes
+- 008-combat-refinement: Added TypeScript 5.x (strict mode) + Next.js 14.2, React 18, @supabase/supabase-js, @supabase/ssr, seedrandom
+- 007-experience-leveling: Added TypeScript 5.x (strict mode) + Next.js 14.2, React 18, @supabase/supabase-js, @supabase/ssr, seedrandom
 - 006-combat-zones: Added TypeScript 5.x (strict mode) + Next.js 14.2, React 18, @supabase/supabase-js, @supabase/ssr, seedrandom
-- 005-expand-constitution: Added TypeScript 5.x (strict mode)
-- 002-external-trainer-api: Added TypeScript 5.x (strict mode) + `@supabase/supabase-js`, `@supabase/ssr` (existing)
 
 
 <!-- MANUAL ADDITIONS START -->

@@ -7,7 +7,7 @@
 import seedrandom from 'seedrandom';
 import { getTypeEffectiveness, hasStabBonus, getEffectivenessLabel } from './type-chart';
 import type { WildPokemon, BattleDifficulty, TypeEffectiveness, ZoneDifficulty, Zone } from './types';
-import { getZoneById, getDifficultyConstraints } from './zones';
+import { getZoneById, getDifficultyConstraints, ZONES } from './zones';
 
 // Import Pokemon data
 import pokemonData from '../../docs/pokemon-cleaned.json';
@@ -380,4 +380,64 @@ export function countZonePokemon(
   playerSR: number
 ): number {
   return filterPokemonByZoneAndDifficulty(zoneId, difficulty, playerSR).length;
+}
+
+/**
+ * Get ALL Pokemon names for a zone and difficulty
+ */
+export function getAllZonePokemon(
+  zoneId: string,
+  difficulty: ZoneDifficulty,
+  playerSR: number
+): string[] {
+  const eligible = filterPokemonByZoneAndDifficulty(zoneId, difficulty, playerSR);
+  return eligible.sort((a, b) => a.sr - b.sr).map(p => p.name);
+}
+
+/**
+ * Get all Pokemon for search functionality
+ */
+export function getAllPokemonForSearch(): Array<{
+  number: number;
+  name: string;
+  types: string[];
+  sr: number;
+  sprite: string;
+}> {
+  return allPokemon.map(p => ({
+    number: p.number,
+    name: p.name,
+    types: p.type,
+    sr: p.sr,
+    sprite: p.media.sprite,
+  }));
+}
+
+/**
+ * Find which zones a Pokemon can appear in based on its types
+ */
+export function findPokemonZones(pokemonId: number): Array<{
+  zoneId: string;
+  zoneName: string;
+  zoneTypes: string[];
+}> {
+  const pokemon = allPokemon.find(p => p.number === pokemonId);
+  if (!pokemon) return [];
+
+  const matchingZones: Array<{ zoneId: string; zoneName: string; zoneTypes: string[] }> = [];
+
+  for (const zone of ZONES) {
+    const hasMatchingType = pokemon.type.some(t =>
+      zone.types.includes(t.toLowerCase())
+    );
+    if (hasMatchingType) {
+      matchingZones.push({
+        zoneId: zone.id,
+        zoneName: zone.name,
+        zoneTypes: zone.types,
+      });
+    }
+  }
+
+  return matchingZones;
 }
