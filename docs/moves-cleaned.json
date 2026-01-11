@@ -1,0 +1,3432 @@
+[
+  {
+    "id": "absorb",
+    "name": "Absorb",
+    "type": "grass",
+    "flavor": "You attempt to absorb some of a target’s health.",
+    "description": "You attempt to absorb some of a target’s health. Half the damage done is restored by the user."
+  },
+  {
+    "id": "acid",
+    "name": "Acid",
+    "type": "poison",
+    "flavor": "You create a stream of hot acid in a 30 foot cone, centered on you.",
+    "description": "You create a stream of hot acid in a 30 foot cone, centered on you. Creatures caught in the cone must make a save."
+  },
+  {
+    "id": "acid-armor",
+    "name": "Acid Armor",
+    "type": "poison",
+    "flavor": null,
+    "description": "You are surrounded by a shield of thick acid for the duration. During this time, your AC increases by 2, and any creature that hits you with a melee attack must succeed on a save."
+  },
+  {
+    "id": "acid-spray",
+    "name": "Acid Spray",
+    "type": "poison",
+    "flavor": "You spit a spray of acidic fluid that works to melt away a creature's defense.",
+    "description": "You spit a spray of acidic fluid that works to melt away a creature's defense. On a failed save, the target's AC is reduced by 1 for the duration. This decrease may be stacked on a creature, up to a maximum of -3 to its AC."
+  },
+  {
+    "id": "acrobatics",
+    "name": "Acrobatics",
+    "type": "flying",
+    "flavor": "You nimbly attack a target with acrobatic prowess.",
+    "description": "You nimbly attack a target with acrobatic prowess. If you are holding an item when you activate this move, the damage is halved."
+  },
+  {
+    "id": "acupressure",
+    "name": "Acupressure",
+    "type": "normal",
+    "flavor": null,
+    "description": "You apply pressure to different stress points on your body, boosting a random ability for the duration. When activating this move, roll a d6 and gain the following boost based on the result. When activated on subsequent turns, any previous effect ends. Acupressure Table (d6): 1: +1 to attack rolls 2: +2 to damage rolls 3: +10 temporary HP 4: +1 to saving throws 5: Critical Hit range +1 6: +1 to Armor Class"
+  },
+  {
+    "id": "aerial-ace",
+    "name": "Aerial Ace",
+    "type": "flying",
+    "flavor": "You dive at a creature with such speed that it is impossible for them to avoid.",
+    "description": "You dive at a creature with such speed that it is impossible for them to avoid. This move is guaranteed to hit, unless during the invulnerable stage of Fly, Dig, Bounce, Dive, etc. moves."
+  },
+  {
+    "id": "after-you",
+    "name": "After You",
+    "type": "normal",
+    "flavor": null,
+    "description": "As a bonus action, choose a creature in range that has not yet taken its turn in the current round. The target must immediately take its turn now, and return to normal initiative order in the next round."
+  },
+  {
+    "id": "agility",
+    "name": "Agility",
+    "type": "psychic",
+    "flavor": "You hone your abilities and feel a surge of speed course through your veins.",
+    "description": "You hone your abilities and feel a surge of speed course through your veins. Increase your movement speed by 20 feet for the duration. Applicable to any movement type the creature has."
+  },
+  {
+    "id": "air-cutter",
+    "name": "Air Cutter",
+    "type": "flying",
+    "flavor": "You create a gust of razor-like wind to slash a creature.",
+    "description": "You create a gust of razor-like wind to slash a creature. against a creature, doing. This move scores a critical hit on 19 and 20."
+  },
+  {
+    "id": "air-slash",
+    "name": "Air Slash",
+    "type": "flying",
+    "flavor": "You slash at a creature with a blade of sharp air.",
+    "description": "You slash at a creature with a blade of sharp air. on a creature, On a natural attack roll of 15 or higher, the target flinches."
+  },
+  {
+    "id": "ally-switch",
+    "name": "Ally Switch",
+    "type": "psychic",
+    "flavor": null,
+    "description": "You use a strange psychic power to teleport yourself and one willing creature in range, switching places on the battlefield."
+  },
+  {
+    "id": "amnesia",
+    "name": "Amnesia",
+    "type": "psychic",
+    "flavor": "Your mind elevates to a new level of focus.",
+    "description": "Your mind elevates to a new level of focus. Add +2 to any saving throw you make for the duration, but select one of your moves that is not Amnesia. You forget that move and cannot use it for the duration."
+  },
+  {
+    "id": "ancient-power",
+    "name": "Ancient Power",
+    "type": "rock",
+    "flavor": "You lash out with unknown inner power.",
+    "description": "You lash out with unknown inner power. roll against a creature, doing. On a natural attack roll of 19 or 20, all of your ability scores go up by 1 while you remain in battle. This move can be stacked for a maximum of +5 to all ability scores."
+  },
+  {
+    "id": "aqua-jet",
+    "name": "Aqua Jet",
+    "type": "water",
+    "flavor": "You lunge at a creature with incredible speed. Choose a target within 10 feet of you. A burst of water propels you towards that creature, avoiding all attacks of opportunity.",
+    "description": "You lunge at a creature with incredible speed. Choose a target within 10 feet of you. A burst of water propels you towards that creature, avoiding all attacks of opportunity. on that creature,"
+  },
+  {
+    "id": "aqua-ring",
+    "name": "Aqua Ring",
+    "type": "water",
+    "flavor": "You surround yourself with a veil of healing water. At the end of each of your turns, as long as you hold concentration, regain a number of hit points equal to your proficiency bonus.",
+    "description": "You surround yourself with a veil of healing water. At the end of each of your turns, as long as you hold concentration, regain a number of hit points equal to your proficiency bonus."
+  },
+  {
+    "id": "aqua-tail",
+    "name": "Aqua Tail",
+    "type": "water",
+    "flavor": "You lash out with your tail to strike a creature.",
+    "description": "You lash out with your tail to strike a creature."
+  },
+  {
+    "id": "aromatherapy",
+    "name": "Aromatherapy",
+    "type": "grass",
+    "flavor": "You release a pleasant aroma that empowers your allies. All allies within a 20 foot circle, centered on you, are cured of all negative status ailments.",
+    "description": "You release a pleasant aroma that empowers your allies. All allies within a 20 foot circle, centered on you, are cured of all negative status ailments."
+  },
+  {
+    "id": "assist",
+    "name": "Assist",
+    "type": "normal",
+    "flavor": null,
+    "description": "You call upon the help of another active creature in your party. When activating this Move, another creature may immediately take an action in place of your own, if you have not already taken an action this turn."
+  },
+  {
+    "id": "assurance",
+    "name": "Assurance",
+    "type": "dark",
+    "flavor": "You strike a creature where it already hurts.",
+    "description": "You strike a creature where it already hurts. against a creature, If the target has already taken damage in the same round, double the damage dice."
+  },
+  {
+    "id": "astonish",
+    "name": "Astonish",
+    "type": "ghost",
+    "flavor": "You startle a creature with a loud shout .",
+    "description": "You startle a creature with a loud shout. roll against a creature doing. On a natural attack roll of 15 or more, the target flinches."
+  },
+  {
+    "id": "aura-sphere",
+    "name": "Aura Sphere",
+    "type": "fighting",
+    "flavor": null,
+    "description": "You focus your aura into a concentrated blast that strikes a creature in range. This move is guaranteed to hit, except when targeting a creature in the invulnerable stages of Fly, Dig, Bounce, etc."
+  },
+  {
+    "id": "aurora-beam",
+    "name": "Aurora Beam",
+    "type": "ice",
+    "flavor": null,
+    "description": "You send a concentrated beam of freezing ice at a single creature in range. roll, doing. On natural attack rolls of 15 or higher, the target has disadvantage on any attack it makes on its next turn."
+  },
+  {
+    "id": "autotomize",
+    "name": "Autotomize",
+    "type": "steel",
+    "flavor": null,
+    "description": "You shed away part of your body to make yourself lighter and increase your speed. For the duration, your speed increases by 10 feet. This move may be stacked to a maximum speed increase of 30 feet."
+  },
+  {
+    "id": "avalanche",
+    "name": "Avalanche",
+    "type": "ice",
+    "flavor": "You send forth a heap of powerful snow to pummel a creature.",
+    "description": "You send forth a heap of powerful snow to pummel a creature. on a target, If the target has dealt any damage to you since the end of your last turn, double the damage you deal."
+  },
+  {
+    "id": "axe-kick",
+    "name": "Axe Kick",
+    "type": "fighting",
+    "flavor": "You leap into the air to slam your heel upon the target.",
+    "description": "You leap into the air to slam your heel upon the target. doing. On a miss, you take 1 damage. on a success,ful hit, the target must succeed a save or become confused."
+  },
+  {
+    "id": "baby-doll-eyes",
+    "name": "Baby-Doll Eyes",
+    "type": "fairy",
+    "flavor": "You quickly widen your eyes in an attempt to charm a creature, decreasing their will to fight.",
+    "description": "You quickly widen your eyes in an attempt to charm a creature, decreasing their will to fight. When you or an ally in range are targeted by a Move that requires an attack roll, you may use a reaction to impose disadvantage on the roll."
+  },
+  {
+    "id": "barrage",
+    "name": "Barrage",
+    "type": "normal",
+    "flavor": null,
+    "description": "on a creature, rolling. You attack with a barrage of ranged strikes equal to the number shown. Each projectile deals."
+  },
+  {
+    "id": "barrier",
+    "name": "Barrier",
+    "type": "psychic",
+    "flavor": "You create a transparent shield of psychic energy.",
+    "description": "You create a transparent shield of psychic energy. While active, the barrier grants +2 to AC for you and any companions within 5 feet of you for the duration."
+  },
+  {
+    "id": "baton-pass",
+    "name": "Baton Pass",
+    "type": "normal",
+    "flavor": "As a bonus action, you may switch out, passing along all negative status effects or stat changes to the new creature. This includes existing battle effects from moves such as Substitute, Swords Dance, Ingrain, Aqua Ring, etc. Effects from moves that require concentration may also be transferred, with concentration now dependent on the new creature.",
+    "description": "As a bonus action, you may switch out, passing along all negative status effects or stat changes to the new creature. This includes existing battle effects from moves such as Substitute, Swords Dance, Ingrain, Aqua Ring, etc. Effects from moves that require concentration may also be transferred, with concentration now dependent on the new creature."
+  },
+  {
+    "id": "beat-up",
+    "name": "Beat Up",
+    "type": "dark",
+    "flavor": "You use strength in numbers to attack a creature.",
+    "description": "You use strength in numbers to attack a creature. on a creature, and an additional attack for any other conscious creature your trainer is currently carrying, dealing on each hit."
+  },
+  {
+    "id": "belch",
+    "name": "Belch",
+    "type": "poison",
+    "flavor": null,
+    "description": "You let out a damaging belch at a creature in range. Force the creature to make a save , on a failure, or half as much on a success. If you are holding a berry when activating this move, you may consume it and force the target to automatically fail the saving throw."
+  },
+  {
+    "id": "belly-drum",
+    "name": "Belly Drum",
+    "type": "normal",
+    "flavor": "You sacrifice health for attack. When using this move, decrease your current HP by half your maximum, but increase your Strength score by 10 while you remain in battle. The effect ends if your current HP rises above half your maximum.",
+    "description": "You sacrifice health for attack. When using this move, decrease your current HP by half your maximum, but increase your Strength score by 10 while you remain in battle. The effect ends if your current HP rises above half your maximum."
+  },
+  {
+    "id": "bestow",
+    "name": "Bestow",
+    "type": "normal",
+    "flavor": null,
+    "description": "As a bonus action, you may pass your held item to a willing creature in range, if the target is not currently holding an item."
+  },
+  {
+    "id": "bide",
+    "name": "Bide",
+    "type": "normal",
+    "flavor": "You embrace the damage done to you, waiting for your time to strike.",
+    "description": "You embrace the damage done to you, waiting for your time to strike. Use your attack action to activate this move, and keep track of all damage done to you before your next turn. On your next turn, you use your action to lash out at a target with a normal ranged attack, striking them for double the amount of typeless damage you took on a success,ful hit. At 10th Level, you can choose to hold Bide for a second turn for the chance to add additional damage to the attack."
+  },
+  {
+    "id": "bind",
+    "name": "Bind",
+    "type": "normal",
+    "flavor": "You attempt to grapple a target into submission.",
+    "description": "You attempt to grapple a target into submission. roll. the target takes and is grappled. At the beginning of each of its turns, it may attempt to escape with a save While a creature is grappled, you may continue this move, as a bonus action, to do an automatic without having to make an attack roll."
+  },
+  {
+    "id": "bite",
+    "name": "Bite",
+    "type": "dark",
+    "flavor": "You sink your teeth into a target creature.",
+    "description": "You sink your teeth into a target creature. roll, doing on a success,ful hit. On natural attack rolls of 19 or 20, the target flinches"
+  },
+  {
+    "id": "blaze-kick",
+    "name": "Blaze Kick",
+    "type": "fire",
+    "flavor": "Flames burst from your feet as you deliver a powerful kick.",
+    "description": "Flames burst from your feet as you deliver a powerful kick. on a creature, doing. On a natural attack roll of 18 or more, the target is burned. This move scores a critical hit on 19s and 20s."
+  },
+  {
+    "id": "blizzard",
+    "name": "Blizzard",
+    "type": "ice",
+    "flavor": "Icy clouds form overhead and pelt the ground with hail and snow, centered on a point you choose within range.",
+    "description": "Icy clouds form overhead and pelt the ground with hail and snow, centered on a point you choose within range. Each creature in a 30 ft radius, centered on a point within range, must make a DEX saving throw , on a failure,ed save, or half as much on a success,ful one. Targets that fail the save by 5 or more become frozen."
+  },
+  {
+    "id": "block",
+    "name": "Block",
+    "type": "normal",
+    "flavor": null,
+    "description": "If a creature within range attempts to flee or switch out, you may use your reaction to stop it dead in its tracks, keeping this from happening."
+  },
+  {
+    "id": "body-slam",
+    "name": "Body Slam",
+    "type": "normal",
+    "flavor": null,
+    "description": "You thrust yourself towards a creature in an attempt to crush them with your physical size. on a target. the target takes, and must succeed on a STR saving throw or be knocked prone."
+  },
+  {
+    "id": "bone-club",
+    "name": "Bone Club",
+    "type": "ground",
+    "flavor": null,
+    "description": "You strike a creature with a club of bone, doing on a success,ful hit. If the natural attack roll is 18 or more, the target flinches."
+  },
+  {
+    "id": "bone-rush",
+    "name": "Bone Rush",
+    "type": "ground",
+    "flavor": "You rush forward to deliver a series of hard hits against a target.",
+    "description": "You rush forward to deliver a series of hard hits against a target. roll, doing. After successfully hitting a target, roll a d4. On a result of 3 or 4, you may immediately hit again for an additional. Continue this process until you fail to roll a 3 or 4 on the d4 roll, up to a maximum of four additional hits."
+  },
+  {
+    "id": "bonemerang",
+    "name": "Bonemerang",
+    "type": "ground",
+    "flavor": null,
+    "description": "You throw a boomerang and make two ranged attacks against a target. On each successful hit, do."
+  },
+  {
+    "id": "bounce",
+    "name": "Bounce",
+    "type": "flying",
+    "flavor": null,
+    "description": "When you activate this move, you use 10 feet of your movement to bounce upwards and disappear, remaining in an invulnerable state until your next turn. During this time, you are immune to the damage and effects of any move. If you have no remaining movement or are grappled/restrained before activating this move, the move fails. On your next turn, as an action, you reappear and attempt to slam down on top of a creature. roll on a creature in range, with advantage, doing. On a natural attack roll of 15 or more, the target is paralyzed."
+  },
+  {
+    "id": "brave-bird",
+    "name": "Brave Bird",
+    "type": "flying",
+    "flavor": "You tuck in your wings and dive at a creature.",
+    "description": "You tuck in your wings and dive at a creature. you also take a quarter of the total (rounded down) in typeless recoil damage."
+  },
+  {
+    "id": "brick-break",
+    "name": "Brick Break",
+    "type": "fighting",
+    "flavor": "You strike out with a powerful and focused punch.",
+    "description": "You strike out with a powerful and focused punch. roll on a creature, doing. This move ignores the effects of moves that would reduce its damage (Harden, Reflect, etc.)"
+  },
+  {
+    "id": "brine",
+    "name": "Brine",
+    "type": "water",
+    "flavor": "You send a harsh blast of salt water at a creature.",
+    "description": "You send a harsh blast of salt water at a creature. against a creature, If the target has less that 50% of its max HP, double the damage dealt."
+  },
+  {
+    "id": "bubble",
+    "name": "Bubble",
+    "type": "water",
+    "flavor": "You shoot a series of quickly moving bubbles at a target.",
+    "description": "You shoot a series of quickly moving bubbles at a target. Make three ranged attacks, doing on each successful hit."
+  },
+  {
+    "id": "bubble-beam",
+    "name": "Bubble Beam",
+    "type": "water",
+    "flavor": null,
+    "description": "You shoot a concentrated stream of bubbles at a single creature in range. roll, doing. On natural attack rolls of 19 or 20, the target's speed is halved until the end of their next turn."
+  },
+  {
+    "id": "bug-bite",
+    "name": "Bug Bite",
+    "type": "bug",
+    "flavor": "You lash out and bite a target.",
+    "description": "You lash out and bite a target. against a creature, If the target is holding a berry when you hit, you immediately eat it and gain its effect."
+  },
+  {
+    "id": "bug-buzz",
+    "name": "Bug Buzz",
+    "type": "bug",
+    "flavor": null,
+    "description": "You vibrate your wings, creating a harsh sound that damages any creature in range. All creatures within 20 feet of you must make a save , on a failure. If a creature fails the save by 5 or more, they have disadvantage on their next attack."
+  },
+  {
+    "id": "bulk-up",
+    "name": "Bulk Up",
+    "type": "fighting",
+    "flavor": "You pump yourself up, increasing your adrenaline.",
+    "description": "You pump yourself up, increasing your adrenaline. For the next minute, choose to add +1 to your attack rolls OR +1 to AC. This move can be stacked to a maximum of +5 for either choice."
+  },
+  {
+    "id": "bulldoze",
+    "name": "Bulldoze",
+    "type": "ground",
+    "flavor": "You strike the ground so hard that it ripples out from you in a 30 foot circle.",
+    "description": "You strike the ground so hard that it ripples out from you in a 30 foot circle. Any creature caught in the area must make a save , on a failure, or half as much on a success. Raised creatures are immune to the effects and damage of this move."
+  },
+  {
+    "id": "bullet-punch",
+    "name": "Bullet Punch",
+    "type": "steel",
+    "flavor": "You strike with a punch that is quick as a bullet. Choose a target within 10 feet of you. You rush forward to slam a fist into the creature, avoiding all attacks of opportunity.",
+    "description": "You strike with a punch that is quick as a bullet. Choose a target within 10 feet of you. You rush forward to slam a fist into the creature, avoiding all attacks of opportunity. on that creature,"
+  },
+  {
+    "id": "bullet-seed",
+    "name": "Bullet Seed",
+    "type": "grass",
+    "flavor": "Your fire a series of high-speed seeds at a creature.",
+    "description": "Your fire a series of high-speed seeds at a creature. roll, doing. After successfully hitting a target, roll a d4. On a result of 3 or 4, you may immediately hit again for an additional. Continue this process until you fail to roll a 3 or 4 on the d4 roll, up to a maximum of four additional hits."
+  },
+  {
+    "id": "burn-up",
+    "name": "Burn Up",
+    "type": "fire",
+    "flavor": "You use up all the fire energy you have to inflict massive damage in a 15 foot radius, centered on you.",
+    "description": "You use up all the fire energy you have to inflict massive damage in a 15 foot radius, centered on you. Creatures within the area must make a save on a failure, the creature take and become burned. on a success, they take half as much damage without being burned. After using this move, the user burns itself out and loses its fire-typing for the remainder of combat. Dual-type fire Pokémon change to their single other type, and single-type Pokémon become typeless, losing STAB and all vulnerabilites, resistances, and immunities."
+  },
+  {
+    "id": "calm-mind",
+    "name": "Calm Mind",
+    "type": "psychic",
+    "flavor": "You clear your mind of all distractions.",
+    "description": "You clear your mind of all distractions. For the duration, double your STAB bonus when of your type."
+  },
+  {
+    "id": "camouflage",
+    "name": "Camouflage",
+    "type": "normal",
+    "flavor": "You blend in with your surroundings, taking on a new type for resistances/vulnerabilities/immunities. The type is dependent on the terrain, and up to the DMs discretion. (Ex: Forest = Grass, Beach = Water, Desert = Ground/Fire, Mountain = Rock, etc.",
+    "description": "You blend in with your surroundings, taking on a new type for resistances/vulnerabilities/immunities. The type is dependent on the terrain, and up to the DMs discretion. (Ex: Forest = Grass, Beach = Water, Desert = Ground/Fire, Mountain = Rock, etc.)"
+  },
+  {
+    "id": "captivate",
+    "name": "Captivate",
+    "type": "normal",
+    "flavor": null,
+    "description": "You attempt to charm a creature into pulling its punches. When hit by an attack from a creature of the opposite gender, you may use a reaction to force it to make a save on a failure, the attack does not hit."
+  },
+  {
+    "id": "charge",
+    "name": "Charge",
+    "type": "electric",
+    "flavor": "Electricity surges through your body, charging up for your next attack.",
+    "description": "Electricity surges through your body, charging up for your next attack. Until your next turn, boost your AC by 2. On your next turn, double your STAB bonus when of your type."
+  },
+  {
+    "id": "charge-beam",
+    "name": "Charge Beam",
+    "type": "electric",
+    "flavor": "You send a beam of electric energy at a creature that has a chance to power you up.",
+    "description": "You send a beam of electric energy at a creature that has a chance to power you up. If the natural attack roll is 10 or higher and the attack hits, double your MOVE modifier for the damage of this move and any other move you activate before the end of your next turn."
+  },
+  {
+    "id": "charm",
+    "name": "Charm",
+    "type": "fairy",
+    "flavor": "You attempt to charm a creature, sharply decreasing its attack.",
+    "description": "You attempt to charm a creature, sharply decreasing its attack. A target you choose in range must make a save on a failure, the target adds -2 to all attacks against you for the duration."
+  },
+  {
+    "id": "chip-away",
+    "name": "Chip Away",
+    "type": "normal",
+    "flavor": "You wait for an opening, striking with speed when the moment is right.",
+    "description": "You wait for an opening, striking with speed when the moment is right. Ignoring any boosts to the AC of a target,"
+  },
+  {
+    "id": "circle-throw",
+    "name": "Circle Throw",
+    "type": "fighting",
+    "flavor": "You swing the target around and throw it as hard as you can, away from the battlefield.",
+    "description": "You swing the target around and throw it as hard as you can, away from the battlefield. In wild battles, the target takes the damage and flees from battle if its level is lower than that of the user. In trainer battles, the target takes the damage and must be immediately switched out for another creature in the trainer's party, if any remain."
+  },
+  {
+    "id": "clamp",
+    "name": "Clamp",
+    "type": "water",
+    "flavor": "You clamp down on a target, attempting to deal damage and keep them in place.",
+    "description": "You clamp down on a target, attempting to deal damage and keep them in place. roll. the target takes and is grappled. At the beginning of each of its turns, it may attempt to pry itself away with a save As long as the target is grappled on your subsequent turns, this move can be activated again as a bonus action with an automatic hit,"
+  },
+  {
+    "id": "clear-smog",
+    "name": "Clear Smog",
+    "type": "poison",
+    "flavor": "You throw a clump of special mud that has the power to remove all stat changes from a target.",
+    "description": "You throw a clump of special mud that has the power to remove all stat changes from a target. any stat changes affecting the target since the beginning of battle are reset."
+  },
+  {
+    "id": "close-combat",
+    "name": "Close Combat",
+    "type": "fighting",
+    "flavor": "You get in close for a devastating strike, sacrificing your defenses.",
+    "description": "You get in close for a devastating strike, sacrificing your defenses. on a creature, After activating this move, the target has advantage on any attack it makes against you before the beginning of your next turn."
+  },
+  {
+    "id": "coil",
+    "name": "Coil",
+    "type": "poison",
+    "flavor": "You coil up and concentrate your power.",
+    "description": "You coil up and concentrate your power. For the duration, gain +1 to your attack rolls, damage rolls, and AC."
+  },
+  {
+    "id": "comet-punch",
+    "name": "Comet Punch",
+    "type": "normal",
+    "flavor": "You strike out with a lightning fast punch.",
+    "description": "You strike out with a lightning fast punch. roll. The target takes. After successfully hitting a target, roll a d4. On a result of 3 or 4, you may immediately hit again for an additional. Continue this process until you fail to roll a 3 or 4 on the d4 roll, up to a maximum of four additional hits."
+  },
+  {
+    "id": "confuse-ray",
+    "name": "Confuse Ray",
+    "type": "ghost",
+    "flavor": null,
+    "description": "You target a creature in range with a sinister ray of ghostly light. against a creature. they become confused."
+  },
+  {
+    "id": "confusion",
+    "name": "Confusion",
+    "type": "psychic",
+    "flavor": "You attempt to enter the mind of a target and cause confusion.",
+    "description": "You attempt to enter the mind of a target and cause confusion. on a creature in range. the target takes. If the natural attack roll is 15 or more, the target becomes confused."
+  },
+  {
+    "id": "constrict",
+    "name": "Constrict",
+    "type": "normal",
+    "flavor": "You wrap yourself around a creature, trying to squeeze the life from them.",
+    "description": "You wrap yourself around a creature, trying to squeeze the life from them. roll. the target takes and is grappled. At the beginning of each of its turns, it may attempt to escape with a save As long as the target is grappled on your subsequent turns, this move can be activated again as a bonus action with an automatic hit,"
+  },
+  {
+    "id": "conversion",
+    "name": "Conversion",
+    "type": "normal",
+    "flavor": "Until the beginning of your next turn, take on a new type for resistances/vulnerabilities/immunities equal to one of the types of a move you currently know.",
+    "description": "Until the beginning of your next turn, take on a new type for resistances/vulnerabilities/immunities equal to one of the types of a move you currently know."
+  },
+  {
+    "id": "conversion-2",
+    "name": "Conversion 2",
+    "type": "normal",
+    "flavor": null,
+    "description": "If you took damage from an attack since the end of your last turn, you may use a bonus action to change your type to any type that is resistant or immune to the type of move used against you. This effect lasts until the beginning of your next turn."
+  },
+  {
+    "id": "copycat",
+    "name": "Copycat",
+    "type": "normal",
+    "flavor": "You mimic a target that you can see, in range.",
+    "description": "You mimic a target that you can see, in range. When you activate this move, choose a target in range and fully execute the most recent move used by the creature, using your own ability scores, level, and typing for saving throw DC, attack, and damage."
+  },
+  {
+    "id": "cosmic-power",
+    "name": "Cosmic Power",
+    "type": "psychic",
+    "flavor": "You call upon a mystic force to come to your aid.",
+    "description": "You call upon a mystic force to come to your aid. For the duration, you have advantage on all saving throws."
+  },
+  {
+    "id": "counter",
+    "name": "Counter",
+    "type": "fighting",
+    "flavor": null,
+    "description": "When you are hit by a melee attack, you can use your reaction to against the creature, doing on a success,ful hit."
+  },
+  {
+    "id": "covet",
+    "name": "Covet",
+    "type": "normal",
+    "flavor": "You strike out with quick and sticky hands.",
+    "description": "You strike out with quick and sticky hands. roll against a creature, doing. on a success,ful attack, you steal the creatures held item if you are not currently holding one."
+  },
+  {
+    "id": "crabhammer",
+    "name": "Crabhammer",
+    "type": "water",
+    "flavor": "You slam down onto a creature with a heavy claw.",
+    "description": "You slam down onto a creature with a heavy claw. roll on a target, This move scores a critical hit on rolls of 19 or 20."
+  },
+  {
+    "id": "cross-chop",
+    "name": "Cross Chop",
+    "type": "fighting",
+    "flavor": "You crush a creature with a strong sideways strike.",
+    "description": "You crush a creature with a strong sideways strike. doing. Cross Chop results in a critical hit on 19s and 20s."
+  },
+  {
+    "id": "cross-poison",
+    "name": "Cross Poison",
+    "type": "poison",
+    "flavor": "You slash at a creature with a poisonous strike.",
+    "description": "You slash at a creature with a poisonous strike. On a natural attack roll of 19 or 20, the attack is treated as a critical hit and the target is poisoned."
+  },
+  {
+    "id": "crunch",
+    "name": "Crunch",
+    "type": "dark",
+    "flavor": "You unleash a powerful blow that has a chance to temporarily lower a target’s defense.",
+    "description": "You unleash a powerful blow that has a chance to temporarily lower a target’s defense. doing. On a natural attack roll of 18 or higher, the target’s AC is decreased by 1 for the remainder of combat. This decrease may be stacked, up to a maximum of -5 to AC."
+  },
+  {
+    "id": "crush-claw",
+    "name": "Crush Claw",
+    "type": "normal",
+    "flavor": "You strike out with powerful claws.",
+    "description": "You strike out with powerful claws. roll against a creature, doing. If the natural attack roll is 15 or more, your next attack on the same target is rolled at advantage."
+  },
+  {
+    "id": "curse",
+    "name": "Curse",
+    "type": "ghost",
+    "flavor": "This Move has a different effect based on your creature type.",
+    "description": "This Move has a different effect based on your creature type. If you are ghost-type: You attempt to put a curse on a creature. Force a target in range to make a WIS saving throw on a failure, the target is cursed. You take damage initially and the target takes at the end of each of its turns for the duration. If you are any other type: You place a curse on yourself. For the duration, your STR and CON scores increase by 2, but your DEX score decreases by 4."
+  },
+  {
+    "id": "dark-pulse",
+    "name": "Dark Pulse",
+    "type": "dark",
+    "flavor": "You target a creature with a dark aura filled with horrible thoughts.",
+    "description": "You target a creature with a dark aura filled with horrible thoughts. on a creature, On natural attack rolls of 17 or higher, the target flinches."
+  },
+  {
+    "id": "defense-curl",
+    "name": "Defense Curl",
+    "type": "normal",
+    "flavor": "You curl up into a tight ball, increasing your defensive stance.",
+    "description": "You curl up into a tight ball, increasing your defensive stance. Until your next turn, you gain + 4 to your AC and have resistance to normal attacks."
+  },
+  {
+    "id": "defog",
+    "name": "Defog",
+    "type": "flying",
+    "flavor": "You summon a swift, magical breeze in a 50 foot radius, centered on you, that sweeps away foggy weather and obstacles.",
+    "description": "You summon a swift, magical breeze in a 50 foot radius, centered on you, that sweeps away foggy weather and obstacles. When activating this move, any area of effect moves that are still active end immediately (Examples: Misty Terrain, Fog Cloud, Smog, etc.)."
+  },
+  {
+    "id": "destiny-bond",
+    "name": "Destiny Bond",
+    "type": "ghost",
+    "flavor": "You create a dark, internal bond with a creature.",
+    "description": "You create a dark, internal bond with a creature. Select a target in range, who must make a save on a failure, half of any damage dealt to the user is also dealt as typeless damage to the target creature."
+  },
+  {
+    "id": "detect",
+    "name": "Detect",
+    "type": "fighting",
+    "flavor": "You sense incoming danger and are able to quickly avoid it.",
+    "description": "You sense incoming danger and are able to quickly avoid it. When you are the recipient of the damage and/or effects of a move, you may automatically avoid the damage/effects on the first instance of this reaction. On future instances of this move in the same combat, you must roll higher than a 15 on a d20 roll for the reaction to be successful. This reaction may not be used to guard against the damage/effects that result from a natural 20 attack roll."
+  },
+  {
+    "id": "dig",
+    "name": "Dig",
+    "type": "ground",
+    "flavor": "You burrow underground, disappearing from view before striking from underneath a target.",
+    "description": "You burrow underground, disappearing from view before striking from underneath a target. When you activate this move, you use 10 feet of your movement to burrow underground (ignoring difficult terrain) and remain there until your next turn. During this time, you are immune to the damage and effects of any move. If you have no remaining movement or are grappled/restrained before activating this move, the move fails. On your next turn, you emerge from the ground and on a creature in range, with advantage, doing on a success,ful hit. If the target has Tremorsense, the attack is not rolled with advantage."
+  },
+  {
+    "id": "disable",
+    "name": "Disable",
+    "type": "normal",
+    "flavor": "You attempt to disable a target, hindering its moves. Choose a target in range.",
+    "description": "You attempt to disable a target, hindering its moves. Choose a target in range. The target must succeed on a WIS saving throw on a failure,ed save, the last Move it activated is unable to be used while you hold your concentration. (If this would end Solar Beam, Skull Bash, etc. during the charge phase of the Move, the Move automatically fails on the target's next turn)."
+  },
+  {
+    "id": "disarming-voice",
+    "name": "Disarming Voice",
+    "type": "fairy",
+    "flavor": null,
+    "description": "You let out a charming cry, dealing emotional damage to any creature in range that can hear you. This move automatically hits for unless a creature is in the invulnerable stages of Fly, Dig, Bounce, etc."
+  },
+  {
+    "id": "discharge",
+    "name": "Discharge",
+    "type": "electric",
+    "flavor": "You let loose a flare of electricity in a 20 foot circle, centered on you, striking all creatures around you.",
+    "description": "You let loose a flare of electricity in a 20 foot circle, centered on you, striking all creatures around you. Creatures in the area must make a DEX saving throw on a failure, a creature takes. If a creature fails the save by 5 or more, it is paralyzed."
+  },
+  {
+    "id": "dive",
+    "name": "Dive",
+    "type": "water",
+    "flavor": null,
+    "description": "When you activate this move, you use 10 feet of your movement to disappear into a magical space beneath your feet, remaining in an invulnerable state until your next turn. During this time, you are immune to the damage and effects of any move. If you have no remaining movement or are grappled/restrained before activating this move, the move fails. On your next turn, as an action, you reappear and attempt to attack a creature from below. roll on a creature in range, with advantage, doing."
+  },
+  {
+    "id": "dizzy-punch",
+    "name": "Dizzy Punch",
+    "type": "normal",
+    "flavor": "You strike out with a devastating punch.",
+    "description": "You strike out with a devastating punch. roll on a target, doing. On a natural attack roll of 18 or more, the target becomes confused. At level 17, a natural attack roll of 17 or more confuses the target."
+  },
+  {
+    "id": "double-hit",
+    "name": "Double Hit",
+    "type": "normal",
+    "flavor": "You lash out quickly with two strikes.",
+    "description": "You lash out quickly with two strikes. Make two melee attacks, dealing on each hit."
+  },
+  {
+    "id": "double-kick",
+    "name": "Double Kick",
+    "type": "fighting",
+    "flavor": "You strike twice with two devastating kicks.",
+    "description": "You strike twice with two devastating kicks. Make two melee attack rolls, doing on each successful hit."
+  },
+  {
+    "id": "double-slap",
+    "name": "Double Slap",
+    "type": "normal",
+    "flavor": "You reach out with quick slaps.",
+    "description": "You reach out with quick slaps. roll, doing. After successfully hitting a target, roll a d4. On a result of 3 or 4, you may immediately hit again for an additional. Continue this process until you fail to roll a 3 or 4 on the d4 roll, up to a maximum of four additional hits."
+  },
+  {
+    "id": "double-team",
+    "name": "Double Team",
+    "type": "normal",
+    "flavor": "You create a duplicate image of yourself, 5 feet beside you. The image mimics you and attempt to fool your opponents into attacking it, instead.",
+    "description": "You create a duplicate image of yourself, 5 feet beside you. The image mimics you and attempt to fool your opponents into attacking it, instead. When subject to any move (attack or saving throw / damaging or non-damaging) with an area of effect of 5 feet wide or less, roll a d4. On a result of 3 or 4, the image absorbs the damage and/or effects of the attack and disappears. Creatures with Truesight bypass the effect of this move. If grappled or restrained by a creature while Double Team is active, Double Team has no effect. (Examples that would trigger the roll include Tackle, Thunder Wave, Rock Slide, etc.)"
+  },
+  {
+    "id": "double-edge",
+    "name": "Double-Edge",
+    "type": "normal",
+    "flavor": "You commit a massive attack against a creature.",
+    "description": "You commit a massive attack against a creature. doing, but taking a quarter of the total damage (rounded down) in typeless recoil."
+  },
+  {
+    "id": "dragon-breath",
+    "name": "Dragon Breath",
+    "type": "dragon",
+    "flavor": "You release a powerful breath of energy in a 40 foot cone.",
+    "description": "You release a powerful breath of energy in a 40 foot cone. All targets caught in the blast must make a save , on a failure, and half as much on a save. If a creature fails the save by 5 or more, it is paralyzed."
+  },
+  {
+    "id": "dragon-claw",
+    "name": "Dragon Claw",
+    "type": "dragon",
+    "flavor": "You strike out with a powerful claw attack.",
+    "description": "You strike out with a powerful claw attack. on a creature, doing."
+  },
+  {
+    "id": "dragon-dance",
+    "name": "Dragon Dance",
+    "type": "dragon",
+    "flavor": "You perform a mystical dance, pumping yourself up.",
+    "description": "You perform a mystical dance, pumping yourself up. For the duration, double your proficiency bonus when making an attack."
+  },
+  {
+    "id": "dragon-pulse",
+    "name": "Dragon Pulse",
+    "type": "dragon",
+    "flavor": "You open your mouth and send a shockwave of draconic energy at a target in range.",
+    "description": "You open your mouth and send a shockwave of draconic energy at a target in range."
+  },
+  {
+    "id": "dragon-rage",
+    "name": "Dragon Rage",
+    "type": "dragon",
+    "flavor": "You unleash a devastating flow of energy in a 100 foot long line, 5 feet wide.",
+    "description": "You unleash a devastating flow of energy in a 100 foot long line, 5 feet wide. Each creature caught in the blast must make a save , on a failure, and half as much on a save."
+  },
+  {
+    "id": "dragon-rush",
+    "name": "Dragon Rush",
+    "type": "dragon",
+    "flavor": "You rush at a creature with overwhelming menace.",
+    "description": "You rush at a creature with overwhelming menace. On natural attack rolls of 17 or higher, the target flinches."
+  },
+  {
+    "id": "dragon-tail",
+    "name": "Dragon Tail",
+    "type": "dragon",
+    "flavor": null,
+    "description": "You whip your dragon tail at a creature in an attempt to send them away. roll In wild battles, the target takes the damage and flees from battle if its level is lower than that of the user. In trainer battles, the target takes the damage and must be immediately switched out for another creature in the trainer's party, if any remain."
+  },
+  {
+    "id": "draining-kiss",
+    "name": "Draining Kiss",
+    "type": "fairy",
+    "flavor": "You attempt to zap the target's energy with a kiss.",
+    "description": "You attempt to zap the target's energy with a kiss. roll on a creature, The user is then healed for half the damage dealt."
+  },
+  {
+    "id": "dream-eater",
+    "name": "Dream Eater",
+    "type": "psychic",
+    "flavor": "You tap into a sleeping creature’s dreams, sucking from its energy pool.",
+    "description": "You tap into a sleeping creature’s dreams, sucking from its energy pool. Instantly inflict on a sleeping target in range, regaining half as many hitpoints to yourself. This move does not wake a sleeping creature."
+  },
+  {
+    "id": "drill-peck",
+    "name": "Drill Peck",
+    "type": "flying",
+    "flavor": "You hammer down on a target with a peck attack.",
+    "description": "You hammer down on a target with a peck attack. roll on a target, doing on a success,ful hit. Drill Peck scores a critical hit on 19s and 20s."
+  },
+  {
+    "id": "drill-run",
+    "name": "Drill Run",
+    "type": "ground",
+    "flavor": "You crash into a creature, spinning your body like a drill.",
+    "description": "You crash into a creature, spinning your body like a drill. This attack scores a critical hit on 19s and 20s."
+  },
+  {
+    "id": "dual-chop",
+    "name": "Dual Chop",
+    "type": "dragon",
+    "flavor": "You lash out at a creature(s) with two quick strikes.",
+    "description": "You lash out at a creature(s) with two quick strikes. Make two melee attack rolls, dealing with each hit."
+  },
+  {
+    "id": "dynamic-punch",
+    "name": "Dynamic Punch",
+    "type": "fighting",
+    "flavor": "You strike out with a twirling punch that confuses a creature.",
+    "description": "You strike out with a twirling punch that confuses a creature. roll against a creature, doing. it also becomes confused."
+  },
+  {
+    "id": "earth-power",
+    "name": "Earth Power",
+    "type": "ground",
+    "flavor": "You cause the ground beneath a creature to erupt with power.",
+    "description": "You cause the ground beneath a creature to erupt with power. If the natural attack roll is 19 or 20, the next attack against the target is rolled at advantage."
+  },
+  {
+    "id": "earthquake",
+    "name": "Earthquake",
+    "type": "ground",
+    "flavor": "You create a tremor in the ground in a 20 foot radius, centered on you.",
+    "description": "You create a tremor in the ground in a 20 foot radius, centered on you. Each creature in the area must succeed on a save , on a failure, and be knocked prone. on a success, they take half as much damage and are not knocked prone. Creatures in range that are burrowed or in the invulnerable stage of Dig take double damage from this move. After the move is activated, the area becomes difficult terrain. Raised creatures are immune to the effects and damage of this move."
+  },
+  {
+    "id": "eerie-impulse",
+    "name": "Eerie Impulse",
+    "type": "electric",
+    "flavor": "Your body generates a strange pulsating sound that can disrupt creature's ability to attack.",
+    "description": "Your body generates a strange pulsating sound that can disrupt creature's ability to attack. When you activate this move, any creature within 30 feet of you must make a CON saving throw Any creature that fails flinches for rounds."
+  },
+  {
+    "id": "egg-bomb",
+    "name": "Egg Bomb",
+    "type": "normal",
+    "flavor": "You hurl a hard egg at a creature that explodes on impact.",
+    "description": "You hurl a hard egg at a creature that explodes on impact. on a creature, doing on a success,ful hit."
+  },
+  {
+    "id": "electric-terrain",
+    "name": "Electric Terrain",
+    "type": "electric",
+    "flavor": "You electrify the ground around you to create a static field of electricity.",
+    "description": "You electrify the ground around you to create a static field of electricity. For 3 turns, no grounded creatures inside the area can be asleep. Grounded creatures are those that do not have a flying speed or Levitate, Magnet Rise, or similar ability. In addition, creatures may double their MOVE modifier on damage rolls from electric-type moves activated inside the area"
+  },
+  {
+    "id": "electro-ball",
+    "name": "Electro Ball",
+    "type": "electric",
+    "flavor": "You hurl an electric orb at a target in range.",
+    "description": "You hurl an electric orb at a target in range. roll, Compare the target and user's highest speed type (walking, flying, etc.). If the user's speed is higher, roll the next tier's damage dice for this move. In the case of level 17 or higher, double the damage dice."
+  },
+  {
+    "id": "ember",
+    "name": "Ember",
+    "type": "fire",
+    "flavor": "You hurl a ball of flame at a target within range.",
+    "description": "You hurl a ball of flame at a target within range. doing on a success,ful hit. If the natural attack roll is 19 or 20, the target is burnt."
+  },
+  {
+    "id": "encore",
+    "name": "Encore",
+    "type": "normal",
+    "flavor": null,
+    "description": "After being targeted by a move, force a creature to make a save as a reaction. on a failure, no other move may be activated by the target creature until after the end of its next turn."
+  },
+  {
+    "id": "endeavor",
+    "name": "Endeavor",
+    "type": "normal",
+    "flavor": null,
+    "description": "When you activate this move, select a creature in range. the target must make a WIS saving throw on a failure, the target’s current HP is reduced to be equal to your own. The hit point reduction can be no more than 5x the target's level. This move can not be used in the first round of combat."
+  },
+  {
+    "id": "endure",
+    "name": "Endure",
+    "type": "normal",
+    "flavor": "On an instance of taking damage that would otherwise cause you to faint, you may instead fall to 1HP on the first instance of this reaction. On future instances of this move in the same combat, you must roll higher than a 15 on a d20 roll for the reaction to be successful.",
+    "description": "On an instance of that would otherwise cause you to faint, you may instead fall to 1HP on the first instance of this reaction. On future instances of this move in the same combat, you must roll higher than a 15 on a d20 roll for the reaction to be successful."
+  },
+  {
+    "id": "energy-ball",
+    "name": "Energy Ball",
+    "type": "grass",
+    "flavor": "You draw in power from nature in a concentrated ball that you send towards a creature.",
+    "description": "You draw in power from nature in a concentrated ball that you send towards a creature. On a natural attack roll of 19 or 20, the next attack against the target is rolled at advantage."
+  },
+  {
+    "id": "entrainment",
+    "name": "Entrainment",
+    "type": "normal",
+    "flavor": "You dance with a strange rhythm that causes a creature to mimic you.",
+    "description": "You dance with a strange rhythm that causes a creature to mimic you. Choose a target in range and force them to make a save on a failure, choose one of their abilities to replace with one of your own for the duration."
+  },
+  {
+    "id": "explosion",
+    "name": "Explosion",
+    "type": "normal",
+    "flavor": "You create a sphere of energy that packs a concentrated and devastating explosion. Choose a target within range and roll a d20.",
+    "description": "You create a sphere of energy that packs a concentrated and devastating explosion. Choose a target within range and roll a d20. On a 20, the explosion goes off and all creatures within 5 feet of that point faint. On any other roll, the explosion fails to go off and this move has no effect. If the target's level is 10 more than your own, or their SR is 15, this move automatically fails."
+  },
+  {
+    "id": "extrasensory",
+    "name": "Extrasensory",
+    "type": "psychic",
+    "flavor": "You create an irritating, damaging sound in the mind of a creature.",
+    "description": "You create an irritating, damaging sound in the mind of a creature. roll against a creature in range, doing. If the natural attack roll is 19 or 20, the target flinches."
+  },
+  {
+    "id": "extreme-speed",
+    "name": "Extreme Speed",
+    "type": "normal",
+    "flavor": "You rush to attack with incredible speed.",
+    "description": "You rush to attack with incredible speed. As a bonus action, you can immediately move up to 10ft and against a creature in range without taking an attack of opportunity, doing."
+  },
+  {
+    "id": "fake-out",
+    "name": "Fake Out",
+    "type": "normal",
+    "flavor": "This attack can only be used on the first turn that the user has entered combat.",
+    "description": "This attack can only be used on the first turn that the user has entered combat. on a creature, doing, causing the target to flinch."
+  },
+  {
+    "id": "fake-tears",
+    "name": "Fake Tears",
+    "type": "dark",
+    "flavor": "You fake a creature out with superficial tears, lowering their defenses.",
+    "description": "You fake a creature out with superficial tears, lowering their defenses. When activating this move, a target must make a WIS saving throw on a failure, all attack rolls against the target are given a +5 bonus until the end of your next turn."
+  },
+  {
+    "id": "false-swipe",
+    "name": "False Swipe",
+    "type": "normal",
+    "flavor": "You swipe at a creature but hold back power slightly.",
+    "description": "You swipe at a creature but hold back power slightly. against a creature, doing. If this attack would normally cause a creature to faint, it is reduced to 1HP instead."
+  },
+  {
+    "id": "feather-dance",
+    "name": "Feather Dance",
+    "type": "flying",
+    "flavor": null,
+    "description": "You distract a creature in range with a beautiful dance. The target must make a WIS saving throw on a failure, the target cannot add proficiency to its attack rolls for the duration."
+  },
+  {
+    "id": "feint",
+    "name": "Feint",
+    "type": "normal",
+    "flavor": "You fake out a creature before you strike.",
+    "description": "You fake out a creature before you strike. If a creature attempts to use a Protect or Detect reaction against the damage, it fails."
+  },
+  {
+    "id": "feint-attack",
+    "name": "Feint Attack",
+    "type": "dark",
+    "flavor": "You bring a creature close and hit it with a sucker punch.",
+    "description": "You bring a creature close and hit it with a sucker punch. on a creature, at advantage,"
+  },
+  {
+    "id": "fell-stinger",
+    "name": "Fell Stinger",
+    "type": "bug",
+    "flavor": "You lunge at a creature with a devastating sting attack.",
+    "description": "You lunge at a creature with a devastating sting attack. on a creature, If this attack causes the target to faint, double your ability modifier for attack rolls and damage on your next turn."
+  },
+  {
+    "id": "final-gambit",
+    "name": "Final Gambit",
+    "type": "fighting",
+    "flavor": null,
+    "description": "You risk everything and use your own life force to damage a creature in range. When you activate this move, you faint, and force a target in range to make a save The target takes an amount of equal to your remaining HP on a failure, or half as much on a success,"
+  },
+  {
+    "id": "fire-blast",
+    "name": "Fire Blast",
+    "type": "fire",
+    "flavor": null,
+    "description": "Two pillars of raging hot flames explode out from you and leap towards up to two creature in range. The creature(s) targeted must succeed on a save for each pillar, on a failure, or half as much on a success. Creatures that fail the save by 5 or more become burned."
+  },
+  {
+    "id": "fire-fang",
+    "name": "Fire Fang",
+    "type": "fire",
+    "flavor": "You attempt to pierce a creature with flame- cloaked fangs.",
+    "description": "You attempt to pierce a creature with flame- cloaked fangs. On a natural attack roll of 19 or 20, the target is burned and flinches."
+  },
+  {
+    "id": "fire-punch",
+    "name": "Fire Punch",
+    "type": "fire",
+    "flavor": "You strike out with fire-infused fists.",
+    "description": "You strike out with fire-infused fists. roll, doing. On a natural attack roll of 19 or 20, the target is burned."
+  },
+  {
+    "id": "fire-spin",
+    "name": "Fire Spin",
+    "type": "fire",
+    "flavor": "You release a series of moving flames that dance around a target.",
+    "description": "You release a series of moving flames that dance around a target. roll, doing. as the flames swirl around it. As long as you maintain concentration, the target takes an additional at the end of each of its next three turns."
+  },
+  {
+    "id": "fissure",
+    "name": "Fissure",
+    "type": "ground",
+    "flavor": "You crack open the ground with devastating force. Choose a target in range and roll a d20. On a 20, the target falls into the crack and vanished into the abyss. On any other roll, or if targeting a flying creature, this move has no effect. The area in a 20 foot radius around the target becomes difficult terrain. If the target's level is 10 more than your own, this move automatically fails.",
+    "description": "You crack open the ground with devastating force. Choose a target in range and roll a d20. On a 20, the target falls into the crack and vanished into the abyss. On any other roll, or if targeting a flying creature, this move has no effect. The area in a 20 foot radius around the target becomes difficult terrain. If the target's level is 10 more than your own, this move automatically fails."
+  },
+  {
+    "id": "flail",
+    "name": "Flail",
+    "type": "normal",
+    "flavor": "You flail about with a wild strike that increases in power the more injured you are.",
+    "description": "You flail about with a wild strike that increases in power the more injured you are. roll against a creature, doing. If you are below 50% of your maximum health, double the damage. If you are at 10% or below of your maximum health, triple the damage. The multiplier for this attack occurs before the multiplier for resistances or vulnerabilities."
+  },
+  {
+    "id": "flame-burst",
+    "name": "Flame Burst",
+    "type": "fire",
+    "flavor": "You release a fireball that explodes on contact. Choose a point in range.",
+    "description": "You release a fireball that explodes on contact. Choose a point in range. Any creature within 5 feet of that point must make a save , taking, or half as much on a success."
+  },
+  {
+    "id": "flame-charge",
+    "name": "Flame Charge",
+    "type": "fire",
+    "flavor": "You cloak yourself with flame and lash out at a creature.",
+    "description": "You cloak yourself with flame and lash out at a creature. With each successful hit from this move, increase your movement speed by 5 until you are incapacitated, are switched out, or the combat ends. (Maximum of +30 to movement speed)"
+  },
+  {
+    "id": "flame-wheel",
+    "name": "Flame Wheel",
+    "type": "fire",
+    "flavor": "A wheel of flame explodes out from you in a 10 foot radius.",
+    "description": "A wheel of flame explodes out from you in a 10 foot radius. All creature in the area must succeed on a save , on a failure, and half as much on a save. If the user is frozen, this move can still be used, thawing out the creature during the attack"
+  },
+  {
+    "id": "flamethrower",
+    "name": "Flamethrower",
+    "type": "fire",
+    "flavor": "You shoot a concentrated gout of flame in an 40 foot cone.",
+    "description": "You shoot a concentrated gout of flame in an 40 foot cone. Any creature caught in the cone must succeed on a save , on a failure, or half damage on a success. Any creature that fails the save by 5 or more becomes burned."
+  },
+  {
+    "id": "flare-blitz",
+    "name": "Flare Blitz",
+    "type": "fire",
+    "flavor": "You cloak yourself in fire and charge at a creature with serious damage.",
+    "description": "You cloak yourself in fire and charge at a creature with serious damage. against a creature, you take a quarter of the damage dealt in typeless recoil damage. On a natural attack roll of 19 or 20, the target is burned. If the user is frozen, this move can still be used, thawing out the creature during the attack"
+  },
+  {
+    "id": "flash-cannon",
+    "name": "Flash Cannon",
+    "type": "steel",
+    "flavor": null,
+    "description": "You gather energy from the light around you and send a concentrated beam towards a creature in range. On a natural attack roll of 19 or 20, the next attack against the target is rolled at advantage."
+  },
+  {
+    "id": "flatter",
+    "name": "Flatter",
+    "type": "dark",
+    "flavor": null,
+    "description": "You send mixed signals to an creature in range. Force a target in range to make a save on a failure, the target is confused, but it adds +2 to its attack rolls while confused."
+  },
+  {
+    "id": "fling",
+    "name": "Fling",
+    "type": "dark",
+    "flavor": "You sacrifice your held item to throw it a creature.",
+    "description": "You sacrifice your held item to throw it a creature. the amount of dealt is equal to the price of the item in the manual, divided by 100 (rounded down), plus STAB (if applicable). In addition, certain items have additional effects on a success,ful hit with this move. After activating this move, or miss, the item disappears. Item Effect Table: Flame Orb: Burns Toxic Orb: Badly Poisons Light Ball: Paralyzes King's Rock: Flinches Razor Fang: Flinches Poison Barb: Poisons"
+  },
+  {
+    "id": "focus-energy",
+    "name": "Focus Energy",
+    "type": "normal",
+    "flavor": "You shut your eyes and focus in on the energy inside you before striking.",
+    "description": "You shut your eyes and focus in on the energy inside you before striking. For the duration, increase your critical range by 2 (From 20 to 18+ , from 19+ to 17+, etc.). This move is not stackable."
+  },
+  {
+    "id": "focus-punch",
+    "name": "Focus Punch",
+    "type": "fighting",
+    "flavor": null,
+    "description": "When activating this move, you spend your action focusing your next attack. If you keep concentration, as an action on your next turn, make an attack roll against a creature, doing."
+  },
+  {
+    "id": "follow-me",
+    "name": "Follow Me",
+    "type": "normal",
+    "flavor": "You act quickly to entice an enemy to attack you.",
+    "description": "You act quickly to entice an enemy to attack you. When a creature in range activates a Move that directly targets another creature, you may use your reaction to force the creature to make a save on a failure, the Move must target you instead. If you are out of range of the Move, the creature must use their remaining movement to move in a straight line towards you before making the attack (does not provoke attacks of opportunity). If you are still out of range, the move automatically fails."
+  },
+  {
+    "id": "foresight",
+    "name": "Foresight",
+    "type": "normal",
+    "flavor": "You grant yourself a brief but incredible sixth sense. On the next ghost-, normal-, or fighting-type move you activate, ignore any immunities of the target creature(s) granted by their Pokémon type. If the target’s secondary type gives it vulnerability or resistance to the attack, it follows the secondary type for that effect.",
+    "description": "You grant yourself a brief but incredible sixth sense. On the next ghost-, normal-, or fighting-type move you activate, ignore any immunities of the target creature(s) granted by their Pokémon type. If the target’s secondary type gives it vulnerability or resistance to the attack, it follows the secondary type for that effect."
+  },
+  {
+    "id": "foul-play",
+    "name": "Foul Play",
+    "type": "dark",
+    "flavor": "You turn a creature's own power against it.",
+    "description": "You turn a creature's own power against it. roll using your MOVE power. the target takes an amount of equal to + the target's level."
+  },
+  {
+    "id": "freeze-dry",
+    "name": "Freeze-Dry",
+    "type": "ice",
+    "flavor": null,
+    "description": "You unleash a freezing cold air that rapidly chills a creature in range. on a creature, On a natural attack roll of 19 or 20, the target is frozen. This move deals super effective damage to water-type creatures. If the target’s secondary type is resistant to, this move deals standard damage instead."
+  },
+  {
+    "id": "fury-attack",
+    "name": "Fury Attack",
+    "type": "normal",
+    "flavor": "You reach out and unleash relentless strikes against a creature.",
+    "description": "You reach out and unleash relentless strikes against a creature. roll, doing. After successfully hitting a target, roll a d4. On a result of 3 or 4, you may immediately hit again for an additional. Continue this process until you fail to roll a 3 or 4 on the d4 roll, up to a maximum of four additional hits."
+  },
+  {
+    "id": "fury-cutter",
+    "name": "Fury Cutter",
+    "type": "bug",
+    "flavor": "You unleash series of cuts against a creature that increase in strength.",
+    "description": "You unleash series of cuts against a creature that increase in strength. When you activate this move, on a target in range, doing. If you use this move on your turn in consecutive rounds, double the dice roll for damage each time you hit. The multiplier maxes out at 8x the original damage. The damage resets if any of the attacks miss, or if you are incapacitated."
+  },
+  {
+    "id": "fury-swipes",
+    "name": "Fury Swipes",
+    "type": "normal",
+    "flavor": "You reach out and unleash relentless claw attacks against a creature.",
+    "description": "You reach out and unleash relentless claw attacks against a creature. roll, doing. After successfully hitting a target, roll a d4. On a result of 3 or 4, you may immediately hit again for an additional. Continue this process until you fail to roll a 3 or 4 on the d4 roll, up to a maximum of four additional hits."
+  },
+  {
+    "id": "future-sight",
+    "name": "Future Sight",
+    "type": "psychic",
+    "flavor": "You save an attack to unleash at a later time. When you activate this move, you may choose to attack on this turn, or delay the attack. You may use the attack as a free action at any time during the next three rounds.",
+    "description": "You save an attack to unleash at a later time. When you activate this move, you may choose to attack on this turn, or delay the attack. You may use the attack as a free action at any time during the next three rounds. When you make the attack, roll,"
+  },
+  {
+    "id": "gastro-acid",
+    "name": "Gastro Acid",
+    "type": "poison",
+    "flavor": "You hurl stomach acid towards a target.",
+    "description": "You hurl stomach acid towards a target. the target is covered in the disgusting substance and cannot benefit from the effect of any of its abilities for the duration."
+  },
+  {
+    "id": "giga-drain",
+    "name": "Giga Drain",
+    "type": "grass",
+    "flavor": "You attempt to drain the life force of a target.",
+    "description": "You attempt to drain the life force of a target. on a target, doing. Half of the damage dealt is restored to the user."
+  },
+  {
+    "id": "giga-impact",
+    "name": "Giga Impact",
+    "type": "normal",
+    "flavor": "You charge at a creature with every ounce of your power.",
+    "description": "You charge at a creature with every ounce of your power. This move cannot be used on consecutive turns by the same creature."
+  },
+  {
+    "id": "glare",
+    "name": "Glare",
+    "type": "normal",
+    "flavor": "You stare into the depths of a creature’s eyes with intense ferocity.",
+    "description": "You stare into the depths of a creature’s eyes with intense ferocity. The creature must make a WIS saving throw or become frightened for the duration. A creature frightened in this way must make a save at the end of each of its turns to remove the effect."
+  },
+  {
+    "id": "grass-whistle",
+    "name": "Grass Whistle",
+    "type": "grass",
+    "flavor": "You make a shrill sound that has the chance to put a creature to sleep.",
+    "description": "You make a shrill sound that has the chance to put a creature to sleep. The target must make a save , falling asleep on a failure."
+  },
+  {
+    "id": "grassy-terrain",
+    "name": "Grassy Terrain",
+    "type": "grass",
+    "flavor": "Grass sprouts from the ground in a circle around you, coating the earth with healing energy.",
+    "description": "Grass sprouts from the ground in a circle around you, coating the earth with healing energy. For 3 turns, all creatures in the affected area heal for an amount of hit points equal to their proficiency bonus at the end of their turn. Grounded creatures are those that do not have a flying speed or Levitate, Magnet Rise, or similar ability. In addition, creatures may double their MOVE modifier on damage rolls from grass-type moves activated inside the area."
+  },
+  {
+    "id": "gravity",
+    "name": "Gravity",
+    "type": "psychic",
+    "flavor": "You strengthen gravity in an 40 foot circle, centered on you.",
+    "description": "You strengthen gravity in an 40 foot circle, centered on you. Any creature in the area cannot use moves like Fly or Bounce, flying types lose their ground immunity, and the Levitate ability is suppressed."
+  },
+  {
+    "id": "growl",
+    "name": "Growl",
+    "type": "normal",
+    "flavor": "You target a creature with an intimidating growl.",
+    "description": "You target a creature with an intimidating growl. The creature must make a save on a failure, it adds -1 to any attack it makes for the duration. This modifier can be stacked if it fails multiple growl saves, up to a maximum of -5."
+  },
+  {
+    "id": "growth",
+    "name": "Growth",
+    "type": "normal",
+    "flavor": "You increase the size of a target.",
+    "description": "You increase the size of a target. When you use this move, a creature in range (or you) grows slightly larger, gaining the ability to add a d4 to any attack roll or saving throw for the duration."
+  },
+  {
+    "id": "grudge",
+    "name": "Grudge",
+    "type": "ghost",
+    "flavor": null,
+    "description": "When you take damage from a move that reduces you to zero hit points, you may use your reaction to force the attacker to make a WIS saving throw on a failure, all PP from the move that caused you to faint is depleted."
+  },
+  {
+    "id": "guard-split",
+    "name": "Guard Split",
+    "type": "psychic",
+    "flavor": "You use your psychic power to change your defense to match the target's the best you can.",
+    "description": "You use your psychic power to change your defense to match the target's the best you can. Force a creature in range to make a save on a failure, for the duration, your AC changes to become an average of your current AC and the target's, rounded down."
+  },
+  {
+    "id": "guard-swap",
+    "name": "Guard Swap",
+    "type": "psychic",
+    "flavor": "You use your psychic power to swap defenses with a creature.",
+    "description": "You use your psychic power to swap defenses with a creature. Force a creature in range to make a save on a failure, switch armor class with the target for the duration."
+  },
+  {
+    "id": "guillotine",
+    "name": "Guillotine",
+    "type": "normal",
+    "flavor": null,
+    "description": "You are filled with an incredible rage, grabbing the head of a target creature in an attempt to squeeze the life from it. Roll a d20. On a 20, you instantly cause the creature to faint. On any other roll, this move has no effect. If the target's level is 10 more than your own, this move automatically fails."
+  },
+  {
+    "id": "gunk-shot",
+    "name": "Gunk Shot",
+    "type": "poison",
+    "flavor": "You fire a wad of icky gunk at a creature.",
+    "description": "You fire a wad of icky gunk at a creature. On a natural attack roll of 16 or higher, the target is poisoned."
+  },
+  {
+    "id": "gust",
+    "name": "Gust",
+    "type": "flying",
+    "flavor": "You create a strong wind that batters a target in range.",
+    "description": "You create a strong wind that batters a target in range. doing."
+  },
+  {
+    "id": "gyro-ball",
+    "name": "Gyro Ball",
+    "type": "steel",
+    "flavor": "You tackle a creature with a high-speed spin.",
+    "description": "You tackle a creature with a high-speed spin. against a creature, If your DEX score is lower than the target's, double the dice roll for damage."
+  },
+  {
+    "id": "hail",
+    "name": "Hail",
+    "type": "ice",
+    "flavor": "You stir up a massive hail storm in a 50 foot radius, centered on a point in range. When a non ice-type creature enters the area for the first time on their turn, or begins their turn inside the area, they take an amount of ice damage equal to half your level, rounded up. The hail storm lasts for 5 rounds.",
+    "description": "You stir up a massive hail storm in a 50 foot radius, centered on a point in range. When a non ice-type creature enters the area for the first time on their turn, or begins their turn inside the area, they take an amount of equal to half your level, rounded up. The hail storm lasts for 5 rounds."
+  },
+  {
+    "id": "hammer-arm",
+    "name": "Hammer Arm",
+    "type": "fighting",
+    "flavor": "You put all your power into a strong and heavy fist attack.",
+    "description": "You put all your power into a strong and heavy fist attack. Until the beginning of your next turn, you have disadvantage on all saves and your speed is halved."
+  },
+  {
+    "id": "harden",
+    "name": "Harden",
+    "type": "normal",
+    "flavor": "You increase your defense, able to reduce incoming damage.",
+    "description": "You increase your defense, able to reduce incoming damage. After activating this move, reduce any damage dealt to you by until the beginning of your next turn."
+  },
+  {
+    "id": "haze",
+    "name": "Haze",
+    "type": "ice",
+    "flavor": null,
+    "description": "You create a haze of light snow that washes over creatures in a 60 foot circle, centered on you. Any stat changes, status effects, shields or other outside forces affecting creatures in range are removed. This includes things like Leech Seed, Focus Energy, Substitute, Iron Defense, Disable, etc."
+  },
+  {
+    "id": "head-smash",
+    "name": "Head Smash",
+    "type": "rock",
+    "flavor": "You lower your head to deliver a dangerous headbutt.",
+    "description": "You lower your head to deliver a dangerous headbutt. the user takes 1/2 the damage dealt in typeless recoil."
+  },
+  {
+    "id": "headbutt",
+    "name": "Headbutt",
+    "type": "normal",
+    "flavor": "You really know how to use your head.",
+    "description": "You really know how to use your head. roll, doing. If the natural attack roll is 18 or more, the target falls prone."
+  },
+  {
+    "id": "heal-pulse",
+    "name": "Heal Pulse",
+    "type": "psychic",
+    "flavor": "You emit a healing pulse that restores a target's HP. Choose a target in range (cannot be yourself).",
+    "description": "You emit a healing pulse that restores a target's HP. Choose a target in range (cannot be yourself). The target regains hit points."
+  },
+  {
+    "id": "healing-wish",
+    "name": "Healing Wish",
+    "type": "psychic",
+    "flavor": "You sacrifice yourself for another one of your trainer's Pokémon.",
+    "description": "You sacrifice yourself for another one of your trainer's Pokémon. When activating this move, the user faints, but the next conscious creature released by its trainer is healed of all status effects and recovers an amount of HP equal to what the user lost by fainting."
+  },
+  {
+    "id": "heart-stamp",
+    "name": "Heart Stamp",
+    "type": "psychic",
+    "flavor": "You unleash a vicious blow after acting cute.",
+    "description": "You unleash a vicious blow after acting cute. against a creature,"
+  },
+  {
+    "id": "heat-wave",
+    "name": "Heat Wave",
+    "type": "fire",
+    "flavor": "You exhale a wave of hot breath in a 30ft. circle, centered on you.",
+    "description": "You exhale a wave of hot breath in a 30ft. circle, centered on you. Creatures caught in the area must make a save , taking on failure, or half as much on a success. If the creature fails the save by 5 or more, it is burned."
+  },
+  {
+    "id": "heavy-slam",
+    "name": "Heavy Slam",
+    "type": "steel",
+    "flavor": "You slam into a creature with your heavy body.",
+    "description": "You slam into a creature with your heavy body. on a target, dealing a minimum of. Add an additional bonus to damage equal to your MOVE modifier for each size level you are above a creature. (Sizes, in order, are: Tiny, Small, Medium, Large, Huge, Gargantuan)"
+  },
+  {
+    "id": "helping-hand",
+    "name": "Helping Hand",
+    "type": "normal",
+    "flavor": null,
+    "description": "You can use a bonus action on your turn to choose one ally other than yourself within 60 feet of you who can hear you. That ally can add a d6 to one ability check, attack roll, or saving throw it makes within the next 10 minutes, before the result of the roll is called by the DM. An ally being helped can only have one d6 available at a time."
+  },
+  {
+    "id": "hex",
+    "name": "Hex",
+    "type": "ghost",
+    "flavor": "You send a ghostly energy at a creature that does additional damage to those affected by status conditions.",
+    "description": "You send a ghostly energy at a creature that does additional damage to those affected by status conditions. If the target is affected by a status condition, double your MOVE modifier when adding damage."
+  },
+  {
+    "id": "high-horsepower",
+    "name": "High Horsepower",
+    "type": "ground",
+    "flavor": "You fiercely attack the target using your entire body.",
+    "description": "You fiercely attack the target using your entire body."
+  },
+  {
+    "id": "high-jump-kick",
+    "name": "High Jump Kick",
+    "type": "fighting",
+    "flavor": "You leap into the air to deliver a strong kick to a target.",
+    "description": "You leap into the air to deliver a strong kick to a target. doing. On a miss, you take 1 damage."
+  },
+  {
+    "id": "howl",
+    "name": "Howl",
+    "type": "normal",
+    "flavor": "You pierce the air with an intimidating howl.",
+    "description": "You pierce the air with an intimidating howl. Until the end of your next turn, allies (and you) have advantage on any melee attack rolls they make against a creature within 5 feet of you."
+  },
+  {
+    "id": "horn-attack",
+    "name": "Horn Attack",
+    "type": "normal",
+    "flavor": "You strike at a target with your horn.",
+    "description": "You strike at a target with your horn. doing. If you moved 20 feet or more straight towards a target, immediately before activating this move, force a creature to make a save or be knocked prone."
+  },
+  {
+    "id": "horn-drill",
+    "name": "Horn Drill",
+    "type": "normal",
+    "flavor": "You attempt to drill your horn through a target creature with tremendous strength. Roll a d20. On a 20, the creature is impaled and immediately faints. On any other roll, you miss and this move fails. If the target's level is 10 more than your own, this move automatically fails.",
+    "description": "You attempt to drill your horn through a target creature with tremendous strength. Roll a d20. On a 20, the creature is impaled and immediately faints. On any other roll, you miss and this move fails. If the target's level is 10 more than your own, this move automatically fails."
+  },
+  {
+    "id": "hurricane",
+    "name": "Hurricane",
+    "type": "flying",
+    "flavor": "You whip up a maelstrom of harsh winds.",
+    "description": "You whip up a maelstrom of harsh winds. Each creature in a 30 ft radius, centered on a point within range, must make a STR saving throw , taking and knocked prone on a failure, or half as much damage without being knocked prone on a success. Targets that fail the saving throw by 5 or more become confused. If this attack is activated during rain, the targets roll their saving throws with disadvantage. If used during harsh sunlight, the targets roll their saves with advantage."
+  },
+  {
+    "id": "hydro-pump",
+    "name": "Hydro Pump",
+    "type": "water",
+    "flavor": null,
+    "description": "You send a surge of powerful water towards creatures in a 80 foot line, 5 feet wide. Creatures caught in the blast must succeed on a save , on a failure,ed save."
+  },
+  {
+    "id": "hyper-beam",
+    "name": "Hyper Beam",
+    "type": "normal",
+    "flavor": "You unleash a concentrated beam of pure energy in a 80 foot line, 5ft wide.",
+    "description": "You unleash a concentrated beam of pure energy in a 80 foot line, 5ft wide. Any creature caught in the line must succeed on a save or take on a failure, and half as much on a save. This move cannot be used on consecutive turns by the same creature."
+  },
+  {
+    "id": "hyper-fang",
+    "name": "Hyper Fang",
+    "type": "normal",
+    "flavor": "You lash out at a creature with a quick fang attack.",
+    "description": "You lash out at a creature with a quick fang attack. roll, doing. Hyper Fang scores a critical hit on 19 and 20. If the natural attack roll is 18 or more, the target flinches."
+  },
+  {
+    "id": "hyper-voice",
+    "name": "Hyper Voice",
+    "type": "normal",
+    "flavor": "You release a loud and startling, high-pitched sound that only a creature can hear.",
+    "description": "You release a loud and startling, high-pitched sound that only a creature can hear. roll against a creature in range, doing."
+  },
+  {
+    "id": "hypnosis",
+    "name": "Hypnosis",
+    "type": "psychic",
+    "flavor": "You attempt to put the target to sleep.",
+    "description": "You attempt to put the target to sleep. The target must make a save , falling asleep on a failure."
+  },
+  {
+    "id": "ice-ball",
+    "name": "Ice Ball",
+    "type": "ice",
+    "flavor": "You roll into a rock-hard ball of ice and continue to pummel a creature.",
+    "description": "You roll into a rock-hard ball of ice and continue to pummel a creature. When you activate this move, on a target in range, doing. If you use this move on your turn in consecutive rounds, double the dice roll for damage each time you hit. The multiplier maxes out at 8x the original damage. The damage resets if any of the attacks miss, or if you are incapacitated."
+  },
+  {
+    "id": "ice-beam",
+    "name": "Ice Beam",
+    "type": "ice",
+    "flavor": "You create a 80 foot line of freezing ice, 5 feet wide.",
+    "description": "You create a 80 foot line of freezing ice, 5 feet wide. Any creature caught in the line must succeed on a save or take on a failure, or half as much on a success. Creatures that fail this save by 5 or more become frozen."
+  },
+  {
+    "id": "ice-fang",
+    "name": "Ice Fang",
+    "type": "ice",
+    "flavor": "You attempt to pierce a creature with ice- infused fangs.",
+    "description": "You attempt to pierce a creature with ice- infused fangs. On a natural attack roll of 19 or 20, the target is frozen and flinches."
+  },
+  {
+    "id": "ice-punch",
+    "name": "Ice Punch",
+    "type": "ice",
+    "flavor": "You strike out with ice-infused fists.",
+    "description": "You strike out with ice-infused fists. roll, doing. On a natural attack roll of 19 or 20, the target is frozen."
+  },
+  {
+    "id": "ice-shard",
+    "name": "Ice Shard",
+    "type": "ice",
+    "flavor": "You flash freeze chunks of ice and quickly hurl them at a creature.",
+    "description": "You flash freeze chunks of ice and quickly hurl them at a creature. As a bonus action, you fire a shard of ice at a creature in range. roll,"
+  },
+  {
+    "id": "icicle-crash",
+    "name": "Icicle Crash",
+    "type": "ice",
+    "flavor": null,
+    "description": "You generate a row of icicles that crash down on top of a creature in range. If the natural attack roll is 15 or higher, the target flinches."
+  },
+  {
+    "id": "icicle-spear",
+    "name": "Icicle Spear",
+    "type": "ice",
+    "flavor": null,
+    "description": "Your pummel a creature in range with multiple sharp shards of ice. roll, doing. After successfully hitting a target, roll a d4. On a result of 3 or 4, you may immediately hit again for an additional. Continue this process until you fail to roll a 3 or 4 on the d4 roll, up to a maximum of four additional hits."
+  },
+  {
+    "id": "icy-wind",
+    "name": "Icy Wind",
+    "type": "ice",
+    "flavor": null,
+    "description": "You create an icy wind that gusts towards a creature in range. against a creature, doing. On a natural attack roll of 18 or more, the target falls prone."
+  },
+  {
+    "id": "imprison",
+    "name": "Imprison",
+    "type": "psychic",
+    "flavor": "You create psychic walls within the mind of a target in range.",
+    "description": "You create psychic walls within the mind of a target in range. Force the target to make a WIS saving throw on a failure, the target is unable to use any Move it knows that is the same as yours for the duration."
+  },
+  {
+    "id": "inferno",
+    "name": "Inferno",
+    "type": "fire",
+    "flavor": "You engulf a target in intense flames.",
+    "description": "You engulf a target in intense flames. dealing, burning the target in the process."
+  },
+  {
+    "id": "ingrain",
+    "name": "Ingrain",
+    "type": "grass",
+    "flavor": "You pierce the ground with roots, absorbing natural energy and fixing you in place.",
+    "description": "You pierce the ground with roots, absorbing natural energy and fixing you in place. At the end of each of your next three turns (including this one), heal yourself for hit points. For the duration of this move, your movement speed drops to zero and you may not flee or be switched out by your trainer unless forced by an opponent's moves or abilities."
+  },
+  {
+    "id": "iron-defense",
+    "name": "Iron Defense",
+    "type": "steel",
+    "flavor": "Your body temporarily becomes solid as steel plate.",
+    "description": "Your body temporarily becomes solid as steel plate. Until the end of your next turn, you gain + 6 to your AC and have resistance to all types of damage. If you were vulnerable, you now take regular damage. If you were already resistant, you become immune."
+  },
+  {
+    "id": "iron-head",
+    "name": "Iron Head",
+    "type": "steel",
+    "flavor": "You slam into the target with your hard head.",
+    "description": "You slam into the target with your hard head. On a natural attack roll of 16 or higher, the target flinches."
+  },
+  {
+    "id": "iron-tail",
+    "name": "Iron Tail",
+    "type": "steel",
+    "flavor": "You swing your tail out, attempting to crush a creature.",
+    "description": "You swing your tail out, attempting to crush a creature. Make an attack roll on a creature in range, doing. If the natural attack roll is a 19 or 20, the target’s AC is decreased by 1 for the rest of combat."
+  },
+  {
+    "id": "jump-kick",
+    "name": "Jump Kick",
+    "type": "fighting",
+    "flavor": "You leap into the air to deliver a strong kick to a creature.",
+    "description": "You leap into the air to deliver a strong kick to a creature. doing. On a miss, you take 1 damage."
+  },
+  {
+    "id": "karate-chop",
+    "name": "Karate Chop",
+    "type": "fighting",
+    "flavor": "You extend a hand towards a target creature for a savage karate chop.",
+    "description": "You extend a hand towards a target creature for a savage karate chop. roll, doing. Karate Chop scores a critical hit on 19s and 20s."
+  },
+  {
+    "id": "kinesis",
+    "name": "Kinesis",
+    "type": "psychic",
+    "flavor": "You move with incredible speed.",
+    "description": "You move with incredible speed. Increase your walking, flying, or swimming speed by 20 if it is greater than 0, and add +2 to AC when targeted by ranged attacks for the duration. This move cannot be stacked."
+  },
+  {
+    "id": "knock-off",
+    "name": "Knock Off",
+    "type": "dark",
+    "flavor": "You attempt to rid a creature of their held item for the rest of battle.",
+    "description": "You attempt to rid a creature of their held item for the rest of battle. roll against a target. deal and any held item of the target disappears. The item appears back in the target's inventory when the battle is over."
+  },
+  {
+    "id": "laser-focus",
+    "name": "Laser Focus",
+    "type": "normal",
+    "flavor": null,
+    "description": "When activating this move, you spend your action concentrating intensely. If you keep your concentration, your first attack roll on your next turn always results in a critical hit."
+  },
+  {
+    "id": "last-resort",
+    "name": "Last Resort",
+    "type": "normal",
+    "flavor": "You lash out an a creature with a furious strike. This move can only be activated when all other known moves by a user have been activated in the same combat. If the user is switched out, this rule resets.",
+    "description": "You lash out an a creature with a furious strike. This move can only be activated when all other known moves by a user have been activated in the same combat. If the user is switched out, this rule resets."
+  },
+  {
+    "id": "lava-plume",
+    "name": "Lava Plume",
+    "type": "fire",
+    "flavor": "You summon forth a plume of raging hot fire in a 5 foot radius, 40-foot cylinder, centered on a point within range.",
+    "description": "You summon forth a plume of raging hot fire in a 5 foot radius, 40-foot cylinder, centered on a point within range. Creatures in the blast must make a save , on a failure, and becoming burned, or half as much without becoming burned on a success."
+  },
+  {
+    "id": "leaf-blade",
+    "name": "Leaf Blade",
+    "type": "grass",
+    "flavor": "You attempt to slash a creature with a sharp leaf.",
+    "description": "You attempt to slash a creature with a sharp leaf. This attack scores a critical on 19 and 20."
+  },
+  {
+    "id": "leaf-storm",
+    "name": "Leaf Storm",
+    "type": "grass",
+    "flavor": "You whip up a powerful storm of leaves in a 40 foot circle, centered on a point within range.",
+    "description": "You whip up a powerful storm of leaves in a 40 foot circle, centered on a point within range. All creatures in the area must make a save , on a failure, or half as much on a success. After activating this move, you are sapped of energy. On any damaging move you activate before the end of your next turn, reduce the damage dealt by your MOVE modifier."
+  },
+  {
+    "id": "leaf-tornado",
+    "name": "Leaf Tornado",
+    "type": "grass",
+    "flavor": null,
+    "description": "You summon forth a cyclone of harsh winds and fast moving leaves that rushes forward to strike a creature in range. roll, If the natural attack roll is 15 or higher, the target has disadvantage on its next attack. If the target activates a move that requires a saving throw, its target(s) have advantage on the roll."
+  },
+  {
+    "id": "leech-life",
+    "name": "Leech Life",
+    "type": "bug",
+    "flavor": "You attempt to suck away some of a creature’s life force.",
+    "description": "You attempt to suck away some of a creature’s life force. roll, doing. Half of the damage done is restored to the user."
+  },
+  {
+    "id": "leech-seed",
+    "name": "Leech Seed",
+    "type": "grass",
+    "flavor": null,
+    "description": "You send a seed at a creature in range that implants itself in their hide. roll. a seed implants into their skin. The target takes at the end of each of its subsequent turns until it faints or is switched out. Half of the damage is restored by the attacker, or any other active creature the trainer has in battle, even if the original attacker faints or is returned to its Pokéball. Only one creature can be seeded by the attacker at a time. Grass-type creatures are immune to the damage from this move."
+  },
+  {
+    "id": "leer",
+    "name": "Leer",
+    "type": "normal",
+    "flavor": "You stare down a target, reducing its will.",
+    "description": "You stare down a target, reducing its will. The creature must make a save on a failure, allies may add +1 to any attack they target it with for the duration. This modifier can be stacked if it fails multiple leer saves, up to a maximum of +5."
+  },
+  {
+    "id": "lick",
+    "name": "Lick",
+    "type": "ghost",
+    "flavor": "You reach out and lick a target.",
+    "description": "You reach out and lick a target. roll. do. On a natural attack roll of 18 or higher, the target becomes paralyzed."
+  },
+  {
+    "id": "life-dew",
+    "name": "Life Dew",
+    "type": "water",
+    "flavor": "You scatter mysterious water around yourself.",
+    "description": "You scatter mysterious water around yourself. You and all allies withing 15 ft of you regain hit points."
+  },
+  {
+    "id": "light-screen",
+    "name": "Light Screen",
+    "type": "psychic",
+    "flavor": null,
+    "description": "When you are subject to a ranged attack, use your reaction to take half the damage dealt now and on any ranged attack that targets you until the beginning of your next turn."
+  },
+  {
+    "id": "lock-on",
+    "name": "Lock-On",
+    "type": "normal",
+    "flavor": "You hone in on your target, ready to strike.",
+    "description": "You hone in on your target, ready to strike. When this move is activated, a single attack roll you make next turn is guaranteed to hit. You may roll to see if you crit or cause an effect from a high roll. This move does not affect one-shot moves like Fissure, Guillotine, etc."
+  },
+  {
+    "id": "lovely-kiss",
+    "name": "Lovely Kiss",
+    "type": "normal",
+    "flavor": "You blow a kiss to a creature, attempting to put the target to sleep.",
+    "description": "You blow a kiss to a creature, attempting to put the target to sleep. The target must make a save , falling asleep on a failure."
+  },
+  {
+    "id": "low-kick",
+    "name": "Low Kick",
+    "type": "fighting",
+    "flavor": "You kick out at a creature’s lower half, dealing damage and attempting to knock it off balance.",
+    "description": "You kick out at a creature’s lower half and attempting to knock it off balance. doing. If the natural attack roll is 19 or 20, the target flinches."
+  },
+  {
+    "id": "low-sweep",
+    "name": "Low Sweep",
+    "type": "fighting",
+    "flavor": "You sweep your legs at the lower half of a creature's body.",
+    "description": "You sweep your legs at the lower half of a creature's body. roll, target must succeed on a save or be knocked prone."
+  },
+  {
+    "id": "lucky-chant",
+    "name": "Lucky Chant",
+    "type": "normal",
+    "flavor": null,
+    "description": "When a creature scores a critical hit on you or an ally in range, you may use your reaction to quickly recite a magical incantation that treats the attack like a normal hit, preventing the extra damage and/or effect of the crit."
+  },
+  {
+    "id": "mach-punch",
+    "name": "Mach Punch",
+    "type": "fighting",
+    "flavor": "You rush forward to punch with incredible speed. Choose a target within 10 feet of you. You rush forward to slam a fist into the creature, avoiding all attacks of opportunity.",
+    "description": "You rush forward to punch with incredible speed. Choose a target within 10 feet of you. You rush forward to slam a fist into the creature, avoiding all attacks of opportunity. on that creature,"
+  },
+  {
+    "id": "magic-coat",
+    "name": "Magic Coat",
+    "type": "psychic",
+    "flavor": "A flash of magical energy forms between you and a creature, reflecting negative energy back at an attacker in range. When an attack from a creature causes you to suffer from a negative status condition, they are also affected by the same condition.",
+    "description": "A flash of magical energy forms between you and a creature, reflecting negative energy back at an attacker in range. When an attack from a creature causes you to suffer from a negative status condition, they are also affected by the same condition."
+  },
+  {
+    "id": "magical-leaf",
+    "name": "Magical Leaf",
+    "type": "grass",
+    "flavor": "You summon a sharp, magical leaf that strikes a creature.",
+    "description": "You summon a sharp, magical leaf that strikes a creature. This move is guaranteed to hit, unless during the invulnerable stage of Fly, Dig, Bounce, Dive, etc. moves."
+  },
+  {
+    "id": "magnet-bomb",
+    "name": "Magnet Bomb",
+    "type": "steel",
+    "flavor": null,
+    "description": "You hurl a steel ball that seeks out a creature in range, never missing. This move is guaranteed to hit, unless during the invulnerable stage of Fly, Dig, Bounce, Dive, etc. moves."
+  },
+  {
+    "id": "magnet-rise",
+    "name": "Magnet Rise",
+    "type": "electric",
+    "flavor": null,
+    "description": "You use magnetic power within yourself to raise yourself from the ground, becoming immune to ground moves for the duration."
+  },
+  {
+    "id": "magnetic-flux",
+    "name": "Magnetic Flux",
+    "type": "electric",
+    "flavor": "You use your electric energy to manipulate magnetic fields.",
+    "description": "You use your electric energy to manipulate magnetic fields. Until the beginning of your next turn, any creature in range with the Plus or Minus ability gains a bonus to their AC equal to your proficiency modifier, and any saving throw they are forced to make is rolled with advantage."
+  },
+  {
+    "id": "magnitude",
+    "name": "Magnitude",
+    "type": "ground",
+    "flavor": "You shake the ground with an earth-shattering quake.",
+    "description": "You shake the ground with an earth-shattering quake. All creature in range must make a save , taking half damage on a success, and full damage on a failure. Creatures in range that are burrowed or in the invulnerable stage of Dig take double damage from this move. Roll a d100 on the table below to determine damage. Raised creatures are immune to the effects and damage of this move. Magnitude Table (d100): 1-5: 6-15: 16-35: 36-65: 66-85: 86-95: 96-100:"
+  },
+  {
+    "id": "me-first",
+    "name": "Me First",
+    "type": "normal",
+    "flavor": null,
+    "description": "When targeted by or forced to make a saving throw from a single-target move, you may use your reaction to copy the creature’s move against it, after activation but before the effects. If the move requires an attack roll, you have disadvantage on the attack. If the move requires a saving throw, the target has advantage on the roll. If the move causes damage, double the damage dice. The damage/effect tier for the move is based off of your level, not the target's."
+  },
+  {
+    "id": "mean-look",
+    "name": "Mean Look",
+    "type": "normal",
+    "flavor": "You flash an intimidating look at a target, attempting to freeze them in fear.",
+    "description": "You flash an intimidating look at a target, attempting to freeze them in fear. Force a target in range to make a save on a failure, the target cannot flee or be switched out for 3 rounds."
+  },
+  {
+    "id": "meditate",
+    "name": "Meditate",
+    "type": "psychic",
+    "flavor": "You become one with your inner self.",
+    "description": "You become one with your inner self. For the duration, you gain +1 to attack rolls and saving throws."
+  },
+  {
+    "id": "mega-drain",
+    "name": "Mega Drain",
+    "type": "grass",
+    "flavor": "You attempt to drain the life force of a target.",
+    "description": "You attempt to drain the life force of a target. doing. Half of the damage dealt is restored to the user."
+  },
+  {
+    "id": "mega-kick",
+    "name": "Mega Kick",
+    "type": "normal",
+    "flavor": null,
+    "description": "doing."
+  },
+  {
+    "id": "mega-punch",
+    "name": "Mega Punch",
+    "type": "normal",
+    "flavor": null,
+    "description": "You strike out with a hard punch doing."
+  },
+  {
+    "id": "megahorn",
+    "name": "Megahorn",
+    "type": "bug",
+    "flavor": "You charge at a creature for a devastating horn attack.",
+    "description": "You charge at a creature for a devastating horn attack. roll, doing. If you moved 20 feet or more straight towards a target, immediately before activating this move, force a creature to make a save or be knocked prone."
+  },
+  {
+    "id": "memento",
+    "name": "Memento",
+    "type": "dark",
+    "flavor": "You sacrifice your life force to leave a lasting mark on a target. When you activate this move, you touch a creature and drop to 0 hit points. As a result, the target is incapacitated for 2 rounds.",
+    "description": "You sacrifice your life force to leave a lasting mark on a target. When you activate this move, you touch a creature and drop to 0 hit points. As a result, the target is incapacitated for 2 rounds. All attacks against it have advantage, it automatically fails all STR and DEX saving throws by the maximum amount, and it cannot attack, move, flee, or be switched out."
+  },
+  {
+    "id": "metal-burst",
+    "name": "Metal Burst",
+    "type": "steel",
+    "flavor": "You lash out in retaliation with a bust of harsh metal shards.",
+    "description": "You lash out in retaliation with a bust of harsh metal shards. As a reaction, when you are hit with a melee attack that deals damage, roll against your attacker, with disadvantage. deal the same amount of steel type damage back at your attacker (maximum of 5x your current level)."
+  },
+  {
+    "id": "metal-claw",
+    "name": "Metal Claw",
+    "type": "steel",
+    "flavor": "You strike out with sharp claws.",
+    "description": "You strike out with sharp claws. roll against a creature, doing. If the natural attack roll is 19 or 20, your next attack gets an additional +1 to hit."
+  },
+  {
+    "id": "metal-sound",
+    "name": "Metal Sound",
+    "type": "steel",
+    "flavor": "You emit an ear-shattering high pitched sound that only your target can hear, leaving them in a defenseless state.",
+    "description": "You emit an ear-shattering high pitched sound that only your target can hear, leaving them in a defenseless state. When activating this move, a target must make a CON saving throw on a failure, all attack rolls against the target are given a +5 bonus until the end of your next turn."
+  },
+  {
+    "id": "meteor-mash",
+    "name": "Meteor Mash",
+    "type": "steel",
+    "flavor": "You smash a creature with a fist as fast as a meteor strike.",
+    "description": "You smash a creature with a fist as fast as a meteor strike. against a creature, doing. If the natural attack roll is 18 or higher, your next attack has advantage."
+  },
+  {
+    "id": "metronome",
+    "name": "Metronome",
+    "type": "normal",
+    "flavor": "You summon a move at random to inflict against a creature. When you use this move, roll a d100. The resulting number is the TM number for the move you make. If the move is unable to be completed because of positioning, range, etc. , Metronome fails.",
+    "description": "You summon a move at random to inflict against a creature. When you use this move, roll a d100. The resulting number is the TM number for the move you make. If the move is unable to be completed because of positioning, range, etc. Metronome fails."
+  },
+  {
+    "id": "mimic",
+    "name": "Mimic",
+    "type": "normal",
+    "flavor": "You copy another creature's movements, learning its ways in battle. When used, this move is temporarily replaced by your choice of one of the target's moves. The target can be an ally. After one PP is subtracted to use this move, the replacement move will retain Mimic's remaining PP.",
+    "description": "You copy another creature's movements, learning its ways in battle. When used, this move is temporarily replaced by your choice of one of the target's moves. The target can be an ally. After one PP is subtracted to use this move, the replacement move will retain Mimic's remaining PP. The user can select any of the target's moves to copy for the duration."
+  },
+  {
+    "id": "mind-reader",
+    "name": "Mind Reader",
+    "type": "normal",
+    "flavor": "You sense the motives and moves of a creature around you.",
+    "description": "You sense the motives and moves of a creature around you. When this move is activated, a single attack roll you make next turn is guaranteed to hit. You may roll to see if you crit or cause an effect from a high roll. This move does not affect one-shot moves like Fissure, Guillotine, etc."
+  },
+  {
+    "id": "minimize",
+    "name": "Minimize",
+    "type": "normal",
+    "flavor": "You appear smaller to your creatures, increasing your evasion.",
+    "description": "You appear smaller to your creatures, increasing your evasion. For the duration, you gain an additional +2 to your AC."
+  },
+  {
+    "id": "miracle-eye",
+    "name": "Miracle Eye",
+    "type": "psychic",
+    "flavor": "You flash your eyes at the target, stunning them briefly and lowering their defenses.",
+    "description": "You flash your eyes at the target, stunning them briefly and lowering their defenses. When activating this move, choose a target in range and force them to make a save on a failure, any modifiers to their AC are reset, and if they are Dark or Ghost-type, their immunities are relinquished for the duration. If, when losing immunity, the target’s secondary type gives it vulnerability or resistance to an attack of that type, it follows the secondary type for that effect."
+  },
+  {
+    "id": "mirror-coat",
+    "name": "Mirror Coat",
+    "type": "psychic",
+    "flavor": "When subject to a ranged attack, you can attempt to decrease the damage and send some back at the attacker in range.",
+    "description": "When subject to a ranged attack, you can attempt to decrease the damage and send some back at the attacker in range. Using this reaction, the damage is decreased by. If this causes the damage to fall below zero, the attack is deflected and you may roll to send it back at the attacker for."
+  },
+  {
+    "id": "mirror-move",
+    "name": "Mirror Move",
+    "type": "flying",
+    "flavor": "You mimic a target that you can see, in range.",
+    "description": "You mimic a target that you can see, in range. When you activate this move, choose a target in range and fully execute the most recent move used by the creature, using your own ability scores, level, and typing for saving throw DC, attack, and damage."
+  },
+  {
+    "id": "mirror-shot",
+    "name": "Mirror Shot",
+    "type": "steel",
+    "flavor": "You loose a damaging flash of light from your polished body.",
+    "description": "You loose a damaging flash of light from your polished body. on a creature, On a failed save, the target has disadvantage on its next attack roll."
+  },
+  {
+    "id": "mist",
+    "name": "Mist",
+    "type": "ice",
+    "flavor": "A light mist surrounds a target, offering a protective barrier.",
+    "description": "A light mist surrounds a target, offering a protective barrier. The target is immune to negative stat changes for the duration, but any current effects are still in place."
+  },
+  {
+    "id": "misty-terrain",
+    "name": "Misty Terrain",
+    "type": "fairy",
+    "flavor": "You cover the ground in a thin, healing mist that surrounds a 120 foot circle, centered on you.",
+    "description": "You cover the ground in a thin, healing mist that surrounds a 120 foot circle, centered on you. For 3 turns, no grounded creatures inside the mist can suffer from new status conditions. Grounded creatures are those that do not have a flying speed or Levitate, Magnet Rise, or similar ability. In addition, grounded creatures in the terrain are resistant to dragon-type damage, or if they were vulnerable to dragon-type damage, they take regular damage instead."
+  },
+  {
+    "id": "moonblast",
+    "name": "Moonblast",
+    "type": "fairy",
+    "flavor": "You summon forth a powerful moonbeam that strikes a creature.",
+    "description": "You summon forth a powerful moonbeam that strikes a creature. on a target in range, On a natural attack roll of 15 or more, the target has disadvantage on its next attack."
+  },
+  {
+    "id": "moonlight",
+    "name": "Moonlight",
+    "type": "fairy",
+    "flavor": "A ray of moonlight shines upon you, basking you in healing light.",
+    "description": "A ray of moonlight shines upon you, basking you in healing light. The user gains hit points. If this move is activated during the day, halve the total healing."
+  },
+  {
+    "id": "morning-sun",
+    "name": "Morning Sun",
+    "type": "normal",
+    "flavor": "A ray of sunlight shines upon you, basking you in healing light.",
+    "description": "A ray of sunlight shines upon you, basking you in healing light. The user gains hit points. If this move is activated at night, halve the total healing."
+  },
+  {
+    "id": "mud-bomb",
+    "name": "Mud Bomb",
+    "type": "ground",
+    "flavor": "You throw a hard-packed mud ball at a creature.",
+    "description": "You throw a hard-packed mud ball at a creature. On a failed save, the target has disadvantage on its next attack roll. If activating a move that requires a save, the target(s) have advantage."
+  },
+  {
+    "id": "mud-shot",
+    "name": "Mud Shot",
+    "type": "ground",
+    "flavor": "You fire a glob of mud at a creature, dealing damage with a chance to hinder the target's movement.",
+    "description": "You fire a glob of mud at a creature with a chance to hinder the target's movement. against a creature in range, If the natural attack roll is higher than 15, the target's speed becomes 0 until the end of its next turn."
+  },
+  {
+    "id": "mud-sport",
+    "name": "Mud Sport",
+    "type": "ground",
+    "flavor": "You cover yourself and all allies around you with thick mud, reducing the amount of electric damage taken for anyone affected.",
+    "description": "You cover yourself and all allies around you with thick mud, reducing the amount of taken for anyone affected. For the duration, you and any ally in range (when you initially activated this move) have resistance to electric-type attacks. If you were already resistant, you are now immune. If you were vulnerable, you now take regular damage. If you are immune to electric- type moves already, nothing happens."
+  },
+  {
+    "id": "mud-slap",
+    "name": "Mud-Slap",
+    "type": "ground",
+    "flavor": "You hurl mud at a target in range.",
+    "description": "You hurl mud at a target in range. roll, doing. the target adds -1 to its attack rolls for the rest of the encounter. This decrease may be stacked, up to a maximum of -5 to hit. The target may take an action to remove any mud from its face, resetting the effect."
+  },
+  {
+    "id": "muddy-water",
+    "name": "Muddy Water",
+    "type": "water",
+    "flavor": null,
+    "description": "You fire a stream of muddy water at a creature in range. against a creature, If the natural attack roll is 15 or higher, the target has disadvantage on its next attack."
+  },
+  {
+    "id": "nasty-plot",
+    "name": "Nasty Plot",
+    "type": "dark",
+    "flavor": "You stimulate your brain with nasty thoughts.",
+    "description": "You stimulate your brain with nasty thoughts. For the duration, you have advantage on any attacks with the Wisdom, Intelligence, or Charisma move power. If the attack requires a Wisdom, Intelligence, or Charisma saving throw, the target has disadvantage."
+  },
+  {
+    "id": "natural-gift",
+    "name": "Natural Gift",
+    "type": "varies",
+    "flavor": "You draw in power from your held berry, releasing it into a ranged attack.",
+    "description": "You draw in power from your held berry, releasing it into a ranged attack. The type is dependant on what berry you are holding, according to the chart below: Berry Type Table: Normal: Chilan | Flying: Lum, Coba Fire: Cherri, Occa | Psychic: Sitrus, Payapa Water: Chesto, Passho | Bug: Tanga Electric: Pecha, Waccan | Rock: Charti Grass: Rawst, Rindo | Ghost: Kasib Ice: Aspear, Yache | Dragon: Haban Fighting: Leppa, Chople | Dark: Colbur Poison: Oran, Kebia | Steel: Babiri, Razz Ground: Persim, Shucca | Fairy: Roseli"
+  },
+  {
+    "id": "night-shade",
+    "name": "Night Shade",
+    "type": "ghost",
+    "flavor": "You hit a target with a necrotic wave of dark energy.",
+    "description": "You hit a target with a necrotic wave of dark energy. against a target. deal an amount of equal to + the user’s level."
+  },
+  {
+    "id": "night-slash",
+    "name": "Night Slash",
+    "type": "dark",
+    "flavor": "You slash out at a creature with dark power.",
+    "description": "You slash out at a creature with dark power. This attack scores a critical hit on natural attack rolls of 19 or 20."
+  },
+  {
+    "id": "nightmare",
+    "name": "Nightmare",
+    "type": "ghost",
+    "flavor": null,
+    "description": "You create a horrible nightmare in the mind of any sleeping creature in a 120 foot circle around you, inflicting automatically. This move does not wake a sleeping creature."
+  },
+  {
+    "id": "nuzzle",
+    "name": "Nuzzle",
+    "type": "electric",
+    "flavor": "You touch a creature with your electrified cheeks, sending electricity coursing through their veins.",
+    "description": "You touch a creature with your electrified cheeks, sending electricity coursing through their veins. Make an attack roll against a creature. the target takes and is forced to make a save , becoming paralyzed on a failure."
+  },
+  {
+    "id": "octazooka",
+    "name": "Octazooka",
+    "type": "water",
+    "flavor": "You send a blast of ink towards your creatures.",
+    "description": "You send a blast of ink towards your creatures. roll, doing. If the natural attack roll is 18 or more, the target must add -1 to attack rolls for the remainder of this combat."
+  },
+  {
+    "id": "odor-sleuth",
+    "name": "Odor Sleuth",
+    "type": "normal",
+    "flavor": "When you activate this move, choose a target in range.",
+    "description": "When you activate this move, choose a target in range. For the duration, the target cannot activate any move that would increase its AC. If it has already activated such a move, the effect ends immediately. In addition, for the duration, no creature in range has immunity to your Ghost, Normal, or Fighting-type moves."
+  },
+  {
+    "id": "outrage",
+    "name": "Outrage",
+    "type": "dragon",
+    "flavor": "You go into a rampage, doing several attacks without control for three rounds.",
+    "description": "You go into a rampage, doing several attacks without control for three rounds. This move automatically hits for in the first round, in the second round, and in the third round. When this move ends, either after the third round or from breaking concentration, you become confused. This attack stops if concentration is broken, or the user becomes incapacitated."
+  },
+  {
+    "id": "pain-split",
+    "name": "Pain Split",
+    "type": "normal",
+    "flavor": "You split pain from your injuries with your attacker.",
+    "description": "You split pain from your injuries with your attacker. Target a creature in range, forcing them to make a save on a failure, both you and your attacker change your current health points to the average of the two. If this causes either creature to go above maximum health, they take their maximum health instead."
+  },
+  {
+    "id": "pay-day",
+    "name": "Pay Day",
+    "type": "normal",
+    "flavor": "You strike a target, causing it to shake out its purse.",
+    "description": "You strike a target, causing it to shake out its purse. doing. In addition, 10x the user’s level in cash is scattered on the floor until the end of combat. This release of funds can only occur once per target per combat."
+  },
+  {
+    "id": "payback",
+    "name": "Payback",
+    "type": "dark",
+    "flavor": "You strike hard in retaliation.",
+    "description": "You strike hard in retaliation. If the target damaged you on the turn immediately before yours, double the dice roll for the damage of this attack."
+  },
+  {
+    "id": "peck",
+    "name": "Peck",
+    "type": "flying",
+    "flavor": "You hammer down on a target with a peck attack.",
+    "description": "You hammer down on a target with a peck attack. roll on a target, doing on a success,ful hit."
+  },
+  {
+    "id": "perish-song",
+    "name": "Perish Song",
+    "type": "normal",
+    "flavor": "You perform a song with devastating consequences to creatures that hear it.",
+    "description": "You perform a song with devastating consequences to creatures that hear it. All creatures in range (including you) must make a CON saving throw For any that fail, they faint in 3 rounds, on their turn, unless fleeing or switched out by their trainer before the end of the three rounds."
+  },
+  {
+    "id": "petal-blizzard",
+    "name": "Petal Blizzard",
+    "type": "grass",
+    "flavor": "You stir up a blizzard of sharp petals that swirl around you.",
+    "description": "You stir up a blizzard of sharp petals that swirl around you. Any creature in a 60 foot circle, centered on you, must make a save , on a failure, or half as much on a success."
+  },
+  {
+    "id": "petal-dance",
+    "name": "Petal Dance",
+    "type": "grass",
+    "flavor": null,
+    "description": "You dance around, releasing a flurry of sharp leaf attacks against a creature in range. roll, On the following turn, you may choose to use this action again to hit automatically, but if you do, you become confused at the end of your turn."
+  },
+  {
+    "id": "pin-missile",
+    "name": "Pin Missile",
+    "type": "bug",
+    "flavor": "You strike a creature with sharp projectiles in quick succession.",
+    "description": "You strike a creature with sharp projectiles in quick succession. roll, doing. After successfully hitting a target, roll a d4. On a result of 3 or 4, another projectile hits again for an additional. Continue this process until you fail to roll a 3 or 4 on the d4 roll, up to a maximum of four additional hits."
+  },
+  {
+    "id": "play-nice",
+    "name": "Play Nice",
+    "type": "normal",
+    "flavor": "You convince a creature that you mean it no harm.",
+    "description": "You convince a creature that you mean it no harm. Force a creature to make a CHA saving throw on a failure, any attack the target makes on its next turn is rolled at disadvantage. If the target activates a move that requires a saving throw, you have advantage on the roll."
+  },
+  {
+    "id": "play-rough",
+    "name": "Play Rough",
+    "type": "fairy",
+    "flavor": "You fake a creature out with a playful attack that quickly becomes too rough.",
+    "description": "You fake a creature out with a playful attack that quickly becomes too rough. against a creature, On natural attack rolls of 19 or 20, the target adds -1 to any attack it makes for the remainder of combat. This effect can be stacked to a maximum of -5 to hit."
+  },
+  {
+    "id": "pluck",
+    "name": "Pluck",
+    "type": "flying",
+    "flavor": "You peck at a target, attempting to grab their held berry.",
+    "description": "You peck at a target, attempting to grab their held berry. on a creature, if the target is holding a berry, you swallow it immediately and gain its effect."
+  },
+  {
+    "id": "poison-fang",
+    "name": "Poison Fang",
+    "type": "poison",
+    "flavor": "You lash forward with poisonous venom.",
+    "description": "You lash forward with poisonous venom. roll against a creature, dealing, forcing the target to make a save on a failure, the creature is badly poisoned."
+  },
+  {
+    "id": "poison-gas",
+    "name": "Poison Gas",
+    "type": "poison",
+    "flavor": "You create a fog of poisonous gas in a 15 foot radius, centered on a point within range.",
+    "description": "You create a fog of poisonous gas in a 15 foot radius, centered on a point within range. Creatures that begin their turn in the area take and must succeed on a save or become poisoned. The gas cloud dissipates at the beginning of your next turn."
+  },
+  {
+    "id": "poison-jab",
+    "name": "Poison Jab",
+    "type": "poison",
+    "flavor": "You stab a creature with an appendage steeped in poison.",
+    "description": "You stab a creature with an appendage steeped in poison. on a creature, On a natural attack roll of 16 or higher, the target is poisoned."
+  },
+  {
+    "id": "poison-powder",
+    "name": "Poison Powder",
+    "type": "poison",
+    "flavor": "You release a cluster of poisonous spores that burst into the air above a target.",
+    "description": "You release a cluster of poisonous spores that burst into the air above a target. The creature must succeed on a save , becoming poisoned on a failure."
+  },
+  {
+    "id": "poison-sting",
+    "name": "Poison Sting",
+    "type": "poison",
+    "flavor": "You strike out at a creature with a poisonous sting.",
+    "description": "You strike out at a creature with a poisonous sting. roll doing. If the natural attack roll is 18 or more, the creature is poisoned."
+  },
+  {
+    "id": "poison-tail",
+    "name": "Poison Tail",
+    "type": "poison",
+    "flavor": "Poisonous barbs sprout from your tail as you swing it at a creature.",
+    "description": "Poisonous barbs sprout from your tail as you swing it at a creature. against a creature, If the natural attack roll is a 19 or 20, the move scores a critical hit and the target is poisoned."
+  },
+  {
+    "id": "pounce",
+    "name": "Pounce",
+    "type": "bug",
+    "flavor": "You pounce at the target and leap away.",
+    "description": "You pounce at the target and leap away. roll doing on hit. If you hit, you may move an additional 10ft without invoking an attack of opportunity."
+  },
+  {
+    "id": "pound",
+    "name": "Pound",
+    "type": "normal",
+    "flavor": "You crush a creature with a pound attack.",
+    "description": "You crush a creature with a pound attack. roll doing."
+  },
+  {
+    "id": "powder",
+    "name": "Powder",
+    "type": "bug",
+    "flavor": null,
+    "description": "You quickly coat a creature in an explosive powder. When a creature in range activates a fire-type move, you may use your reaction to release a spray of flammable powder that explodes and automatically deals typeless damage to the target."
+  },
+  {
+    "id": "powder-snow",
+    "name": "Powder Snow",
+    "type": "ice",
+    "flavor": "You send a blast of cold snow at a creature.",
+    "description": "You send a blast of cold snow at a creature. roll on a creature, doing. If the natural attack roll is 18 or higher, the target is frozen."
+  },
+  {
+    "id": "power-gem",
+    "name": "Power Gem",
+    "type": "rock",
+    "flavor": null,
+    "description": "A ray of light bursts out of your gemstone, damaging a creature in range."
+  },
+  {
+    "id": "power-swap",
+    "name": "Power Swap",
+    "type": "psychic",
+    "flavor": null,
+    "description": "As a bonus action, force a creature in range to make a save on a failure, you employ your psychic power to swap a single ability score with a creature until the end of their next turn, for purposes of attack and damage rolls."
+  },
+  {
+    "id": "power-trick",
+    "name": "Power Trick",
+    "type": "psychic",
+    "flavor": "You employ your psychic power to switch your own attack and defense.",
+    "description": "You employ your psychic power to switch your own attack and defense. Until the end of your next turn, switch your AC with an ability score of your choice (Constitution not included)"
+  },
+  {
+    "id": "power-whip",
+    "name": "Power Whip",
+    "type": "grass",
+    "flavor": "You violently whirl your tentacles or vines towards a target.",
+    "description": "You violently whirl your tentacles or vines towards a target. against a creature, dealing,"
+  },
+  {
+    "id": "protect",
+    "name": "Protect",
+    "type": "normal",
+    "flavor": "You sense incoming danger and are able to quickly avoid it.",
+    "description": "You sense incoming danger and are able to quickly avoid it. When you are the recipient of the damage and/or effects of a move, you may automatically avoid the damage/effects on the first instance of this reaction. On future instances of this move in the same combat, you must roll higher than a 15 on a d20 roll for the reaction to be successful. This reaction may not be used to guard against the damage/effects that result from a natural 20 attack roll."
+  },
+  {
+    "id": "psybeam",
+    "name": "Psybeam",
+    "type": "psychic",
+    "flavor": "You send a beam of invisible, psychic energy at a target in range.",
+    "description": "You send a beam of invisible, psychic energy at a target in range. The target must make a WIS saving throw , on a failure, or half as much on a success. Creatures that fail the save by 5 or more become confused."
+  },
+  {
+    "id": "psych-up",
+    "name": "Psych Up",
+    "type": "normal",
+    "flavor": "You sync up with a creature, copying any positive or negative stat changes affecting them due to weather or moves this combat.",
+    "description": "You sync up with a creature, copying any positive or negative stat changes affecting them due to weather or moves this combat."
+  },
+  {
+    "id": "psychic",
+    "name": "Psychic",
+    "type": "psychic",
+    "flavor": "You tap into a target’s mind, damaging their will to fight.",
+    "description": "You tap into a target’s mind, damaging their will to fight. on a creature in range, doing. If the natural attack roll is 18 or higher, the target becomes confused."
+  },
+  {
+    "id": "psycho-cut",
+    "name": "Psycho Cut",
+    "type": "psychic",
+    "flavor": "You tear at a target with blades formed by psychic power.",
+    "description": "You tear at a target with blades formed by psychic power. on a creature, This move scores a critical hit on natural rolls of 19 or 20."
+  },
+  {
+    "id": "psycho-shift",
+    "name": "Psycho Shift",
+    "type": "psychic",
+    "flavor": "You employ your psychic power to transfer a status condition to someone else.",
+    "description": "You employ your psychic power to transfer a status condition to someone else. Choose a willing ally (or yourself) and a creature in range. Force the target to make a save on a failure, a status affecting the ally (or you) is transferred to the target instead."
+  },
+  {
+    "id": "psyshock",
+    "name": "Psyshock",
+    "type": "psychic",
+    "flavor": "You materialize a psychic wave that shocks a creature.",
+    "description": "You materialize a psychic wave that shocks a creature."
+  },
+  {
+    "id": "psystrike",
+    "name": "Psystrike",
+    "type": "psychic",
+    "flavor": "You materialize a psychic wave that shocks a creature.",
+    "description": "You materialize a psychic wave that shocks a creature."
+  },
+  {
+    "id": "psywave",
+    "name": "Psywave",
+    "type": "psychic",
+    "flavor": "You emit a wave of psychic energy in a 40 foot line, 5 feet wide.",
+    "description": "You emit a wave of psychic energy in a 40 foot line, 5 feet wide. Each creature caught in the wave must make a save , becoming confused on a failure."
+  },
+  {
+    "id": "punishment",
+    "name": "Punishment",
+    "type": "dark",
+    "flavor": "You send dark energy to punish a creature.",
+    "description": "You send dark energy to punish a creature. against a creature, If the target is currently under the influence of a move or ability that boosts its attack, damage, or AC, increase the damage by one damage dice for each effect."
+  },
+  {
+    "id": "pursuit",
+    "name": "Pursuit",
+    "type": "dark",
+    "flavor": null,
+    "description": "As a reaction, when a creature is fleeing or is switched out by their trainer, you may roll against it, doing."
+  },
+  {
+    "id": "quick-attack",
+    "name": "Quick Attack",
+    "type": "normal",
+    "flavor": null,
+    "description": "You lash out with a quick unarmed strike at a creature in range. As a bonus action, you can immediately move up to 10ft and against a creature in range without taking an attack of opportunity, doing."
+  },
+  {
+    "id": "quick-guard",
+    "name": "Quick Guard",
+    "type": "fighting",
+    "flavor": "You have the ability to rush to the aid of an ally at the start of combat.",
+    "description": "You have the ability to rush to the aid of an ally at the start of combat. If an ally in range (or you) is attacked on the very first turn of the very first round of combat, you may use your reaction to negate any damage dealt."
+  },
+  {
+    "id": "quiver-dance",
+    "name": "Quiver Dance",
+    "type": "bug",
+    "flavor": "You lightly perform a mystical dance.",
+    "description": "You lightly perform a mystical dance. For the duration, add +1 to your AC, attack rolls, and damage."
+  },
+  {
+    "id": "rage",
+    "name": "Rage",
+    "type": "normal",
+    "flavor": "You go into a fit of rage, attacking with relentless fury.",
+    "description": "You go into a fit of rage, attacking with relentless fury. While you are raging, you gain +1 on all damage rolls (only once per move), have resistance to, and have advantage on all Strength checks. Your rage ends if you drop concentration or if your turn ends and you have not attacked a hostile target since your last turn, or taken any damage since then."
+  },
+  {
+    "id": "rage-fist",
+    "name": "Rage Fist",
+    "type": "ghost",
+    "flavor": "You convert your rage into energy to attack.",
+    "description": "You convert your rage into energy to attack. You against a creature in range, doing. This moves deals 1 additional damage for every 10 points of HP you have below your maximum HP."
+  },
+  {
+    "id": "rage-powder",
+    "name": "Rage Powder",
+    "type": "bug",
+    "flavor": "You scatter a cloud of irritating powder, drawing attacks to yourself.",
+    "description": "You scatter a cloud of irritating powder, drawing attacks to yourself. Any creature in a 15 foot cone must make a WIS saving throw on a failure, the creature(s) can only use damaging moves that target you for the duration. Any creature affected can repeat the save at the end of each of its turns to shake off the effect."
+  },
+  {
+    "id": "raging-bull",
+    "name": "Raging Bull",
+    "type": "normal",
+    "flavor": "You tackle like a raging bull.",
+    "description": "You tackle like a raging bull. roll, doing damage. This move ignores the effects of moves that would reduce its damage (Harden, Reflect, etc.). The type of damage dealt by this move depends on the breed of its user. Breed Table: Unspecified: Normal Combat Breed: Fighting Blaze Breed: Fire Aqua Breed: Water"
+  },
+  {
+    "id": "rain-dance",
+    "name": "Rain Dance",
+    "type": "water",
+    "flavor": "You summon a heavy rainfall that covers the battlefield for 5 rounds.",
+    "description": "You summon a heavy rainfall that covers the battlefield for 5 rounds."
+  },
+  {
+    "id": "rapid-spin",
+    "name": "Rapid Spin",
+    "type": "normal",
+    "flavor": "You strike out with an incredibly fast spinning move.",
+    "description": "You strike out with an incredibly fast spinning move. All creatures within melee range must make a save , on a failure, or half as much on a success. In addition, this move automatically frees the user from Leech Seed or anything causing it to be grappled or restrained. It is removed from these statuses before the saving throw is made."
+  },
+  {
+    "id": "razor-leaf",
+    "name": "Razor Leaf",
+    "type": "grass",
+    "flavor": null,
+    "description": "You send a razor sharp leaf at a creature in range at tremendous speed. roll, doing. Razor Leaf results in a critical hit on 19s and 20s"
+  },
+  {
+    "id": "razor-shell",
+    "name": "Razor Shell",
+    "type": "water",
+    "flavor": "You strike a creature with a razor sharp shell.",
+    "description": "You strike a creature with a razor sharp shell. on a creature, On natural attack rolls of 18 or higher, lower the creatures AC by 1. This decrease may be stacked, up to a maximum of -5 to AC."
+  },
+  {
+    "id": "razor-wind",
+    "name": "Razor Wind",
+    "type": "normal",
+    "flavor": "When you use this move, strong winds begin to circle around you, granting +2 to AC.",
+    "description": "When you use this move, strong winds begin to circle around you, granting +2 to AC. On your next turn, if you keep your concentration, you release those winds as an action in a 20 foot radius, centered on you. Each creature in the area must make a save , on a failure, or half as much on a success."
+  },
+  {
+    "id": "recover",
+    "name": "Recover",
+    "type": "normal",
+    "flavor": null,
+    "description": "You extend a healing energy to recover the hit points of a creature in range. The target regains hit points."
+  },
+  {
+    "id": "recycle",
+    "name": "Recycle",
+    "type": "normal",
+    "flavor": "You summon a previously discarded item back into your hands. If you used a consumable held item any time within the last 5 turns, you can activate this move to take advantage of the same effect one last time. This move may not be used in the same round the held item was used.",
+    "description": "You summon a previously discarded item back into your hands. If you used a consumable held item any time within the last 5 turns, you can activate this move to take advantage of the same effect one last time. This move may not be used in the same round the held item was used."
+  },
+  {
+    "id": "reflect",
+    "name": "Reflect",
+    "type": "psychic",
+    "flavor": null,
+    "description": "When you are subject to a melee attack, use your reaction to take half the damage dealt now and on any melee attack that targets you until the beginning of your next turn."
+  },
+  {
+    "id": "reflect-type",
+    "name": "Reflect Type",
+    "type": "normal",
+    "flavor": "Your body flashes into a mirror for just a moment.",
+    "description": "Your body flashes into a mirror for just a moment. When it returns to normal, you take on the type of a creature in range."
+  },
+  {
+    "id": "refresh",
+    "name": "Refresh",
+    "type": "normal",
+    "flavor": "A wave of healing energy washes over you, curing poison, paralysis, and burn.",
+    "description": "A wave of healing energy washes over you, curing poison, paralysis, and burn."
+  },
+  {
+    "id": "rest",
+    "name": "Rest",
+    "type": "psychic",
+    "flavor": null,
+    "description": "When you activate this move, you fall asleep after the end of your turn, but recover hit points in the process. You do not regain health if you do not fall asleep."
+  },
+  {
+    "id": "retaliate",
+    "name": "Retaliate",
+    "type": "normal",
+    "flavor": "You rush to avenge a fallen ally.",
+    "description": "You rush to avenge a fallen ally. When a creature causes an ally to faint, you may move up to your speed to immediately rush forward and roll on the target,"
+  },
+  {
+    "id": "revenge",
+    "name": "Revenge",
+    "type": "fighting",
+    "flavor": "You invoke a fight within to retaliate against a creature that damages you.",
+    "description": "You invoke a fight within to retaliate against a creature that damages you. As a reaction, when you are hit with a melee attack that deals damage, roll against your attacker, with disadvantage. deal the same amount of fighting type damage back at your attacker (maximum of 5x your current level)."
+  },
+  {
+    "id": "reversal",
+    "name": "Reversal",
+    "type": "fighting",
+    "flavor": "You unleash an all out attack that is stronger the less HP you have.",
+    "description": "You unleash an all out attack that is stronger the less HP you have. roll against a creature, doing. If you are below 50% of your maximum health, double the damage. If you are at 10% or below of your maximum health, triple the damage. The multiplier for this attack occurs before the multiplier for resistances or vulnerabilities."
+  },
+  {
+    "id": "roar",
+    "name": "Roar",
+    "type": "normal",
+    "flavor": "You release an intimidating roar at all opponents within 15 feet of you.",
+    "description": "You release an intimidating roar at all opponents within 15 feet of you. Opponents that can hear you must make a save on a failure, the creature is frightened and is forced to immediately move up to its speed in a straight line away from you, or until met with an impeding force (does not provoke attacks of opportunity). A creature frightened in this way must make a save at the end of each of its turns to remove the effect."
+  },
+  {
+    "id": "rock-blast",
+    "name": "Rock Blast",
+    "type": "rock",
+    "flavor": "You summon a series of rocks that fire their way towards a creature.",
+    "description": "You summon a series of rocks that fire their way towards a creature. roll, doing. After successfully hitting a target, roll a d4. On a result of 3 or 4, you may immediately hit again for an additional. Continue this process until you fail to roll a 3 or 4 on the d4 roll, up to a maximum of four additional hits."
+  },
+  {
+    "id": "rock-climb",
+    "name": "Rock Climb",
+    "type": "normal",
+    "flavor": "You charge at a target with an attack that attempts to confuse.",
+    "description": "You charge at a target with an attack that attempts to confuse. On natural attack rolls of 17 or higher, the target becomes confused."
+  },
+  {
+    "id": "rock-polish",
+    "name": "Rock Polish",
+    "type": "rock",
+    "flavor": "You polish your body to a fine shine to reduce friction.",
+    "description": "You polish your body to a fine shine to reduce friction. When activating this move, increase your AC by 2 and your speed by 20 feet for three rounds."
+  },
+  {
+    "id": "rock-slide",
+    "name": "Rock Slide",
+    "type": "rock",
+    "flavor": null,
+    "description": "Large boulders appear above a target creature in range, crashing down on top of them. The target must make a save , taking and falling prone on a failure,ed save, and half as much without falling prone on a success."
+  },
+  {
+    "id": "rock-throw",
+    "name": "Rock Throw",
+    "type": "rock",
+    "flavor": "You hurl a rock at a target in range.",
+    "description": "You hurl a rock at a target in range. roll, doing."
+  },
+  {
+    "id": "rock-tomb",
+    "name": "Rock Tomb",
+    "type": "rock",
+    "flavor": "You summon a collection of boulders that attempt to surround a target.",
+    "description": "You summon a collection of boulders that attempt to surround a target. Force a creature in range to make a STR saving throw , taking and becoming restrained on a failure, or half as much without being restrained on a success. If it fails, at the beginning of each of its turns, it may attempt to escape with a save While a creature is restrained, you may continue this move, as an action, to deal an automatic."
+  },
+  {
+    "id": "role-play",
+    "name": "Role Play",
+    "type": "psychic",
+    "flavor": null,
+    "description": "You attempt to copy a creature's abilities for the duration. Select a target in range and force them to make a WIS saving throw on a failure, replace one of your own current abilities with one of theirs."
+  },
+  {
+    "id": "rolling-kick",
+    "name": "Rolling Kick",
+    "type": "fighting",
+    "flavor": "You swing your feet around in a wide arc to strike a target.",
+    "description": "You swing your feet around in a wide arc to strike a target. roll, doing. If the natural attack roll is 18 or more, the target flinches."
+  },
+  {
+    "id": "rollout",
+    "name": "Rollout",
+    "type": "rock",
+    "flavor": "You roll into a target, repeatedly making attacks with increasing strength.",
+    "description": "You roll into a target, repeatedly making attacks with increasing strength. on a creature, If you use this move on your turn in consecutive rounds, double the dice on each successful attack for a maximum of 5 attacks, in which case the damage would reset. Ex: on first hit, on second. The damage resets if any of the attacks fail to damage a creature, if your speed is reduced to 0, or if you are incapacitated."
+  },
+  {
+    "id": "roost",
+    "name": "Roost",
+    "type": "flying",
+    "flavor": "You land on the ground to rest your body.",
+    "description": "You land on the ground to rest your body. When activated, your flying speed decreases to zero, and you lose your flying type for as long as you remain on the ground. At the beginning of your next turn, if you have not left the ground, recover hit points"
+  },
+  {
+    "id": "rototiller",
+    "name": "Rototiller",
+    "type": "ground",
+    "flavor": "You imbue the ground around you with a mystical layer of natural energy, like tilling fresh soil.",
+    "description": "You imbue the ground around you with a mystical layer of natural energy, like tilling fresh soil. For three rounds, grass-type creatures double their STAB bonus when activating a grass-type move within the affected area."
+  },
+  {
+    "id": "round",
+    "name": "Round",
+    "type": "normal",
+    "flavor": "You attack a creature's mind with a harsh song.",
+    "description": "You attack a creature's mind with a harsh song. Select a target in range and force them to make a save on a failure, the target takes. If an ally in range also knows this move, they can join in the song as a reaction to add an additional damage dice."
+  },
+  {
+    "id": "safeguard",
+    "name": "Safeguard",
+    "type": "normal",
+    "flavor": "You and all allies in range boost their defense.",
+    "description": "You and all allies in range boost their defense. For the duration, anyone affected is protected from any new negative status conditions."
+  },
+  {
+    "id": "sand-attack",
+    "name": "Sand Attack",
+    "type": "ground",
+    "flavor": "You kick up a cloud of sand in an attempt to blind a target in range.",
+    "description": "You kick up a cloud of sand in an attempt to blind a target in range. On a failed save, for the remainder of the encounter, they add -1 to all of their attack rolls. This move can be stacked for a maximum of -5 to attack rolls."
+  },
+  {
+    "id": "sand-tomb",
+    "name": "Sand Tomb",
+    "type": "ground",
+    "flavor": "You attempt to summon a wave of sand that surrounds the target.",
+    "description": "You attempt to summon a wave of sand that surrounds the target. Force a creature in range to make a STR saving throw , taking and becoming restrained on a failure, or half as much without being restrained on a success. If it fails, at the beginning of each of its turns, it may attempt to escape with a save While a creature is restrained, you may continue this move, as an action, to deal an automatic."
+  },
+  {
+    "id": "sandstorm",
+    "name": "Sandstorm",
+    "type": "rock",
+    "flavor": "You stir up a massive sandstorm in a 50 foot radius, centered on a point in range. When a non rock-, steel-, or ground-type creature enters the area for the first time on their turn, or begins their turn inside the area, they take an amount of rock damage equal to half your level, rounded up. The Sandstorm lasts for 5 rounds.",
+    "description": "You stir up a massive sandstorm in a 50 foot radius, centered on a point in range. When a non rock-, steel-, or ground-type creature enters the area for the first time on their turn, or begins their turn inside the area, they take an amount of equal to half your level, rounded up. The Sandstorm lasts for 5 rounds."
+  },
+  {
+    "id": "scary-face",
+    "name": "Scary Face",
+    "type": "normal",
+    "flavor": "You put on your scariest face, attempting to frighten a creature.",
+    "description": "You put on your scariest face, attempting to frighten a creature. The creature must make a WIS saving throw or become frightened for the duration. A creature frightened in this way must make a save at the end of each of its turns to remove the effect."
+  },
+  {
+    "id": "scratch",
+    "name": "Scratch",
+    "type": "normal",
+    "flavor": null,
+    "description": "You slash out at a creature in range. doing."
+  },
+  {
+    "id": "screech",
+    "name": "Screech",
+    "type": "normal",
+    "flavor": null,
+    "description": "You let out a horrible screech at creatures in a 20 foot radius, centered on you. The creatures must make a save on a failure, allies add +1 to any attack they target an affected creature with for the duration. This modifier can be stacked if a creature fails multiple screech saves, up to a maximum of +3."
+  },
+  {
+    "id": "seed-bomb",
+    "name": "Seed Bomb",
+    "type": "grass",
+    "flavor": null,
+    "description": "You fire a series of hard seeds that crash down on top of a creature in range."
+  },
+  {
+    "id": "seismic-toss",
+    "name": "Seismic Toss",
+    "type": "fighting",
+    "flavor": null,
+    "description": "You attempt to throw a creature into the ground with tremendous force. roll. deal an amount of equal to + the user’s level. Seismic Toss results in a critical hit on 19s and 20s."
+  },
+  {
+    "id": "self-destruct",
+    "name": "Self-Destruct",
+    "type": "normal",
+    "flavor": "You release a massive explosion in a 30 foot radius, fainting immediately before the damage is dealt.",
+    "description": "You release a massive explosion in a 30 foot radius, fainting immediately before the damage is dealt. Creatures in the area must make a save If your creature has at least half its hit points left, anyone in range takes on a failure, or half as much on a success. If your creature has less than half of its hit points left, the damage is halved for a failed save, and quartered for a success."
+  },
+  {
+    "id": "shadow-ball",
+    "name": "Shadow Ball",
+    "type": "ghost",
+    "flavor": "You hurl a sphere of magical darkness at a creature.",
+    "description": "You hurl a sphere of magical darkness at a creature. doing. the ball expands and covers the creatures face, granting them a -2 to hit on any attack they make before the end of their next turn."
+  },
+  {
+    "id": "shadow-claw",
+    "name": "Shadow Claw",
+    "type": "ghost",
+    "flavor": "You strike with a sharp claw made from shadows in range.",
+    "description": "You strike with a sharp claw made from shadows in range. This moves scores a critical hit on natural attack rolls of 19 and 20."
+  },
+  {
+    "id": "shadow-punch",
+    "name": "Shadow Punch",
+    "type": "ghost",
+    "flavor": "You throw a punch from the surrounding shadows, unavoidable by any creature.",
+    "description": "You throw a punch from the surrounding shadows, unavoidable by any creature. This move is guaranteed to hit, unless during the invulnerable stage of Fly, Dig, Bounce, Dive, etc. moves."
+  },
+  {
+    "id": "shadow-sneak",
+    "name": "Shadow Sneak",
+    "type": "ghost",
+    "flavor": "You extend your shadow to strike a creature from behind.",
+    "description": "You extend your shadow to strike a creature from behind. As a bonus action, you can control your shadow to roll against a target within range,"
+  },
+  {
+    "id": "sharpen",
+    "name": "Sharpen",
+    "type": "normal",
+    "flavor": "You collect your focus, sharpening your combat skills.",
+    "description": "You collect your focus, sharpening your combat skills. You may add to all attack rolls for the duration."
+  },
+  {
+    "id": "sheer-cold",
+    "name": "Sheer Cold",
+    "type": "ice",
+    "flavor": "You send a chill down the spine of a creature, freezing its core. Choose a target in range and roll a d20. On a 20, the target faints. On any other roll, this move has no effect. If the target's level is 10 more than your own, this move automatically fails.",
+    "description": "You send a chill down the spine of a creature, freezing its core. Choose a target in range and roll a d20. On a 20, the target faints. On any other roll, this move has no effect. If the target's level is 10 more than your own, this move automatically fails."
+  },
+  {
+    "id": "shell-smash",
+    "name": "Shell Smash",
+    "type": "normal",
+    "flavor": "You break off a piece of your shell, lowering your defense but improving your attack.",
+    "description": "You break off a piece of your shell, lowering your defense but improving your attack. For the duration, lower your AC by 1, but add proficiency to all damage rolls (once per move). This move is not stackable."
+  },
+  {
+    "id": "shock-wave",
+    "name": "Shock Wave",
+    "type": "electric",
+    "flavor": "A burst of electric energy glides forward, striking anything in a 15 foot cone.",
+    "description": "A burst of electric energy glides forward, striking anything in a 15 foot cone. This move is guaranteed to hit all creatures caught in the wave for, unless during the invulnerable stage of Fly, Dig, Bounce, Dive, etc. moves."
+  },
+  {
+    "id": "signal-beam",
+    "name": "Signal Beam",
+    "type": "bug",
+    "flavor": null,
+    "description": "A flashing beam strikes a creature in range. roll against a creature, On a natural attack roll of 19 or 20, the beam confuses the target."
+  },
+  {
+    "id": "silver-wind",
+    "name": "Silver Wind",
+    "type": "bug",
+    "flavor": "You strike a target with a battering wind of silver dust.",
+    "description": "You strike a target with a battering wind of silver dust. roll against a creature, doing. On a natural roll of 19 or 20, all of your ability scores go up by 1 while you remain in battle. This move can be stacked for a maximum of +5 to all ability scores."
+  },
+  {
+    "id": "simple-beam",
+    "name": "Simple Beam",
+    "type": "normal",
+    "flavor": "You use a mysterious psychic energy to change a target's ability to Simple.",
+    "description": "You use a mysterious psychic energy to change a target's ability to Simple. Force a target in range to make a WIS saving throw on a failure, choose one of the target's abilities and change it to Simple for the duration."
+  },
+  {
+    "id": "sing",
+    "name": "Sing",
+    "type": "normal",
+    "flavor": "You sing a beautiful song in an attempt to put creatures to to sleep.",
+    "description": "You sing a beautiful song in an attempt to put creatures to to sleep. Roll ; the total is how many hit points of creature this move can affect. creatures within 30 feet of you are affected in ascending order of their current hit points. Starting with the creature that has the lowest current hit points, each creature affected by this move falls asleep. Subtract each creature’s hit points from the total before moving on to the creature with the next lowest hit points. A creature’s hit points must be equal to or less than the remaining total for that creature to be affected."
+  },
+  {
+    "id": "skill-swap",
+    "name": "Skill Swap",
+    "type": "psychic",
+    "flavor": null,
+    "description": "You attempt to swap abilities with a creature for the duration. Select a target in range and force them to make a WIS saving throw on a failure, choose which abilities to switch for the duration."
+  },
+  {
+    "id": "skull-bash",
+    "name": "Skull Bash",
+    "type": "normal",
+    "flavor": "When you use this move, you lower your head and prepare to strike a target within range.",
+    "description": "When you use this move, you lower your head and prepare to strike a target within range. On your next turn’s action, if you keep your concentration, you charge at a creature in range, ignoring your walking speed and any opportunity attacks you may incur. roll, doing. A creature hit with this attack must succeed on a STR saving throw or be knocked prone."
+  },
+  {
+    "id": "sky-attack",
+    "name": "Sky Attack",
+    "type": "flying",
+    "flavor": null,
+    "description": "When you use this move, you flap your wings menacingly and prepare to strike a creature within range. On your next turn’s action, if you keep your concentration, you dive at a creature in range, ignoring your flying speed and any opportunity attacks you may incur. roll, doing."
+  },
+  {
+    "id": "sky-drop",
+    "name": "Sky Drop",
+    "type": "flying",
+    "flavor": "You reach out in an attempt to lift a creature up in the air for a slamming attack.",
+    "description": "You reach out in an attempt to lift a creature up in the air for a slamming attack. When you activate this move, roll. the target is grappled. The target may use its next action to attempt a save to get free. If it does not succeed, and you maintain your concentration, you may use your action on your next turn to lift the creature into the air, dropping it to the ground for. Flying-type creatures or ones under the effect of Levitate, Magnet Rise or other similar abilities/moves are not damaged."
+  },
+  {
+    "id": "sky-uppercut",
+    "name": "Sky Uppercut",
+    "type": "fighting",
+    "flavor": "You unleash a devastating uppercutting fist that continues to strike skyward with force.",
+    "description": "You unleash a devastating uppercutting fist that continues to strike skyward with force. roll against a creature, This move can target creatures in the invulnerable stages of Fly, Bounce and Sky Drop, if the target used that move within range."
+  },
+  {
+    "id": "slack-off",
+    "name": "Slack Off",
+    "type": "normal",
+    "flavor": "You give yourself a break, healing your wounds. When you activate this move, you become incapacitated immediately and through your next two turns. Your trainer may not switch you out during this time. At the end of the second turn, regain half of your maximum hit points and become stable once again.",
+    "description": "You give yourself a break, healing your wounds. When you activate this move, you become incapacitated immediately and through your next two turns. Your trainer may not switch you out during this time. At the end of the second turn, regain half of your maximum hit points and become stable once again."
+  },
+  {
+    "id": "slam",
+    "name": "Slam",
+    "type": "normal",
+    "flavor": "You crush a creature with a slam attack.",
+    "description": "You crush a creature with a slam attack. roll doing."
+  },
+  {
+    "id": "slash",
+    "name": "Slash",
+    "type": "normal",
+    "flavor": null,
+    "description": "You slash out at a creature in range. doing. Slash results in a critical hit on 19s and 20s."
+  },
+  {
+    "id": "sleep-powder",
+    "name": "Sleep Powder",
+    "type": "grass",
+    "flavor": null,
+    "description": "You release a cluster of spores at a creature in range, attempting to put them to sleep. The target must make a CON saving throw or fall asleep."
+  },
+  {
+    "id": "sleep-talk",
+    "name": "Sleep Talk",
+    "type": "normal",
+    "flavor": null,
+    "description": "This move can only be used if you are asleep. While asleep, activate a random move from your move list (not Sleep Talk) that has a move time of 1 action."
+  },
+  {
+    "id": "sludge",
+    "name": "Sludge",
+    "type": "poison",
+    "flavor": null,
+    "description": "You spew poisonous sludge at a target creature in range. doing. The creature must make a save or become poisoned."
+  },
+  {
+    "id": "sludge-bomb",
+    "name": "Sludge Bomb",
+    "type": "poison",
+    "flavor": null,
+    "description": "You hurl a mass of sludge that may poison creatures in its blast. roll against a target. the target takes and the area in a 5 foot radius around it is covered in sludge until the beginning of your next turn. Any creature that enters this area for the first time on their turn, or is in that area at the beginning of their turn must make a save or become poisoned."
+  },
+  {
+    "id": "sludge-wave",
+    "name": "Sludge Wave",
+    "type": "poison",
+    "flavor": null,
+    "description": "You summon a wave of poisonous sludge that crashes down on creatures in a 30 foot cone. Any creature caught in the blast must make a CON saving throw , on a failure, or half as much on a success. If a creature fails the saving throw by 5 or more, it becomes poisoned."
+  },
+  {
+    "id": "smack-down",
+    "name": "Smack Down",
+    "type": "rock",
+    "flavor": null,
+    "description": "You throw a solid piece of stone at a creature in an attempt to bring them to the ground. any \"Raised\" creature is knocked prone and loses its flying speed and immunity to ground-type moves until it can move again. This move can target creatures in the invulnerable stage of Fly or Bounce."
+  },
+  {
+    "id": "smelling-salts",
+    "name": "Smelling Salts",
+    "type": "normal",
+    "flavor": "You procure a handful of strong smelling salt, damaging a creature's senses.",
+    "description": "You procure a handful of strong smelling salt, damaging a creature's senses. If the target is paralyzed, double the dice roll for the damage."
+  },
+  {
+    "id": "smog",
+    "name": "Smog",
+    "type": "poison",
+    "flavor": "You release a toxic cloud of poisonous smog in a 10 foot radius, centered on a point within range.",
+    "description": "You release a toxic cloud of poisonous smog in a 10 foot radius, centered on a point within range. Any creature that starts their turn in this area must succeed on a save , on a failure, or half as much on a success. Creatures that fail this save by 5 or more become poisoned."
+  },
+  {
+    "id": "smokescreen",
+    "name": "Smokescreen",
+    "type": "normal",
+    "flavor": "You conjure a line of smoke on the battlefield, 60 feet long and 5 feet thick, that extends in any direction from a point within range. The area on either side is obscured and imposes disadvantage on any ranged attacks made by a creature targeting another on the opposite side.",
+    "description": "You conjure a line of smoke on the battlefield, 60 feet long and 5 feet thick, that extends in any direction from a point within range. The area on either side is obscured and imposes disadvantage on any ranged attacks made by a creature targeting another on the opposite side. Any creature inside the wall of smoke, when it is conjured, must make a save or become blinded for the duration. A blinded creature can repeat the save at the beginning of its turns to remove the effect on a success."
+  },
+  {
+    "id": "snatch",
+    "name": "Snatch",
+    "type": "dark",
+    "flavor": "You call upon dark energy to steal an effect from a creature.",
+    "description": "You call upon dark energy to steal an effect from a creature. When a creature in range activates a move with a positive effect on itself (curing negative status effect, boosting stats, healing, etc.), force it to make a save on a failure, you gain the positive effect and the target's move fails."
+  },
+  {
+    "id": "snore",
+    "name": "Snore",
+    "type": "normal",
+    "flavor": null,
+    "description": "While you are asleep, you may activate this move to create a harsh noise that damages all creature within range for."
+  },
+  {
+    "id": "snowscape",
+    "name": "Snowscape",
+    "type": "ice",
+    "flavor": "You cover the battlefield in a snowstorm.",
+    "description": "You cover the battlefield in a snowstorm. While concentrating, Ice-type creatures in range have +1 to AC."
+  },
+  {
+    "id": "soak",
+    "name": "Soak",
+    "type": "water",
+    "flavor": "You fire a torrent of water at a creature that leaves lasting effects.",
+    "description": "You fire a torrent of water at a creature that leaves lasting effects. Force a target in range to make a save on a failure, its type changes to water through its next three full turns in battle."
+  },
+  {
+    "id": "soft-boiled",
+    "name": "Soft-Boiled",
+    "type": "normal",
+    "flavor": null,
+    "description": "Heal a creature in range for hitpoints."
+  },
+  {
+    "id": "solar-beam",
+    "name": "Solar Beam",
+    "type": "grass",
+    "flavor": "When you use this move, soak in solar energy and prepare to unleash a devastating beam.",
+    "description": "When you use this move, soak in solar energy and prepare to unleash a devastating beam. On your next turn, if you keep your concentration, use an action to create a 80 foot line of solar energy, 5 feet wide. Any creature caught in the line must succeed on a save or take on a failure, and half as much on a save. If this move is used in harsh sunlight, double your MOVE modifier for damage and it can be used on the turn it is activated, without concentration."
+  },
+  {
+    "id": "sonic-boom",
+    "name": "Sonic Boom",
+    "type": "normal",
+    "flavor": null,
+    "description": "You unleash a deafening sound that harms creature in a 40 foot circle, centered on you. Creatures in range must make a save , taking 16 flat on a failure, or half as much on a success."
+  },
+  {
+    "id": "spark",
+    "name": "Spark",
+    "type": "electric",
+    "flavor": "You strike out with an electrified tackle with a chance to paralyze a target.",
+    "description": "You strike out with an electrified tackle with a chance to paralyze a target. roll against a creature, doing. If the natural attack roll is 18 or higher, the target is paralyzed."
+  },
+  {
+    "id": "spike-cannon",
+    "name": "Spike Cannon",
+    "type": "normal",
+    "flavor": null,
+    "description": "You fire a series of sharp spikes at a creature in range. roll, doing. After successfully hitting a target, roll a d4. On a result of 3 or 4, you may immediately hit again for an additional. Continue this process until you fail to roll a 3 or 4 on the d4 roll, up to a maximum of four additional hits."
+  },
+  {
+    "id": "spikes",
+    "name": "Spikes",
+    "type": "ground",
+    "flavor": "You set a trap of spikes that hurts creature that come into battle.",
+    "description": "You set a trap of spikes that hurts creature that come into battle. If a trainer is in range and switches out a creature, you can spend a reaction to on the incoming creature with spikes that come out of the ground, doing."
+  },
+  {
+    "id": "spit-up",
+    "name": "Spit Up",
+    "type": "normal",
+    "flavor": "The power of energy stored by Stockpile is released against a target.",
+    "description": "The power of energy stored by Stockpile is released against a target. against a creature, dealing a base. The dice roll is doubled if two rounds of energy were Stockpiled. The dice roll is tripled if three rounds of energy were Stockpiled."
+  },
+  {
+    "id": "spite",
+    "name": "Spite",
+    "type": "ghost",
+    "flavor": "When hit with an attack, you can spend a reaction to attempt to drain the attacker’s PP, if they are in range.",
+    "description": "When hit with an attack, you can spend a reaction to attempt to drain the attacker’s PP, if they are in range. Force the attacker to make a save on a failure, roll a d4. The PP of the move that attacked you is decreased by that number."
+  },
+  {
+    "id": "splash",
+    "name": "Splash",
+    "type": "normal",
+    "flavor": "You flail around on the ground, doing no damage and looking ridiculous, but you can leap up to 50 feet in the air.",
+    "description": "You flail around on the ground, doing no damage and looking ridiculous, but you can leap up to 50 feet in the air."
+  },
+  {
+    "id": "spore",
+    "name": "Spore",
+    "type": "grass",
+    "flavor": null,
+    "description": "When you are targeted by a melee attack, you can use your reaction to release a spore that attempts to put your attacker to sleep. The creature must make a save , falling asleep on a failure."
+  },
+  {
+    "id": "spotlight",
+    "name": "Spotlight",
+    "type": "normal",
+    "flavor": null,
+    "description": "You shine a bright light on a creature in range that follows them around the battlefield. On a failed save, attacks against that creature have advantage for the duration."
+  },
+  {
+    "id": "stealth-rock",
+    "name": "Stealth Rock",
+    "type": "rock",
+    "flavor": "You quickly summon a trap of sharp rocks that hurts a creature entering the battle.",
+    "description": "You quickly summon a trap of sharp rocks that hurts a creature entering the battle. When a creature is switched into battle, you may use your reaction to , dealing to the incoming creature."
+  },
+  {
+    "id": "steamroller",
+    "name": "Steamroller",
+    "type": "bug",
+    "flavor": "You roll up your body and roll over a creature.",
+    "description": "You roll up your body and roll over a creature. roll, If your natural attack roll is 15 or higher, the target flinches."
+  },
+  {
+    "id": "steel-wing",
+    "name": "Steel Wing",
+    "type": "steel",
+    "flavor": "You strike a target hard with outstretched wings.",
+    "description": "You strike a target hard with outstretched wings. on a creature, doing. If the natural attack roll is 19 or 20, your AC is increased by 1 until the end of your next turn."
+  },
+  {
+    "id": "stockpile",
+    "name": "Stockpile",
+    "type": "normal",
+    "flavor": null,
+    "description": "You use your action to store energy for a Spit Up or Swallow move, increasing your defense. Raise your AC by 1 until you use one of those two moves. This move may be stacked a maximum of 3 times before the energy is used."
+  },
+  {
+    "id": "stomp",
+    "name": "Stomp",
+    "type": "normal",
+    "flavor": "You raise your feet up for a stomp attack.",
+    "description": "You raise your feet up for a stomp attack. roll doing. If the natural attack roll is 18 or more, the target flinches."
+  },
+  {
+    "id": "stomping-tantrum",
+    "name": "Stomping Tantrum",
+    "type": "ground",
+    "flavor": "Driven by frustration, you aggressively attack.",
+    "description": "Driven by frustration, you aggressively attack. If you last attack missed, double the dice roll for damage."
+  },
+  {
+    "id": "stone-edge",
+    "name": "Stone Edge",
+    "type": "rock",
+    "flavor": "The earth moves beneath a target’s feet as sharp stone pierce through the ground underneath them.",
+    "description": "The earth moves beneath a target’s feet as sharp stone pierce through the ground underneath them. Creatures in a 10 foot radius centered on a point you choose in range must make a save , on a failure, or half as much on a save."
+  },
+  {
+    "id": "stored-power",
+    "name": "Stored Power",
+    "type": "psychic",
+    "flavor": "You use your psychic energy to attack with stored power.",
+    "description": "You use your psychic energy to attack with stored power. Add an additional damage dice for each stat-changing effect currently applied to the user. (For example, if you or an ally has activated a move(s) that is currently boosting the user's AC, speed, and STAB, add three additional damage dice. A move that affects multiple ability scores is considered \"one\" effect for this boost)"
+  },
+  {
+    "id": "storm-throw",
+    "name": "Storm Throw",
+    "type": "fighting",
+    "flavor": "You strike a target with a fierce blow.",
+    "description": "You strike a target with a fierce blow. on a creature, If a target is immune to the damage from critical hits, halve the damage dealt by this attack."
+  },
+  {
+    "id": "strength",
+    "name": "Strength",
+    "type": "normal",
+    "flavor": "You strike out at a creature with brute strength.",
+    "description": "You strike out at a creature with brute strength. roll, doing. you may also choose to push the creature 5 feet away."
+  },
+  {
+    "id": "string-shot",
+    "name": "String Shot",
+    "type": "bug",
+    "flavor": null,
+    "description": "You unleash sticky string at a creature in range, slowing it down. roll against a target. the target’s speed is reduced by 10 for the duration. The move is stackable to any amount. The target may take an action to attempt to get rid of any string with a save If this reduction in speed causes their speed to be 0, they are restrained."
+  },
+  {
+    "id": "stun-spore",
+    "name": "Stun Spore",
+    "type": "grass",
+    "flavor": null,
+    "description": "When you are subject to a melee attack, you can use your reaction to release a spore that attempts to stun your attacker. The creature must make a save , becoming paralyzed on a failure."
+  },
+  {
+    "id": "submission",
+    "name": "Submission",
+    "type": "fighting",
+    "flavor": "You attempt a forceful grapple on a target.",
+    "description": "You attempt a forceful grapple on a target. doing, but taking a quarter of the damage dealt in recoil. the target is grappled. At the beginning of each of its turns, it may attempt to escape with a save While a creature is grappled, this move can be activated again as a bonus action with an automatic hit, dealing with a quarter of the damage dealt in typeless recoil."
+  },
+  {
+    "id": "substitute",
+    "name": "Substitute",
+    "type": "normal",
+    "flavor": "You surrender a quarter of your current HP (rounded down) into temporary hit points in the form of a shield. During this time, the shield grants you immunity to NEW negative conditions (including things like prone, restrained, etc. ) and it absorbs all outside damage that you would normally take until it is destroyed. The shield is considered \"typeless\" for damage resistance, vulnerability, and immunities.",
+    "description": "You surrender a quarter of your current HP (rounded down) into temporary hit points in the form of a shield. During this time, the shield grants you immunity to NEW negative conditions (including things like prone, restrained, etc.) and it absorbs all outside damage that you would normally take until it is destroyed. The shield is considered \"typeless\" for damage resistance, vulnerability, and immunities. The shield and user cannot be healed while active, and it does not absorb self-inflicted conditions or damage caused by pre-existing burn, poison, or confusion. The shield breaks when it is reduced to 0 hit points, and the user takes the overflow damage. Sound- based moves bypass the shield (Supersonic, Grass Whistle, etc.)"
+  },
+  {
+    "id": "sucker-punch",
+    "name": "Sucker Punch",
+    "type": "dark",
+    "flavor": "You lay in a quick punch before a creature has a chance to attack.",
+    "description": "You lay in a quick punch before a creature has a chance to attack. When targeted by a melee attack, you may use your reaction to attempt to strike a creature before its attack is rolled."
+  },
+  {
+    "id": "sunny-day",
+    "name": "Sunny Day",
+    "type": "fire",
+    "flavor": "You change the weather to harsh sunlight for 5 rounds.",
+    "description": "You change the weather to harsh sunlight for 5 rounds."
+  },
+  {
+    "id": "super-fang",
+    "name": "Super Fang",
+    "type": "normal",
+    "flavor": "You lash out with an incredible fang attack.",
+    "description": "You lash out with an incredible fang attack. doing. On critical hits, instead of doubling the dice, you can choose to do damage equal to half the target’s current HP (up to a maximum of 5x your level)."
+  },
+  {
+    "id": "superpower",
+    "name": "Superpower",
+    "type": "fighting",
+    "flavor": "You strike a target with incredible power - but with great power comes great responsibility.",
+    "description": "You strike a target with incredible power - but with great power comes great responsibility. against a creature, This move exhausts you, and your STR and DEX ability scores are both reduced by 10 until after the end of your next turn."
+  },
+  {
+    "id": "supersonic",
+    "name": "Supersonic",
+    "type": "normal",
+    "flavor": "You emit a high pitched screech heard only by the target. Choose a target in range.",
+    "description": "You emit a high pitched screech heard only by the target. Choose a target in range. The target must pass a WIS saving throw or become confused."
+  },
+  {
+    "id": "swagger",
+    "name": "Swagger",
+    "type": "normal",
+    "flavor": null,
+    "description": "Force a target in range to make a save on a failure, the target is confused, but it adds +2 to its attack rolls while confused."
+  },
+  {
+    "id": "swallow",
+    "name": "Swallow",
+    "type": "normal",
+    "flavor": "You absorb your Stockpiled energy to heal your wounds.",
+    "description": "You absorb your Stockpiled energy to heal your wounds. When activated after using Stockpile, regain a base hit points. The dice roll is doubled if two rounds of energy were Stockpiled. The dice roll is tripled if three rounds of energy were Stockpiled."
+  },
+  {
+    "id": "sweet-scent",
+    "name": "Sweet Scent",
+    "type": "normal",
+    "flavor": "You release a sweet smell directed at a target in range.",
+    "description": "You release a sweet smell directed at a target in range. On a failed save, you have advantage on your next two attacks against that target."
+  },
+  {
+    "id": "swift",
+    "name": "Swift",
+    "type": "normal",
+    "flavor": "You fire two projectiles at any creature you choose in range. They do not have to target the same creature.",
+    "description": "You fire two projectiles at any creature you choose in range. They do not have to target the same creature. Each hit for. This move also targets creature during the invulnerable stages of Dig, Fly, Bounce, etc."
+  },
+  {
+    "id": "switcheroo",
+    "name": "Switcheroo",
+    "type": "dark",
+    "flavor": "Your hands move with incredible speed as you attempt to switch held items with a creature.",
+    "description": "Your hands move with incredible speed as you attempt to switch held items with a creature. Force a creature to make a save on a failure, you take their held item and replace it with your own. If you do not have a held item, you simply take theirs without replacement."
+  },
+  {
+    "id": "swords-dance",
+    "name": "Swords Dance",
+    "type": "normal",
+    "flavor": "When you activate this move, a sword appears and dances around you, increasing your AC by 1.",
+    "description": "When you activate this move, a sword appears and dances around you, increasing your AC by 1. As a bonus action on a future turn, you may drop concentration to release this sword and roll a ranged attack at a target within 30 feet of you,"
+  },
+  {
+    "id": "synchronoise",
+    "name": "Synchronoise",
+    "type": "psychic",
+    "flavor": "You emit a strange soundwave that only damages creature that share a type with you.",
+    "description": "You emit a strange soundwave that only damages creature that share a type with you. Any creature within a 40 foot circle that shares at least one of your types must make a save , on a failure, or half as much on a success."
+  },
+  {
+    "id": "synthesis",
+    "name": "Synthesis",
+    "type": "grass",
+    "flavor": "You regenerate from the inside, healing some of your wounds.",
+    "description": "You regenerate from the inside, healing some of your wounds. Heal yourself for hit points. If activated in harsh sunlight, double the healing dice."
+  },
+  {
+    "id": "tackle",
+    "name": "Tackle",
+    "type": "normal",
+    "flavor": "You rush forward and slam into a creature.",
+    "description": "You rush forward and slam into a creature. roll doing."
+  },
+  {
+    "id": "tail-slap",
+    "name": "Tail Slap",
+    "type": "normal",
+    "flavor": "You strike out against a creature with a quick- hitting, hard tail.",
+    "description": "You strike out against a creature with a quick- hitting, hard tail. roll, doing. After successfully hitting a target, roll a d4. On a result of 3 or 4, you may immediately hit again for an additional. Continue this process until you fail to roll a 3 or 4 on the d4 roll, up to a maximum of four additional hits."
+  },
+  {
+    "id": "tail-whip",
+    "name": "Tail Whip",
+    "type": "normal",
+    "flavor": "You shake your tail at a target, distracting it and opening up its defenses.",
+    "description": "You shake your tail at a target, distracting it and opening up its defenses. The creature must make a save on a failure, allies add +1 to any attack they target it with for the duration. This modifier can be stacked if it fails multiple tail whip saves, up to a maximum of +5."
+  },
+  {
+    "id": "tailwind",
+    "name": "Tailwind",
+    "type": "flying",
+    "flavor": "You whip up a turbulent whirlwind that boosts the speed of all allies in a 60 foot circle, centered on you.",
+    "description": "You whip up a turbulent whirlwind that boosts the speed of all allies in a 60 foot circle, centered on you. You and any ally that starts their turn inside the area has their speed doubled until the end of their turn."
+  },
+  {
+    "id": "take-down",
+    "name": "Take Down",
+    "type": "normal",
+    "flavor": "You sacrifice your own position to take down a creature.",
+    "description": "You sacrifice your own position to take down a creature. Roll a melee attack roll. you deal, taking a quarter of the total damage (rounded down) in typeless recoil."
+  },
+  {
+    "id": "taunt",
+    "name": "Taunt",
+    "type": "dark",
+    "flavor": "You taunt a creature to only attack you with damaging attacks.",
+    "description": "You taunt a creature to only attack you with damaging attacks. Choose a target in range and force it to make a WIS saving throw on a failure, the target can only use damaging attacks that target you for the duration."
+  },
+  {
+    "id": "teeter-dance",
+    "name": "Teeter Dance",
+    "type": "normal",
+    "flavor": null,
+    "description": "You start to perform a difficult dance, confusing all creatures in range. Creatures in a 40 foot circle around you must make a save , becoming confused on a failure."
+  },
+  {
+    "id": "telekinesis",
+    "name": "Telekinesis",
+    "type": "psychic",
+    "flavor": "You use your psychic power to attempt to hold a creature above the ground, making it vulnerable to attacks.",
+    "description": "You use your psychic power to attempt to hold a creature above the ground, making it vulnerable to attacks. Force a creature in range to make a save on a failure, the creature is grappled and restrained for the duration, unable to release itself as long as you hold your concentration. While grappled, the creature is considered Raised."
+  },
+  {
+    "id": "teleport",
+    "name": "Teleport",
+    "type": "psychic",
+    "flavor": "You disappear from view and reappear at an unoccupied point within range. In wild creature battles, this move can be activated to automatically count as a single success in a group DEX check to run away.",
+    "description": "You disappear from view and reappear at an unoccupied point within range. In wild creature battles, this move can be activated to automatically count as a single success in a group DEX check to run away."
+  },
+  {
+    "id": "thrash",
+    "name": "Thrash",
+    "type": "normal",
+    "flavor": "You thrash about wildly, doing several attacks without control.",
+    "description": "You thrash about wildly, doing several attacks without control. roll, doing. After successfully hitting a target, roll a d4. On a result of 3 or 4, you may immediately hit again for an additional. Continue this process until you fail to roll a 3 or 4 on the d4 roll, up to a maximum of two additional hits. At the end of this attack, you become confused."
+  },
+  {
+    "id": "thunder",
+    "name": "Thunder",
+    "type": "electric",
+    "flavor": null,
+    "description": "Powerful electric energy arcs out from you, hitting any creature in a 20 foot radius, centered on you. Creatures caught in the area must make a save , on a failure. Creatures that fail the saving throw by 5 or more become paralyzed. Creatures in range that are in flight or in the invulnerable stage of Fly or Bounce take double damage from this move."
+  },
+  {
+    "id": "thunder-fang",
+    "name": "Thunder Fang",
+    "type": "electric",
+    "flavor": "You attempt to pierce a creature with electric fangs.",
+    "description": "You attempt to pierce a creature with electric fangs. On a natural attack roll of 19 or 20, the target is paralyzed and flinches."
+  },
+  {
+    "id": "thunder-punch",
+    "name": "Thunder Punch",
+    "type": "electric",
+    "flavor": "Your punches are imbued with electric energy.",
+    "description": "Your punches are imbued with electric energy. on a target, doing. On a natural attack roll of 19 or 20, the target is paralyzed."
+  },
+  {
+    "id": "thunder-shock",
+    "name": "Thunder Shock",
+    "type": "electric",
+    "flavor": "You deliver an electric shock to a target in range.",
+    "description": "You deliver an electric shock to a target in range. doing."
+  },
+  {
+    "id": "thunder-wave",
+    "name": "Thunder Wave",
+    "type": "electric",
+    "flavor": null,
+    "description": "You send a wave of electric energy that surrounds a creature in range. The target must make a save or become paralyzed."
+  },
+  {
+    "id": "thunderbolt",
+    "name": "Thunderbolt",
+    "type": "electric",
+    "flavor": "You send a powerful bolt of electricity at a target in range.",
+    "description": "You send a powerful bolt of electricity at a target in range. roll, doing. On a natural attack roll of 19 or 20, the target is paralyzed."
+  },
+  {
+    "id": "tickle",
+    "name": "Tickle",
+    "type": "normal",
+    "flavor": "You turn your melee attack into a playful tickle.",
+    "description": "You turn your melee attack into a playful tickle. As a bonus action at the end of a turn in which you used a melee attack, force a creature to make a CON saving throw on a failure, the target flinches."
+  },
+  {
+    "id": "toxic",
+    "name": "Toxic",
+    "type": "poison",
+    "flavor": "You send a downpour of potent, poisonous rain in a 5 foot radius, centered on a point within range.",
+    "description": "You send a downpour of potent, poisonous rain in a 5 foot radius, centered on a point within range. Targets in the area must make a save or become badly poisoned."
+  },
+  {
+    "id": "toxic-spikes",
+    "name": "Toxic Spikes",
+    "type": "poison",
+    "flavor": "You quickly summon a trap of poisonous spikes around a creature that enters the battle.",
+    "description": "You quickly summon a trap of poisonous spikes around a creature that enters the battle. When a creature is switched into battle, you may use your reaction to force a creature to make a save , becoming poisoned on a failure. If the creature fails by 5 or more, it becomes badly poisoned instead."
+  },
+  {
+    "id": "transform",
+    "name": "Transform",
+    "type": "normal",
+    "flavor": null,
+    "description": "You attempt to morph into a near-exact copy of a creature in range. The base SR of the target must be able to be controlled by your trainer or the move fails. For the duration, you copy the target's type, ability scores, skills, speeds, senses, abilities, and current moves. You retain your own feats, level, and HP (Changed CON does not impact your HP)."
+  },
+  {
+    "id": "tri-attack",
+    "name": "Tri Attack",
+    "type": "normal",
+    "flavor": "You strike with a simultaneous three-beam attack.",
+    "description": "You strike with a simultaneous three-beam attack. Each creature in a 30 foot cone, centered on you, must make a save , on a failure. Targets that fail the save by 5 or more must roll a d4, gaining the status condition as follows: 1. The target becomes burned. 2. The target becomes frozen. 3. The target becomes paralyzed. 4. Must reroll until any number other than 4 appears."
+  },
+  {
+    "id": "trick",
+    "name": "Trick",
+    "type": "psychic",
+    "flavor": "You move quickly to attempt to swap held items with a creature.",
+    "description": "You move quickly to attempt to swap held items with a creature. roll against a creature, swapping held items with them."
+  },
+  {
+    "id": "trump-card",
+    "name": "Trump Card",
+    "type": "normal",
+    "flavor": "You strike out with a blast of energy that increases in strength the more it is used.",
+    "description": "You strike out with a blast of energy that increases in strength the more it is used. on a creature, Increase the damage by your Move modifier for each PP that has been expended for the move, before the move was activated. Using a restorative to regain PP resets the damage for this attack."
+  },
+  {
+    "id": "twineedle",
+    "name": "Twineedle",
+    "type": "bug",
+    "flavor": null,
+    "description": "You fire two sharp projectiles at a creature in range. They do not have to target the same creature. Make two ranged attack rolls, dealing on each hit. If the natural roll of either attack is a 19 or 20, the target is poisoned."
+  },
+  {
+    "id": "twister",
+    "name": "Twister",
+    "type": "dragon",
+    "flavor": "You send a gust of swirling wind that tears through a creature.",
+    "description": "You send a gust of swirling wind that tears through a creature. on a creature, doing. If the natural attack roll is 16 or higher, the target flinches."
+  },
+  {
+    "id": "uproar",
+    "name": "Uproar",
+    "type": "normal",
+    "flavor": "You cause an uproar on the battlefield in a 60 foot circle, centered on you, for three rounds of combat.",
+    "description": "You cause an uproar on the battlefield in a 60 foot circle, centered on you, for three rounds of combat. During the uproar, your action is spent continuing the move (without spending PP), and any creature in range wakes and is prevented from falling asleep. (This include creatures that would purposefully fall asleep using moves like Rest) In addition, creatures in the area at the start of their turns must make a save , on a failure, or half as much on a success."
+  },
+  {
+    "id": "vacuum-wave",
+    "name": "Vacuum Wave",
+    "type": "fighting",
+    "flavor": null,
+    "description": "You whirl your fists with a fast attack that pushes a quick burst of wind at a creature in range. on a creature,"
+  },
+  {
+    "id": "venom-drench",
+    "name": "Venom Drench",
+    "type": "poison",
+    "flavor": "You drench a creature with an odd, poisonous liquid.",
+    "description": "You drench a creature with an odd, poisonous liquid. Force a creature to make a save , becoming poisoned on a failure. If the target is already poisoned, this move automatically hits, causing the creature to now take double the base at the end of each of its turns."
+  },
+  {
+    "id": "venoshock",
+    "name": "Venoshock",
+    "type": "poison",
+    "flavor": null,
+    "description": "You attempt to drench a creature in poisonous liquid. on a creature, If the target is already poisoned, double the dice roll for the damage"
+  },
+  {
+    "id": "vice-grip",
+    "name": "Vice Grip",
+    "type": "normal",
+    "flavor": "You crush a creature with a forceful, gripping attack.",
+    "description": "You crush a creature with a forceful, gripping attack. doing, grappling the target. On each successive turn, if the creature is still grappled, you may use this move again (as an action) and automatically hit. A creature may attempt to excape the grapple at the beginning of its turns with a save"
+  },
+  {
+    "id": "vine-whip",
+    "name": "Vine Whip",
+    "type": "grass",
+    "flavor": "You extend a sharp vine to whip the target with. This vine can strike anything within 15 feet of you.",
+    "description": "You extend a sharp vine to whip the target with. This vine can strike anything within 15 feet of you. roll, doing."
+  },
+  {
+    "id": "vital-throw",
+    "name": "Vital Throw",
+    "type": "fighting",
+    "flavor": "A slow fighting attack that pummels a creature.",
+    "description": "A slow fighting attack that pummels a creature. As an action on your turn, you hold this move until next turn, where it will automatically hit for as long as the target remains in melee range."
+  },
+  {
+    "id": "wake-up-slap",
+    "name": "Wake-Up Slap",
+    "type": "fighting",
+    "flavor": "You attack with a jolting slap from your palms.",
+    "description": "You attack with a jolting slap from your palms. on a creature, If the target is asleep, double your Move modifier when adding damage, but the target automatically wakes up."
+  },
+  {
+    "id": "water-gun",
+    "name": "Water Gun",
+    "type": "water",
+    "flavor": null,
+    "description": "You fire a quick spurt of water at a creature in range. roll, doing."
+  },
+  {
+    "id": "water-pulse",
+    "name": "Water Pulse",
+    "type": "water",
+    "flavor": null,
+    "description": "You send a wave of ultrasonic aquatic energy at a creature in range. roll, On a natural attack roll of 17 or higher, the target is confused."
+  },
+  {
+    "id": "water-sport",
+    "name": "Water Sport",
+    "type": "water",
+    "flavor": "You soak yourself and all allies with water, reducing the amount of fire damage taken for anyone affected.",
+    "description": "You soak yourself and all allies with water, reducing the amount of taken for anyone affected. For the duration, you and any ally in range (when you initially activated this move) have resistance to fire-type attacks. If you were already resistant, you are now immune. If you were vulnerable, you now take. If you are immune to fire-type moves already, nothing happens."
+  },
+  {
+    "id": "water-spout",
+    "name": "Water Spout",
+    "type": "water",
+    "flavor": "You fire a blast of water at a creature that increases in power the more healthy you are.",
+    "description": "You fire a blast of water at a creature that increases in power the more healthy you are. roll against a creature, doing, if you are at or above 50% of your health. If you are below 50%, halve the total damage done."
+  },
+  {
+    "id": "waterfall",
+    "name": "Waterfall",
+    "type": "water",
+    "flavor": null,
+    "description": "You create an intense waterfall that crashes down on creatures in a 10 foot radius, centered on a point within range. Creatures in the area must make a save or take and fall prone on a failure, or half as much on a save."
+  },
+  {
+    "id": "wave-crash",
+    "name": "Wave Crash",
+    "type": "water",
+    "flavor": "You shroud yourself in water and slam into the target with your full body.",
+    "description": "You shroud yourself in water and slam into the target with your full body. Roll a melee attack roll. you deal, taking half of the total damage (rounded down) in typeless recoil."
+  },
+  {
+    "id": "whirlpool",
+    "name": "Whirlpool",
+    "type": "water",
+    "flavor": null,
+    "description": "You create a wave of water that swirls around a creature in range. roll. the target takes and is restrained. At the beginning of each of its turns, it may attempt to escape with a save On each successive turn, if the creature is still restrained, you may use this move again (as an action) and automatically hit."
+  },
+  {
+    "id": "whirlwind",
+    "name": "Whirlwind",
+    "type": "normal",
+    "flavor": "You create a whirlwind of spinning air around you, increasing your AC by +2 until the beginning of your next turn.",
+    "description": "You create a whirlwind of spinning air around you, increasing your AC by +2 until the beginning of your next turn. When you activate this move, any creature within 5 feet of you must succeed on a STR saving throw or fall prone. In wild creature battles, this move can be activated to automatically count as a single success in a group DEX check to run away."
+  },
+  {
+    "id": "wide-guard",
+    "name": "Wide Guard",
+    "type": "rock",
+    "flavor": "You have the ability to guard your allies from area-of-effect moves.",
+    "description": "You have the ability to guard your allies from area-of-effect moves. As a reaction, when a creature activates a damaging move that damages multiple allies within range, you may halve the damage dealt. On future instances of this reaction in the same combat, you must roll higher than a 15 on a d20 roll or forfeit the reaction with no effect"
+  },
+  {
+    "id": "wild-charge",
+    "name": "Wild Charge",
+    "type": "electric",
+    "flavor": "You shroud yourself in electricity and charge at a creature.",
+    "description": "You shroud yourself in electricity and charge at a creature. dealing, but taking 1/4 of the damage (rounded down) in typeless recoil."
+  },
+  {
+    "id": "will-o-wisp",
+    "name": "Will-O-Wisp",
+    "type": "fire",
+    "flavor": "You send a sinister, white-hot flame at a creature attempting to inflict a burn.",
+    "description": "You send a sinister, white-hot flame at a creature attempting to inflict a burn. roll on a target, causing burn."
+  },
+  {
+    "id": "wing-attack",
+    "name": "Wing Attack",
+    "type": "flying",
+    "flavor": "You strike out at a target creature with your wings.",
+    "description": "You strike out at a target creature with your wings. roll, doing."
+  },
+  {
+    "id": "wish",
+    "name": "Wish",
+    "type": "normal",
+    "flavor": "You send forth a healing wish that takes time to come true.",
+    "description": "You send forth a healing wish that takes time to come true. At the end of your next turn, as a free action, heal a target in range for hit points."
+  },
+  {
+    "id": "withdraw",
+    "name": "Withdraw",
+    "type": "water",
+    "flavor": null,
+    "description": "When subject to a melee or ranged attack, you can spend your reaction to increase your AC by +2 if it would cause the attack to miss."
+  },
+  {
+    "id": "wonder-room",
+    "name": "Wonder Room",
+    "type": "psychic",
+    "flavor": "You create a bizarre vibe in the air in a 100 foot circle, centered on you.",
+    "description": "You create a bizarre vibe in the air in a 100 foot circle, centered on you. For the duration, all saves become saves and all saves become saves."
+  },
+  {
+    "id": "wood-hammer",
+    "name": "Wood Hammer",
+    "type": "grass",
+    "flavor": "You slam your rough body against a creature, taking serious recoil damage.",
+    "description": "You slam your rough body against a creature, taking serious recoil damage. Make an attack roll you also take a quarter of the damage dealt in typeless recoil damage."
+  },
+  {
+    "id": "work-up",
+    "name": "Work Up",
+    "type": "normal",
+    "flavor": "You get your adrenaline pumping and go into a frenzy.",
+    "description": "You get your adrenaline pumping and go into a frenzy. While worked up, you add +2 to all attack rolls. Your worked up status ends if you are incapacitated or if you have not attacked a hostile target since your last turn, or taken any damage since then."
+  },
+  {
+    "id": "worry-seed",
+    "name": "Worry Seed",
+    "type": "grass",
+    "flavor": "You shoot a bizarre seed that implants worry into another creature.",
+    "description": "You shoot a bizarre seed that implants worry into another creature. The target must succeed on a save or replace the user's choice of ability with Insomnia, preventing sleep for the duration."
+  },
+  {
+    "id": "wrap",
+    "name": "Wrap",
+    "type": "normal",
+    "flavor": "You attempt to grapple a target into submission.",
+    "description": "You attempt to grapple a target into submission. roll. the target takes and is grappled. At the beginning of each of its turns, it may attempt to escape with a save As long as the target is grappled on your subsequent turns, this move can be activated again as a bonus action with an automatic hit,"
+  },
+  {
+    "id": "wring-out",
+    "name": "Wring Out",
+    "type": "normal",
+    "flavor": "You wrap your hands around the target and squeeze hard.",
+    "description": "You wrap your hands around the target and squeeze hard. against a creature, If the target has 50% or more of its maximum HP, double your move modifier for the damage roll."
+  },
+  {
+    "id": "x-scissor",
+    "name": "X-Scissor",
+    "type": "bug",
+    "flavor": "You cross your claws for a scissor-like slashing attack.",
+    "description": "You cross your claws for a scissor-like slashing attack. against a creature,"
+  },
+  {
+    "id": "yawn",
+    "name": "Yawn",
+    "type": "normal",
+    "flavor": "You release a big yawn that causes a creature to become very drowsy. Choose a target in range. If that target is still in the battle after the end of its next turn, it falls asleep.",
+    "description": "You release a big yawn that causes a creature to become very drowsy. Choose a target in range. If that target is still in the battle after the end of its next turn, it falls asleep."
+  },
+  {
+    "id": "zap-cannon",
+    "name": "Zap Cannon",
+    "type": "electric",
+    "flavor": "You fire out an extreme blast of pure electric energy at a creature.",
+    "description": "You fire out an extreme blast of pure electric energy at a creature. against a target in range, doing. If the natural attack roll is 15 or higher, the target is paralyzed."
+  },
+  {
+    "id": "zen-headbutt",
+    "name": "Zen Headbutt",
+    "type": "psychic",
+    "flavor": "You focus all of your willpower into your head and ram it into a creature.",
+    "description": "You focus all of your willpower into your head and ram it into a creature. If the natural attack roll is 17 or higher, the target flinches."
+  }
+]

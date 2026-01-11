@@ -1,96 +1,108 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import { getPokemonById } from '@/lib/pokemon';
-import type { ExternalTrainerResponse, ApiError } from '@/lib/types';
+import { getPokemonById } from '@/lib/battle';
+import type { ApiError } from '@/lib/types';
 
 /**
- * External API endpoint for students to retrieve their trainer data.
+ * External API endpoint for authenticated users to retrieve their trainer data.
  *
  * Headers required:
- * - X-API-Key: Shared secret key provided by instructor
- * - X-Trainer-Name: The trainer's name (case-insensitive)
+ * - X-API-Key: User's personal secret key (obtained from dashboard)
+ *
+ * The middleware validates the API key and injects X-User-ID.
  *
  * Returns:
- * - 200: Trainer data with Pokemon details
- * - 400: Missing required headers
+ * - 200: Trainer data with active Pokemon details
  * - 401: Invalid or missing API key
  * - 404: Trainer not found
  * - 500: Internal server error
  */
 export async function GET(request: NextRequest) {
   try {
-    // T008-T010: Validate API key
-    const apiKey = request.headers.get('X-API-Key');
-    const expectedKey = process.env.EXTERNAL_API_SECRET_KEY;
+    // Get user ID from middleware-injected header
+    const userId = request.headers.get('X-User-ID');
 
-    if (!apiKey) {
+    if (!userId) {
       const error: ApiError = {
         error: 'UNAUTHORIZED',
-        message: 'Invalid or missing API key',
+        message: 'API key required. Include X-API-Key header.',
       };
       return NextResponse.json(error, { status: 401 });
     }
 
-    if (apiKey !== expectedKey) {
-      const error: ApiError = {
-        error: 'UNAUTHORIZED',
-        message: 'Invalid or missing API key',
-      };
-      return NextResponse.json(error, { status: 401 });
-    }
-
-    // T011: Validate trainer name header
-    const trainerName = request.headers.get('X-Trainer-Name');
-
-    if (!trainerName) {
-      const error: ApiError = {
-        error: 'BAD_REQUEST',
-        message: 'X-Trainer-Name header is required',
-      };
-      return NextResponse.json(error, { status: 400 });
-    }
-
-    // T004: Query trainer by name (case-insensitive)
     const supabase = await createClient();
 
+    // Get trainer data
     const { data: trainer, error: trainerError } = await supabase
       .from('trainers')
-      .select('id, name, starter_pokemon_id')
-      .ilike('name', trainerName)
-      .limit(1)
+      .select('id, name, role, created_at')
+      .eq('id', userId)
       .single();
 
-    // T007: Handle trainer not found
     if (trainerError || !trainer) {
       const error: ApiError = {
         error: 'TRAINER_NOT_FOUND',
-        message: 'No trainer found with that name',
+        message: 'Trainer not found',
       };
       return NextResponse.json(error, { status: 404 });
     }
 
-    // T005: Enrich with Pokemon details
-    let pokemon: ExternalTrainerResponse['pokemon'] = null;
+    // Get active Pokemon
+    const { data: activePokemon } = await supabase
+      .from('pokemon_owned')
+      .select('*')
+      .eq('user_id', userId)
+      .eq('is_active', true)
+      .single();
 
-    if (trainer.starter_pokemon_id) {
-      const pokemonData = getPokemonById(trainer.starter_pokemon_id);
+    let pokemon = null;
+    if (activePokemon) {
+      const pokemonData = getPokemonById(activePokemon.pokemon_id);
       if (pokemonData) {
         pokemon = {
-          number: pokemonData.number,
+          id: activePokemon.id,
+          pokemon_id: activePokemon.pokemon_id,
           name: pokemonData.name,
-          types: pokemonData.types,
+          types: pokemonData.type,
+          level: activePokemon.level,
+          sr: pokemonData.sr,
+          is_starter: activePokemon.is_starter,
+          selected_moves: activePokemon.selected_moves,
+          sprite_url: pokemonData.media.sprite,
         };
       }
     }
 
-    // T006: Return ExternalTrainerResponse format
-    const response: ExternalTrainerResponse = {
-      trainer_id: trainer.id,
-      trainer_name: trainer.name,
-      pokemon,
-    };
+    // Get user stats
+    const { data: stats } = await supabase
+      .from('user_stats')
+      .select('*')
+      .eq('user_id', userId)
+      .single();
 
-    return NextResponse.json(response, { status: 200 });
+    // Get total Pokemon count
+    const { count: pokemonCount } = await supabase
+      .from('pokemon_owned')
+      .select('*', { count: 'exact', head: true })
+      .eq('user_id', userId);
+
+    return NextResponse.json({
+      trainer: {
+        id: trainer.id,
+        name: trainer.name,
+        role: trainer.role,
+        created_at: trainer.created_at,
+      },
+      active_pokemon: pokemon,
+      stats: stats ? {
+        money: stats.money,
+        items: stats.items,
+        battles_won: stats.battles_won,
+        battles_lost: stats.battles_lost,
+        pokemon_captured: stats.pokemon_captured,
+      } : null,
+      pokemon_count: pokemonCount || 0,
+    });
   } catch (err) {
     console.error('External API error:', err);
     const error: ApiError = {

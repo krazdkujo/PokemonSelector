@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { NameEntryForm } from '@/components/NameEntryForm';
-import { getTrainerId, setTrainerId } from '@/lib/session';
-import type { Trainer, ApiError } from '@/lib/types';
+import { getTrainerId, setTrainerId, clearTrainerId } from '@/lib/session';
+import type { ApiError } from '@/lib/types';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -16,20 +16,32 @@ export default function LoginPage() {
     const checkSession = async () => {
       const trainerId = getTrainerId();
       if (trainerId) {
-        // Check if trainer has a starter
         try {
-          const response = await fetch(`/api/trainer/${trainerId}`);
-          if (response.ok) {
-            const trainer: Trainer = await response.json();
-            if (trainer.starter_pokemon_id) {
-              router.replace('/dashboard');
-            } else {
-              router.replace('/select');
-            }
+          // Check if trainer still exists in database
+          const trainerResponse = await fetch(`/api/trainer/${trainerId}`);
+          if (!trainerResponse.ok) {
+            // Trainer not found, clear invalid session
+            clearTrainerId();
+            setIsCheckingSession(false);
             return;
           }
+
+          // Check dashboard to see if they have an active Pokemon
+          const dashResponse = await fetch('/api/dashboard');
+          if (dashResponse.ok) {
+            const dashboard = await dashResponse.json();
+            if (dashboard.active_pokemon) {
+              router.replace('/dashboard');
+              return;
+            }
+          }
+
+          // Trainer exists but no active Pokemon, go to select
+          router.replace('/select');
+          return;
         } catch {
-          // Session invalid, continue to login
+          // Error occurred, clear session
+          clearTrainerId();
         }
       }
       setIsCheckingSession(false);
@@ -55,8 +67,19 @@ export default function LoginPage() {
         throw new Error(error.message);
       }
 
-      const trainer = data as Trainer;
-      setTrainerId(trainer.id);
+      setTrainerId(data.id);
+
+      // Check if returning user has an active Pokemon
+      const dashResponse = await fetch('/api/dashboard');
+      if (dashResponse.ok) {
+        const dashboard = await dashResponse.json();
+        if (dashboard.active_pokemon) {
+          router.push('/dashboard');
+          return;
+        }
+      }
+
+      // New user or no Pokemon yet
       router.push('/select');
     } catch (err) {
       setIsLoading(false);
@@ -91,7 +114,7 @@ export default function LoginPage() {
       </div>
 
       <p className="mt-6 text-sm text-gray-500">
-        Your trainer ID will be displayed after you select your starter.
+        Enter your name to start or continue your journey.
       </p>
     </div>
   );

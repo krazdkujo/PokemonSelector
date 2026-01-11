@@ -1,0 +1,7423 @@
+[
+  {
+    "id": "bulbasaur",
+    "name": "Bulbasaur",
+    "number": 1,
+    "type": [
+      "grass",
+      "poison"
+    ],
+    "size": "tiny",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Seed Pokémon. It can go for days without eating a single morsel. In the bulb on its back, it stores energy.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "tackle",
+        "growl"
+      ],
+      "level2": [
+        "vine-whip",
+        "leech-seed"
+      ],
+      "level6": [
+        "poison-powder",
+        "sleep-powder",
+        "take-down",
+        "razor-leaf"
+      ],
+      "level10": [
+        "sweet-scent",
+        "growth",
+        "double-edge"
+      ],
+      "level14": [
+        "worry-seed",
+        "synthesis"
+      ],
+      "level18": [
+        "seed-bomb"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+    }
+  },
+  {
+    "id": "ivysaur",
+    "name": "Ivysaur",
+    "number": 2,
+    "type": [
+      "grass",
+      "poison"
+    ],
+    "size": "small",
+    "sr": 5,
+    "minLevel": 5,
+    "description": "The Seed Pokémon. The bud on its back grows by drawing energy. It gives off an aroma when it is ready to bloom.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "tackle",
+        "growl",
+        "leech-seed",
+        "vine-whip"
+      ],
+      "level6": [
+        "poison-powder",
+        "sleep-powder",
+        "take-down"
+      ],
+      "level10": [
+        "razor-leaf",
+        "sweet-scent"
+      ],
+      "level14": [
+        "growth",
+        "double-edge",
+        "worry-seed"
+      ],
+      "level18": [
+        "synthesis",
+        "solar-beam"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png"
+    }
+  },
+  {
+    "id": "venusaur",
+    "name": "Venusaur",
+    "number": 3,
+    "type": [
+      "grass",
+      "poison"
+    ],
+    "size": "large",
+    "sr": 13,
+    "minLevel": 10,
+    "description": "The Seed Pokémon. The flower on its back catches the sun’s rays. The sunlight is then absorbed and used for energy",
+    "senses": [],
+    "moves": {
+      "start": [
+        "tackle",
+        "growl",
+        "leech-seed",
+        "vine-whip",
+        "petal-dance",
+        "poison-powder",
+        "sleep-powder",
+        "take-down",
+        "razor-leaf",
+        "sweet-scent"
+      ],
+      "level14": [
+        "growth",
+        "double-edge",
+        "worry-seed"
+      ],
+      "level18": [
+        "synthesis",
+        "solar-beam",
+        "petal-blizzard"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 3 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png"
+    }
+  },
+  {
+    "id": "charmander",
+    "name": "Charmander",
+    "number": 4,
+    "type": [
+      "fire"
+    ],
+    "size": "tiny",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Lizard Pokémon. The flame at the tip of its tail makes a sound as it burns. You can only hear it in quiet places.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "growl",
+        "scratch"
+      ],
+      "level2": [
+        "ember",
+        "smokescreen"
+      ],
+      "level6": [
+        "dragon-rage",
+        "scary-face"
+      ],
+      "level10": [
+        "fire-fang",
+        "slash"
+      ],
+      "level14": [
+        "flame-burst",
+        "flamethrower"
+      ],
+      "level18": [
+        "fire-spin",
+        "inferno"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
+    }
+  },
+  {
+    "id": "charmeleon",
+    "name": "Charmeleon",
+    "number": 5,
+    "type": [
+      "fire"
+    ],
+    "size": "small",
+    "sr": 5,
+    "minLevel": 5,
+    "description": "The Flame Pokémon. Tough fights could excite this Pokémon. When excited, it may breathe out bluish-white flames.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "growl",
+        "scratch",
+        "ember",
+        "smokescreen"
+      ],
+      "level6": [
+        "dragon-rage"
+      ],
+      "level10": [
+        "scary-face"
+      ],
+      "level14": [
+        "fire-fang",
+        "flame-burst",
+        "slash"
+      ],
+      "level18": [
+        "flamethrower",
+        "fire-spin",
+        "inferno"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/5.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png"
+    }
+  },
+  {
+    "id": "charizard",
+    "name": "Charizard",
+    "number": 6,
+    "type": [
+      "fire",
+      "flying"
+    ],
+    "size": "medium",
+    "sr": 13,
+    "minLevel": 10,
+    "description": "The Flame Pokémon. When this Pokémon expels a blast of superhot fire, the red flame at the tip of its tail burns more intensely.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "growl",
+        "air-slash",
+        "scratch",
+        "ember",
+        "dragon-claw",
+        "shadow-claw",
+        "wing-attack",
+        "smokescreen",
+        "dragon-rage",
+        "scary-face"
+      ],
+      "level14": [
+        "fire-fang",
+        "flame-burst",
+        "slash"
+      ],
+      "level18": [
+        "flamethrower",
+        "fire-spin",
+        "heat-wave",
+        "inferno",
+        "flare-blitz"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 3 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
+    }
+  },
+  {
+    "id": "squirtle",
+    "name": "Squirtle",
+    "number": 7,
+    "type": [
+      "water"
+    ],
+    "size": "tiny",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Tiny Turtle Pokémon. Shoots water at prey while in the water. Withdraws into its shell when in danger.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "tackle",
+        "tail-whip"
+      ],
+      "level2": [
+        "water-gun",
+        "withdraw"
+      ],
+      "level6": [
+        "bubble",
+        "bite",
+        "rapid-spin"
+      ],
+      "level10": [
+        "protect",
+        "water-pulse",
+        "wave-crash"
+      ],
+      "level14": [
+        "aqua-tail",
+        "skull-bash",
+        "iron-defense"
+      ],
+      "level18": [
+        "rain-dance",
+        "hydro-pump"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
+    }
+  },
+  {
+    "id": "wartortle",
+    "name": "Wartortle",
+    "number": 8,
+    "type": [
+      "water"
+    ],
+    "size": "small",
+    "sr": 5,
+    "minLevel": 5,
+    "description": "The Turtle Pokémon. When tapped on its head, this Pokémon will pull it in, but its tail will still stick out a little bit.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "tackle",
+        "tail-whip",
+        "water-gun",
+        "withdraw"
+      ],
+      "level6": [
+        "bubble",
+        "bite"
+      ],
+      "level10": [
+        "rapid-spin",
+        "protect"
+      ],
+      "level14": [
+        "water-pulse",
+        "aqua-tail",
+        "skull-bash",
+        "wave-crash"
+      ],
+      "level18": [
+        "iron-defense",
+        "rain-dance",
+        "hydro-pump"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/8.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png"
+    }
+  },
+  {
+    "id": "blastoise",
+    "name": "Blastoise",
+    "number": 9,
+    "type": [
+      "water"
+    ],
+    "size": "medium",
+    "sr": 13,
+    "minLevel": 10,
+    "description": "The Shellfish Pokémon. Once it takes aim at its enemy, it blasts out water with even more force than a fire hose.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "tackle",
+        "flash-cannon",
+        "tail-whip",
+        "water-gun",
+        "withdraw",
+        "bubble",
+        "bite",
+        "rapid-spin",
+        "protect"
+      ],
+      "level14": [
+        "water-pulse",
+        "aqua-tail",
+        "skull-bash",
+        "wave-crash"
+      ],
+      "level18": [
+        "iron-defense",
+        "rain-dance",
+        "hydro-pump"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 3 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png"
+    }
+  },
+  {
+    "id": "caterpie",
+    "name": "Caterpie",
+    "number": 10,
+    "type": [
+      "bug"
+    ],
+    "size": "tiny",
+    "sr": 0.125,
+    "minLevel": 1,
+    "description": "The Worm Pokémon. If you touch the feeler on top of its head, it will release a horrible stink to protect itself.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "string-shot",
+        "tackle"
+      ],
+      "level2": [
+        "bug-bite"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png"
+    }
+  },
+  {
+    "id": "metapod",
+    "name": "Metapod",
+    "number": 11,
+    "type": [
+      "bug"
+    ],
+    "size": "tiny",
+    "sr": 1,
+    "minLevel": 2,
+    "description": "The Cocoon Pokémon. Hardens its shell to protect itself. However, a large impact may cause it to pop out of its shell.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "harden"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/11.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png"
+    }
+  },
+  {
+    "id": "butterfree",
+    "name": "Butterfree",
+    "number": 12,
+    "type": [
+      "bug",
+      "flying"
+    ],
+    "size": "medium",
+    "sr": 6,
+    "minLevel": 5,
+    "description": "The Butterfly Pokémon. Its wings, covered with poisonous powder, repel water. This allows it to fly in the rain.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "confusion",
+        "gust"
+      ],
+      "level6": [
+        "poison-powder",
+        "sleep-powder",
+        "stun-spore",
+        "psybeam"
+      ],
+      "level10": [
+        "silver-wind",
+        "supersonic",
+        "safeguard"
+      ],
+      "level14": [
+        "whirlwind",
+        "bug-buzz",
+        "rage-powder"
+      ],
+      "level18": [
+        "captivate",
+        "tailwind",
+        "air-slash",
+        "quiver-dance"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 3 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/12.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/12.png"
+    }
+  },
+  {
+    "id": "weedle",
+    "name": "Weedle",
+    "number": 13,
+    "type": [
+      "bug",
+      "poison"
+    ],
+    "size": "tiny",
+    "sr": 0.125,
+    "minLevel": 1,
+    "description": "The Hairy Bug Pokémon. Beware of the sharp stinger on its head. It hides in grass and bushes where it eats leaves.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "poison-sting",
+        "string-shot"
+      ],
+      "level2": [
+        "bug-bite"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/13.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/13.png"
+    }
+  },
+  {
+    "id": "kakuna",
+    "name": "Kakuna",
+    "number": 14,
+    "type": [
+      "bug",
+      "poison"
+    ],
+    "size": "tiny",
+    "sr": 1,
+    "minLevel": 2,
+    "description": "The Cocoon Pokémon. Able to move only slightly. When endangered, it may stick out its stinger and poison its enemy.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "harden"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/14.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/14.png"
+    }
+  },
+  {
+    "id": "beedrill",
+    "name": "Beedrill",
+    "number": 15,
+    "type": [
+      "bug",
+      "poison"
+    ],
+    "size": "medium",
+    "sr": 6,
+    "minLevel": 5,
+    "description": "The Poison Bee Pokémon. It has three poisonous stingers on its forelegs and its tail. They are used to jab its enemy repeatedly.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "fury-attack",
+        "twineedle"
+      ],
+      "level6": [
+        "rage",
+        "pursuit"
+      ],
+      "level10": [
+        "focus-energy",
+        "venoshock",
+        "assurance"
+      ],
+      "level14": [
+        "toxic-spikes",
+        "pin-missile",
+        "poison-jab"
+      ],
+      "level18": [
+        "agility",
+        "endeavor",
+        "fell-stinger"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 3 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/15.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/15.png"
+    }
+  },
+  {
+    "id": "pidgey",
+    "name": "Pidgey",
+    "number": 16,
+    "type": [
+      "normal",
+      "flying"
+    ],
+    "size": "tiny",
+    "sr": 0.25,
+    "minLevel": 1,
+    "description": "The Tiny Bird Pokémon. Very docile. If attacked, it will often kick up sand to protect itself rather than fight back.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "tackle"
+      ],
+      "level2": [
+        "sand-attack",
+        "gust"
+      ],
+      "level6": [
+        "quick-attack",
+        "whirlwind"
+      ],
+      "level10": [
+        "twister",
+        "feather-dance"
+      ],
+      "level14": [
+        "agility",
+        "wing-attack",
+        "roost"
+      ],
+      "level18": [
+        "tailwind",
+        "mirror-move",
+        "air-slash",
+        "hurricane"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/16.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/16.png"
+    }
+  },
+  {
+    "id": "pidgeotto",
+    "name": "Pidgeotto",
+    "number": 17,
+    "type": [
+      "normal",
+      "flying"
+    ],
+    "size": "medium",
+    "sr": 3,
+    "minLevel": 5,
+    "description": "The Bird Pokémon. This Pokémon is full of vitality. It constantly flies around its large territory in search of prey.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "tackle",
+        "sand-attack",
+        "gust"
+      ],
+      "level6": [
+        "quick-attack",
+        "whirlwind"
+      ],
+      "level10": [
+        "twister",
+        "feather-dance"
+      ],
+      "level14": [
+        "agility",
+        "wing-attack",
+        "roost"
+      ],
+      "level18": [
+        "tailwind",
+        "mirror-move",
+        "air-slash",
+        "hurricane"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/17.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/17.png"
+    }
+  },
+  {
+    "id": "pidgeot",
+    "name": "Pidgeot",
+    "number": 18,
+    "type": [
+      "normal",
+      "flying"
+    ],
+    "size": "medium",
+    "sr": 10,
+    "minLevel": 8,
+    "description": "The Bird Pokémon. This Pokémon flies at Mach 2 speed, seeking prey. Its large talons are feared as wicked weapons.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "gust",
+        "quick-attack",
+        "sand-attack",
+        "tackle",
+        "whirlwind"
+      ],
+      "level10": [
+        "twister",
+        "feather-dance"
+      ],
+      "level14": [
+        "agility",
+        "wing-attack"
+      ],
+      "level18": [
+        "roost",
+        "tailwind",
+        "mirror-move",
+        "air-slash",
+        "hurricane"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 3 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/18.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/18.png"
+    }
+  },
+  {
+    "id": "rattata",
+    "name": "Rattata",
+    "number": 19,
+    "type": [
+      "normal"
+    ],
+    "size": "tiny",
+    "sr": 0.25,
+    "minLevel": 1,
+    "description": "The Mouse Pokémon. Will chew on anything with its fangs. If you see one, you can be certain that 40 more live in the area.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 30
+      }
+    ],
+    "moves": {
+      "start": [
+        "tackle",
+        "tail-whip"
+      ],
+      "level2": [
+        "quick-attack",
+        "focus-energy",
+        "bite"
+      ],
+      "level6": [
+        "pursuit",
+        "hyper-fang",
+        "assurance"
+      ],
+      "level10": [
+        "crunch",
+        "sucker-punch"
+      ],
+      "level14": [
+        "super-fang",
+        "double-edge",
+        "endeavor"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/19.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/19.png"
+    }
+  },
+  {
+    "id": "raticate",
+    "name": "Raticate",
+    "number": 20,
+    "type": [
+      "normal"
+    ],
+    "size": "small",
+    "sr": 5,
+    "minLevel": 5,
+    "description": "The Mouse Pokémon. Its hind feet are webbed. They act as flippers, so it can swim in rivers and hunt for prey.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 50
+      }
+    ],
+    "moves": {
+      "start": [
+        "quick-attack",
+        "tackle",
+        "tail-whip",
+        "focus-energy",
+        "scary-face",
+        "swords-dance",
+        "bite"
+      ],
+      "level6": [
+        "pursuit",
+        "assurance"
+      ],
+      "level10": [
+        "hyper-fang",
+        "crunch"
+      ],
+      "level14": [
+        "sucker-punch",
+        "super-fang"
+      ],
+      "level18": [
+        "double-edge",
+        "endeavor"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/20.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/20.png"
+    }
+  },
+  {
+    "id": "spearow",
+    "name": "Spearow",
+    "number": 21,
+    "type": [
+      "normal",
+      "flying"
+    ],
+    "size": "tiny",
+    "sr": 0.25,
+    "minLevel": 1,
+    "description": "The Tiny Bird Pokémon. Inept at flying high. However, it can fly around very fast to protect its territory.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "growl",
+        "peck",
+        "leer"
+      ],
+      "level2": [
+        "pursuit",
+        "fury-attack"
+      ],
+      "level6": [
+        "aerial-ace",
+        "mirror-move"
+      ],
+      "level10": [
+        "assurance",
+        "agility"
+      ],
+      "level14": [
+        "focus-energy",
+        "roost"
+      ],
+      "level18": [
+        "drill-peck"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/21.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/21.png"
+    }
+  },
+  {
+    "id": "fearow",
+    "name": "Fearow",
+    "number": 22,
+    "type": [
+      "normal",
+      "flying"
+    ],
+    "size": "medium",
+    "sr": 5,
+    "minLevel": 5,
+    "description": "The Beak Pokémon. A Pokémon that dates back many years. If it senses danger, it flies high and away, instantly.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "growl",
+        "leer",
+        "peck",
+        "pluck",
+        "pursuit"
+      ],
+      "level6": [
+        "fury-attack",
+        "aerial-ace",
+        "mirror-move"
+      ],
+      "level10": [
+        "assurance",
+        "agility"
+      ],
+      "level14": [
+        "focus-energy"
+      ],
+      "level18": [
+        "roost",
+        "drill-peck",
+        "drill-run"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/22.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/22.png"
+    }
+  },
+  {
+    "id": "ekans",
+    "name": "Ekans",
+    "number": 23,
+    "type": [
+      "poison"
+    ],
+    "size": "small",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Snake Pokémon. The older it gets, the longer it grows. At night, it wraps its long body around tree branches to rest.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 30
+      }
+    ],
+    "moves": {
+      "start": [
+        "leer",
+        "wrap",
+        "poison-sting"
+      ],
+      "level2": [
+        "bite",
+        "glare"
+      ],
+      "level6": [
+        "screech",
+        "acid"
+      ],
+      "level10": [
+        "spit-up",
+        "stockpile",
+        "swallow"
+      ],
+      "level14": [
+        "acid-spray",
+        "mud-bomb",
+        "gastro-acid"
+      ],
+      "level18": [
+        "haze",
+        "coil",
+        "gunk-shot",
+        "belch"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/23.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/23.png"
+    }
+  },
+  {
+    "id": "arbok",
+    "name": "Arbok",
+    "number": 24,
+    "type": [
+      "poison"
+    ],
+    "size": "large",
+    "sr": 6,
+    "minLevel": 5,
+    "description": "The Cobra Pokémon. The frightening patterns on its belly have been studied. Six variations have been confirmed.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 50
+      }
+    ],
+    "moves": {
+      "start": [
+        "bite",
+        "crunch",
+        "fire-fang",
+        "ice-fang",
+        "leer",
+        "poison-sting",
+        "thunder-fang",
+        "wrap"
+      ],
+      "level6": [
+        "glare",
+        "screech"
+      ],
+      "level10": [
+        "acid",
+        "spit-up",
+        "stockpile",
+        "swallow"
+      ],
+      "level14": [
+        "acid-spray",
+        "mud-bomb",
+        "gastro-acid"
+      ],
+      "level18": [
+        "haze",
+        "coil",
+        "gunk-shot",
+        "belch"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/24.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/24.png"
+    }
+  },
+  {
+    "id": "pikachu",
+    "name": "Pikachu",
+    "number": 25,
+    "type": [
+      "electric"
+    ],
+    "size": "tiny",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Mouse Pokémon. This forest-dwelling Pokémon stores electricity in its cheeks, so you’ll feel a tingly shock if you touch it.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "tail-whip",
+        "thunder-shock",
+        "play-nice"
+      ],
+      "level2": [
+        "growl",
+        "quick-attack"
+      ],
+      "level6": [
+        "electro-ball",
+        "thunder-wave",
+        "feint"
+      ],
+      "level10": [
+        "double-team",
+        "spark",
+        "discharge",
+        "nuzzle"
+      ],
+      "level14": [
+        "slam",
+        "thunderbolt",
+        "agility"
+      ],
+      "level18": [
+        "wild-charge",
+        "light-screen",
+        "thunder"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+    }
+  },
+  {
+    "id": "raichu",
+    "name": "Raichu",
+    "number": 26,
+    "type": [
+      "electric"
+    ],
+    "size": "small",
+    "sr": 7,
+    "minLevel": 5,
+    "description": "The Mouse Pokémon. When electricity builds up inside its body, it becomes feisty. It also glows in the dark.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "quick-attack",
+        "tail-whip",
+        "thunder-shock",
+        "thunderbolt"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 3 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/26.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/26.png"
+    }
+  },
+  {
+    "id": "sandshrew",
+    "name": "Sandshrew",
+    "number": 27,
+    "type": [
+      "ground"
+    ],
+    "size": "tiny",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Mouse Pokémon. Its body is dry. When it gets cold at night, its hide is said to become coated with a fine dew.",
+    "senses": [
+      {
+        "type": "tremorsense",
+        "value": 60
+      }
+    ],
+    "moves": {
+      "start": [
+        "defense-curl",
+        "scratch",
+        "sand-attack"
+      ],
+      "level2": [
+        "poison-sting",
+        "rollout",
+        "rapid-spin",
+        "fury-cutter"
+      ],
+      "level6": [
+        "magnitude",
+        "swift"
+      ],
+      "level10": [
+        "fury-swipes",
+        "sand-tomb",
+        "slash"
+      ],
+      "level14": [
+        "dig",
+        "gyro-ball"
+      ],
+      "level18": [
+        "swords-dance",
+        "sandstorm",
+        "earthquake"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/27.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png"
+    }
+  },
+  {
+    "id": "sandslash",
+    "name": "Sandslash",
+    "number": 28,
+    "type": [
+      "ground"
+    ],
+    "size": "small",
+    "sr": 7,
+    "minLevel": 5,
+    "description": "The Mouse Pokémon. It is skilled at slashing enemies with its claws. If broken, they start to grow back in a day.",
+    "senses": [
+      {
+        "type": "tremorsense",
+        "value": 80
+      }
+    ],
+    "moves": {
+      "start": [
+        "crush-claw",
+        "defense-curl",
+        "poison-sting",
+        "sand-attack",
+        "scratch",
+        "rollout",
+        "rapid-spin",
+        "fury-cutter"
+      ],
+      "level6": [
+        "magnitude",
+        "swift"
+      ],
+      "level10": [
+        "fury-swipes",
+        "sand-tomb"
+      ],
+      "level14": [
+        "slash",
+        "dig"
+      ],
+      "level18": [
+        "gyro-ball",
+        "swords-dance",
+        "sandstorm",
+        "earthquake"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/28.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/28.png"
+    }
+  },
+  {
+    "id": "nidoran-f",
+    "name": "Nidoran ♀",
+    "number": 29,
+    "type": [
+      "poison"
+    ],
+    "size": "tiny",
+    "sr": 0.25,
+    "minLevel": 1,
+    "description": "The Poison Pin Pokémon. A mild-mannered Pokémon that does not like to fight. Beware—its small horn secretes venom.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "growl",
+        "scratch"
+      ],
+      "level2": [
+        "tail-whip",
+        "double-kick"
+      ],
+      "level6": [
+        "poison-sting",
+        "fury-swipes"
+      ],
+      "level10": [
+        "bite",
+        "helping-hand"
+      ],
+      "level14": [
+        "toxic-spikes",
+        "flatter"
+      ],
+      "level18": [
+        "crunch",
+        "captivate",
+        "poison-fang"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/29.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/29.png"
+    }
+  },
+  {
+    "id": "nidorina",
+    "name": "Nidorina",
+    "number": 30,
+    "type": [
+      "poison"
+    ],
+    "size": "small",
+    "sr": 4,
+    "minLevel": 5,
+    "description": "The Poison Pin Pokémon. When resting deep in its burrow, its barbs always retract. This is proof that it is relaxed.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "growl",
+        "scratch",
+        "tail-whip",
+        "double-kick"
+      ],
+      "level6": [
+        "poison-sting"
+      ],
+      "level10": [
+        "fury-swipes",
+        "bite"
+      ],
+      "level14": [
+        "helping-hand",
+        "toxic-spikes"
+      ],
+      "level18": [
+        "flatter",
+        "crunch",
+        "captivate",
+        "poison-fang"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/30.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/30.png"
+    }
+  },
+  {
+    "id": "nidoqueen",
+    "name": "Nidoqueen",
+    "number": 31,
+    "type": [
+      "poison",
+      "ground"
+    ],
+    "size": "medium",
+    "sr": 13,
+    "minLevel": 10,
+    "description": "The Drill Pokémon. Tough scales cover the sturdy body of this Pokémon. It appears that the scales grow in cycles.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "double-kick",
+        "poison-sting",
+        "scratch",
+        "tail-whip",
+        "chip-away"
+      ],
+      "level14": [
+        "body-slam"
+      ],
+      "level18": [
+        "earth-power",
+        "superpower"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 3 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/31.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/31.png"
+    }
+  },
+  {
+    "id": "nidoran-m",
+    "name": "Nidoran ♂",
+    "number": 32,
+    "type": [
+      "poison"
+    ],
+    "size": "tiny",
+    "sr": 0.25,
+    "minLevel": 1,
+    "description": "The Poison Pin Pokémon. Its large ears are always kept upright. If it senses danger, it will attack with a poisonous sting.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "leer",
+        "peck"
+      ],
+      "level2": [
+        "focus-energy",
+        "double-kick"
+      ],
+      "level6": [
+        "poison-sting",
+        "fury-attack"
+      ],
+      "level10": [
+        "horn-attack",
+        "helping-hand"
+      ],
+      "level14": [
+        "toxic-spikes",
+        "flatter"
+      ],
+      "level18": [
+        "poison-jab",
+        "captivate",
+        "horn-drill"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/32.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/32.png"
+    }
+  },
+  {
+    "id": "nidorino",
+    "name": "Nidorino",
+    "number": 33,
+    "type": [
+      "poison"
+    ],
+    "size": "small",
+    "sr": 4,
+    "minLevel": 5,
+    "description": "The Poison Pin Pokémon. Its horn contains venom. If it stabs an enemy with the horn, the impact makes the poison leak out.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "leer",
+        "peck",
+        "focus-energy",
+        "double-kick"
+      ],
+      "level6": [
+        "poison-sting"
+      ],
+      "level10": [
+        "fury-attack",
+        "horn-attack"
+      ],
+      "level14": [
+        "helping-hand",
+        "toxic-spikes"
+      ],
+      "level18": [
+        "flatter",
+        "poison-jab",
+        "captivate",
+        "horn-drill"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/33.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/33.png"
+    }
+  },
+  {
+    "id": "nidoking",
+    "name": "Nidoking",
+    "number": 34,
+    "type": [
+      "poison",
+      "ground"
+    ],
+    "size": "medium",
+    "sr": 13,
+    "minLevel": 10,
+    "description": "The Drill Pokémon. Its steel-like hide adds to its powerful tackle. Its horns are so hard, they can pierce a diamond.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "double-kick",
+        "focus-energy",
+        "peck",
+        "poison-sting",
+        "chip-away",
+        "thrash"
+      ],
+      "level18": [
+        "earth-power",
+        "megahorn"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 3 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/34.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/34.png"
+    }
+  },
+  {
+    "id": "clefairy",
+    "name": "Clefairy",
+    "number": 35,
+    "type": [
+      "fairy"
+    ],
+    "size": "tiny",
+    "sr": 1,
+    "minLevel": 1,
+    "description": "The Fairy Pokémon. Adored for their cute looks and playfulness. They are thought to be rare, as they do not appear often.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 30
+      }
+    ],
+    "moves": {
+      "start": [
+        "disarming-voice",
+        "encore",
+        "growl",
+        "pound",
+        "spotlight"
+      ],
+      "level2": [
+        "sing",
+        "double-slap"
+      ],
+      "level6": [
+        "defense-curl",
+        "follow-me",
+        "bestow",
+        "life-dew"
+      ],
+      "level10": [
+        "wake-up-slap",
+        "minimize"
+      ],
+      "level14": [
+        "stored-power",
+        "metronome",
+        "cosmic-power"
+      ],
+      "level18": [
+        "lucky-chant",
+        "body-slam",
+        "moonlight",
+        "moonblast",
+        "gravity",
+        "meteor-mash",
+        "healing-wish",
+        "after-you"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/35.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png"
+    }
+  },
+  {
+    "id": "clefable",
+    "name": "Clefable",
+    "number": 36,
+    "type": [
+      "fairy"
+    ],
+    "size": "medium",
+    "sr": 8,
+    "minLevel": 5,
+    "description": "The Fairy Pokémon. They appear to be very protective of their own world. It is a kind of fairy, rarely seen by people.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 50
+      }
+    ],
+    "moves": {
+      "start": [
+        "disarming-voice",
+        "double-slap",
+        "metronome",
+        "minimize",
+        "sing",
+        "spotlight",
+        "life-dew"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 3 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/36.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/36.png"
+    }
+  },
+  {
+    "id": "vulpix",
+    "name": "Vulpix",
+    "number": 37,
+    "type": [
+      "fire"
+    ],
+    "size": "tiny",
+    "sr": 0.25,
+    "minLevel": 1,
+    "description": "The Fox Pokémon. Both its fur and its tails are beautiful. As it grows, the tails split and form more tails.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 30
+      }
+    ],
+    "moves": {
+      "start": [
+        "ember",
+        "tail-whip"
+      ],
+      "level2": [
+        "roar",
+        "baby-doll-eyes",
+        "quick-attack"
+      ],
+      "level6": [
+        "confuse-ray",
+        "fire-spin",
+        "payback"
+      ],
+      "level10": [
+        "will-o-wisp",
+        "feint-attack",
+        "hex"
+      ],
+      "level14": [
+        "flame-burst",
+        "extrasensory",
+        "safeguard"
+      ],
+      "level18": [
+        "flamethrower",
+        "imprison",
+        "fire-blast",
+        "grudge",
+        "captivate",
+        "inferno"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/37.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/37.png"
+    }
+  },
+  {
+    "id": "ninetales",
+    "name": "Ninetales",
+    "number": 38,
+    "type": [
+      "fire"
+    ],
+    "size": "medium",
+    "sr": 7,
+    "minLevel": 5,
+    "description": "The Fox Pokémon. According to an enduring legend, nine noble saints were united and reincarnated as this Pokémon.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 50
+      }
+    ],
+    "moves": {
+      "start": [
+        "confuse-ray",
+        "flamethrower",
+        "imprison",
+        "nasty-plot",
+        "quick-attack",
+        "safeguard"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/38.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/38.png"
+    }
+  },
+  {
+    "id": "jigglypuff",
+    "name": "Jigglypuff",
+    "number": 39,
+    "type": [
+      "normal",
+      "fairy"
+    ],
+    "size": "tiny",
+    "sr": 1,
+    "minLevel": 1,
+    "description": "The Balloon Pokémon. Uses its cute round eyes to enrapture its foe. It then sings a pleasing melody that lulls the foe to sleep.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "sing",
+        "defense-curl"
+      ],
+      "level2": [
+        "pound",
+        "disarming-voice",
+        "play-nice"
+      ],
+      "level6": [
+        "disable",
+        "double-slap"
+      ],
+      "level10": [
+        "rollout",
+        "round",
+        "spit-up",
+        "stockpile",
+        "swallow",
+        "wake-up-slap"
+      ],
+      "level14": [
+        "rest",
+        "body-slam",
+        "gyro-ball",
+        "mimic"
+      ],
+      "level18": [
+        "hyper-voice",
+        "double-edge"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/39.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/39.png"
+    }
+  },
+  {
+    "id": "wigglytuff",
+    "name": "Wigglytuff",
+    "number": 40,
+    "type": [
+      "normal",
+      "fairy"
+    ],
+    "size": "medium",
+    "sr": 6,
+    "minLevel": 5,
+    "description": "The Balloon Pokémon. Its body is very elastic. By inhaling deeply, it can continue to inflate itself without limit.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "defense-curl",
+        "disable",
+        "double-edge",
+        "double-slap",
+        "play-rough",
+        "sing"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 3 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/40.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/40.png"
+    }
+  },
+  {
+    "id": "zubat",
+    "name": "Zubat",
+    "number": 41,
+    "type": [
+      "poison",
+      "flying"
+    ],
+    "size": "small",
+    "sr": 0.25,
+    "minLevel": 1,
+    "description": "The Bat Pokémon. Emits ultrasonic cries while it flies. They act as a sonar used to check for objects in its way.",
+    "senses": [
+      {
+        "type": "blindsight",
+        "value": 80
+      }
+    ],
+    "moves": {
+      "start": [
+        "absorb"
+      ],
+      "level2": [
+        "supersonic",
+        "astonish",
+        "bite"
+      ],
+      "level6": [
+        "wing-attack",
+        "confuse-ray",
+        "air-cutter"
+      ],
+      "level10": [
+        "swift",
+        "poison-fang"
+      ],
+      "level14": [
+        "mean-look",
+        "leech-life",
+        "haze"
+      ],
+      "level18": [
+        "venoshock",
+        "air-slash",
+        "quick-guard"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/41.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/41.png"
+    }
+  },
+  {
+    "id": "golbat",
+    "name": "Golbat",
+    "number": 42,
+    "type": [
+      "poison",
+      "flying"
+    ],
+    "size": "medium",
+    "sr": 7,
+    "minLevel": 5,
+    "description": "The Bat Pokémon. It attacks in a stealthy manner, without warning. Its sharp fangs are used to bite and to suck blood.",
+    "senses": [
+      {
+        "type": "blindsight",
+        "value": 100
+      }
+    ],
+    "moves": {
+      "start": [
+        "absorb",
+        "astonish",
+        "bite",
+        "screech",
+        "supersonic"
+      ],
+      "level6": [
+        "wing-attack",
+        "confuse-ray",
+        "air-cutter"
+      ],
+      "level10": [
+        "swift",
+        "poison-fang"
+      ],
+      "level14": [
+        "mean-look",
+        "leech-life"
+      ],
+      "level18": [
+        "haze",
+        "venoshock",
+        "air-slash",
+        "quick-guard"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/42.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/42.png"
+    }
+  },
+  {
+    "id": "oddish",
+    "name": "Oddish",
+    "number": 43,
+    "type": [
+      "grass",
+      "poison"
+    ],
+    "size": "tiny",
+    "sr": 0.25,
+    "minLevel": 1,
+    "description": "The Weed Pokémon. It may be mistaken for a clump of weeds. If you try to yank it out of the ground, it shrieks horribly.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 30
+      }
+    ],
+    "moves": {
+      "start": [
+        "absorb",
+        "growth"
+      ],
+      "level2": [
+        "sweet-scent",
+        "acid"
+      ],
+      "level6": [
+        "poison-powder",
+        "stun-spore",
+        "sleep-powder"
+      ],
+      "level10": [
+        "mega-drain",
+        "lucky-chant",
+        "moonlight"
+      ],
+      "level14": [
+        "giga-drain",
+        "toxic"
+      ],
+      "level18": [
+        "natural-gift",
+        "moonblast",
+        "petal-dance",
+        "grassy-terrain"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/43.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/43.png"
+    }
+  },
+  {
+    "id": "gloom",
+    "name": "Gloom",
+    "number": 44,
+    "type": [
+      "grass",
+      "poison"
+    ],
+    "size": "small",
+    "sr": 5,
+    "minLevel": 5,
+    "description": "The Weed Pokémon. Smells incredibly foul! However, around one out of a thousand people enjoy sniffing its nose-bending stink.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 50
+      }
+    ],
+    "moves": {
+      "start": [
+        "absorb",
+        "acid",
+        "growth",
+        "sweet-scent"
+      ],
+      "level6": [
+        "poison-powder",
+        "stun-spore",
+        "sleep-powder"
+      ],
+      "level10": [
+        "mega-drain",
+        "lucky-chant"
+      ],
+      "level14": [
+        "moonlight",
+        "giga-drain",
+        "toxic"
+      ],
+      "level18": [
+        "natural-gift",
+        "petal-dance",
+        "petal-blizzard",
+        "grassy-terrain"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/44.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/44.png"
+    }
+  },
+  {
+    "id": "vileplume",
+    "name": "Vileplume",
+    "number": 45,
+    "type": [
+      "grass",
+      "poison"
+    ],
+    "size": "small",
+    "sr": 13,
+    "minLevel": 10,
+    "description": "The Flower Pokémon. Flaps its broad flower petals to scatter its poisonous pollen. The flapping sound is very loud.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 80
+      }
+    ],
+    "moves": {
+      "start": [
+        "aromatherapy",
+        "mega-drain",
+        "poison-powder",
+        "stun-spore"
+      ],
+      "level18": [
+        "petal-dance",
+        "solar-beam",
+        "petal-blizzard"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 3 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/45.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/45.png"
+    }
+  },
+  {
+    "id": "paras",
+    "name": "Paras",
+    "number": 46,
+    "type": [
+      "bug",
+      "grass"
+    ],
+    "size": "tiny",
+    "sr": 0.25,
+    "minLevel": 1,
+    "description": "The Mushroom Pokémon. Burrows under the ground to gnaw on tree roots. The mushrooms on its back absorb most of the nutrition.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 30
+      },
+      {
+        "type": "tremorsense",
+        "value": 30
+      }
+    ],
+    "moves": {
+      "start": [
+        "scratch"
+      ],
+      "level2": [
+        "poison-powder",
+        "stun-spore",
+        "absorb"
+      ],
+      "level6": [
+        "fury-cutter"
+      ],
+      "level10": [
+        "spore",
+        "slash"
+      ],
+      "level14": [
+        "growth"
+      ],
+      "level18": [
+        "giga-drain",
+        "aromatherapy",
+        "rage-powder",
+        "x-scissor"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/46.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/46.png"
+    }
+  },
+  {
+    "id": "parasect",
+    "name": "Parasect",
+    "number": 47,
+    "type": [
+      "bug",
+      "grass"
+    ],
+    "size": "small",
+    "sr": 7,
+    "minLevel": 5,
+    "description": "The Mushroom Pokémon. The bug host is drained of energy by the mushroom on its back. The mushroom appears to do all the thinking.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 50
+      },
+      {
+        "type": "tremorsense",
+        "value": 60
+      }
+    ],
+    "moves": {
+      "start": [
+        "absorb",
+        "cross-poison",
+        "poison-powder",
+        "scratch",
+        "stun-spore"
+      ],
+      "level6": [
+        "fury-cutter"
+      ],
+      "level10": [
+        "spore"
+      ],
+      "level14": [
+        "slash",
+        "growth"
+      ],
+      "level18": [
+        "giga-drain",
+        "aromatherapy",
+        "rage-powder",
+        "x-scissor"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/47.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/47.png"
+    }
+  },
+  {
+    "id": "venonat",
+    "name": "Venonat",
+    "number": 48,
+    "type": [
+      "bug",
+      "poison"
+    ],
+    "size": "small",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Insect Pokémon. Its large eyes act as radar. In a bright place, you can see that they are clusters of many tiny eyes.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 30
+      }
+    ],
+    "moves": {
+      "start": [
+        "disable",
+        "foresight",
+        "tackle"
+      ],
+      "level2": [
+        "supersonic",
+        "confusion"
+      ],
+      "level6": [
+        "poison-powder",
+        "psybeam"
+      ],
+      "level10": [
+        "stun-spore",
+        "signal-beam"
+      ],
+      "level14": [
+        "sleep-powder",
+        "leech-life"
+      ],
+      "level18": [
+        "zen-headbutt",
+        "poison-fang",
+        "psychic"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/48.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/48.png"
+    }
+  },
+  {
+    "id": "venomoth",
+    "name": "Venomoth",
+    "number": 49,
+    "type": [
+      "bug",
+      "poison"
+    ],
+    "size": "medium",
+    "sr": 8,
+    "minLevel": 8,
+    "description": "The Poison Moth Pokémon. The powdery scales on its wings are hard to remove from skin. They also contain poison that leaks out on contact.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 50
+      }
+    ],
+    "moves": {
+      "start": [
+        "disable",
+        "foresight",
+        "gust",
+        "quiver-dance",
+        "silver-wind",
+        "supersonic",
+        "tackle",
+        "confusion",
+        "poison-powder",
+        "psybeam"
+      ],
+      "level10": [
+        "stun-spore",
+        "signal-beam"
+      ],
+      "level14": [
+        "sleep-powder",
+        "leech-life",
+        "pounce"
+      ],
+      "level18": [
+        "zen-headbutt",
+        "poison-fang",
+        "psychic",
+        "bug-buzz"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/49.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/49.png"
+    }
+  },
+  {
+    "id": "diglett",
+    "name": "Diglett",
+    "number": 50,
+    "type": [
+      "ground"
+    ],
+    "size": "tiny",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Mole Pokémon. It prefers dark places. It spends most of its time underground, though it may pop up in caves.",
+    "senses": [
+      {
+        "type": "tremorsense",
+        "value": 80
+      }
+    ],
+    "moves": {
+      "start": [
+        "sand-attack",
+        "scratch"
+      ],
+      "level2": [
+        "growl",
+        "astonish"
+      ],
+      "level6": [
+        "mud-slap",
+        "magnitude",
+        "bulldoze"
+      ],
+      "level10": [
+        "sucker-punch",
+        "mud-bomb"
+      ],
+      "level14": [
+        "earth-power",
+        "dig",
+        "slash"
+      ],
+      "level18": [
+        "earthquake",
+        "fissure"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/50.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/50.png"
+    }
+  },
+  {
+    "id": "dugtrio",
+    "name": "Dugtrio",
+    "number": 51,
+    "type": [
+      "ground"
+    ],
+    "size": "small",
+    "sr": 8,
+    "minLevel": 5,
+    "description": "The Mole Pokémon. A team of triplets that can burrow to a depth of 60 miles. It’s reported that this triggers an earthquake.",
+    "senses": [
+      {
+        "type": "tremorsense",
+        "value": 120
+      }
+    ],
+    "moves": {
+      "start": [
+        "growl",
+        "night-slash",
+        "sand-attack",
+        "sand-tomb",
+        "scratch",
+        "tri-attack",
+        "astonish",
+        "rototiller"
+      ],
+      "level6": [
+        "mud-slap",
+        "magnitude",
+        "bulldoze"
+      ],
+      "level10": [
+        "sucker-punch",
+        "mud-bomb"
+      ],
+      "level14": [
+        "earth-power",
+        "dig"
+      ],
+      "level18": [
+        "slash",
+        "earthquake",
+        "fissure"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/51.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/51.png"
+    }
+  },
+  {
+    "id": "meowth",
+    "name": "Meowth",
+    "number": 52,
+    "type": [
+      "normal"
+    ],
+    "size": "tiny",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Scratch Cat Pokémon. Appears to be more active at night. It loves round and shiny things. It can’t stop itself from picking them up.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 30
+      }
+    ],
+    "moves": {
+      "start": [
+        "growl",
+        "scratch"
+      ],
+      "level2": [
+        "bite",
+        "fake-out"
+      ],
+      "level6": [
+        "fury-swipes",
+        "screech"
+      ],
+      "level10": [
+        "feint-attack",
+        "taunt"
+      ],
+      "level14": [
+        "pay-day",
+        "slash"
+      ],
+      "level18": [
+        "nasty-plot",
+        "assurance",
+        "captivate",
+        "night-slash",
+        "feint"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/52.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/52.png"
+    }
+  },
+  {
+    "id": "persian",
+    "name": "Persian",
+    "number": 53,
+    "type": [
+      "normal"
+    ],
+    "size": "small",
+    "sr": 7,
+    "minLevel": 5,
+    "description": "The Classy Cat Pokémon. The gem in its forehead glows on its own! It walks with all the grace and elegance of a proud queen.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 50
+      }
+    ],
+    "moves": {
+      "start": [
+        "bite",
+        "fake-out",
+        "growl",
+        "play-rough",
+        "scratch",
+        "swift",
+        "switcheroo"
+      ],
+      "level6": [
+        "fury-swipes",
+        "screech"
+      ],
+      "level10": [
+        "feint-attack",
+        "taunt"
+      ],
+      "level14": [
+        "power-gem"
+      ],
+      "level18": [
+        "slash",
+        "nasty-plot",
+        "assurance",
+        "captivate",
+        "night-slash",
+        "feint"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/53.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/53.png"
+    }
+  },
+  {
+    "id": "psyduck",
+    "name": "Psyduck",
+    "number": 54,
+    "type": [
+      "water"
+    ],
+    "size": "small",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Duck Pokémon. Always tormented by headaches. It uses psychic powers, but whether it intends to do so is not known.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "scratch",
+        "water-sport"
+      ],
+      "level2": [
+        "tail-whip",
+        "water-gun",
+        "confusion"
+      ],
+      "level6": [
+        "fury-swipes",
+        "water-pulse",
+        "disable"
+      ],
+      "level10": [
+        "screech",
+        "zen-headbutt"
+      ],
+      "level14": [
+        "aqua-tail",
+        "soak",
+        "psych-up"
+      ],
+      "level18": [
+        "amnesia",
+        "hydro-pump",
+        "wonder-room"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/54.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/54.png"
+    }
+  },
+  {
+    "id": "golduck",
+    "name": "Golduck",
+    "number": 55,
+    "type": [
+      "water"
+    ],
+    "size": "medium",
+    "sr": 10,
+    "minLevel": 8,
+    "description": "The Duck Pokémon. Its long, slim limbs end in broad flippers. They are used for swimming gracefully in lakes.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "aqua-jet",
+        "me-first",
+        "scratch",
+        "tail-whip",
+        "water-gun",
+        "water-sport",
+        "confusion",
+        "fury-swipes",
+        "water-pulse",
+        "disable"
+      ],
+      "level10": [
+        "screech",
+        "zen-headbutt"
+      ],
+      "level14": [
+        "aqua-tail",
+        "soak"
+      ],
+      "level18": [
+        "psych-up",
+        "amnesia",
+        "hydro-pump",
+        "wonder-room"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/55.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/55.png"
+    }
+  },
+  {
+    "id": "mankey",
+    "name": "Mankey",
+    "number": 56,
+    "type": [
+      "fighting"
+    ],
+    "size": "tiny",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Pig Monkey Pokémon. An agile Pokémon that lives in trees. It angers easily and will not hesitate to attack anything.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "covet",
+        "focus-energy",
+        "leer",
+        "low-kick",
+        "scratch"
+      ],
+      "level2": [
+        "fury-swipes",
+        "karate-chop"
+      ],
+      "level6": [
+        "pursuit",
+        "seismic-toss",
+        "swagger"
+      ],
+      "level10": [
+        "cross-chop",
+        "assurance"
+      ],
+      "level14": [
+        "punishment",
+        "thrash",
+        "stomping-tantrum"
+      ],
+      "level18": [
+        "close-combat",
+        "screech",
+        "outrage",
+        "final-gambit"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/56.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/56.png"
+    }
+  },
+  {
+    "id": "primeape",
+    "name": "Primeape",
+    "number": 57,
+    "type": [
+      "fighting"
+    ],
+    "size": "small",
+    "sr": 6,
+    "minLevel": 5,
+    "description": "The Pig Monkey Pokémon. It stops being angry only when nobody else is around. To view this moment is very difficult.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "fling",
+        "focus-energy",
+        "leer",
+        "low-kick",
+        "rage",
+        "scratch",
+        "fury-swipes",
+        "karate-chop"
+      ],
+      "level6": [
+        "pursuit",
+        "seismic-toss"
+      ],
+      "level10": [
+        "swagger",
+        "cross-chop",
+        "assurance",
+        "rage-fist"
+      ],
+      "level14": [
+        "punishment",
+        "thrash"
+      ],
+      "level18": [
+        "stomping-tantrum",
+        "close-combat",
+        "screech",
+        "outrage",
+        "final-gambit"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/57.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/57.png"
+    }
+  },
+  {
+    "id": "growlithe",
+    "name": "Growlithe",
+    "number": 58,
+    "type": [
+      "fire"
+    ],
+    "size": "small",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Puppy Pokémon. A Pokémon with a friendly nature. However, it will bark fiercely at anything invading its territory.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "bite",
+        "roar"
+      ],
+      "level2": [
+        "ember",
+        "leer",
+        "odor-sleuth"
+      ],
+      "level6": [
+        "helping-hand",
+        "flame-wheel"
+      ],
+      "level10": [
+        "reversal",
+        "fire-fang",
+        "take-down"
+      ],
+      "level14": [
+        "flame-burst",
+        "agility",
+        "retaliate",
+        "flamethrower"
+      ],
+      "level18": [
+        "crunch",
+        "heat-wave",
+        "outrage",
+        "flare-blitz"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/58.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/58.png"
+    }
+  },
+  {
+    "id": "arcanine",
+    "name": "Arcanine",
+    "number": 59,
+    "type": [
+      "fire"
+    ],
+    "size": "large",
+    "sr": 11,
+    "minLevel": 8,
+    "description": "The Legendary Pokémon. A legendary Pokémon in the East. Many people are charmed by the grace and beauty of its running.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "bite",
+        "fire-fang",
+        "odor-sleuth",
+        "roar",
+        "thunder-fang"
+      ],
+      "level14": [
+        "extreme-speed"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/59.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/59.png"
+    }
+  },
+  {
+    "id": "poliwag",
+    "name": "Poliwag",
+    "number": 60,
+    "type": [
+      "water"
+    ],
+    "size": "tiny",
+    "sr": 0.25,
+    "minLevel": 1,
+    "description": "The Tadpole Pokémon. The direction of the spiral on the belly differs by area. It is more adept at swimming than walking.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "water-sport"
+      ],
+      "level2": [
+        "water-gun",
+        "hypnosis",
+        "bubble"
+      ],
+      "level6": [
+        "double-slap",
+        "rain-dance"
+      ],
+      "level10": [
+        "body-slam",
+        "bubble-beam"
+      ],
+      "level14": [
+        "mud-shot",
+        "belly-drum",
+        "wake-up-slap"
+      ],
+      "level18": [
+        "hydro-pump",
+        "mud-bomb"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/60.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/60.png"
+    }
+  },
+  {
+    "id": "poliwhirl",
+    "name": "Poliwhirl",
+    "number": 61,
+    "type": [
+      "water"
+    ],
+    "size": "small",
+    "sr": 3,
+    "minLevel": 5,
+    "description": "The Tadpole Pokémon. Under attack, it uses its belly spiral to put the foe to sleep. It then makes its escape.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "hypnosis",
+        "water-gun",
+        "water-sport",
+        "bubble"
+      ],
+      "level6": [
+        "double-slap",
+        "rain-dance"
+      ],
+      "level10": [
+        "body-slam",
+        "bubble-beam"
+      ],
+      "level14": [
+        "mud-shot"
+      ],
+      "level18": [
+        "belly-drum",
+        "wake-up-slap",
+        "hydro-pump",
+        "mud-bomb"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/61.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/61.png"
+    }
+  },
+  {
+    "id": "poliwrath",
+    "name": "Poliwrath",
+    "number": 62,
+    "type": [
+      "water",
+      "fighting"
+    ],
+    "size": "medium",
+    "sr": 12,
+    "minLevel": 10,
+    "description": "The Tadpole Pokémon. Swims powerfully using all the muscles in its body. It can even overtake world-class swimmers.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "bubble-beam",
+        "double-slap",
+        "hypnosis",
+        "submission"
+      ],
+      "level14": [
+        "dynamic-punch"
+      ],
+      "level18": [
+        "mind-reader",
+        "circle-throw"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 3 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/62.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/62.png"
+    }
+  },
+  {
+    "id": "abra",
+    "name": "Abra",
+    "number": 63,
+    "type": [
+      "psychic"
+    ],
+    "size": "small",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Psi Pokémon. Sleeps 18 hours a day. If it senses danger, it will teleport itself to safety even as it sleeps.",
+    "senses": [
+      {
+        "type": "truesight",
+        "value": 10
+      }
+    ],
+    "moves": {
+      "start": [
+        "teleport",
+        "scratch"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/63.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/63.png"
+    }
+  },
+  {
+    "id": "kadabra",
+    "name": "Kadabra",
+    "number": 64,
+    "type": [
+      "psychic"
+    ],
+    "size": "medium",
+    "sr": 6,
+    "minLevel": 5,
+    "description": "The Psi Pokémon. Many odd things happen if this Pokémon is close by. For example, it makes clocks run backward.",
+    "senses": [
+      {
+        "type": "truesight",
+        "value": 20
+      }
+    ],
+    "moves": {
+      "start": [
+        "confusion",
+        "kinesis",
+        "teleport"
+      ],
+      "level6": [
+        "disable"
+      ],
+      "level10": [
+        "psybeam",
+        "miracle-eye",
+        "reflect"
+      ],
+      "level14": [
+        "psycho-cut",
+        "recover",
+        "telekinesis",
+        "psychic"
+      ],
+      "level18": [
+        "ally-switch",
+        "role-play",
+        "future-sight",
+        "trick"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/64.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/64.png"
+    }
+  },
+  {
+    "id": "alakazam",
+    "name": "Alakazam",
+    "number": 65,
+    "type": [
+      "psychic"
+    ],
+    "size": "medium",
+    "sr": 12,
+    "minLevel": 10,
+    "description": "The Psi Pokémon. A Pokémon that can memorize anything. It never forgets what it learns—that’s why this Pokémon is smart.",
+    "senses": [
+      {
+        "type": "truesight",
+        "value": 30
+      }
+    ],
+    "moves": {
+      "start": [
+        "confusion",
+        "kinesis",
+        "teleport",
+        "disable",
+        "psybeam",
+        "miracle-eye",
+        "reflect"
+      ],
+      "level14": [
+        "psycho-cut",
+        "recover",
+        "telekinesis",
+        "psychic"
+      ],
+      "level18": [
+        "ally-switch",
+        "calm-mind",
+        "future-sight",
+        "trick"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 3 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/65.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/65.png"
+    }
+  },
+  {
+    "id": "machop",
+    "name": "Machop",
+    "number": 66,
+    "type": [
+      "fighting"
+    ],
+    "size": "tiny",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Superpower Pokémon. Very powerful in spite of its small size. Its mastery of many types of martial arts makes it very tough.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "leer",
+        "low-kick",
+        "focus-energy"
+      ],
+      "level2": [
+        "karate-chop",
+        "foresight"
+      ],
+      "level6": [
+        "low-sweep",
+        "seismic-toss",
+        "revenge"
+      ],
+      "level10": [
+        "knock-off",
+        "vital-throw",
+        "wake-up-slap"
+      ],
+      "level14": [
+        "dual-chop",
+        "submission",
+        "bulk-up"
+      ],
+      "level18": [
+        "cross-chop",
+        "scary-face",
+        "dynamic-punch"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/66.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/66.png"
+    }
+  },
+  {
+    "id": "machoke",
+    "name": "Machoke",
+    "number": 67,
+    "type": [
+      "fighting"
+    ],
+    "size": "medium",
+    "sr": 5,
+    "minLevel": 5,
+    "description": "The Superpower Pokémon. The belt around its waist holds back its energy. Without it, this Pokémon would be unstoppable.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "focus-energy",
+        "karate-chop",
+        "leer",
+        "low-kick",
+        "foresight"
+      ],
+      "level6": [
+        "low-sweep",
+        "seismic-toss",
+        "revenge"
+      ],
+      "level10": [
+        "knock-off",
+        "vital-throw",
+        "wake-up-slap"
+      ],
+      "level14": [
+        "dual-chop",
+        "submission",
+        "bulk-up"
+      ],
+      "level18": [
+        "cross-chop",
+        "scary-face",
+        "dynamic-punch"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/67.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/67.png"
+    }
+  },
+  {
+    "id": "machamp",
+    "name": "Machamp",
+    "number": 68,
+    "type": [
+      "fighting"
+    ],
+    "size": "medium",
+    "sr": 12,
+    "minLevel": 10,
+    "description": "The Superpower Pokémon. One arm alone can move mountains. Using all four arms, this Pokémon fires off awesome punches.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "focus-energy",
+        "karate-chop",
+        "leer",
+        "low-kick",
+        "strength",
+        "wide-guard",
+        "foresight",
+        "low-sweep",
+        "seismic-toss",
+        "revenge",
+        "knock-off",
+        "vital-throw",
+        "wake-up-slap"
+      ],
+      "level14": [
+        "dual-chop",
+        "submission",
+        "bulk-up"
+      ],
+      "level18": [
+        "cross-chop",
+        "scary-face",
+        "dynamic-punch"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 3 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/68.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/68.png"
+    }
+  },
+  {
+    "id": "bellsprout",
+    "name": "Bellsprout",
+    "number": 69,
+    "type": [
+      "grass",
+      "poison"
+    ],
+    "size": "tiny",
+    "sr": 0.25,
+    "minLevel": 1,
+    "description": "The Flower Pokémon. Prefers hot and humid places. It ensnares tiny bugs with its vines and devours them.",
+    "senses": [
+      {
+        "type": "tremorsense",
+        "value": 20
+      }
+    ],
+    "moves": {
+      "start": [
+        "vine-whip"
+      ],
+      "level2": [
+        "growth",
+        "wrap"
+      ],
+      "level6": [
+        "sleep-powder",
+        "poison-powder",
+        "stun-spore"
+      ],
+      "level10": [
+        "acid",
+        "knock-off"
+      ],
+      "level14": [
+        "sweet-scent",
+        "gastro-acid"
+      ],
+      "level18": [
+        "razor-leaf",
+        "poison-jab",
+        "slam",
+        "wring-out"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/69.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/69.png"
+    }
+  },
+  {
+    "id": "weepinbell",
+    "name": "Weepinbell",
+    "number": 70,
+    "type": [
+      "grass",
+      "poison"
+    ],
+    "size": "small",
+    "sr": 5,
+    "minLevel": 5,
+    "description": "The Flycatcher Pokémon. When hungry, it swallows anything that moves. Its hapless prey is dissolved by strong acids.",
+    "senses": [
+      {
+        "type": "tremorsense",
+        "value": 40
+      }
+    ],
+    "moves": {
+      "start": [
+        "growth",
+        "vine-whip",
+        "wrap"
+      ],
+      "level6": [
+        "sleep-powder",
+        "poison-powder",
+        "stun-spore"
+      ],
+      "level10": [
+        "acid"
+      ],
+      "level14": [
+        "knock-off",
+        "sweet-scent"
+      ],
+      "level18": [
+        "gastro-acid",
+        "razor-leaf",
+        "poison-jab",
+        "slam",
+        "wring-out"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/70.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/70.png"
+    }
+  },
+  {
+    "id": "victreebel",
+    "name": "Victreebel",
+    "number": 71,
+    "type": [
+      "grass",
+      "poison"
+    ],
+    "size": "large",
+    "sr": 12,
+    "minLevel": 10,
+    "description": "The Flycatcher Pokémon. Lures prey with the sweet aroma of honey. Swallowed whole, the prey is dissolved in a day, bones and all.",
+    "senses": [
+      {
+        "type": "tremorsense",
+        "value": 60
+      }
+    ],
+    "moves": {
+      "start": [
+        "leaf-tornado",
+        "razor-leaf",
+        "sleep-powder",
+        "spit-up",
+        "stockpile",
+        "swallow",
+        "sweet-scent",
+        "vine-whip"
+      ],
+      "level14": [
+        "leaf-storm"
+      ],
+      "level18": [
+        "leaf-blade"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 3 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/71.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/71.png"
+    }
+  },
+  {
+    "id": "tentacool",
+    "name": "Tentacool",
+    "number": 72,
+    "type": [
+      "water",
+      "poison"
+    ],
+    "size": "small",
+    "sr": 2,
+    "minLevel": 1,
+    "description": "The Jellyfish Pokémon. It can sometimes be found all dry and shriveled up on a beach. Toss it back into the sea to revive it.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "poison-sting"
+      ],
+      "level2": [
+        "supersonic",
+        "constrict",
+        "acid"
+      ],
+      "level6": [
+        "toxic-spikes",
+        "water-pulse",
+        "wrap"
+      ],
+      "level10": [
+        "acid-spray",
+        "bubble-beam"
+      ],
+      "level14": [
+        "barrier",
+        "poison-jab",
+        "brine"
+      ],
+      "level18": [
+        "screech",
+        "hex",
+        "sludge-wave",
+        "hydro-pump",
+        "wring-out"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/72.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/72.png"
+    }
+  },
+  {
+    "id": "tentacruel",
+    "name": "Tentacruel",
+    "number": 73,
+    "type": [
+      "water",
+      "poison"
+    ],
+    "size": "medium",
+    "sr": 8,
+    "minLevel": 5,
+    "description": "The Jellyfish Pokémon. Its 80 tentacles can stretch and contract freely. They wrap around prey and weaken it with poison.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "acid",
+        "constrict",
+        "poison-sting",
+        "reflect-type",
+        "supersonic"
+      ],
+      "level6": [
+        "toxic-spikes",
+        "water-pulse",
+        "wrap"
+      ],
+      "level10": [
+        "acid-spray",
+        "bubble-beam"
+      ],
+      "level14": [
+        "barrier",
+        "poison-jab"
+      ],
+      "level18": [
+        "brine",
+        "screech",
+        "hex",
+        "sludge-wave",
+        "hydro-pump",
+        "wring-out"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/73.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/73.png"
+    }
+  },
+  {
+    "id": "geodude",
+    "name": "Geodude",
+    "number": 74,
+    "type": [
+      "rock",
+      "ground"
+    ],
+    "size": "tiny",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Rock Pokémon. Commonly found near mountain trails and the like. If you step on one by accident, it gets angry.",
+    "senses": [
+      {
+        "type": "tremorsense",
+        "value": 30
+      }
+    ],
+    "moves": {
+      "start": [
+        "defense-curl",
+        "tackle"
+      ],
+      "level2": [
+        "mud-sport",
+        "rock-polish",
+        "rollout"
+      ],
+      "level6": [
+        "magnitude",
+        "rock-throw",
+        "smack-down"
+      ],
+      "level10": [
+        "bulldoze",
+        "self-destruct"
+      ],
+      "level14": [
+        "stealth-rock",
+        "rock-blast",
+        "earthquake"
+      ],
+      "level18": [
+        "explosion",
+        "double-edge",
+        "stone-edge"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/74.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/74.png"
+    }
+  },
+  {
+    "id": "graveler",
+    "name": "Graveler",
+    "number": 75,
+    "type": [
+      "rock",
+      "ground"
+    ],
+    "size": "medium",
+    "sr": 6,
+    "minLevel": 5,
+    "description": "The Rock Pokémon. Often seen rolling down mountain trails. Obstacles are just things to roll straight over, not avoid.",
+    "senses": [
+      {
+        "type": "tremorsense",
+        "value": 50
+      }
+    ],
+    "moves": {
+      "start": [
+        "defense-curl",
+        "mud-sport",
+        "rock-polish",
+        "tackle",
+        "rollout"
+      ],
+      "level6": [
+        "magnitude",
+        "rock-throw",
+        "smack-down"
+      ],
+      "level10": [
+        "bulldoze",
+        "self-destruct"
+      ],
+      "level14": [
+        "stealth-rock",
+        "rock-blast",
+        "earthquake"
+      ],
+      "level18": [
+        "explosion",
+        "double-edge",
+        "stone-edge"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/75.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/75.png"
+    }
+  },
+  {
+    "id": "golem",
+    "name": "Golem",
+    "number": 76,
+    "type": [
+      "rock",
+      "ground"
+    ],
+    "size": "medium",
+    "sr": 13,
+    "minLevel": 10,
+    "description": "The Megaton Pokémon. Once it sheds its skin, its body turns tender and whitish. Its hide hardens when it’s exposed to air.",
+    "senses": [
+      {
+        "type": "tremorsense",
+        "value": 80
+      }
+    ],
+    "moves": {
+      "start": [
+        "defense-curl",
+        "mud-sport",
+        "rock-polish",
+        "tackle",
+        "steamroller",
+        "magnitude",
+        "rock-throw",
+        "smack-down",
+        "bulldoze",
+        "self-destruct"
+      ],
+      "level14": [
+        "stealth-rock",
+        "rock-blast",
+        "earthquake"
+      ],
+      "level18": [
+        "explosion",
+        "double-edge",
+        "stone-edge",
+        "heavy-slam"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 3 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/76.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/76.png"
+    }
+  },
+  {
+    "id": "ponyta",
+    "name": "Ponyta",
+    "number": 77,
+    "type": [
+      "fire"
+    ],
+    "size": "small",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Fire Horse Pokémon. Capable of jumping incredibly high. Its hooves and sturdy legs absorb the impact of a hard landing.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "growl",
+        "tackle"
+      ],
+      "level2": [
+        "tail-whip",
+        "ember"
+      ],
+      "level6": [
+        "flame-wheel",
+        "stomp"
+      ],
+      "level10": [
+        "flame-charge",
+        "fire-spin"
+      ],
+      "level14": [
+        "take-down",
+        "inferno",
+        "agility"
+      ],
+      "level18": [
+        "fire-blast",
+        "bounce",
+        "flare-blitz"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/77.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/77.png"
+    }
+  },
+  {
+    "id": "rapidash",
+    "name": "Rapidash",
+    "number": 78,
+    "type": [
+      "fire"
+    ],
+    "size": "large",
+    "sr": 11,
+    "minLevel": 10,
+    "description": "The Fire Horse Pokémon. Just loves to run. If it sees something faster than itself, it will give chase at top speed.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "ember",
+        "fury-attack",
+        "growl",
+        "megahorn",
+        "poison-jab",
+        "quick-attack",
+        "tail-whip",
+        "flame-wheel",
+        "stomp",
+        "flame-charge",
+        "fire-spin"
+      ],
+      "level14": [
+        "take-down",
+        "inferno",
+        "agility"
+      ],
+      "level18": [
+        "fire-blast",
+        "bounce",
+        "flare-blitz"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/78.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/78.png"
+    }
+  },
+  {
+    "id": "slowpoke",
+    "name": "Slowpoke",
+    "number": 79,
+    "type": [
+      "water",
+      "psychic"
+    ],
+    "size": "medium",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Dopey Pokémon. Incredibly slow and sluggish. It is quite content to loll about without worrying about the time.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "curse",
+        "tackle",
+        "yawn"
+      ],
+      "level2": [
+        "growl",
+        "water-gun"
+      ],
+      "level6": [
+        "confusion",
+        "disable"
+      ],
+      "level10": [
+        "headbutt"
+      ],
+      "level14": [
+        "water-pulse",
+        "zen-headbutt",
+        "slack-off",
+        "amnesia"
+      ],
+      "level18": [
+        "psychic",
+        "rain-dance",
+        "psych-up",
+        "heal-pulse"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/79.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/79.png"
+    }
+  },
+  {
+    "id": "slowbro",
+    "name": "Slowbro",
+    "number": 80,
+    "type": [
+      "water",
+      "psychic"
+    ],
+    "size": "medium",
+    "sr": 11,
+    "minLevel": 8,
+    "description": "The Hermit Crab Pokémon. Lives lazily by the sea. If the Shellder on its tail comes off, it becomes a Slowpoke again.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "curse",
+        "growl",
+        "tackle",
+        "withdraw",
+        "yawn",
+        "water-gun",
+        "confusion",
+        "disable"
+      ],
+      "level10": [
+        "headbutt"
+      ],
+      "level14": [
+        "water-pulse",
+        "zen-headbutt",
+        "slack-off"
+      ],
+      "level18": [
+        "amnesia",
+        "psychic",
+        "rain-dance",
+        "psych-up",
+        "heal-pulse"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/80.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/80.png"
+    }
+  },
+  {
+    "id": "magnemite",
+    "name": "Magnemite",
+    "number": 81,
+    "type": [
+      "electric",
+      "steel"
+    ],
+    "size": "tiny",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Magnet Pokémon. It is hatched with the ability to defy gravity. It floats while emitting powerful electromagnetic waves.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "supersonic",
+        "tackle"
+      ],
+      "level2": [
+        "thunder-shock",
+        "magnet-bomb",
+        "thunder-wave"
+      ],
+      "level6": [
+        "light-screen",
+        "sonic-boom",
+        "spark"
+      ],
+      "level10": [
+        "mirror-shot",
+        "metal-sound"
+      ],
+      "level14": [
+        "electro-ball",
+        "flash-cannon",
+        "screech",
+        "discharge"
+      ],
+      "level18": [
+        "lock-on",
+        "magnet-rise",
+        "gyro-ball",
+        "zap-cannon"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/81.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/81.png"
+    }
+  },
+  {
+    "id": "magneton",
+    "name": "Magneton",
+    "number": 82,
+    "type": [
+      "electric",
+      "steel"
+    ],
+    "size": "small",
+    "sr": 8,
+    "minLevel": 5,
+    "description": "The Magnet Pokémon. Generates strange radio signals. It raises the temperature by 3.6 degrees Fahrenheit within 3,300 feet.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "magnet-bomb",
+        "supersonic",
+        "tackle",
+        "thunder-shock",
+        "tri-attack",
+        "thunder-wave",
+        "electric-terrain"
+      ],
+      "level6": [
+        "light-screen",
+        "sonic-boom"
+      ],
+      "level10": [
+        "spark",
+        "mirror-shot",
+        "metal-sound"
+      ],
+      "level14": [
+        "electro-ball",
+        "flash-cannon",
+        "screech"
+      ],
+      "level18": [
+        "discharge",
+        "lock-on",
+        "magnet-rise",
+        "gyro-ball",
+        "zap-cannon"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/82.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/82.png"
+    }
+  },
+  {
+    "id": "farfetchd",
+    "name": "Farfetch'd",
+    "number": 83,
+    "type": [
+      "normal",
+      "flying"
+    ],
+    "size": "tiny",
+    "sr": 3,
+    "minLevel": 1,
+    "description": "The Wild Duck Pokémon. They live where reedy plants grow. Farfetch’d are rarely seen, so it’s thought their numbers are decreasing.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "fury-cutter",
+        "leer",
+        "peck",
+        "poison-jab",
+        "sand-attack"
+      ],
+      "level2": [
+        "fury-attack",
+        "aerial-ace"
+      ],
+      "level6": [
+        "knock-off",
+        "slash"
+      ],
+      "level10": [
+        "air-cutter",
+        "swords-dance"
+      ],
+      "level14": [
+        "agility",
+        "night-slash"
+      ],
+      "level18": [
+        "acrobatics",
+        "feint",
+        "false-swipe",
+        "air-slash",
+        "brave-bird"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/83.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/83.png"
+    }
+  },
+  {
+    "id": "doduo",
+    "name": "Doduo",
+    "number": 84,
+    "type": [
+      "normal",
+      "flying"
+    ],
+    "size": "small",
+    "sr": 0.25,
+    "minLevel": 1,
+    "description": "The Twin Bird Pokémon. Its short wings make flying difficult. Instead, this Pokémon runs at high speed on developed legs.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "growl",
+        "peck"
+      ],
+      "level2": [
+        "quick-attack",
+        "rage"
+      ],
+      "level6": [
+        "fury-attack",
+        "pursuit",
+        "pluck"
+      ],
+      "level10": [
+        "double-hit",
+        "agility"
+      ],
+      "level14": [
+        "uproar",
+        "acupressure",
+        "swords-dance",
+        "jump-kick"
+      ],
+      "level18": [
+        "drill-peck",
+        "endeavor",
+        "thrash"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/84.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/84.png"
+    }
+  },
+  {
+    "id": "dodrio",
+    "name": "Dodrio",
+    "number": 85,
+    "type": [
+      "normal",
+      "flying"
+    ],
+    "size": "medium",
+    "sr": 9,
+    "minLevel": 8,
+    "description": "The Triple Bird Pokémon. One of Doduo’s two heads splits to form a unique species. It runs close to 40 mph in prairies.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "growl",
+        "peck",
+        "quick-attack",
+        "rage",
+        "tri-attack",
+        "fury-attack",
+        "pursuit",
+        "pluck"
+      ],
+      "level10": [
+        "double-hit",
+        "agility"
+      ],
+      "level14": [
+        "uproar",
+        "acupressure",
+        "swords-dance"
+      ],
+      "level18": [
+        "jump-kick",
+        "drill-peck",
+        "endeavor",
+        "thrash"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/85.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/85.png"
+    }
+  },
+  {
+    "id": "seel",
+    "name": "Seel",
+    "number": 86,
+    "type": [
+      "water"
+    ],
+    "size": "small",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Sea Lion Pokémon. Loves freezing-cold conditions. Relishes swimming in a frigid climate of around 14 degrees Fahrenheit.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "headbutt",
+        "growl"
+      ],
+      "level2": [
+        "water-sport",
+        "icy-wind"
+      ],
+      "level6": [
+        "encore",
+        "ice-shard",
+        "rest"
+      ],
+      "level10": [
+        "aqua-ring",
+        "aurora-beam"
+      ],
+      "level14": [
+        "aqua-jet",
+        "brine",
+        "take-down",
+        "dive"
+      ],
+      "level18": [
+        "aqua-tail",
+        "ice-beam",
+        "safeguard",
+        "hail",
+        "snowscape"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/86.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/86.png"
+    }
+  },
+  {
+    "id": "dewgong",
+    "name": "Dewgong",
+    "number": 87,
+    "type": [
+      "water",
+      "ice"
+    ],
+    "size": "large",
+    "sr": 10,
+    "minLevel": 8,
+    "description": "The Sea Lion Pokémon. Its entire body is a snowy white. Unharmed by even intense cold, it swims powerfully in icy waters.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "growl",
+        "headbutt",
+        "icy-wind",
+        "sheer-cold",
+        "signal-beam",
+        "encore",
+        "ice-shard"
+      ],
+      "level10": [
+        "rest",
+        "aqua-ring",
+        "aurora-beam"
+      ],
+      "level14": [
+        "aqua-jet",
+        "brine",
+        "take-down",
+        "dive"
+      ],
+      "level18": [
+        "aqua-tail",
+        "ice-beam",
+        "safeguard",
+        "hail",
+        "snowscape"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/87.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/87.png"
+    }
+  },
+  {
+    "id": "grimer",
+    "name": "Grimer",
+    "number": 88,
+    "type": [
+      "poison"
+    ],
+    "size": "small",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Sludge Pokémon. Made of congealed sludge. It smells too putrid to touch. Even weeds won’t grow in its path.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 30
+      }
+    ],
+    "moves": {
+      "start": [
+        "poison-gas",
+        "pound"
+      ],
+      "level2": [
+        "harden",
+        "mud-slap"
+      ],
+      "level6": [
+        "disable",
+        "sludge",
+        "mud-bomb"
+      ],
+      "level10": [
+        "minimize",
+        "fling"
+      ],
+      "level14": [
+        "sludge-bomb",
+        "sludge-wave",
+        "screech"
+      ],
+      "level18": [
+        "gunk-shot",
+        "acid-armor",
+        "memento",
+        "belch"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/88.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/88.png"
+    }
+  },
+  {
+    "id": "muk",
+    "name": "Muk",
+    "number": 89,
+    "type": [
+      "poison"
+    ],
+    "size": "medium",
+    "sr": 10,
+    "minLevel": 8,
+    "description": "The Sludge Pokémon. Smells so awful, it can cause fainting. Through degeneration of its nose, it lost its sense of smell.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 40
+      }
+    ],
+    "moves": {
+      "start": [
+        "harden",
+        "mud-slap",
+        "poison-gas",
+        "pound",
+        "disable",
+        "sludge",
+        "mud-bomb",
+        "venom-drench"
+      ],
+      "level10": [
+        "minimize",
+        "fling"
+      ],
+      "level14": [
+        "sludge-bomb",
+        "sludge-wave",
+        "screech"
+      ],
+      "level18": [
+        "gunk-shot",
+        "acid-armor",
+        "memento",
+        "belch"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/89.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/89.png"
+    }
+  },
+  {
+    "id": "shellder",
+    "name": "Shellder",
+    "number": 90,
+    "type": [
+      "water"
+    ],
+    "size": "tiny",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Bivalve Pokémon. The shell can withstand any attack. However, when it is open, the tender body is exposed.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "tackle",
+        "water-gun"
+      ],
+      "level2": [
+        "withdraw",
+        "supersonic"
+      ],
+      "level6": [
+        "icicle-spear",
+        "protect"
+      ],
+      "level10": [
+        "leer",
+        "clamp"
+      ],
+      "level14": [
+        "ice-shard",
+        "razor-shell",
+        "aurora-beam",
+        "whirlpool"
+      ],
+      "level18": [
+        "brine",
+        "iron-defense",
+        "ice-beam",
+        "shell-smash",
+        "hydro-pump"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/90.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/90.png"
+    }
+  },
+  {
+    "id": "cloyster",
+    "name": "Cloyster",
+    "number": 91,
+    "type": [
+      "water",
+      "ice"
+    ],
+    "size": "medium",
+    "sr": 8,
+    "minLevel": 5,
+    "description": "The Bivalve Pokémon. For protection, it uses its harder-than-diamond shell. It also shoots spikes from the shell.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "aurora-beam",
+        "hydro-pump",
+        "protect",
+        "shell-smash",
+        "supersonic",
+        "toxic-spikes",
+        "withdraw"
+      ],
+      "level6": [
+        "spike-cannon"
+      ],
+      "level14": [
+        "spikes"
+      ],
+      "level18": [
+        "icicle-crash"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/91.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/91.png"
+    }
+  },
+  {
+    "id": "gastly",
+    "name": "Gastly",
+    "number": 92,
+    "type": [
+      "ghost",
+      "poison"
+    ],
+    "size": "small",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Gas Pokémon. Said to appear in decrepit, deserted buildings. It has no real shape, as it appears to be made of a gas.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 30
+      }
+    ],
+    "moves": {
+      "start": [
+        "hypnosis",
+        "lick"
+      ],
+      "level2": [
+        "spite",
+        "mean-look"
+      ],
+      "level6": [
+        "curse",
+        "night-shade"
+      ],
+      "level10": [
+        "confuse-ray",
+        "sucker-punch",
+        "payback"
+      ],
+      "level14": [
+        "shadow-ball",
+        "dream-eater"
+      ],
+      "level18": [
+        "dark-pulse",
+        "destiny-bond",
+        "hex",
+        "nightmare"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/92.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/92.png"
+    }
+  },
+  {
+    "id": "haunter",
+    "name": "Haunter",
+    "number": 93,
+    "type": [
+      "ghost",
+      "poison"
+    ],
+    "size": "medium",
+    "sr": 5,
+    "minLevel": 5,
+    "description": "The Gas Pokémon. By licking, it saps the victim’s life. It causes shaking that won’t stop until the victim’s demise.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 50
+      }
+    ],
+    "moves": {
+      "start": [
+        "hypnosis",
+        "lick",
+        "shadow-punch",
+        "spite",
+        "mean-look"
+      ],
+      "level6": [
+        "curse",
+        "night-shade"
+      ],
+      "level10": [
+        "confuse-ray",
+        "sucker-punch"
+      ],
+      "level14": [
+        "payback",
+        "shadow-ball"
+      ],
+      "level18": [
+        "dream-eater",
+        "dark-pulse",
+        "destiny-bond",
+        "hex",
+        "nightmare"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/93.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/93.png"
+    }
+  },
+  {
+    "id": "gengar",
+    "name": "Gengar",
+    "number": 94,
+    "type": [
+      "ghost",
+      "poison"
+    ],
+    "size": "medium",
+    "sr": 12,
+    "minLevel": 10,
+    "description": "The Shadow Pokémon. A Gengar is close by if you feel a sudden chill. It may be trying to lay a curse on you.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 80
+      }
+    ],
+    "moves": {
+      "start": [
+        "hypnosis",
+        "lick",
+        "shadow-punch",
+        "spite",
+        "mean-look",
+        "curse",
+        "night-shade",
+        "confuse-ray",
+        "sucker-punch"
+      ],
+      "level14": [
+        "payback",
+        "shadow-ball"
+      ],
+      "level18": [
+        "dream-eater",
+        "dark-pulse",
+        "destiny-bond",
+        "hex",
+        "nightmare"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 3 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png"
+    }
+  },
+  {
+    "id": "onix",
+    "name": "Onix",
+    "number": 95,
+    "type": [
+      "rock",
+      "ground"
+    ],
+    "size": "huge",
+    "sr": 10,
+    "minLevel": 5,
+    "description": "The Rock Snake Pokémon. Burrows at high speed in search of food. The tunnels it leaves are used as homes by Diglett.",
+    "senses": [
+      {
+        "type": "tremorsense",
+        "value": 120
+      }
+    ],
+    "moves": {
+      "start": [
+        "bind",
+        "harden",
+        "mud-sport",
+        "tackle",
+        "curse",
+        "rock-throw",
+        "rock-tomb"
+      ],
+      "level6": [
+        "rage",
+        "stealth-rock",
+        "rock-polish"
+      ],
+      "level10": [
+        "gyro-ball",
+        "smack-down",
+        "dragon-breath",
+        "slam"
+      ],
+      "level14": [
+        "screech",
+        "rock-slide",
+        "sand-tomb",
+        "iron-tail"
+      ],
+      "level18": [
+        "dig",
+        "stone-edge",
+        "double-edge",
+        "sandstorm"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/95.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/95.png"
+    }
+  },
+  {
+    "id": "drowzee",
+    "name": "Drowzee",
+    "number": 96,
+    "type": [
+      "psychic"
+    ],
+    "size": "small",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Hypnosis Pokémon. If you sleep by it all the time, it will sometimes show you dreams it had eaten in the past.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "hypnosis",
+        "pound"
+      ],
+      "level2": [
+        "disable",
+        "confusion"
+      ],
+      "level6": [
+        "headbutt",
+        "poison-gas"
+      ],
+      "level10": [
+        "meditate",
+        "psybeam"
+      ],
+      "level14": [
+        "psych-up"
+      ],
+      "level18": [
+        "synchronoise",
+        "zen-headbutt",
+        "swagger",
+        "psychic",
+        "nasty-plot",
+        "psyshock",
+        "future-sight"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/96.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/96.png"
+    }
+  },
+  {
+    "id": "hypno",
+    "name": "Hypno",
+    "number": 97,
+    "type": [
+      "psychic"
+    ],
+    "size": "medium",
+    "sr": 8,
+    "minLevel": 5,
+    "description": "The Hypnosis Pokémon. Avoid eye contact if you come across one. It will try to put you to sleep by using its pendulum.",
+    "senses": [
+      {
+        "type": "truesight",
+        "value": 20
+      }
+    ],
+    "moves": {
+      "start": [
+        "confusion",
+        "disable",
+        "future-sight",
+        "hypnosis",
+        "nasty-plot",
+        "nightmare",
+        "pound",
+        "switcheroo"
+      ],
+      "level6": [
+        "headbutt",
+        "poison-gas"
+      ],
+      "level10": [
+        "meditate",
+        "psybeam"
+      ],
+      "level14": [
+        "psych-up"
+      ],
+      "level18": [
+        "synchronoise",
+        "zen-headbutt",
+        "swagger",
+        "psychic",
+        "psyshock"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/97.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/97.png"
+    }
+  },
+  {
+    "id": "krabby",
+    "name": "Krabby",
+    "number": 98,
+    "type": [
+      "water"
+    ],
+    "size": "small",
+    "sr": 0.25,
+    "minLevel": 1,
+    "description": "The River Crab Pokémon. Its pincers are superb weapons. They sometimes break off during battle, but they grow back fast.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "bubble",
+        "mud-sport"
+      ],
+      "level2": [
+        "vice-grip",
+        "leer",
+        "harden"
+      ],
+      "level6": [
+        "bubble-beam",
+        "mud-shot"
+      ],
+      "level10": [
+        "metal-claw",
+        "stomp"
+      ],
+      "level14": [
+        "protect",
+        "guillotine",
+        "slam"
+      ],
+      "level18": [
+        "brine",
+        "crabhammer",
+        "flail"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/98.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/98.png"
+    }
+  },
+  {
+    "id": "kingler",
+    "name": "Kingler",
+    "number": 99,
+    "type": [
+      "water"
+    ],
+    "size": "medium",
+    "sr": 8,
+    "minLevel": 5,
+    "description": "The Pincer Pokémon. One claw grew massively and is as hard as steel. It has 10,000-horsepower strength. However, it is too heavy.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "bubble",
+        "leer",
+        "mud-sport",
+        "vice-grip",
+        "wide-guard",
+        "harden"
+      ],
+      "level6": [
+        "bubble-beam",
+        "mud-shot"
+      ],
+      "level10": [
+        "metal-claw",
+        "stomp"
+      ],
+      "level14": [
+        "protect",
+        "slam"
+      ],
+      "level18": [
+        "guillotine",
+        "brine",
+        "crabhammer",
+        "flail"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/99.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/99.png"
+    }
+  },
+  {
+    "id": "voltorb",
+    "name": "Voltorb",
+    "number": 100,
+    "type": [
+      "electric"
+    ],
+    "size": "tiny",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Ball Pokémon. It is said to camouflage itself as a Poké Ball. It will self-destruct with very little stimulus.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "charge",
+        "tackle"
+      ],
+      "level2": [
+        "sonic-boom",
+        "spark",
+        "eerie-impulse"
+      ],
+      "level6": [
+        "rollout",
+        "screech",
+        "charge-beam"
+      ],
+      "level10": [
+        "swift",
+        "electro-ball",
+        "self-destruct"
+      ],
+      "level14": [
+        "light-screen",
+        "magnet-rise"
+      ],
+      "level18": [
+        "discharge",
+        "explosion",
+        "gyro-ball",
+        "mirror-coat"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/100.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/100.png"
+    }
+  },
+  {
+    "id": "electrode",
+    "name": "Electrode",
+    "number": 101,
+    "type": [
+      "electric"
+    ],
+    "size": "small",
+    "sr": 8,
+    "minLevel": 5,
+    "description": "The Ball Pokémon. Stores electrical energy inside its body. Even the slightest shock could trigger a huge explosion.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "charge",
+        "sonic-boom",
+        "tackle",
+        "spark",
+        "eerie-impulse",
+        "magnetic-flux"
+      ],
+      "level6": [
+        "rollout",
+        "screech",
+        "charge-beam"
+      ],
+      "level10": [
+        "swift",
+        "electro-ball",
+        "self-destruct"
+      ],
+      "level14": [
+        "light-screen"
+      ],
+      "level18": [
+        "magnet-rise",
+        "discharge",
+        "explosion",
+        "gyro-ball",
+        "mirror-coat"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/101.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/101.png"
+    }
+  },
+  {
+    "id": "exeggcute",
+    "name": "Exeggcute",
+    "number": 102,
+    "type": [
+      "grass",
+      "psychic"
+    ],
+    "size": "tiny",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Egg Pokémon. The heads attract each other and spin around. There must be six heads for it to maintain balance.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "barrage",
+        "hypnosis",
+        "uproar"
+      ],
+      "level2": [
+        "reflect",
+        "leech-seed"
+      ],
+      "level6": [
+        "bullet-seed",
+        "stun-spore"
+      ],
+      "level10": [
+        "poison-powder",
+        "sleep-powder"
+      ],
+      "level14": [
+        "confusion",
+        "worry-seed"
+      ],
+      "level18": [
+        "natural-gift",
+        "solar-beam",
+        "extrasensory",
+        "bestow"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/102.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/102.png"
+    }
+  },
+  {
+    "id": "exeggutor",
+    "name": "Exeggutor",
+    "number": 103,
+    "type": [
+      "grass",
+      "psychic"
+    ],
+    "size": "large",
+    "sr": 8,
+    "minLevel": 5,
+    "description": "The Coconut Pokémon. Its cries are very noisy. This is because each of the three heads thinks about whatever it likes.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "barrage",
+        "confusion",
+        "hypnosis",
+        "seed-bomb",
+        "stomp"
+      ],
+      "level6": [
+        "psyshock"
+      ],
+      "level10": [
+        "egg-bomb"
+      ],
+      "level18": [
+        "wood-hammer",
+        "leaf-storm"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/103.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/103.png"
+    }
+  },
+  {
+    "id": "cubone",
+    "name": "Cubone",
+    "number": 104,
+    "type": [
+      "ground"
+    ],
+    "size": "tiny",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Lonely Pokémon. Wears the skull of its deceased mother. Its cries echo inside the skull and come out as a sad melody.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "growl",
+        "tail-whip"
+      ],
+      "level2": [
+        "bone-club",
+        "headbutt"
+      ],
+      "level6": [
+        "leer",
+        "focus-energy"
+      ],
+      "level10": [
+        "bonemerang",
+        "rage",
+        "false-swipe"
+      ],
+      "level14": [
+        "thrash",
+        "fling",
+        "stomping-tantrum"
+      ],
+      "level18": [
+        "endeavor",
+        "double-edge",
+        "retaliate",
+        "bone-rush"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/104.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/104.png"
+    }
+  },
+  {
+    "id": "marowak",
+    "name": "Marowak",
+    "number": 105,
+    "type": [
+      "ground"
+    ],
+    "size": "small",
+    "sr": 7,
+    "minLevel": 5,
+    "description": "The Bone Keeper Pokémon. Small and weak, this Pokémon is adept with its bone club. It has grown more vicious over the ages.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "bone-club",
+        "growl",
+        "headbutt",
+        "tail-whip"
+      ],
+      "level6": [
+        "leer",
+        "focus-energy"
+      ],
+      "level10": [
+        "bonemerang",
+        "rage"
+      ],
+      "level14": [
+        "false-swipe",
+        "thrash"
+      ],
+      "level18": [
+        "stomping-tantrum",
+        "fling",
+        "endeavor",
+        "double-edge",
+        "retaliate",
+        "bone-rush"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/105.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/105.png"
+    }
+  },
+  {
+    "id": "hitmonlee",
+    "name": "Hitmonlee",
+    "number": 106,
+    "type": [
+      "fighting"
+    ],
+    "size": "medium",
+    "sr": 6,
+    "minLevel": 5,
+    "description": "The Kicking Pokémon. When kicking, the sole of its foot turns as hard as a diamond on impact and destroys its enemy.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "double-kick",
+        "revenge",
+        "reversal",
+        "meditate",
+        "rolling-kick"
+      ],
+      "level6": [
+        "jump-kick",
+        "brick-break"
+      ],
+      "level10": [
+        "focus-energy",
+        "feint",
+        "foresight"
+      ],
+      "level14": [
+        "high-jump-kick",
+        "mind-reader",
+        "axe-kick"
+      ],
+      "level18": [
+        "wide-guard",
+        "blaze-kick",
+        "endure",
+        "mega-kick",
+        "close-combat"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/106.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/106.png"
+    }
+  },
+  {
+    "id": "hitmonchan",
+    "name": "Hitmonchan",
+    "number": 107,
+    "type": [
+      "fighting"
+    ],
+    "size": "medium",
+    "sr": 6,
+    "minLevel": 5,
+    "description": "The Punching Pokémon. Punches in corkscrew fashion. It can punch its way through a concrete wall like a drill.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "comet-punch",
+        "pursuit",
+        "revenge",
+        "agility"
+      ],
+      "level6": [
+        "bullet-punch",
+        "mach-punch"
+      ],
+      "level10": [
+        "feint",
+        "vacuum-wave",
+        "fire-punch",
+        "ice-punch",
+        "thunder-punch"
+      ],
+      "level14": [
+        "quick-guard",
+        "sky-uppercut",
+        "mega-punch"
+      ],
+      "level18": [
+        "detect",
+        "focus-punch",
+        "counter",
+        "close-combat"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/107.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/107.png"
+    }
+  },
+  {
+    "id": "lickitung",
+    "name": "Lickitung",
+    "number": 108,
+    "type": [
+      "normal"
+    ],
+    "size": "small",
+    "sr": 7,
+    "minLevel": 5,
+    "description": "The Licking Pokémon. Its tongue spans almost seven feet and moves more freely than its forelegs. Its licks can cause paralysis.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "lick",
+        "supersonic",
+        "defense-curl"
+      ],
+      "level6": [
+        "knock-off",
+        "wrap"
+      ],
+      "level10": [
+        "stomp",
+        "disable"
+      ],
+      "level14": [
+        "slam",
+        "rollout"
+      ],
+      "level18": [
+        "chip-away",
+        "me-first",
+        "refresh",
+        "screech",
+        "power-whip",
+        "wring-out"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/108.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/108.png"
+    }
+  },
+  {
+    "id": "koffing",
+    "name": "Koffing",
+    "number": 109,
+    "type": [
+      "poison"
+    ],
+    "size": "tiny",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Poison Gas Pokémon. In hot places, its internal gases could expand and explode without any warning. Be very careful!",
+    "senses": [],
+    "moves": {
+      "start": [
+        "poison-gas",
+        "tackle"
+      ],
+      "level2": [
+        "smog",
+        "smokescreen"
+      ],
+      "level6": [
+        "assurance",
+        "clear-smog",
+        "sludge"
+      ],
+      "level10": [
+        "self-destruct",
+        "haze"
+      ],
+      "level14": [
+        "gyro-ball",
+        "sludge-bomb"
+      ],
+      "level18": [
+        "explosion",
+        "destiny-bond",
+        "memento",
+        "belch"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/109.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/109.png"
+    }
+  },
+  {
+    "id": "weezing",
+    "name": "Weezing",
+    "number": 110,
+    "type": [
+      "poison"
+    ],
+    "size": "medium",
+    "sr": 10,
+    "minLevel": 8,
+    "description": "The Poison Gas Pokémon. This Pokémon lives and grows by absorbing poison gas, dust, and germs that exist inside garbage.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "double-hit",
+        "poison-gas",
+        "smog",
+        "smokescreen",
+        "tackle",
+        "assurance",
+        "clear-smog",
+        "sludge"
+      ],
+      "level10": [
+        "self-destruct",
+        "haze"
+      ],
+      "level14": [
+        "gyro-ball",
+        "sludge-bomb"
+      ],
+      "level18": [
+        "explosion",
+        "destiny-bond",
+        "memento",
+        "belch"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/110.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/110.png"
+    }
+  },
+  {
+    "id": "rhyhorn",
+    "name": "Rhyhorn",
+    "number": 111,
+    "type": [
+      "ground",
+      "rock"
+    ],
+    "size": "medium",
+    "sr": 3,
+    "minLevel": 1,
+    "description": "The Spikes Pokémon. A Pokémon with a one-track mind. Once it charges, it won’t stop running until it falls asleep.",
+    "senses": [
+      {
+        "type": "tremorsense",
+        "value": 40
+      }
+    ],
+    "moves": {
+      "start": [
+        "horn-attack",
+        "tail-whip"
+      ],
+      "level2": [
+        "fury-attack",
+        "scary-face"
+      ],
+      "level6": [
+        "smack-down",
+        "stomp"
+      ],
+      "level10": [
+        "bulldoze",
+        "chip-away",
+        "head-smash"
+      ],
+      "level14": [
+        "rock-blast",
+        "drill-run",
+        "take-down",
+        "stone-edge"
+      ],
+      "level18": [
+        "earthquake",
+        "megahorn",
+        "horn-drill",
+        "double-edge"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/111.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/111.png"
+    }
+  },
+  {
+    "id": "rhydon",
+    "name": "Rhydon",
+    "number": 112,
+    "type": [
+      "ground",
+      "rock"
+    ],
+    "size": "large",
+    "sr": 11,
+    "minLevel": 10,
+    "description": "The Drill Pokémon. Its brain developed when it began walking on its hind legs. Its armor-like hide even repels molten lava.",
+    "senses": [
+      {
+        "type": "tremorsense",
+        "value": 60
+      }
+    ],
+    "moves": {
+      "start": [
+        "fury-attack",
+        "hammer-arm",
+        "horn-attack",
+        "scary-face",
+        "tail-whip",
+        "smack-down",
+        "stomp",
+        "bulldoze",
+        "chip-away"
+      ],
+      "level14": [
+        "rock-blast",
+        "drill-run",
+        "take-down",
+        "chip-away",
+        "head-smash"
+      ],
+      "level18": [
+        "stone-edge",
+        "earthquake",
+        "megahorn",
+        "horn-drill",
+        "double-edge"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/112.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/112.png"
+    }
+  },
+  {
+    "id": "chansey",
+    "name": "Chansey",
+    "number": 113,
+    "type": [
+      "normal"
+    ],
+    "size": "medium",
+    "sr": 7,
+    "minLevel": 5,
+    "description": "The Egg Pokémon. A gentle and kindhearted Pokémon that shares its nutritious eggs if it sees an injured Pokémon.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "defense-curl",
+        "growl",
+        "pound",
+        "tail-whip",
+        "refresh"
+      ],
+      "level6": [
+        "double-slap",
+        "soft-boiled",
+        "life-dew"
+      ],
+      "level10": [
+        "bestow",
+        "minimize",
+        "take-down"
+      ],
+      "level14": [
+        "sing",
+        "fling"
+      ],
+      "level18": [
+        "heal-pulse",
+        "egg-bomb",
+        "light-screen",
+        "healing-wish",
+        "double-edge"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/113.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/113.png"
+    }
+  },
+  {
+    "id": "tangela",
+    "name": "Tangela",
+    "number": 114,
+    "type": [
+      "grass"
+    ],
+    "size": "small",
+    "sr": 5,
+    "minLevel": 5,
+    "description": "The Vine Pokémon. Its identity is obscured by masses of thick blue vines. The vines are said to never stop growing.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "constrict",
+        "ingrain",
+        "sleep-powder",
+        "vine-whip",
+        "absorb"
+      ],
+      "level6": [
+        "poison-powder",
+        "bind"
+      ],
+      "level10": [
+        "growth",
+        "mega-drain"
+      ],
+      "level14": [
+        "knock-off",
+        "stun-spore",
+        "natural-gift",
+        "ancient-power"
+      ],
+      "level18": [
+        "giga-drain",
+        "slam",
+        "tickle",
+        "wring-out",
+        "power-whip",
+        "grassy-terrain"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/114.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/114.png"
+    }
+  },
+  {
+    "id": "kangaskhan",
+    "name": "Kangaskhan",
+    "number": 115,
+    "type": [
+      "normal"
+    ],
+    "size": "large",
+    "sr": 10,
+    "minLevel": 8,
+    "description": "The Parent Pokémon. Raises its young in its belly pouch. Won’t run from any fight to keep its young protected.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "comet-punch",
+        "leer",
+        "fake-out",
+        "tail-whip",
+        "bite",
+        "double-hit"
+      ],
+      "level10": [
+        "rage",
+        "mega-punch"
+      ],
+      "level14": [
+        "chip-away",
+        "dizzy-punch",
+        "crunch"
+      ],
+      "level18": [
+        "endure",
+        "outrage",
+        "sucker-punch",
+        "reversal"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/115.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/115.png"
+    }
+  },
+  {
+    "id": "horsea",
+    "name": "Horsea",
+    "number": 116,
+    "type": [
+      "water"
+    ],
+    "size": "tiny",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Dragon Pokémon. If it senses any danger, it will vigorously spray water or a special type of ink from its mouth.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "bubble"
+      ],
+      "level2": [
+        "smokescreen",
+        "leer"
+      ],
+      "level6": [
+        "water-gun",
+        "twister"
+      ],
+      "level10": [
+        "bubble-beam",
+        "focus-energy"
+      ],
+      "level14": [
+        "brine",
+        "agility"
+      ],
+      "level18": [
+        "dragon-pulse",
+        "dragon-dance",
+        "hydro-pump"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/116.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/116.png"
+    }
+  },
+  {
+    "id": "seadra",
+    "name": "Seadra",
+    "number": 117,
+    "type": [
+      "water"
+    ],
+    "size": "small",
+    "sr": 8,
+    "minLevel": 8,
+    "description": "The Dragon Pokémon. Touching the back fin causes numbness. It hooks its tail to coral to stay in place while sleeping.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "bubble",
+        "hydro-pump",
+        "leer",
+        "smokescreen",
+        "water-gun",
+        "twister"
+      ],
+      "level10": [
+        "bubble-beam",
+        "focus-energy"
+      ],
+      "level14": [
+        "brine"
+      ],
+      "level18": [
+        "agility",
+        "dragon-pulse",
+        "dragon-dance"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/117.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/117.png"
+    }
+  },
+  {
+    "id": "goldeen",
+    "name": "Goldeen",
+    "number": 118,
+    "type": [
+      "water"
+    ],
+    "size": "small",
+    "sr": 0.25,
+    "minLevel": 1,
+    "description": "The Goldfish Pokémon. When it is time for them to lay eggs, they can be seen swimming up rivers and falls in large groups.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "peck",
+        "tail-whip",
+        "water-sport"
+      ],
+      "level2": [
+        "supersonic",
+        "horn-attack"
+      ],
+      "level6": [
+        "flail",
+        "water-pulse"
+      ],
+      "level10": [
+        "aqua-ring",
+        "fury-attack"
+      ],
+      "level14": [
+        "agility",
+        "waterfall"
+      ],
+      "level18": [
+        "horn-drill",
+        "soak",
+        "megahorn"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/118.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/118.png"
+    }
+  },
+  {
+    "id": "seaking",
+    "name": "Seaking",
+    "number": 119,
+    "type": [
+      "water"
+    ],
+    "size": "medium",
+    "sr": 9,
+    "minLevel": 8,
+    "description": "The Goldfish Pokémon. It is the male’s job to make a nest by carving out boulders in a stream using the horn on its head.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "peck",
+        "poison-jab",
+        "tail-whip",
+        "water-sport",
+        "supersonic",
+        "horn-attack",
+        "flail",
+        "water-pulse"
+      ],
+      "level10": [
+        "aqua-ring",
+        "fury-attack"
+      ],
+      "level14": [
+        "agility",
+        "waterfall"
+      ],
+      "level18": [
+        "horn-drill",
+        "soak",
+        "megahorn"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/119.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/119.png"
+    }
+  },
+  {
+    "id": "staryu",
+    "name": "Staryu",
+    "number": 120,
+    "type": [
+      "water"
+    ],
+    "size": "small",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Star Shape Pokémon. As long as the center section is unharmed, this Pokémon can grow back fully even if it is chopped to bits.",
+    "senses": [
+      {
+        "type": "blindsight",
+        "value": 100
+      }
+    ],
+    "moves": {
+      "start": [
+        "harden",
+        "tackle"
+      ],
+      "level2": [
+        "water-gun",
+        "rapid-spin",
+        "recover"
+      ],
+      "level6": [
+        "psywave",
+        "swift"
+      ],
+      "level10": [
+        "bubble-beam",
+        "camouflage",
+        "gyro-ball"
+      ],
+      "level14": [
+        "brine",
+        "minimize",
+        "reflect-type",
+        "confuse-ray"
+      ],
+      "level18": [
+        "power-gem",
+        "psychic",
+        "light-screen",
+        "cosmic-power",
+        "hydro-pump"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/120.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/120.png"
+    }
+  },
+  {
+    "id": "starmie",
+    "name": "Starmie",
+    "number": 121,
+    "type": [
+      "water",
+      "psychic"
+    ],
+    "size": "small",
+    "sr": 9,
+    "minLevel": 8,
+    "description": "The Mysterious Pokémon. The center section is named the core. People think it is communicating when it glows in seven colors.",
+    "senses": [
+      {
+        "type": "blindsight",
+        "value": 120
+      }
+    ],
+    "moves": {
+      "start": [
+        "hydro-pump",
+        "rapid-spin",
+        "recover",
+        "spotlight",
+        "swift",
+        "water-gun"
+      ],
+      "level18": [
+        "confuse-ray"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/121.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/121.png"
+    }
+  },
+  {
+    "id": "mr-mime",
+    "name": "Mr. Mime",
+    "number": 122,
+    "type": [
+      "psychic",
+      "fairy"
+    ],
+    "size": "medium",
+    "sr": 9,
+    "minLevel": 5,
+    "description": "The Barrier Pokémon. Always practicing its pantomime act. It makes enemies believe something exists that really doesn’t.",
+    "senses": [
+      {
+        "type": "truesight",
+        "value": 10
+      }
+    ],
+    "moves": {
+      "start": [
+        "barrier",
+        "confusion",
+        "guard-swap",
+        "magical-leaf",
+        "misty-terrain",
+        "power-swap",
+        "quick-guard",
+        "wide-guard",
+        "copycat",
+        "meditate",
+        "double-slap"
+      ],
+      "level6": [
+        "mimic",
+        "psywave",
+        "encore"
+      ],
+      "level10": [
+        "light-screen",
+        "reflect",
+        "psybeam"
+      ],
+      "level14": [
+        "substitute",
+        "recycle",
+        "trick"
+      ],
+      "level18": [
+        "psychic",
+        "role-play",
+        "baton-pass",
+        "safeguard"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/122.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/122.png"
+    }
+  },
+  {
+    "id": "scyther",
+    "name": "Scyther",
+    "number": 123,
+    "type": [
+      "bug",
+      "flying"
+    ],
+    "size": "medium",
+    "sr": 8,
+    "minLevel": 5,
+    "description": "The Mantis Pokémon. Leaps out of tall grass and slices prey with its scythes. The movement looks like that of a ninja.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "leer",
+        "quick-attack",
+        "vacuum-wave",
+        "focus-energy",
+        "pursuit"
+      ],
+      "level6": [
+        "false-swipe",
+        "agility",
+        "wing-attack"
+      ],
+      "level10": [
+        "fury-cutter",
+        "slash"
+      ],
+      "level14": [
+        "razor-wind",
+        "double-team"
+      ],
+      "level18": [
+        "x-scissor",
+        "night-slash",
+        "double-hit",
+        "air-slash",
+        "swords-dance",
+        "feint"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/123.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/123.png"
+    }
+  },
+  {
+    "id": "jynx",
+    "name": "Jynx",
+    "number": 124,
+    "type": [
+      "ice",
+      "psychic"
+    ],
+    "size": "medium",
+    "sr": 8,
+    "minLevel": 5,
+    "description": "The Human Shape Pokémon. Appears to move to a rhythm of its own, as if it were dancing. It wiggles its hips as it walks.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "draining-kiss",
+        "pound",
+        "lick",
+        "lovely-kiss",
+        "powder-snow"
+      ],
+      "level6": [
+        "double-slap",
+        "ice-punch"
+      ],
+      "level10": [
+        "heart-stamp",
+        "mean-look"
+      ],
+      "level14": [
+        "fake-tears",
+        "wake-up-slap"
+      ],
+      "level18": [
+        "avalanche",
+        "body-slam",
+        "wring-out",
+        "perish-song",
+        "blizzard"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/124.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/124.png"
+    }
+  },
+  {
+    "id": "electabuzz",
+    "name": "Electabuzz",
+    "number": 125,
+    "type": [
+      "electric"
+    ],
+    "size": "small",
+    "sr": 9,
+    "minLevel": 5,
+    "description": "The Electric Pokémon. If a major power outage occurs, it is certain that this Pokémon has eaten electricity at a power plant.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "leer",
+        "quick-attack",
+        "thunder-shock",
+        "low-kick"
+      ],
+      "level6": [
+        "swift",
+        "shock-wave"
+      ],
+      "level10": [
+        "thunder-wave",
+        "electro-ball",
+        "light-screen"
+      ],
+      "level14": [
+        "thunder-punch",
+        "discharge"
+      ],
+      "level18": [
+        "screech",
+        "thunderbolt",
+        "thunder"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/125.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/125.png"
+    }
+  },
+  {
+    "id": "magmar",
+    "name": "Magmar",
+    "number": 126,
+    "type": [
+      "fire"
+    ],
+    "size": "small",
+    "sr": 9,
+    "minLevel": 5,
+    "description": "The Spitfire Pokémon. Born in an active volcano. Its body is always cloaked in flames, so it looks like a big ball of fire.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "ember",
+        "leer",
+        "smog",
+        "smokescreen"
+      ],
+      "level6": [
+        "feint-attack",
+        "fire-spin",
+        "clear-smog"
+      ],
+      "level10": [
+        "flame-burst",
+        "confuse-ray"
+      ],
+      "level14": [
+        "fire-punch",
+        "sunny-day"
+      ],
+      "level18": [
+        "lava-plume",
+        "flamethrower",
+        "fire-blast"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/126.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/126.png"
+    }
+  },
+  {
+    "id": "pinsir",
+    "name": "Pinsir",
+    "number": 127,
+    "type": [
+      "bug"
+    ],
+    "size": "small",
+    "sr": 9,
+    "minLevel": 5,
+    "description": "The Stag Beetle Pokémon. Grips its prey in its pincers and squeezes hard! It can’t move if it’s cold out, so it lives in warm places.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "focus-energy",
+        "vice-grip",
+        "bind",
+        "seismic-toss",
+        "harden"
+      ],
+      "level6": [
+        "revenge",
+        "vital-throw"
+      ],
+      "level10": [
+        "double-hit",
+        "brick-break"
+      ],
+      "level14": [
+        "x-scissor",
+        "submission",
+        "swords-dance"
+      ],
+      "level18": [
+        "storm-throw",
+        "thrash",
+        "superpower",
+        "guillotine"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/127.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/127.png"
+    }
+  },
+  {
+    "id": "tauros",
+    "name": "Tauros",
+    "number": 128,
+    "type": [
+      "normal"
+    ],
+    "size": "medium",
+    "sr": 10,
+    "minLevel": 5,
+    "description": "The Wild Bull Pokémon. A rowdy Pokémon with a lot of stamina. Once running, it won’t stop until it hits something.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "tackle",
+        "tail-whip",
+        "rage",
+        "horn-attack",
+        "scary-face"
+      ],
+      "level6": [
+        "pursuit",
+        "rest"
+      ],
+      "level10": [
+        "payback",
+        "raging-bull"
+      ],
+      "level14": [
+        "work-up",
+        "zen-headbutt",
+        "take-down"
+      ],
+      "level18": [
+        "swagger",
+        "thrash",
+        "giga-impact"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/128.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/128.png"
+    }
+  },
+  {
+    "id": "magikarp",
+    "name": "Magikarp",
+    "number": 129,
+    "type": [
+      "water"
+    ],
+    "size": "small",
+    "sr": 0.25,
+    "minLevel": 1,
+    "description": "The Fish Pokémon. Famous for being very unreliable. It can be found swimming in seas, lakes, rivers, and shallow puddles.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "splash"
+      ],
+      "level2": [
+        "tackle"
+      ],
+      "level6": [
+        "flail"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/129.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/129.png"
+    }
+  },
+  {
+    "id": "gyarados",
+    "name": "Gyarados",
+    "number": 130,
+    "type": [
+      "water",
+      "flying"
+    ],
+    "size": "huge",
+    "sr": 10,
+    "minLevel": 8,
+    "description": "The Atrocious Pokémon. Brutally vicious and enormously destructive. Known for totally destroying cities in ancient times.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "bite",
+        "thrash"
+      ],
+      "level10": [
+        "leer",
+        "twister",
+        "ice-fang"
+      ],
+      "level14": [
+        "aqua-tail",
+        "scary-face",
+        "dragon-rage",
+        "crunch"
+      ],
+      "level18": [
+        "hydro-pump",
+        "dragon-dance",
+        "hurricane",
+        "rain-dance",
+        "hyper-beam"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/130.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/130.png"
+    }
+  },
+  {
+    "id": "lapras",
+    "name": "Lapras",
+    "number": 131,
+    "type": [
+      "water",
+      "ice"
+    ],
+    "size": "large",
+    "sr": 10,
+    "minLevel": 5,
+    "description": "The Transport Pokémon. A gentle soul that can understand human speech. It can ferry people across the sea on its back.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "growl",
+        "sing",
+        "water-gun",
+        "mist",
+        "confuse-ray",
+        "ice-shard"
+      ],
+      "level6": [
+        "water-pulse",
+        "body-slam",
+        "life-dew"
+      ],
+      "level10": [
+        "rain-dance",
+        "perish-song"
+      ],
+      "level14": [
+        "ice-beam"
+      ],
+      "level18": [
+        "brine",
+        "safeguard",
+        "hydro-pump",
+        "sheer-cold"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/131.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/131.png"
+    }
+  },
+  {
+    "id": "ditto",
+    "name": "Ditto",
+    "number": 132,
+    "type": [
+      "normal"
+    ],
+    "size": "tiny",
+    "sr": 3,
+    "minLevel": 1,
+    "description": "The Transform Pokémon. When it spots an enemy, its body transfigures into an almost-perfect copy of its opponent.",
+    "senses": [
+      {
+        "type": "truesight",
+        "value": 20
+      }
+    ],
+    "moves": {
+      "start": [
+        "transform"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+    }
+  },
+  {
+    "id": "eevee",
+    "name": "Eevee",
+    "number": 133,
+    "type": [
+      "normal"
+    ],
+    "size": "tiny",
+    "sr": 0.5,
+    "minLevel": 1,
+    "description": "The Evolution Pokémon. Eevee’s genes are the key to solving the mysteries of Pokémon evolution.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "covet",
+        "growl",
+        "helping-hand",
+        "tackle",
+        "tail-whip"
+      ],
+      "level2": [
+        "sand-attack",
+        "baby-doll-eyes",
+        "quick-attack"
+      ],
+      "level6": [
+        "bite",
+        "swift"
+      ],
+      "level10": [
+        "refresh",
+        "take-down"
+      ],
+      "level14": [
+        "charm",
+        "baton-pass"
+      ],
+      "level18": [
+        "double-edge",
+        "last-resort",
+        "trump-card"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png"
+    }
+  },
+  {
+    "id": "vaporeon",
+    "name": "Vaporeon",
+    "number": 134,
+    "type": [
+      "water"
+    ],
+    "size": "small",
+    "sr": 8,
+    "minLevel": 5,
+    "description": "The Bubble Jet Pokémon. Its cell structure is similar to water molecules. It melts into the water and becomes invisible.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "helping-hand",
+        "tackle",
+        "tail-whip",
+        "water-gun",
+        "sand-attack",
+        "baby-doll-eyes"
+      ],
+      "level6": [
+        "quick-attack",
+        "water-pulse"
+      ],
+      "level10": [
+        "aurora-beam",
+        "aqua-ring"
+      ],
+      "level14": [
+        "acid-armor",
+        "haze"
+      ],
+      "level18": [
+        "muddy-water",
+        "last-resort",
+        "hydro-pump"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/134.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/134.png"
+    }
+  },
+  {
+    "id": "jolteon",
+    "name": "Jolteon",
+    "number": 135,
+    "type": [
+      "electric"
+    ],
+    "size": "small",
+    "sr": 8,
+    "minLevel": 5,
+    "description": "The Lightning Pokémon. A sensitive Pokémon that easily becomes sad or angry. Every time its mood changes, it charges power.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "helping-hand",
+        "tackle",
+        "tail-whip",
+        "thunder-shock",
+        "sand-attack",
+        "baby-doll-eyes"
+      ],
+      "level6": [
+        "quick-attack",
+        "double-kick"
+      ],
+      "level10": [
+        "thunder-fang",
+        "pin-missile"
+      ],
+      "level14": [
+        "agility",
+        "thunder-wave"
+      ],
+      "level18": [
+        "discharge",
+        "last-resort",
+        "thunder"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/135.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png"
+    }
+  },
+  {
+    "id": "flareon",
+    "name": "Flareon",
+    "number": 136,
+    "type": [
+      "fire"
+    ],
+    "size": "small",
+    "sr": 8,
+    "minLevel": 5,
+    "description": "The Flame Pokémon. It has a flame chamber inside its body. It inhales, then breathes out fire that is over 3,000 degrees Fahrenheit.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "ember",
+        "helping-hand",
+        "tackle",
+        "tail-whip",
+        "sand-attack",
+        "baby-doll-eyes"
+      ],
+      "level6": [
+        "quick-attack",
+        "bite"
+      ],
+      "level10": [
+        "fire-fang",
+        "fire-spin"
+      ],
+      "level14": [
+        "scary-face"
+      ],
+      "level18": [
+        "smog",
+        "lava-plume",
+        "last-resort",
+        "flare-blitz"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/136.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/136.png"
+    }
+  },
+  {
+    "id": "porygon",
+    "name": "Porygon",
+    "number": 137,
+    "type": [
+      "normal"
+    ],
+    "size": "small",
+    "sr": 6,
+    "minLevel": 5,
+    "description": "The Virtual Pokémon. The only Pokémon that people anticipate can fly into space. None has managed the feat yet, however.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "conversion",
+        "conversion-2",
+        "sharpen",
+        "tackle",
+        "psybeam"
+      ],
+      "level6": [
+        "agility",
+        "recover"
+      ],
+      "level10": [
+        "magnet-rise"
+      ],
+      "level14": [
+        "signal-beam",
+        "recycle",
+        "discharge",
+        "lock-on"
+      ],
+      "level18": [
+        "tri-attack",
+        "magic-coat",
+        "zap-cannon"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/137.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/137.png"
+    }
+  },
+  {
+    "id": "omanyte",
+    "name": "Omanyte",
+    "number": 138,
+    "type": [
+      "rock",
+      "water"
+    ],
+    "size": "tiny",
+    "sr": 2,
+    "minLevel": 1,
+    "description": "The Spiral Pokémon. An ancient Pokémon that was recovered from a fossil. It swam by cleverly twisting its 10 tentacles about.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 20
+      }
+    ],
+    "moves": {
+      "start": [
+        "constrict",
+        "withdraw"
+      ],
+      "level2": [
+        "bite",
+        "water-gun"
+      ],
+      "level6": [
+        "rollout",
+        "leer"
+      ],
+      "level10": [
+        "mud-shot"
+      ],
+      "level14": [
+        "brine",
+        "protect",
+        "ancient-power"
+      ],
+      "level18": [
+        "tickle",
+        "rock-blast",
+        "shell-smash",
+        "hydro-pump"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/138.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/138.png"
+    }
+  },
+  {
+    "id": "omastar",
+    "name": "Omastar",
+    "number": 139,
+    "type": [
+      "rock",
+      "water"
+    ],
+    "size": "small",
+    "sr": 11,
+    "minLevel": 8,
+    "description": "The Spiral Pokémon. Its sharp beak rings its mouth. Its shell was too big for it to move freely, so it became extinct.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 50
+      }
+    ],
+    "moves": {
+      "start": [
+        "constrict",
+        "spike-cannon",
+        "withdraw",
+        "bite",
+        "water-gun",
+        "rollout",
+        "leer"
+      ],
+      "level10": [
+        "mud-shot"
+      ],
+      "level14": [
+        "brine",
+        "protect",
+        "ancient-power"
+      ],
+      "level18": [
+        "tickle",
+        "rock-blast",
+        "shell-smash",
+        "hydro-pump"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/139.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/139.png"
+    }
+  },
+  {
+    "id": "kabuto",
+    "name": "Kabuto",
+    "number": 140,
+    "type": [
+      "rock",
+      "water"
+    ],
+    "size": "tiny",
+    "sr": 2,
+    "minLevel": 1,
+    "description": "The Shellfish Pokémon. A Pokémon that was recovered from a fossil. It used the eyes on its back while hiding on the seafloor.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 20
+      }
+    ],
+    "moves": {
+      "start": [
+        "harden",
+        "scratch"
+      ],
+      "level2": [
+        "absorb",
+        "leer"
+      ],
+      "level6": [
+        "mud-shot"
+      ],
+      "level10": [
+        "sand-attack",
+        "endure"
+      ],
+      "level14": [
+        "aqua-jet",
+        "mega-drain"
+      ],
+      "level18": [
+        "metal-sound",
+        "ancient-power",
+        "wring-out"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/140.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/140.png"
+    }
+  },
+  {
+    "id": "kabutops",
+    "name": "Kabutops",
+    "number": 141,
+    "type": [
+      "rock",
+      "water"
+    ],
+    "size": "medium",
+    "sr": 11,
+    "minLevel": 8,
+    "description": "The Shellfish Pokémon. A slim and fast swimmer. It sliced its prey with its sharp sickles and drank the body fluids.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 50
+      }
+    ],
+    "moves": {
+      "start": [
+        "feint",
+        "harden",
+        "leer",
+        "scratch",
+        "slash",
+        "absorb",
+        "mud-shot"
+      ],
+      "level10": [
+        "sand-attack",
+        "endure"
+      ],
+      "level14": [
+        "aqua-jet",
+        "mega-drain"
+      ],
+      "level18": [
+        "metal-sound",
+        "ancient-power",
+        "wring-out",
+        "night-slash"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/141.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/141.png"
+    }
+  },
+  {
+    "id": "aerodactyl",
+    "name": "Aerodactyl",
+    "number": 142,
+    "type": [
+      "rock",
+      "flying"
+    ],
+    "size": "large",
+    "sr": 13,
+    "minLevel": 10,
+    "description": "The Fossil Pokémon. A savage Pokémon that died out in ancient times. It was resurrected using DNA taken from amber.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 50
+      }
+    ],
+    "moves": {
+      "start": [
+        "bite",
+        "fire-fang",
+        "ice-fang",
+        "iron-head",
+        "scary-face",
+        "supersonic",
+        "thunder-fang",
+        "wing-attack",
+        "roar",
+        "agility",
+        "ancient-power"
+      ],
+      "level14": [
+        "crunch"
+      ],
+      "level18": [
+        "take-down",
+        "sky-drop",
+        "hyper-beam",
+        "rock-slide",
+        "giga-impact"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/142.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/142.png"
+    }
+  },
+  {
+    "id": "snorlax",
+    "name": "Snorlax",
+    "number": 143,
+    "type": [
+      "normal"
+    ],
+    "size": "large",
+    "sr": 14,
+    "minLevel": 10,
+    "description": "The Sleeping Pokémon. Will eat anything, even if the food happens to be a little moldy. It never gets an upset stomach.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "tackle",
+        "defense-curl",
+        "amnesia",
+        "lick",
+        "chip-away",
+        "yawn",
+        "body-slam"
+      ],
+      "level14": [
+        "rest",
+        "snore",
+        "sleep-talk",
+        "giga-impact",
+        "high-horsepower"
+      ],
+      "level18": [
+        "rollout",
+        "block",
+        "belly-drum",
+        "crunch",
+        "heavy-slam"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 2",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/143.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png"
+    }
+  },
+  {
+    "id": "articuno",
+    "name": "Articuno",
+    "number": 144,
+    "type": [
+      "ice",
+      "flying"
+    ],
+    "size": "large",
+    "sr": 15,
+    "minLevel": 15,
+    "description": "The Freeze Pokémon. A legendary bird Pokémon. It freezes water that is contained in winter air and makes it snow.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 60
+      }
+    ],
+    "moves": {
+      "start": [
+        "gust",
+        "powder-snow",
+        "mist",
+        "ice-shard",
+        "mind-reader",
+        "ancient-power",
+        "agility",
+        "reflect",
+        "snowscape"
+      ],
+      "level18": [
+        "hail",
+        "tailwind",
+        "ice-beam",
+        "blizzard",
+        "roost",
+        "hurricane",
+        "sheer-cold",
+        "freeze-dry"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/144.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/144.png"
+    }
+  },
+  {
+    "id": "zapdos",
+    "name": "Zapdos",
+    "number": 145,
+    "type": [
+      "electric",
+      "flying"
+    ],
+    "size": "large",
+    "sr": 15,
+    "minLevel": 15,
+    "description": "The Electric Pokémon. This legendary bird Pokémon is said to appear when the sky turns dark and lightning showers down.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 60
+      }
+    ],
+    "moves": {
+      "start": [
+        "peck",
+        "thunder-shock",
+        "thunder-wave",
+        "detect",
+        "pluck",
+        "ancient-power",
+        "charge",
+        "agility"
+      ],
+      "level18": [
+        "discharge",
+        "rain-dance",
+        "light-screen",
+        "drill-peck",
+        "thunder",
+        "roost",
+        "zap-cannon",
+        "magnetic-flux"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/145.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/145.png"
+    }
+  },
+  {
+    "id": "moltres",
+    "name": "Moltres",
+    "number": 146,
+    "type": [
+      "fire",
+      "flying"
+    ],
+    "size": "large",
+    "sr": 15,
+    "minLevel": 15,
+    "description": "The Flame Pokémon. A legendary bird Pokémon. As it flaps its flaming wings, even the night sky will turn red.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 60
+      }
+    ],
+    "moves": {
+      "start": [
+        "ember",
+        "wing-attack",
+        "fire-spin",
+        "agility",
+        "endure",
+        "ancient-power",
+        "flamethrower"
+      ],
+      "level18": [
+        "burn-up",
+        "safeguard",
+        "air-slash",
+        "sunny-day",
+        "heat-wave",
+        "solar-beam",
+        "sky-attack",
+        "roost",
+        "hurricane"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/146.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png"
+    }
+  },
+  {
+    "id": "dratini",
+    "name": "Dratini",
+    "number": 147,
+    "type": [
+      "dragon"
+    ],
+    "size": "small",
+    "sr": 1,
+    "minLevel": 1,
+    "description": "The Dragon Pokémon. Long thought to be a myth, this Pokémon’s existence was only recently confirmed by a fisherman who caught one.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "leer",
+        "wrap"
+      ],
+      "level2": [
+        "thunder-wave",
+        "twister"
+      ],
+      "level6": [
+        "dragon-rage",
+        "slam"
+      ],
+      "level10": [
+        "agility"
+      ],
+      "level14": [
+        "dragon-tail",
+        "aqua-tail",
+        "safeguard"
+      ],
+      "level18": [
+        "dragon-rush",
+        "dragon-dance",
+        "outrage",
+        "hyper-beam"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 1 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/147.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/147.png"
+    }
+  },
+  {
+    "id": "dragonair",
+    "name": "Dragonair",
+    "number": 148,
+    "type": [
+      "dragon"
+    ],
+    "size": "large",
+    "sr": 6,
+    "minLevel": 5,
+    "description": "The Dragon Pokémon. According to a witness, its body was surrounded by a strange aura that gave it a mystical look.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "leer",
+        "thunder-wave",
+        "twister",
+        "wrap"
+      ],
+      "level6": [
+        "dragon-rage",
+        "slam"
+      ],
+      "level10": [
+        "agility"
+      ],
+      "level14": [
+        "dragon-tail",
+        "safeguard"
+      ],
+      "level18": [
+        "aqua-tail",
+        "dragon-rush",
+        "dragon-dance",
+        "outrage",
+        "hyper-beam"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 2 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/148.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/148.png"
+    }
+  },
+  {
+    "id": "dragonite",
+    "name": "Dragonite",
+    "number": 149,
+    "type": [
+      "dragon",
+      "flying"
+    ],
+    "size": "large",
+    "sr": 14,
+    "minLevel": 15,
+    "description": "The Dragon Pokémon. It is said that this Pokémon lives somewhere in the sea and that it flies. However, these are only rumors.",
+    "senses": [],
+    "moves": {
+      "start": [
+        "fire-punch",
+        "leer",
+        "roost",
+        "thunder-punch",
+        "wing-attack",
+        "wrap",
+        "thunder-wave",
+        "twister",
+        "dragon-rage",
+        "slam",
+        "agility",
+        "dragon-tail"
+      ],
+      "level18": [
+        "aqua-tail",
+        "dragon-rush",
+        "safeguard",
+        "dragon-dance",
+        "outrage",
+        "hyper-beam",
+        "hurricane"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "Stage 3 of 3",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/149.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/149.png"
+    }
+  },
+  {
+    "id": "mewtwo",
+    "name": "Mewtwo",
+    "number": 150,
+    "type": [
+      "psychic"
+    ],
+    "size": "medium",
+    "sr": 15,
+    "minLevel": 20,
+    "description": "The Genetic Pokémon. Its DNA is almost the same as Mew’s. However, its size and disposition are vastly different.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 60
+      },
+      {
+        "type": "truesight",
+        "value": 30
+      }
+    ],
+    "moves": {
+      "start": [
+        "confusion",
+        "disable",
+        "psywave",
+        "safeguard",
+        "swift",
+        "future-sight",
+        "psych-up",
+        "miracle-eye",
+        "psycho-cut",
+        "guard-swap",
+        "power-swap",
+        "recover",
+        "psychic",
+        "barrier",
+        "aura-sphere",
+        "amnesia",
+        "mist",
+        "me-first",
+        "psystrike",
+        "laser-focus"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png"
+    }
+  },
+  {
+    "id": "mew",
+    "name": "Mew",
+    "number": 151,
+    "type": [
+      "psychic"
+    ],
+    "size": "tiny",
+    "sr": 15,
+    "minLevel": 20,
+    "description": "The New Species Pokémon. When viewed through a microscope, this Pokémon’s short, fine, delicate hair can be seen.",
+    "senses": [
+      {
+        "type": "darkvision",
+        "value": 60
+      },
+      {
+        "type": "truesight",
+        "value": 50
+      }
+    ],
+    "moves": {
+      "start": [
+        "pound",
+        "reflect-type",
+        "transform",
+        "mega-punch",
+        "metronome",
+        "psychic",
+        "barrier",
+        "ancient-power",
+        "amnesia",
+        "me-first",
+        "baton-pass",
+        "nasty-plot",
+        "aura-sphere"
+      ]
+    },
+    "vulnerabilities": [],
+    "resistances": [],
+    "immunities": [],
+    "evolution": "",
+    "media": {
+      "main": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/151.png",
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png"
+    }
+  }
+]
