@@ -29,7 +29,7 @@ export default function PokecenterPage() {
 
   // Extract all unique types from Pokemon collection
   const allTypes = useMemo(() => {
-    return [...new Set(pokemon.flatMap(p => p.types))].sort();
+    return Array.from(new Set(pokemon.flatMap(p => p.types))).sort();
   }, [pokemon]);
 
   // Apply filtering and sorting
