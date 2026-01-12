@@ -15,7 +15,8 @@ import {
 } from '@/lib/battle';
 import { getMoveById } from '@/lib/moves';
 import { calculateExperienceGained, applyExperience } from '@/lib/experience';
-import type { ApiError, RoundResult, ExperienceGained } from '@/lib/types';
+import { checkEvolutionEligibility, getPokemonSpriteUrl } from '@/lib/evolution';
+import type { ApiError, RoundResult, ExperienceGainedWithEvolution } from '@/lib/types';
 
 /**
  * POST /api/battle/round
@@ -212,7 +213,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Update user stats if battle ended
-    let experienceGained: ExperienceGained | undefined;
+    let experienceGained: ExperienceGainedWithEvolution | undefined;
 
     if (newStatus !== 'active') {
       const statField = newStatus === 'player_won' ? 'battles_won' : 'battles_lost';
@@ -253,26 +254,93 @@ export async function POST(request: NextRequest) {
         // Apply experience and handle level-ups
         const levelUpResult = applyExperience(playerPokemon, xpAwarded);
 
-        // Update Pokemon in database
-        const { error: xpUpdateError } = await supabase
+        // Check if Pokemon is now eligible for evolution
+        const evolutionInfo = checkEvolutionEligibility(playerPokemon.pokemon_id, levelUpResult.newLevel);
+        const canEvolveNow = evolutionInfo.canEvolve && evolutionInfo.nextEvolutionId !== null;
+
+        // Update Pokemon in database (including can_evolve flag)
+        const coreUpdateFields = {
+          experience: levelUpResult.newExperience,
+          level: levelUpResult.newLevel,
+        };
+
+        // Build update with optional can_evolve field
+        const updateFields: Record<string, unknown> = { ...coreUpdateFields };
+        const setCanEvolve = canEvolveNow && levelUpResult.levelsGained > 0;
+        if (setCanEvolve) {
+          updateFields.can_evolve = true;
+        }
+
+        console.log('Updating Pokemon experience:', {
+          pokemonId: playerPokemon.id,
+          updateFields,
+          previousLevel,
+          previousExperience,
+        });
+
+        let { data: updatedPokemon, error: xpUpdateError } = await supabase
           .from('pokemon_owned')
-          .update({
-            experience: levelUpResult.newExperience,
-            level: levelUpResult.newLevel,
-          })
-          .eq('id', playerPokemon.id);
+          .update(updateFields)
+          .eq('id', playerPokemon.id)
+          .select()
+          .single();
+
+        // If update failed and we tried to set can_evolve, retry without it
+        // (handles case where column doesn't exist in database)
+        if (xpUpdateError && setCanEvolve) {
+          console.warn('Update with can_evolve failed, retrying without:', xpUpdateError.message);
+          const retryResult = await supabase
+            .from('pokemon_owned')
+            .update(coreUpdateFields)
+            .eq('id', playerPokemon.id)
+            .select()
+            .single();
+          updatedPokemon = retryResult.data;
+          xpUpdateError = retryResult.error;
+        }
 
         if (xpUpdateError) {
           console.error('Failed to update Pokemon experience:', xpUpdateError);
+        } else if (!updatedPokemon) {
+          console.error('Update returned no data - Pokemon may not have been updated');
         } else {
+          // Verify the database actually contains what we expected
+          if (updatedPokemon.level !== levelUpResult.newLevel || updatedPokemon.experience !== levelUpResult.newExperience) {
+            console.error('Database update verification failed:', {
+              expected: { level: levelUpResult.newLevel, experience: levelUpResult.newExperience },
+              actual: { level: updatedPokemon.level, experience: updatedPokemon.experience },
+            });
+          } else {
+            console.log('Pokemon updated successfully:', {
+              id: updatedPokemon.id,
+              newLevel: updatedPokemon.level,
+              newExperience: updatedPokemon.experience,
+            });
+          }
+
+          // Use actual database values in response to ensure consistency
           experienceGained = {
             xp_awarded: xpAwarded,
             previous_level: previousLevel,
-            new_level: levelUpResult.newLevel,
+            new_level: updatedPokemon.level,
             previous_experience: previousExperience,
-            new_experience: levelUpResult.newExperience,
-            levels_gained: levelUpResult.levelsGained,
+            new_experience: updatedPokemon.experience,
+            levels_gained: updatedPokemon.level - previousLevel,
+            evolution_available: canEvolveNow,
           };
+
+          // Add evolution details if available
+          if (canEvolveNow && evolutionInfo.nextEvolutionId && evolutionInfo.nextEvolutionName) {
+            const playerData = getPokemonById(playerPokemon.pokemon_id);
+            experienceGained.evolution_details = {
+              from_name: playerData?.name || 'Unknown',
+              from_id: playerPokemon.pokemon_id,
+              to_name: evolutionInfo.nextEvolutionName,
+              to_id: evolutionInfo.nextEvolutionId,
+              from_sprite: getPokemonSpriteUrl(playerPokemon.pokemon_id),
+              to_sprite: getPokemonSpriteUrl(evolutionInfo.nextEvolutionId),
+            };
+          }
 
           console.log('Experience granted:', experienceGained);
         }
@@ -296,7 +364,7 @@ export async function POST(request: NextRequest) {
       round: RoundResult;
       battle: typeof updatedBattle;
       battle_ended: boolean;
-      experience_gained?: ExperienceGained;
+      experience_gained?: ExperienceGainedWithEvolution;
     } = {
       round: roundResult,
       battle: updatedBattle,

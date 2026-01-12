@@ -74,6 +74,7 @@ export interface PokemonOwned {
   is_active: boolean;
   is_starter: boolean;
   captured_at: string;
+  can_evolve: boolean;
 }
 
 // Wild Pokemon encountered in battle
@@ -360,4 +361,45 @@ export interface RoleUpdateResponse {
   previous_role: 'trainer' | 'admin';
   new_role: 'trainer' | 'admin';
   updated_at: string;
+}
+
+// ============================================
+// Evolution System Types (012-pokemon-evolution)
+// ============================================
+
+// Evolution eligibility info
+export interface EvolutionInfo {
+  canEvolve: boolean;
+  currentStage: number;
+  totalStages: number;
+  evolvesAtLevel: number | null;
+  nextEvolutionId: number | null;
+  nextEvolutionName: string | null;
+}
+
+// Evolution result from API
+export interface EvolutionResult {
+  success: boolean;
+  pokemon: PokemonOwnedWithDetails;
+  evolved_from: {
+    pokemon_id: number;
+    name: string;
+  };
+  evolved_to: {
+    pokemon_id: number;
+    name: string;
+  };
+}
+
+// Extended experience gained with evolution flag
+export interface ExperienceGainedWithEvolution extends ExperienceGained {
+  evolution_available: boolean;
+  evolution_details?: {
+    from_name: string;
+    from_id: number;
+    to_name: string;
+    to_id: number;
+    from_sprite: string;
+    to_sprite: string;
+  };
 }

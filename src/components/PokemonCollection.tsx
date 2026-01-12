@@ -1,20 +1,26 @@
 'use client';
 
 import Image from 'next/image';
-import type { PokemonOwnedWithDetails } from '@/lib/types';
+import type { PokemonOwnedWithDetails, EvolutionInfo } from '@/lib/types';
+
+type PokemonWithEvolution = PokemonOwnedWithDetails & { evolution_info?: EvolutionInfo };
 
 interface PokemonCollectionProps {
-  pokemon: PokemonOwnedWithDetails[];
+  pokemon: PokemonWithEvolution[];
   activePokemonId: string | null;
   onSetActive: (pokemonId: string) => void;
+  onEvolve?: (pokemonId: string, evolutionInfo: EvolutionInfo) => void;
   isSwapping: boolean;
+  isEvolving?: boolean;
 }
 
 export function PokemonCollection({
   pokemon,
   activePokemonId,
   onSetActive,
+  onEvolve,
   isSwapping,
+  isEvolving = false,
 }: PokemonCollectionProps) {
   if (pokemon.length === 0) {
     return (
@@ -91,27 +97,62 @@ export function PokemonCollection({
                 {p.is_starter && (
                   <span className="text-blue-600 font-medium">Starter</span>
                 )}
+                {/* Evolution info display */}
+                {p.evolution_info && (
+                  <div className="text-purple-600">
+                    {p.evolution_info.currentStage >= p.evolution_info.totalStages ? (
+                      <span className="font-medium">Final evolution</span>
+                    ) : p.evolution_info.evolvesAtLevel ? (
+                      <span>
+                        {p.can_evolve ? (
+                          <span className="font-medium">Ready to evolve!</span>
+                        ) : (
+                          <>Evolves at Lv. {p.evolution_info.evolvesAtLevel}</>
+                        )}
+                      </span>
+                    ) : null}
+                  </div>
+                )}
               </div>
 
-              {isActive ? (
-                <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded text-sm font-medium">
-                  Active
-                </span>
-              ) : (
-                <button
-                  onClick={() => onSetActive(p.id)}
-                  disabled={isSwapping}
-                  className={`
-                    px-3 py-1 rounded text-sm font-medium transition
-                    ${isSwapping
-                      ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
-                      : 'bg-green-600 text-white hover:bg-green-700'
-                    }
-                  `}
-                >
-                  Set Active
-                </button>
-              )}
+              <div className="flex gap-2">
+                {/* Evolve button - show if can_evolve is true */}
+                {p.can_evolve && p.evolution_info && onEvolve && (
+                  <button
+                    onClick={() => onEvolve(p.id, p.evolution_info!)}
+                    disabled={isEvolving}
+                    className={`
+                      px-3 py-1 rounded text-sm font-medium transition
+                      ${isEvolving
+                        ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                        : 'bg-purple-600 text-white hover:bg-purple-700'
+                      }
+                    `}
+                  >
+                    Evolve
+                  </button>
+                )}
+
+                {isActive ? (
+                  <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded text-sm font-medium">
+                    Active
+                  </span>
+                ) : (
+                  <button
+                    onClick={() => onSetActive(p.id)}
+                    disabled={isSwapping}
+                    className={`
+                      px-3 py-1 rounded text-sm font-medium transition
+                      ${isSwapping
+                        ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                        : 'bg-green-600 text-white hover:bg-green-700'
+                      }
+                    `}
+                  >
+                    Set Active
+                  </button>
+                )}
+              </div>
             </div>
 
             {p.selected_moves && p.selected_moves.length > 0 && (

@@ -30,8 +30,8 @@ info:
     name: MIT
 
 servers:
-  - url: https://your-app.vercel.app
-    description: Production server (replace with actual URL)
+  - url: https://pokemon-selector-rctq.vercel.app
+    description: Production server
 
 security:
   - ApiKeyAuth: []
@@ -92,6 +92,8 @@ components:
             type: string
         level:
           type: integer
+        experience:
+          type: integer
         sr:
           type: number
           description: Species Rating (0-1)
@@ -99,12 +101,20 @@ components:
           type: boolean
         is_active:
           type: boolean
+        can_evolve:
+          type: boolean
+          description: True if Pokemon is eligible to evolve right now
         selected_moves:
           type: array
           items:
             type: string
         sprite_url:
           type: string
+        experience_to_next:
+          type: integer
+          description: XP needed to reach next level
+        evolution_info:
+          $ref: '#/components/schemas/EvolutionInfo'
 
     Trainer:
       type: object
@@ -237,6 +247,83 @@ components:
           type: integer
         levels_gained:
           type: integer
+        evolution_available:
+          type: boolean
+          description: True if Pokemon can now evolve
+        evolution_details:
+          $ref: '#/components/schemas/EvolutionDetails'
+
+    EvolutionInfo:
+      type: object
+      description: Evolution eligibility information for a Pokemon
+      properties:
+        canEvolve:
+          type: boolean
+          description: True if Pokemon meets evolution requirements
+        currentStage:
+          type: integer
+          description: Current evolution stage (1, 2, or 3)
+        totalStages:
+          type: integer
+          description: Total stages in evolution chain
+        evolvesAtLevel:
+          type: integer
+          nullable: true
+          description: Level required to evolve, null if final form
+        nextEvolutionId:
+          type: integer
+          nullable: true
+          description: Pokemon ID after evolution, null if final form
+        nextEvolutionName:
+          type: string
+          nullable: true
+          description: Pokemon name after evolution, null if final form
+
+    EvolutionDetails:
+      type: object
+      description: Details about available evolution (present when evolution_available is true)
+      properties:
+        from_name:
+          type: string
+          description: Current Pokemon name
+        from_id:
+          type: integer
+          description: Current Pokemon ID
+        to_name:
+          type: string
+          description: Evolution target name
+        to_id:
+          type: integer
+          description: Evolution target Pokemon ID
+        from_sprite:
+          type: string
+          description: Current Pokemon sprite URL
+        to_sprite:
+          type: string
+          description: Evolution target sprite URL
+
+    EvolutionResult:
+      type: object
+      description: Result of a successful evolution
+      properties:
+        success:
+          type: boolean
+        pokemon:
+          $ref: '#/components/schemas/PokemonOwned'
+        evolved_from:
+          type: object
+          properties:
+            pokemon_id:
+              type: integer
+            name:
+              type: string
+        evolved_to:
+          type: object
+          properties:
+            pokemon_id:
+              type: integer
+            name:
+              type: string
 
 paths:
   /api/external/trainer:
@@ -376,6 +463,69 @@ paths:
                 $ref: '#/components/schemas/Error'
         '404':
           description: Pokemon not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/pokecenter/evolve:
+    post:
+      summary: Evolve a Pokemon
+      description: |
+        Evolve a Pokemon to its next evolution form. The Pokemon must have `can_evolve: true` to be eligible.
+
+        **Evolution Thresholds:**
+        - 2-stage Pokemon (e.g., Pikachu): Evolve at Level 5
+        - 3-stage Pokemon Stage 1 (e.g., Bulbasaur): Evolve at Level 3
+        - 3-stage Pokemon Stage 2 (e.g., Ivysaur): Evolve at Level 6
+
+        Evolution preserves level, experience, selected moves, is_active, and is_starter status.
+      tags: [Evolution]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - pokemon_id
+              properties:
+                pokemon_id:
+                  type: string
+                  format: uuid
+                  description: ID of the Pokemon to evolve (owned Pokemon record ID)
+      responses:
+        '200':
+          description: Pokemon evolved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvolutionResult'
+        '400':
+          description: Cannot evolve (not eligible or already final stage)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                cannot_evolve:
+                  summary: Pokemon not eligible
+                  value:
+                    error: CANNOT_EVOLVE
+                    message: Pokemon is not eligible for evolution
+                final_stage:
+                  summary: Already final evolution
+                  value:
+                    error: FINAL_STAGE
+                    message: Pokemon is already at its final evolution
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Pokemon not found or not owned by user
           content:
             application/json:
               schema:
@@ -809,6 +959,8 @@ tags:
     description: Trainer account and profile operations
   - name: Pokemon
     description: Pokemon collection management
+  - name: Evolution
+    description: Pokemon evolution operations
   - name: Moves
     description: Move selection and management
   - name: Zones

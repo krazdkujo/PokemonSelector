@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import type { PokemonOwnedWithDetails, ExperienceGained } from '@/lib/types';
+import type { PokemonOwnedWithDetails, ExperienceGainedWithEvolution } from '@/lib/types';
 
 interface CaptureAttemptProps {
   battleId: string;
@@ -13,7 +13,7 @@ interface CaptureAttemptProps {
     dc: number;
     fled: boolean;
     captured_pokemon?: PokemonOwnedWithDetails;
-    experience_gained?: ExperienceGained;
+    experience_gained?: ExperienceGainedWithEvolution;
   }) => void;
   alreadyOwned?: boolean;
   ownershipMessage?: string;

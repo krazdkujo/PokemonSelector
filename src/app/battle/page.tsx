@@ -8,10 +8,11 @@ import { CaptureAttempt } from '@/components/CaptureAttempt';
 import { PostBattleScreen } from '@/components/PostBattleScreen';
 import { ZoneSelector } from '@/components/ZoneSelector';
 import { PokemonSearch } from '@/components/PokemonSearch';
+import { EvolutionModal } from '@/components/EvolutionModal';
 import { getTrainerId } from '@/lib/session';
 import { getAvailableMoves } from '@/lib/moves';
 import { getZoneById, getDifficultyDescription } from '@/lib/zones';
-import type { Battle, Move, RoundResult, ZoneDifficulty, Zone, MovePreview, ExperienceGained } from '@/lib/types';
+import type { Battle, Move, RoundResult, ZoneDifficulty, Zone, MovePreview, ExperienceGainedWithEvolution } from '@/lib/types';
 import { calculateRoundWinChance, getPokemonById } from '@/lib/battle';
 
 type EnrichedBattle = Battle & {
@@ -43,7 +44,11 @@ export default function BattlePage() {
   // DC Preview state (for showing DC before roll)
   const [pendingMove, setPendingMove] = useState<MovePreview | null>(null);
   // Experience tracking for post-battle screen
-  const [experienceGained, setExperienceGained] = useState<ExperienceGained | null>(null);
+  const [experienceGained, setExperienceGained] = useState<ExperienceGainedWithEvolution | null>(null);
+  // Evolution modal state
+  const [showEvolutionModal, setShowEvolutionModal] = useState(false);
+  const [isEvolving, setIsEvolving] = useState(false);
+  const [ownedPokemonId, setOwnedPokemonId] = useState<string | null>(null);
 
   async function loadBattle() {
     try {
@@ -63,6 +68,10 @@ export default function BattlePage() {
 
       if (data) {
         setBattle(data);
+        // Track player Pokemon ID for evolution
+        if (data.player_pokemon_id) {
+          setOwnedPokemonId(data.player_pokemon_id);
+        }
         // Load moves for the player's Pokemon
         if (data.player_pokemon) {
           const moves = getAvailableMoves(
@@ -129,6 +138,10 @@ export default function BattlePage() {
       }
 
       setBattle(data);
+      // Track player Pokemon ID for evolution
+      if (data.player_pokemon_id) {
+        setOwnedPokemonId(data.player_pokemon_id);
+      }
       // Load moves for the player's Pokemon
       if (data.player_pokemon) {
         const moves = getAvailableMoves(
@@ -230,12 +243,46 @@ export default function BattlePage() {
       // Track experience gained if battle ended
       if (data.experience_gained) {
         setExperienceGained(data.experience_gained);
+        // Show evolution modal if evolution is available
+        if (data.experience_gained.evolution_available && data.experience_gained.evolution_details) {
+          setShowEvolutionModal(true);
+        }
       }
     } catch {
       setError('An unexpected error occurred');
     } finally {
       setIsExecuting(false);
     }
+  }
+
+  // Handle evolve button click
+  async function handleEvolve() {
+    if (!ownedPokemonId) return;
+
+    try {
+      setIsEvolving(true);
+      const response = await fetch('/api/pokecenter/evolve', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pokemon_id: ownedPokemonId }),
+      });
+
+      if (response.ok) {
+        // Evolution successful - update the UI
+        const result = await response.json();
+        console.log('Evolution successful:', result);
+      }
+    } catch (err) {
+      console.error('Evolution failed:', err);
+    } finally {
+      setIsEvolving(false);
+      setShowEvolutionModal(false);
+    }
+  }
+
+  // Handle "Maybe Later" button click
+  function handleEvolveLater() {
+    setShowEvolutionModal(false);
   }
 
   if (isLoading) {
@@ -511,6 +558,26 @@ export default function BattlePage() {
             Forfeit and return to dashboard
           </Link>
         </div>
+
+        {/* Evolution Modal */}
+        {experienceGained?.evolution_details && (
+          <EvolutionModal
+            isOpen={showEvolutionModal}
+            isLoading={isEvolving}
+            fromPokemon={{
+              id: experienceGained.evolution_details.from_id,
+              name: experienceGained.evolution_details.from_name,
+              sprite_url: experienceGained.evolution_details.from_sprite,
+            }}
+            toPokemon={{
+              id: experienceGained.evolution_details.to_id,
+              name: experienceGained.evolution_details.to_name,
+              sprite_url: experienceGained.evolution_details.to_sprite,
+            }}
+            onEvolve={handleEvolve}
+            onLater={handleEvolveLater}
+          />
+        )}
       </div>
     </div>
   );

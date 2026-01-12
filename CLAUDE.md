@@ -14,6 +14,11 @@ Auto-generated from all feature plans. Last updated: 2026-01-07
 - Supabase Postgres (existing `battles`, `pokemon_owned`, `battle_rounds` tables) (008-combat-refinement)
 - TypeScript 5.x (strict mode) + Next.js 14.2, React 18, @supabase/supabase-js 2.89, @supabase/ssr 0.8, bcryptjs (009-admin-dashboard-api)
 - Supabase Postgres (existing tables: trainers, pokemon_owned, user_stats, user_secrets, battles) (009-admin-dashboard-api)
+- TypeScript 5.x (strict mode) + Next.js 14.2, @supabase/supabase-js 2.89, @supabase/ssr 0.8, bcryptjs (010-api-security-separation)
+- TypeScript 5.x (strict mode) with Next.js 14.2 + `@supabase/supabase-js` 2.89, `@supabase/ssr` 0.8, Next.js App Router (011-pokecenter-api-sorting)
+- Supabase Postgres (`pokemon_owned` table with `captured_at` column) (011-pokecenter-api-sorting)
+- TypeScript 5.x (strict mode) with Next.js 14.2 + `@supabase/supabase-js` 2.89, `@supabase/ssr` 0.8, React 18 (012-pokemon-evolution)
+- Supabase Postgres (`pokemon_owned` table, new `can_evolve` column) (012-pokemon-evolution)
 
 - TypeScript 5.x (or Node.js script) + None (pure JSON transformation, native fs/JSON APIs) (001-sanitize-pokemon-data)
 
@@ -33,9 +38,9 @@ npm test; npm run lint
 TypeScript 5.x (or Node.js script): Follow standard conventions
 
 ## Recent Changes
-- 009-admin-dashboard-api: Added TypeScript 5.x (strict mode) + Next.js 14.2, React 18, @supabase/supabase-js 2.89, @supabase/ssr 0.8, bcryptjs
-- 008-combat-refinement: Added TypeScript 5.x (strict mode) + Next.js 14.2, React 18, @supabase/supabase-js, @supabase/ssr, seedrandom
-- 007-experience-leveling: Added TypeScript 5.x (strict mode) + Next.js 14.2, React 18, @supabase/supabase-js, @supabase/ssr, seedrandom
+- 012-pokemon-evolution: Added TypeScript 5.x (strict mode) with Next.js 14.2 + `@supabase/supabase-js` 2.89, `@supabase/ssr` 0.8, React 18
+- 011-pokecenter-api-sorting: Added TypeScript 5.x (strict mode) with Next.js 14.2 + `@supabase/supabase-js` 2.89, `@supabase/ssr` 0.8, Next.js App Router
+- 010-api-security-separation: Added TypeScript 5.x (strict mode) + Next.js 14.2, @supabase/supabase-js 2.89, @supabase/ssr 0.8, bcryptjs
 
 
 <!-- MANUAL ADDITIONS START -->

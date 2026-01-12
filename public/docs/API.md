@@ -12,6 +12,7 @@ Complete API documentation for the Pokemon Starter Selector platform.
 - [Endpoints](#endpoints)
   - [Trainer](#trainer-endpoints)
   - [Pokemon Collection](#pokemon-collection-endpoints)
+  - [Evolution](#evolution-endpoints)
   - [Moves](#moves-endpoints)
   - [Zones](#zones-endpoints)
   - [Battle System](#battle-system-endpoints)
@@ -54,7 +55,7 @@ All endpoints (except `/api/zones`) require authentication via an API key.
 Include your key in the `X-API-Key` header with every request:
 
 ```bash
-curl -H "X-API-Key: YOUR_API_KEY" https://your-app.vercel.app/api/dashboard
+curl -H "X-API-Key: YOUR_API_KEY" https://pokemon-selector-rctq.vercel.app/api/dashboard
 ```
 
 ---
@@ -62,10 +63,8 @@ curl -H "X-API-Key: YOUR_API_KEY" https://your-app.vercel.app/api/dashboard
 ## Base URL
 
 ```
-https://your-app.vercel.app
+https://pokemon-selector-rctq.vercel.app
 ```
-
-*Replace with the actual deployment URL provided by your instructor.*
 
 ---
 
@@ -83,6 +82,7 @@ There are currently no rate limits enforced. Please be respectful of server reso
 | `/api/dashboard` | GET | Get dashboard overview | Yes |
 | `/api/pokecenter` | GET | List your Pokemon | Yes |
 | `/api/pokecenter/swap` | POST | Change active Pokemon | Yes |
+| `/api/pokecenter/evolve` | POST | Evolve a Pokemon | Yes |
 | `/api/pokedex` | GET | Get Pokedex progress | Yes |
 | `/api/moves` | GET | Get available moves | Yes |
 | `/api/moves` | PUT | Update selected moves | Yes |
@@ -173,7 +173,7 @@ Returns aggregated dashboard data including active Pokemon, stats, and battle st
 
 #### GET /api/pokecenter
 
-Returns all Pokemon owned by you.
+Returns all Pokemon owned by you, including evolution eligibility information.
 
 **Response (200 OK):**
 
@@ -185,17 +185,40 @@ Returns all Pokemon owned by you.
       "pokemon_id": 25,
       "name": "Pikachu",
       "types": ["Electric"],
-      "level": 15,
+      "level": 5,
+      "experience": 12,
       "sr": 0.42,
       "is_starter": true,
       "is_active": true,
+      "can_evolve": true,
       "selected_moves": ["thunderbolt", "quick-attack", "thunder-wave", "slam"],
-      "sprite_url": "/sprites/pikachu.png"
+      "sprite_url": "/sprites/pikachu.png",
+      "experience_to_next": 4,
+      "evolution_info": {
+        "canEvolve": true,
+        "currentStage": 1,
+        "totalStages": 2,
+        "evolvesAtLevel": 5,
+        "nextEvolutionId": 26,
+        "nextEvolutionName": "Raichu"
+      }
     }
   ],
   "active_pokemon_id": "uuid-here"
 }
 ```
+
+**Evolution Info Fields:**
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `can_evolve` | boolean | True if Pokemon is eligible to evolve right now |
+| `evolution_info.canEvolve` | boolean | True if Pokemon meets evolution requirements |
+| `evolution_info.currentStage` | number | Current evolution stage (1, 2, or 3) |
+| `evolution_info.totalStages` | number | Total stages in evolution chain |
+| `evolution_info.evolvesAtLevel` | number/null | Level required to evolve, null if final form |
+| `evolution_info.nextEvolutionId` | number/null | Pokemon ID after evolution, null if final form |
+| `evolution_info.nextEvolutionName` | string/null | Pokemon name after evolution, null if final form |
 
 ---
 
@@ -279,6 +302,89 @@ Returns all 151 Pokemon with your seen/caught status.
 | `unknown` | Never encountered |
 | `seen` | Encountered in battle but not caught |
 | `caught` | In your collection |
+
+---
+
+### Evolution Endpoints
+
+#### POST /api/pokecenter/evolve
+
+Evolve a Pokemon to its next evolution form. The Pokemon must have `can_evolve: true` to be eligible.
+
+**Request Body:**
+
+```json
+{
+  "pokemon_id": "uuid-of-pokemon-to-evolve"
+}
+```
+
+**Response (200 OK):**
+
+```json
+{
+  "success": true,
+  "pokemon": {
+    "id": "uuid-here",
+    "user_id": "user-uuid",
+    "pokemon_id": 26,
+    "level": 5,
+    "experience": 12,
+    "selected_moves": ["thunderbolt", "quick-attack", "thunder-wave", "slam"],
+    "is_active": true,
+    "is_starter": true,
+    "captured_at": "2026-01-10T12:00:00Z",
+    "can_evolve": false,
+    "name": "Raichu",
+    "types": ["Electric"],
+    "sr": 5,
+    "sprite_url": "/sprites/26.png",
+    "experience_to_next": 4,
+    "evolution_info": {
+      "canEvolve": false,
+      "currentStage": 2,
+      "totalStages": 2,
+      "evolvesAtLevel": null,
+      "nextEvolutionId": null,
+      "nextEvolutionName": null
+    }
+  },
+  "evolved_from": {
+    "pokemon_id": 25,
+    "name": "Pikachu"
+  },
+  "evolved_to": {
+    "pokemon_id": 26,
+    "name": "Raichu"
+  }
+}
+```
+
+**Errors:**
+
+| Status | Error Code | Description |
+|--------|------------|-------------|
+| 400 | `CANNOT_EVOLVE` | Pokemon is not eligible for evolution |
+| 400 | `FINAL_STAGE` | Pokemon is already at its final evolution |
+| 401 | `UNAUTHORIZED` | Invalid or missing authentication |
+| 404 | `NOT_FOUND` | Pokemon not found or not owned by user |
+
+**Evolution Thresholds:**
+
+| Evolution Chain | Current Stage | Evolves At Level |
+|-----------------|---------------|------------------|
+| 2-stage (e.g., Pikachu) | Stage 1 | Level 5 |
+| 3-stage (e.g., Bulbasaur) | Stage 1 | Level 3 |
+| 3-stage (e.g., Ivysaur) | Stage 2 | Level 6 |
+| Final stage | Any | Cannot evolve |
+
+**Notes:**
+
+- Evolution preserves: level, experience, selected moves, is_active, is_starter
+- After evolution, the Pokemon gains access to its new form's moves via `/api/moves`
+- The `can_evolve` flag is automatically set to `true` when a Pokemon levels up past its evolution threshold
+- Evolution can be performed at any time from the Pokecenter once eligible
+- Evolution can also be triggered immediately after a battle victory if the level-up meets the threshold
 
 ---
 
@@ -539,14 +645,38 @@ Executes a single battle round with the specified move.
   "battle_ended": true,
   "experience_gained": {
     "xp_awarded": 150,
-    "previous_level": 15,
-    "new_level": 16,
-    "previous_experience": 2800,
-    "new_experience": 2950,
-    "levels_gained": 1
+    "previous_level": 2,
+    "new_level": 3,
+    "previous_experience": 10,
+    "new_experience": 1,
+    "levels_gained": 1,
+    "evolution_available": true,
+    "evolution_details": {
+      "from_name": "Bulbasaur",
+      "from_id": 1,
+      "to_name": "Ivysaur",
+      "to_id": 2,
+      "from_sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+      "to_sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png"
+    }
   }
 }
 ```
+
+**Evolution Fields in Experience Gained:**
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `evolution_available` | boolean | True if Pokemon can now evolve |
+| `evolution_details` | object | Present only if `evolution_available` is true |
+| `evolution_details.from_name` | string | Current Pokemon name |
+| `evolution_details.from_id` | number | Current Pokemon ID |
+| `evolution_details.to_name` | string | Evolution target name |
+| `evolution_details.to_id` | number | Evolution target Pokemon ID |
+| `evolution_details.from_sprite` | string | Current Pokemon sprite URL |
+| `evolution_details.to_sprite` | string | Evolution target sprite URL |
+
+When `evolution_available` is true, the client can show an evolution prompt. Call `POST /api/pokecenter/evolve` to perform the evolution.
 
 ---
 
@@ -608,13 +738,26 @@ Attempts to capture the wild Pokemon.
     "level": 12
   },
   "experience_gained": {
-    "xp_awarded": 200,
-    "previous_level": 15,
-    "new_level": 15,
-    "levels_gained": 0
+    "xp_awarded": 1,
+    "previous_level": 4,
+    "new_level": 5,
+    "previous_experience": 15,
+    "new_experience": 0,
+    "levels_gained": 1,
+    "evolution_available": true,
+    "evolution_details": {
+      "from_name": "Charmander",
+      "from_id": 4,
+      "to_name": "Charmeleon",
+      "to_id": 5,
+      "from_sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
+      "to_sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png"
+    }
   }
 }
 ```
+
+The `experience_gained` object may include `evolution_available` and `evolution_details` fields when a capture causes a level-up that reaches an evolution threshold. See the [Battle Round](#post-apibattleround) documentation for evolution field details.
 
 **Response (200 OK) - Failed (Pokemon Fled):**
 
@@ -658,6 +801,8 @@ All errors follow this format:
 | `NO_ACTIVE_POKEMON` | 400 | No active Pokemon selected |
 | `INVALID_MOVE` | 400 | Move not available to your Pokemon |
 | `INVALID_MOVES` | 400 | One or more moves are invalid |
+| `CANNOT_EVOLVE` | 400 | Pokemon is not eligible for evolution |
+| `FINAL_STAGE` | 400 | Pokemon is already at its final evolution |
 | `DATABASE_ERROR` | 500 | Server database error |
 | `INTERNAL_ERROR` | 500 | Unexpected server error |
 
@@ -669,28 +814,38 @@ All errors follow this format:
 
 ```bash
 # Get your trainer data
-curl -s "https://your-app.vercel.app/api/external/trainer" \
+curl -s "https://pokemon-selector-rctq.vercel.app/api/external/trainer" \
   -H "X-API-Key: YOUR_API_KEY"
 
 # Get dashboard
-curl -s "https://your-app.vercel.app/api/dashboard" \
+curl -s "https://pokemon-selector-rctq.vercel.app/api/dashboard" \
   -H "X-API-Key: YOUR_API_KEY"
 
 # Start a battle
-curl -s -X POST "https://your-app.vercel.app/api/battle" \
+curl -s -X POST "https://pokemon-selector-rctq.vercel.app/api/battle" \
   -H "X-API-Key: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"zone_id": "jungle", "difficulty": "medium"}'
 
 # Execute a battle round
-curl -s -X POST "https://your-app.vercel.app/api/battle/round" \
+curl -s -X POST "https://pokemon-selector-rctq.vercel.app/api/battle/round" \
   -H "X-API-Key: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"move_id": "thunderbolt"}'
 
 # Attempt capture
-curl -s -X POST "https://your-app.vercel.app/api/capture" \
+curl -s -X POST "https://pokemon-selector-rctq.vercel.app/api/capture" \
   -H "X-API-Key: YOUR_API_KEY"
+
+# Get Pokemon with evolution info
+curl -s "https://pokemon-selector-rctq.vercel.app/api/pokecenter" \
+  -H "X-API-Key: YOUR_API_KEY"
+
+# Evolve a Pokemon
+curl -s -X POST "https://pokemon-selector-rctq.vercel.app/api/pokecenter/evolve" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"pokemon_id": "your-pokemon-uuid"}'
 ```
 
 ### Python
@@ -698,7 +853,7 @@ curl -s -X POST "https://your-app.vercel.app/api/capture" \
 ```python
 import requests
 
-BASE_URL = "https://your-app.vercel.app"
+BASE_URL = "https://pokemon-selector-rctq.vercel.app"
 API_KEY = "YOUR_API_KEY"
 
 headers = {"X-API-Key": API_KEY}
@@ -756,7 +911,7 @@ if result['battle']['status'] == 'player_won':
 ### JavaScript
 
 ```javascript
-const BASE_URL = "https://your-app.vercel.app";
+const BASE_URL = "https://pokemon-selector-rctq.vercel.app";
 const API_KEY = "YOUR_API_KEY";
 
 const headers = {

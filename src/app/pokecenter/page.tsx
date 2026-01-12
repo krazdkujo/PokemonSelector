@@ -5,20 +5,30 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { PokemonCollection } from '@/components/PokemonCollection';
 import { MoveSelector } from '@/components/MoveSelector';
+import { EvolutionModal } from '@/components/EvolutionModal';
 import { getTrainerId } from '@/lib/session';
-import type { PokemonOwnedWithDetails } from '@/lib/types';
+import { getPokemonSpriteUrl } from '@/lib/evolution';
+import type { PokemonOwnedWithDetails, EvolutionInfo } from '@/lib/types';
 
 type SortOption = 'level' | 'sr' | 'name' | 'captured_at' | 'type';
 type SortDirection = 'asc' | 'desc';
 
+type PokemonWithEvolution = PokemonOwnedWithDetails & { evolution_info?: EvolutionInfo };
+
 export default function PokecenterPage() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
-  const [pokemon, setPokemon] = useState<PokemonOwnedWithDetails[]>([]);
+  const [pokemon, setPokemon] = useState<PokemonWithEvolution[]>([]);
   const [activePokemonId, setActivePokemonId] = useState<string | null>(null);
   const [isSwapping, setIsSwapping] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+
+  // Evolution modal state
+  const [showEvolutionModal, setShowEvolutionModal] = useState(false);
+  const [isEvolving, setIsEvolving] = useState(false);
+  const [evolvingPokemonId, setEvolvingPokemonId] = useState<string | null>(null);
+  const [evolutionTarget, setEvolutionTarget] = useState<{ from: PokemonWithEvolution; to: EvolutionInfo } | null>(null);
 
   // Sorting and filtering state
   const [sortBy, setSortBy] = useState<SortOption>('captured_at');
@@ -146,6 +156,59 @@ export default function PokecenterPage() {
     }
   }
 
+  // Handle evolution button click - show modal
+  function handleEvolveClick(pokemonId: string, evolutionInfo: EvolutionInfo) {
+    const targetPokemon = pokemon.find(p => p.id === pokemonId);
+    if (!targetPokemon || !evolutionInfo.nextEvolutionId || !evolutionInfo.nextEvolutionName) return;
+
+    setEvolvingPokemonId(pokemonId);
+    setEvolutionTarget({ from: targetPokemon, to: evolutionInfo });
+    setShowEvolutionModal(true);
+  }
+
+  // Handle confirm evolution
+  async function handleEvolve() {
+    if (!evolvingPokemonId) return;
+
+    try {
+      setIsEvolving(true);
+      setError(null);
+
+      const response = await fetch('/api/pokecenter/evolve', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pokemon_id: evolvingPokemonId }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.message || 'Failed to evolve Pokemon');
+        return;
+      }
+
+      // Refresh the Pokemon list to show evolved form
+      await loadPokemon();
+
+      setSuccessMessage(`${data.evolved_from.name} evolved into ${data.evolved_to.name}!`);
+      setTimeout(() => setSuccessMessage(null), 5000);
+    } catch {
+      setError('An unexpected error occurred during evolution');
+    } finally {
+      setIsEvolving(false);
+      setShowEvolutionModal(false);
+      setEvolvingPokemonId(null);
+      setEvolutionTarget(null);
+    }
+  }
+
+  // Handle cancel evolution
+  function handleEvolveLater() {
+    setShowEvolutionModal(false);
+    setEvolvingPokemonId(null);
+    setEvolutionTarget(null);
+  }
+
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -261,7 +324,9 @@ export default function PokecenterPage() {
           pokemon={displayedPokemon}
           activePokemonId={activePokemonId}
           onSetActive={handleSetActive}
+          onEvolve={handleEvolveClick}
           isSwapping={isSwapping}
+          isEvolving={isEvolving}
         />
 
         {activePokemonId && (
@@ -278,8 +343,29 @@ export default function PokecenterPage() {
               <li>You cannot swap Pokemon during an active battle</li>
               <li>Each Pokemon can have up to 4 moves selected</li>
               <li>Visit the Move Selector to configure your Pokemon&apos;s moveset</li>
+              <li>Pokemon with a purple &quot;Evolve&quot; button can evolve to a stronger form</li>
             </ul>
           </div>
+        )}
+
+        {/* Evolution Modal */}
+        {evolutionTarget && (
+          <EvolutionModal
+            isOpen={showEvolutionModal}
+            isLoading={isEvolving}
+            fromPokemon={{
+              id: evolutionTarget.from.pokemon_id,
+              name: evolutionTarget.from.name,
+              sprite_url: evolutionTarget.from.sprite_url,
+            }}
+            toPokemon={{
+              id: evolutionTarget.to.nextEvolutionId!,
+              name: evolutionTarget.to.nextEvolutionName!,
+              sprite_url: getPokemonSpriteUrl(evolutionTarget.to.nextEvolutionId!),
+            }}
+            onEvolve={handleEvolve}
+            onLater={handleEvolveLater}
+          />
         )}
       </div>
     </div>

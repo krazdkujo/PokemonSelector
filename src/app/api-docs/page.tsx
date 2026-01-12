@@ -85,10 +85,10 @@ const ENDPOINTS: Record<string, EndpointDoc[]> = {
       method: 'GET',
       path: '/api/pokecenter',
       summary: 'List all your owned Pokemon',
-      description: 'Returns all Pokemon owned by the authenticated trainer with full details including level, types, moves, and stats.',
+      description: 'Returns all Pokemon owned by the authenticated trainer with full details including level, types, moves, stats, and evolution eligibility.',
       auth: true,
       response: {
-        description: 'Pokemon collection',
+        description: 'Pokemon collection with evolution info',
         example: `{
   "pokemon": [
     {
@@ -100,9 +100,18 @@ const ENDPOINTS: Record<string, EndpointDoc[]> = {
       "sr": 45,
       "is_active": true,
       "is_starter": true,
+      "can_evolve": true,
       "selected_moves": ["thunderbolt", "quick-attack"],
-      "experience": 120,
-      "experience_to_next": 80
+      "experience": 12,
+      "experience_to_next": 4,
+      "evolution_info": {
+        "canEvolve": true,
+        "currentStage": 1,
+        "totalStages": 2,
+        "evolvesAtLevel": 5,
+        "nextEvolutionId": 26,
+        "nextEvolutionName": "Raichu"
+      }
     }
   ],
   "active_pokemon_id": "uuid"
@@ -199,6 +208,53 @@ const ENDPOINTS: Record<string, EndpointDoc[]> = {
       },
       curl: `curl -X PUT -H "X-API-Key: YOUR_KEY" -H "Content-Type: application/json" \\
   -d '{"moves": ["thunderbolt", "quick-attack"]}' https://domain.com/api/moves`,
+    },
+  ],
+  Evolution: [
+    {
+      method: 'POST',
+      path: '/api/pokecenter/evolve',
+      summary: 'Evolve a Pokemon to its next form',
+      description: 'Evolves a Pokemon to its next evolution form. The Pokemon must have can_evolve: true. Evolution thresholds: 2-stage Pokemon evolve at level 5, 3-stage Pokemon evolve at levels 3 and 6. Evolution preserves level, experience, and selected moves.',
+      auth: true,
+      requestBody: {
+        description: 'Pokemon ID (owned record UUID) to evolve',
+        example: `{
+  "pokemon_id": "uuid-of-pokemon-to-evolve"
+}`,
+      },
+      response: {
+        description: 'Evolution result with updated Pokemon',
+        example: `{
+  "success": true,
+  "pokemon": {
+    "id": "uuid",
+    "pokemon_id": 26,
+    "name": "Raichu",
+    "level": 5,
+    "types": ["Electric"],
+    "can_evolve": false,
+    "evolution_info": {
+      "canEvolve": false,
+      "currentStage": 2,
+      "totalStages": 2,
+      "evolvesAtLevel": null,
+      "nextEvolutionId": null,
+      "nextEvolutionName": null
+    }
+  },
+  "evolved_from": {
+    "pokemon_id": 25,
+    "name": "Pikachu"
+  },
+  "evolved_to": {
+    "pokemon_id": 26,
+    "name": "Raichu"
+  }
+}`,
+      },
+      curl: `curl -X POST -H "X-API-Key: YOUR_KEY" -H "Content-Type: application/json" \\
+  -d '{"pokemon_id": "uuid"}' https://domain.com/api/pokecenter/evolve`,
     },
   ],
   Battle: [
@@ -308,7 +364,7 @@ const ENDPOINTS: Record<string, EndpointDoc[]> = {
       method: 'POST',
       path: '/api/battle/round',
       summary: 'Execute a battle round with a move',
-      description: 'Executes one round of battle using the specified move. Returns the result including damage dealt and received.',
+      description: 'Executes one round of battle using the specified move. Returns the result including damage dealt and received. When battle ends with victory, may include evolution_available if your Pokemon can evolve.',
       auth: true,
       requestBody: {
         description: 'Move ID to use',
@@ -317,27 +373,36 @@ const ENDPOINTS: Record<string, EndpointDoc[]> = {
 }`,
       },
       response: {
-        description: 'Round result',
+        description: 'Round result (with evolution on victory)',
         example: `{
-  "round": 4,
-  "your_move": {
-    "name": "Thunderbolt",
-    "damage": 25
+  "round": {
+    "round_number": 3,
+    "player_move": "Thunderbolt",
+    "winner": "player",
+    "roll": 15,
+    "dc": 8
   },
-  "enemy_move": {
-    "name": "Tackle",
-    "damage": 10
+  "battle": {
+    "player_wins": 3,
+    "wild_wins": 1,
+    "status": "player_won"
   },
-  "your_pokemon": {
-    "current_hp": 70,
-    "max_hp": 100
-  },
-  "wild_pokemon": {
-    "current_hp": 5,
-    "max_hp": 50
-  },
-  "battle_status": "active",
-  "can_capture": true
+  "battle_ended": true,
+  "experience_gained": {
+    "xp_awarded": 3,
+    "previous_level": 2,
+    "new_level": 3,
+    "levels_gained": 1,
+    "evolution_available": true,
+    "evolution_details": {
+      "from_name": "Bulbasaur",
+      "from_id": 1,
+      "to_name": "Ivysaur",
+      "to_id": 2,
+      "from_sprite": "https://...",
+      "to_sprite": "https://..."
+    }
+  }
 }`,
       },
       curl: `curl -X POST -H "X-API-Key: YOUR_KEY" -H "Content-Type: application/json" \\
