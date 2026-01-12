@@ -153,8 +153,8 @@ export default function PinVerifyPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 dark:border-blue-400 mx-auto"></div>
+          <p className="mt-4 text-gray-600 dark:text-gray-400">Loading...</p>
         </div>
       </div>
     );
@@ -163,15 +163,15 @@ export default function PinVerifyPage() {
   if (mustChangePin) {
     return (
       <div className="min-h-screen flex items-center justify-center py-12 px-4">
-        <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-center">
-          <div className="text-yellow-600 mb-4">
+        <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg dark:shadow-gray-900/50 p-8 text-center">
+          <div className="text-yellow-600 dark:text-yellow-500 mb-4">
             <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
             </svg>
           </div>
-          <h2 className="text-xl font-bold text-gray-800 mb-2">PIN Change Required</h2>
-          <p className="text-gray-600 mb-4">{tempPinMessage}</p>
-          <p className="text-sm text-gray-500">Redirecting to PIN setup...</p>
+          <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2">PIN Change Required</h2>
+          <p className="text-gray-600 dark:text-gray-400 mb-4">{tempPinMessage}</p>
+          <p className="text-sm text-gray-500 dark:text-gray-500">Redirecting to PIN setup...</p>
         </div>
       </div>
     );
@@ -179,31 +179,31 @@ export default function PinVerifyPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center py-12 px-4">
-      <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
+      <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg dark:shadow-gray-900/50 p-8">
         <div className="text-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-800">Enter Your PIN</h2>
-          <p className="text-gray-600 mt-2">
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100">Enter Your PIN</h2>
+          <p className="text-gray-600 dark:text-gray-400 mt-2">
             Please enter your 4-digit PIN to continue.
           </p>
         </div>
 
         {isLocked ? (
           <div className="text-center py-8">
-            <div className="text-red-600 mb-4">
+            <div className="text-red-600 dark:text-red-500 mb-4">
               <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold text-gray-800 mb-2">Account Locked</h3>
-            <p className="text-gray-600 mb-4">
+            <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">Account Locked</h3>
+            <p className="text-gray-600 dark:text-gray-400 mb-4">
               Too many failed attempts. Please try again in:
             </p>
-            <div className="text-3xl font-bold text-red-600 mb-6">
+            <div className="text-3xl font-bold text-red-600 dark:text-red-500 mb-6">
               {formatLockoutTime(lockoutSeconds)}
             </div>
             <button
               onClick={handleLogout}
-              className="text-blue-600 hover:underline"
+              className="text-blue-600 dark:text-blue-400 hover:underline"
             >
               Return to Login
             </button>
@@ -223,7 +223,7 @@ export default function PinVerifyPage() {
 
             {error && (
               <div className="text-center">
-                <p className="text-red-600 text-sm font-medium">{error}</p>
+                <p className="text-red-600 dark:text-red-400 text-sm font-medium">{error}</p>
               </div>
             )}
 
@@ -234,7 +234,7 @@ export default function PinVerifyPage() {
                 w-full py-3 px-4 rounded-lg font-medium text-white
                 transition-colors
                 ${isSubmitting || pin.length !== 4
-                  ? 'bg-gray-400 cursor-not-allowed'
+                  ? 'bg-gray-400 dark:bg-gray-600 cursor-not-allowed'
                   : 'bg-blue-600 hover:bg-blue-700'
                 }
               `}
@@ -246,7 +246,7 @@ export default function PinVerifyPage() {
               <button
                 type="button"
                 onClick={handleLogout}
-                className="text-sm text-gray-500 hover:text-gray-700"
+                className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
               >
                 Sign in with a different account
               </button>

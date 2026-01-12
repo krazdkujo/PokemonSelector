@@ -21,19 +21,19 @@ export function TrainerInfo({ trainer }: TrainerInfoProps) {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6">
-      <h2 className="text-xl font-bold text-gray-800 mb-4">Trainer Info</h2>
+    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-gray-900/50 p-6">
+      <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4">Trainer Info</h2>
 
       <div className="space-y-3">
         <div>
-          <label className="text-sm text-gray-500">Name</label>
-          <p className="text-lg font-semibold text-gray-800">{trainer.name}</p>
+          <label className="text-sm text-gray-500 dark:text-gray-400">Name</label>
+          <p className="text-lg font-semibold text-gray-800 dark:text-gray-200">{trainer.name}</p>
         </div>
 
         <div>
-          <label className="text-sm text-gray-500">Trainer ID</label>
+          <label className="text-sm text-gray-500 dark:text-gray-400">Trainer ID</label>
           <div className="flex items-center gap-2">
-            <code className="text-sm bg-gray-100 px-2 py-1 rounded font-mono text-gray-700 flex-1 truncate">
+            <code className="text-sm bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded font-mono text-gray-700 dark:text-gray-300 flex-1 truncate">
               {trainer.id}
             </code>
             <button
@@ -61,13 +61,13 @@ export function TrainerInfo({ trainer }: TrainerInfoProps) {
         </div>
 
         <div>
-          <label className="text-sm text-gray-500">Role</label>
-          <p className="text-gray-700 capitalize">{trainer.role}</p>
+          <label className="text-sm text-gray-500 dark:text-gray-400">Role</label>
+          <p className="text-gray-700 dark:text-gray-300 capitalize">{trainer.role}</p>
         </div>
 
         <div>
-          <label className="text-sm text-gray-500">Member Since</label>
-          <p className="text-gray-700">
+          <label className="text-sm text-gray-500 dark:text-gray-400">Member Since</label>
+          <p className="text-gray-700 dark:text-gray-300">
             {new Date(trainer.created_at).toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'long',

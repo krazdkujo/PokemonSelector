@@ -60,10 +60,10 @@ export function PinCreateForm({ onSuccess, isExistingUser = false }: PinCreateFo
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="text-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-800">
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100">
           {isExistingUser ? 'Set Your PIN' : 'Create Your PIN'}
         </h2>
-        <p className="text-gray-600 mt-2">
+        <p className="text-gray-600 dark:text-gray-400 mt-2">
           {isExistingUser
             ? 'Please create a 4-digit PIN to secure your account.'
             : 'Create a 4-digit PIN to protect your trainer account.'}
@@ -94,7 +94,7 @@ export function PinCreateForm({ onSuccess, isExistingUser = false }: PinCreateFo
 
       {error && (
         <div className="text-center">
-          <p className="text-red-600 text-sm font-medium">{error}</p>
+          <p className="text-red-600 dark:text-red-400 text-sm font-medium">{error}</p>
         </div>
       )}
 
@@ -105,7 +105,7 @@ export function PinCreateForm({ onSuccess, isExistingUser = false }: PinCreateFo
           w-full py-3 px-4 rounded-lg font-medium text-white
           transition-colors
           ${isSubmitting || pin.length !== 4 || confirmPin.length !== 4
-            ? 'bg-gray-400 cursor-not-allowed'
+            ? 'bg-gray-400 dark:bg-gray-600 cursor-not-allowed'
             : 'bg-blue-600 hover:bg-blue-700'
           }
         `}

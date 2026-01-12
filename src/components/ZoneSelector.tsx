@@ -39,15 +39,15 @@ export function ZoneSelector({ onSelect, disabled = false }: ZoneSelectorProps) 
   if (isLoading) {
     return (
       <div className="text-center py-8">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
-        <p className="mt-2 text-gray-600">Loading zones...</p>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 dark:border-blue-400 mx-auto"></div>
+        <p className="mt-2 text-gray-600 dark:text-gray-400">Loading zones...</p>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+      <div className="bg-red-100 dark:bg-red-900/30 border border-red-400 dark:border-red-700 text-red-700 dark:text-red-400 px-4 py-3 rounded">
         {error}
       </div>
     );
@@ -55,8 +55,8 @@ export function ZoneSelector({ onSelect, disabled = false }: ZoneSelectorProps) 
 
   return (
     <div>
-      <h2 className="text-xl font-semibold text-gray-800 mb-2">Select a Zone</h2>
-      <p className="text-gray-600 mb-6">
+      <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">Select a Zone</h2>
+      <p className="text-gray-600 dark:text-gray-400 mb-6">
         Choose a combat zone to explore. Each zone has different Pokemon types you can encounter.
         Click the ? button on any zone to see example Pokemon.
       </p>

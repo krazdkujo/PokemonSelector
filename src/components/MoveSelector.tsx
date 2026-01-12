@@ -92,39 +92,39 @@ export function MoveSelector({ pokemonId }: MoveSelectorProps) {
 
   if (isLoading) {
     return (
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-xl font-semibold text-gray-800 mb-4">Move Selection</h2>
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/50 p-6">
+        <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Move Selection</h2>
         <div className="text-center py-4">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-2 text-gray-600">Loading moves...</p>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 dark:border-blue-400 mx-auto"></div>
+          <p className="mt-2 text-gray-600 dark:text-gray-400">Loading moves...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
-      <h2 className="text-xl font-semibold text-gray-800 mb-4">Move Selection</h2>
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/50 p-6">
+      <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Move Selection</h2>
 
       {error && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-3 py-2 rounded mb-4 text-sm">
+        <div className="bg-red-100 dark:bg-red-900/30 border border-red-400 dark:border-red-700 text-red-700 dark:text-red-400 px-3 py-2 rounded mb-4 text-sm">
           {error}
         </div>
       )}
 
       {successMessage && (
-        <div className="bg-green-100 border border-green-400 text-green-700 px-3 py-2 rounded mb-4 text-sm">
+        <div className="bg-green-100 dark:bg-green-900/30 border border-green-400 dark:border-green-700 text-green-700 dark:text-green-400 px-3 py-2 rounded mb-4 text-sm">
           {successMessage}
         </div>
       )}
 
-      <p className="text-gray-600 mb-4">
+      <p className="text-gray-600 dark:text-gray-400 mb-4">
         Select 4 moves for your active Pokemon. Selected: {selectedMoves.length}/4
       </p>
 
       {/* Selected Moves Preview */}
-      <div className="mb-4 p-3 bg-blue-50 rounded-lg">
-        <h3 className="font-medium text-blue-800 mb-2">Selected Moves</h3>
+      <div className="mb-4 p-3 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
+        <h3 className="font-medium text-blue-800 dark:text-blue-300 mb-2">Selected Moves</h3>
         <div className="flex flex-wrap gap-2">
           {selectedMoves.length > 0 ? (
             selectedMoves.map(moveId => {
@@ -132,14 +132,14 @@ export function MoveSelector({ pokemonId }: MoveSelectorProps) {
               return (
                 <span
                   key={moveId}
-                  className={`px-3 py-1 rounded text-sm font-medium bg-white border type-${move?.type.toLowerCase() || 'normal'}`}
+                  className={`px-3 py-1 rounded text-sm font-medium bg-white dark:bg-gray-700 border dark:border-gray-600 type-${move?.type.toLowerCase() || 'normal'}`}
                 >
                   {move?.name || moveId}
                 </span>
               );
             })
           ) : (
-            <span className="text-blue-600 text-sm">No moves selected</span>
+            <span className="text-blue-600 dark:text-blue-400 text-sm">No moves selected</span>
           )}
         </div>
       </div>
@@ -157,21 +157,21 @@ export function MoveSelector({ pokemonId }: MoveSelectorProps) {
               className={`
                 p-3 rounded-lg border-2 text-left transition
                 ${isSelected
-                  ? 'border-blue-500 bg-blue-50'
+                  ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30'
                   : selectedMoves.length >= 4
-                    ? 'border-gray-200 bg-gray-50 opacity-50 cursor-not-allowed'
-                    : 'border-gray-200 hover:border-blue-300 cursor-pointer'
+                    ? 'border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 opacity-50 cursor-not-allowed'
+                    : 'border-gray-200 dark:border-gray-700 hover:border-blue-300 cursor-pointer'
                 }
               `}
             >
               <div className="flex items-center justify-between">
-                <span className="font-medium text-gray-800">{move.name}</span>
+                <span className="font-medium text-gray-800 dark:text-gray-100">{move.name}</span>
                 <span className={`type-badge type-${move.type.toLowerCase()} text-xs`}>
                   {move.type}
                 </span>
               </div>
               {move.description && (
-                <div className="text-xs text-gray-500 mt-1 line-clamp-2">
+                <div className="text-xs text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">
                   {move.description}
                 </div>
               )}
@@ -188,7 +188,7 @@ export function MoveSelector({ pokemonId }: MoveSelectorProps) {
           className={`
             px-6 py-2 rounded font-medium transition
             ${isSaving || selectedMoves.length !== 4
-              ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+              ? 'bg-gray-300 dark:bg-gray-600 text-gray-500 dark:text-gray-400 cursor-not-allowed'
               : 'bg-blue-600 text-white hover:bg-blue-700'
             }
           `}

@@ -44,7 +44,7 @@ export function NameEntryForm({ onSubmit, isLoading = false }: NameEntryFormProp
       <div className="mb-4">
         <label
           htmlFor="trainer-name"
-          className="block text-lg font-semibold text-gray-700 mb-2"
+          className="block text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2"
         >
           What is your name, trainer?
         </label>
@@ -58,11 +58,11 @@ export function NameEntryForm({ onSubmit, isLoading = false }: NameEntryFormProp
           }}
           placeholder="Enter your name"
           maxLength={20}
-          className="w-full px-4 py-3 text-lg border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
+          className="w-full px-4 py-3 text-lg border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:border-blue-500 dark:focus:border-blue-400 focus:outline-none transition-colors bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
           disabled={isLoading}
           autoFocus
         />
-        <div className="flex justify-between mt-1 text-sm text-gray-500">
+        <div className="flex justify-between mt-1 text-sm text-gray-500 dark:text-gray-400">
           <span>{error && <span className="text-red-500">{error}</span>}</span>
           <span>{name.trim().length}/20</span>
         </div>
