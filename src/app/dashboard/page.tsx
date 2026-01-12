@@ -81,8 +81,8 @@ export default function DashboardPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading your dashboard...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 dark:border-blue-400 mx-auto"></div>
+          <p className="mt-4 text-gray-600 dark:text-gray-400">Loading your dashboard...</p>
         </div>
       </div>
     );
@@ -117,7 +117,7 @@ export default function DashboardPage() {
       <div className="max-w-4xl mx-auto px-4">
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800">
+          <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">
             Welcome, {trainer_name}!
           </h1>
           <button
@@ -130,11 +130,11 @@ export default function DashboardPage() {
 
         {/* Active Battle Banner */}
         {has_active_battle && (
-          <div className="bg-red-100 border border-red-400 rounded-lg p-4 mb-6">
+          <div className="bg-red-100 dark:bg-red-900/30 border border-red-400 dark:border-red-800 rounded-lg p-4 mb-6">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="font-semibold text-red-800">Battle in Progress!</h3>
-                <p className="text-red-700 text-sm">You have an active battle waiting.</p>
+                <h3 className="font-semibold text-red-800 dark:text-red-300">Battle in Progress!</h3>
+                <p className="text-red-700 dark:text-red-400 text-sm">You have an active battle waiting.</p>
               </div>
               <Link
                 href="/battle"
@@ -149,8 +149,8 @@ export default function DashboardPage() {
         {/* Main Content Grid */}
         <div className="grid md:grid-cols-2 gap-6">
           {/* Active Pokemon Card */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">Active Pokemon</h2>
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/50 p-6">
+            <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Active Pokemon</h2>
             <div className="flex items-center gap-4">
               <div className="relative w-24 h-24">
                 <Image
@@ -162,8 +162,8 @@ export default function DashboardPage() {
                 />
               </div>
               <div>
-                <h3 className="font-bold text-lg text-gray-800">{active_pokemon.name}</h3>
-                <p className="text-gray-600">Level {active_pokemon.level}</p>
+                <h3 className="font-bold text-lg text-gray-800 dark:text-gray-100">{active_pokemon.name}</h3>
+                <p className="text-gray-600 dark:text-gray-400">Level {active_pokemon.level}</p>
                 <div className="flex gap-1 mt-1">
                   {active_pokemon.types.map((type) => (
                     <span
@@ -174,49 +174,49 @@ export default function DashboardPage() {
                     </span>
                   ))}
                 </div>
-                <p className="text-sm text-gray-500 mt-1">SR: {active_pokemon.sr}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">SR: {active_pokemon.sr}</p>
               </div>
             </div>
             {active_pokemon.is_starter && (
-              <div className="mt-3 text-sm text-blue-600 font-medium">
+              <div className="mt-3 text-sm text-blue-600 dark:text-blue-400 font-medium">
                 Your Starter Pokemon
               </div>
             )}
           </div>
 
           {/* Stats Card */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">Trainer Stats</h2>
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/50 p-6">
+            <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Trainer Stats</h2>
             <div className="space-y-3">
               <div className="flex justify-between items-center">
-                <span className="text-gray-600">Money</span>
+                <span className="text-gray-600 dark:text-gray-400">Money</span>
                 <span className="font-semibold text-yellow-600">${stats.money}</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-gray-600">Pokemon Owned</span>
+                <span className="text-gray-600 dark:text-gray-400">Pokemon Owned</span>
                 <span className="font-semibold">{pokemon_count}</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-gray-600">Battles Won</span>
+                <span className="text-gray-600 dark:text-gray-400">Battles Won</span>
                 <span className="font-semibold text-green-600">{stats.battles_won}</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-gray-600">Battles Lost</span>
+                <span className="text-gray-600 dark:text-gray-400">Battles Lost</span>
                 <span className="font-semibold text-red-600">{stats.battles_lost}</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-gray-600">Pokemon Captured</span>
+                <span className="text-gray-600 dark:text-gray-400">Pokemon Captured</span>
                 <span className="font-semibold text-blue-600">{stats.pokemon_captured}</span>
               </div>
             </div>
 
             {/* Items Section */}
             {Object.keys(stats.items).length > 0 && (
-              <div className="mt-4 pt-3 border-t border-gray-200">
-                <h3 className="font-medium text-gray-800 mb-2">Items</h3>
+              <div className="mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
+                <h3 className="font-medium text-gray-800 dark:text-gray-200 mb-2">Items</h3>
                 <div className="flex flex-wrap gap-2">
                   {Object.entries(stats.items).map(([item, count]) => (
-                    <span key={item} className="bg-gray-100 px-2 py-1 rounded text-sm">
+                    <span key={item} className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-sm text-gray-800 dark:text-gray-200">
                       {item}: {count}
                     </span>
                   ))}

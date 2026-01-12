@@ -20,10 +20,10 @@ export function PokemonCard({ pokemon, onClick, selected, disabled }: PokemonCar
       onClick={onClick}
       disabled={disabled}
       className={`
-        pokemon-card bg-white rounded-lg shadow-md p-4 text-center
-        ${selected ? 'ring-4 ring-blue-500 ring-offset-2' : ''}
+        pokemon-card bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/50 p-4 text-center
+        ${selected ? 'ring-4 ring-blue-500 dark:ring-blue-400 ring-offset-2 dark:ring-offset-gray-900' : ''}
         ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
-        ${!disabled && !selected ? 'hover:shadow-xl' : ''}
+        ${!disabled && !selected ? 'hover:shadow-xl dark:hover:shadow-gray-900/70' : ''}
       `}
     >
       <div className="relative w-24 h-24 mx-auto mb-2">
@@ -36,7 +36,7 @@ export function PokemonCard({ pokemon, onClick, selected, disabled }: PokemonCar
         />
       </div>
 
-      <h3 className="font-semibold text-gray-800 mb-1">
+      <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">
         #{pokemon.number.toString().padStart(3, '0')} {pokemon.name}
       </h3>
 

@@ -122,15 +122,15 @@ export function CaptureAttempt({
   // Show ownership message if already owned
   if (isOwned) {
     return (
-      <div className="bg-gray-100 rounded-lg p-4 border border-gray-300">
-        <h3 className="font-semibold text-gray-600 mb-2">Capture Unavailable</h3>
-        <div className="flex items-center gap-2 text-gray-600">
+      <div className="bg-gray-100 dark:bg-gray-700 rounded-lg p-4 border border-gray-300 dark:border-gray-600">
+        <h3 className="font-semibold text-gray-600 dark:text-gray-300 mb-2">Capture Unavailable</h3>
+        <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <span>{ownedMessage || 'Already caught - can only knock out'}</span>
         </div>
-        <p className="text-sm text-gray-500 mt-2">
+        <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
           You already have {wildPokemonName} in your collection. Defeat it for XP instead!
         </p>
       </div>
@@ -138,34 +138,34 @@ export function CaptureAttempt({
   }
 
   return (
-    <div className="bg-purple-50 rounded-lg p-4 border border-purple-200">
-      <h3 className="font-semibold text-purple-800 mb-2">Capture {wildPokemonName}?</h3>
+    <div className="bg-purple-50 dark:bg-purple-900/30 rounded-lg p-4 border border-purple-200 dark:border-purple-700">
+      <h3 className="font-semibold text-purple-800 dark:text-purple-300 mb-2">Capture {wildPokemonName}?</h3>
 
       {error && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-3 py-2 rounded mb-3 text-sm">
+        <div className="bg-red-100 dark:bg-red-900/30 border border-red-400 dark:border-red-700 text-red-700 dark:text-red-400 px-3 py-2 rounded mb-3 text-sm">
           {error}
         </div>
       )}
 
       {isLoading ? (
-        <div className="text-gray-600">Calculating capture difficulty...</div>
+        <div className="text-gray-600 dark:text-gray-400">Calculating capture difficulty...</div>
       ) : (
         <>
           <div className="mb-3">
             <div className="flex items-center justify-between">
-              <span className="text-gray-600">Capture DC:</span>
+              <span className="text-gray-600 dark:text-gray-400">Capture DC:</span>
               <span className={`font-bold ${getDifficultyColor(captureDC || 15)}`}>
                 {captureDC} ({getDifficultyLabel(captureDC || 15)})
               </span>
             </div>
-            <p className="text-sm text-gray-500 mt-1">
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
               Roll d20. Need {captureDC} or higher to capture.
             </p>
           </div>
 
-          <div className="mb-3 text-sm text-gray-600">
+          <div className="mb-3 text-sm text-gray-600 dark:text-gray-400">
             <p>Your round wins: {playerWins} (-{playerWins * 3} to DC)</p>
-            <p className="text-xs text-gray-500 mt-1">
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
               Warning: Failed capture gives the wild Pokemon a round win (25% flee chance)
             </p>
           </div>

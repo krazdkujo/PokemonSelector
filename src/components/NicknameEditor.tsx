@@ -89,8 +89,8 @@ export function NicknameEditor({ trainerId, currentNickname, onNicknameChange }:
   const hasChanges = nickname.trim() !== (currentNickname || '');
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-4 mt-4">
-      <h3 className="text-lg font-semibold text-gray-800 mb-3">Nickname Your Pokemon</h3>
+    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-gray-900/50 p-4 mt-4">
+      <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-3">Nickname Your Pokemon</h3>
 
       <div className="flex gap-2">
         <input
@@ -100,12 +100,12 @@ export function NicknameEditor({ trainerId, currentNickname, onNicknameChange }:
           placeholder="Enter a nickname..."
           maxLength={20}
           disabled={isLoading}
-          className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100"
+          className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 disabled:bg-gray-100 dark:disabled:bg-gray-600"
         />
         <button
           onClick={handleSave}
           disabled={isLoading || !hasChanges}
-          className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+          className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-gray-300 dark:disabled:bg-gray-600 disabled:cursor-not-allowed transition-colors"
         >
           {isLoading ? 'Saving...' : 'Save'}
         </button>
@@ -113,25 +113,25 @@ export function NicknameEditor({ trainerId, currentNickname, onNicknameChange }:
           <button
             onClick={handleClear}
             disabled={isLoading}
-            className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+            className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 disabled:bg-gray-300 dark:disabled:bg-gray-600 disabled:cursor-not-allowed transition-colors"
           >
             Clear
           </button>
         )}
       </div>
 
-      <div className="mt-2 text-sm text-gray-500">
+      <div className="mt-2 text-sm text-gray-500 dark:text-gray-400">
         {nickname.length}/20 characters
       </div>
 
       {error && (
-        <div className="mt-2 text-sm text-red-600">
+        <div className="mt-2 text-sm text-red-600 dark:text-red-400">
           {error}
         </div>
       )}
 
       {success && (
-        <div className="mt-2 text-sm text-green-600">
+        <div className="mt-2 text-sm text-green-600 dark:text-green-400">
           {success}
         </div>
       )}

@@ -142,8 +142,8 @@ export default function AdminPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading admin panel...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 dark:border-blue-400 mx-auto"></div>
+          <p className="mt-4 text-gray-600 dark:text-gray-400">Loading admin panel...</p>
         </div>
       </div>
     );
@@ -158,7 +158,7 @@ export default function AdminPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <p className="text-red-600 mb-4">{error}</p>
+          <p className="text-red-600 dark:text-red-400 mb-4">{error}</p>
           <button onClick={handleLogout} className="btn-primary">
             Return to Login
           </button>
@@ -172,8 +172,8 @@ export default function AdminPage() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-800">Admin Panel</h1>
-            <p className="text-gray-600 mt-1">
+            <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">Admin Panel</h1>
+            <p className="text-gray-600 dark:text-gray-400 mt-1">
               Viewing all {trainers.length} registered trainers
             </p>
           </div>
@@ -198,11 +198,11 @@ export default function AdminPage() {
       {/* Role Change Confirmation Dialog */}
       {showConfirmDialog && pendingRoleChange && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4 shadow-xl">
-            <h2 className="text-xl font-bold text-gray-800 mb-4">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-md w-full mx-4 shadow-xl dark:shadow-gray-900/50">
+            <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-4">
               Confirm Role Change
             </h2>
-            <p className="text-gray-600 mb-4">
+            <p className="text-gray-600 dark:text-gray-400 mb-4">
               Are you sure you want to{' '}
               {pendingRoleChange.newRole === 'admin' ? 'promote' : 'demote'}{' '}
               <span className="font-semibold">{pendingRoleChange.trainerName}</span>{' '}
@@ -210,7 +210,7 @@ export default function AdminPage() {
             </p>
 
             {roleChangeError && (
-              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-4">
+              <div className="bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded mb-4">
                 {roleChangeError}
               </div>
             )}
@@ -218,7 +218,7 @@ export default function AdminPage() {
             <div className="flex justify-end gap-3">
               <button
                 onClick={handleRoleChangeCancel}
-                className="px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors"
+                className="px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
               >
                 Cancel
               </button>

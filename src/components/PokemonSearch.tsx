@@ -80,8 +80,8 @@ export function PokemonSearch() {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 mb-6">
-      <h3 className="text-lg font-semibold text-gray-800 mb-3">Find a Pokemon</h3>
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/50 p-4 mb-6">
+      <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-3">Find a Pokemon</h3>
 
       {/* Search Input */}
       <div className="relative" ref={dropdownRef}>
@@ -90,17 +90,17 @@ export function PokemonSearch() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search by name or number..."
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
         />
 
         {/* Dropdown Results */}
         {isOpen && filteredPokemon.length > 0 && (
-          <div className="absolute z-50 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg max-h-80 overflow-y-auto">
+          <div className="absolute z-50 w-full mt-1 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg dark:shadow-gray-900/50 max-h-80 overflow-y-auto">
             {filteredPokemon.map(pokemon => (
               <button
                 key={pokemon.number}
                 onClick={() => handleSelect(pokemon)}
-                className="w-full px-4 py-2 flex items-center gap-3 hover:bg-blue-50 transition text-left"
+                className="w-full px-4 py-2 flex items-center gap-3 hover:bg-blue-50 dark:hover:bg-gray-700 transition text-left"
               >
                 <div className="relative w-10 h-10 flex-shrink-0">
                   <Image
@@ -112,11 +112,11 @@ export function PokemonSearch() {
                   />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="font-medium text-gray-800">
+                  <div className="font-medium text-gray-800 dark:text-gray-100">
                     #{pokemon.number} {pokemon.name}
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-gray-500">SR: {pokemon.sr}</span>
+                    <span className="text-xs text-gray-500 dark:text-gray-400">SR: {pokemon.sr}</span>
                     <div className="flex gap-1">
                       {pokemon.types.map(type => (
                         <span
@@ -137,7 +137,7 @@ export function PokemonSearch() {
 
       {/* Selected Pokemon Info */}
       {selectedPokemon && (
-        <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+        <div className="mt-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-3">
               <div className="relative w-16 h-16">
@@ -150,11 +150,11 @@ export function PokemonSearch() {
                 />
               </div>
               <div>
-                <h4 className="font-bold text-gray-800">
+                <h4 className="font-bold text-gray-800 dark:text-gray-100">
                   #{selectedPokemon.number} {selectedPokemon.name}
                 </h4>
                 <div className="flex items-center gap-2">
-                  <span className="text-sm text-gray-600">SR: {selectedPokemon.sr}</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-400">SR: {selectedPokemon.sr}</span>
                   <div className="flex gap-1">
                     {selectedPokemon.types.map(type => (
                       <span
@@ -170,7 +170,7 @@ export function PokemonSearch() {
             </div>
             <button
               onClick={handleClear}
-              className="text-gray-400 hover:text-gray-600 text-xl"
+              className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 text-xl"
             >
               x
             </button>
@@ -178,22 +178,22 @@ export function PokemonSearch() {
 
           {/* Encounter Locations */}
           <div>
-            <h5 className="font-medium text-gray-700 mb-2">Can be found in:</h5>
+            <h5 className="font-medium text-gray-700 dark:text-gray-300 mb-2">Can be found in:</h5>
             {matchingZones.length > 0 ? (
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 {matchingZones.map(zone => (
                   <div
                     key={zone.zoneId}
-                    className="p-2 bg-white rounded border border-gray-200 text-center"
+                    className="p-2 bg-white dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-600 text-center"
                   >
-                    <div className="font-medium text-gray-800 text-sm">{zone.zoneName}</div>
+                    <div className="font-medium text-gray-800 dark:text-gray-100 text-sm">{zone.zoneName}</div>
                     <div className="flex flex-wrap justify-center gap-1 mt-1">
                       {zone.zoneTypes
                         .filter(t => selectedPokemon.types.map(pt => pt.toLowerCase()).includes(t))
                         .map(type => (
                           <span
                             key={type}
-                            className="px-1 py-0.5 text-xs rounded bg-green-100 text-green-700"
+                            className="px-1 py-0.5 text-xs rounded bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-400"
                           >
                             {type}
                           </span>
@@ -203,7 +203,7 @@ export function PokemonSearch() {
                 ))}
               </div>
             ) : (
-              <p className="text-gray-500 text-sm">This Pokemon cannot be encountered in any zone.</p>
+              <p className="text-gray-500 dark:text-gray-400 text-sm">This Pokemon cannot be encountered in any zone.</p>
             )}
           </div>
         </div>

@@ -8,47 +8,54 @@
   --pokemon-yellow: #ffde00;
 }
 
+/* Dark mode color adjustments */
+.dark {
+  --pokemon-red: #ff4444;
+  --pokemon-blue: #5b6cda;
+  --pokemon-yellow: #ffee44;
+}
+
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* Pokemon type colors */
-.type-normal { @apply bg-gray-400; }
+/* Pokemon type colors - enhanced visibility in dark mode */
+.type-normal { @apply bg-gray-400 dark:bg-gray-500; }
 .type-fire { @apply bg-orange-500; }
 .type-water { @apply bg-blue-500; }
-.type-electric { @apply bg-yellow-400; }
+.type-electric { @apply bg-yellow-400 dark:bg-yellow-500; }
 .type-grass { @apply bg-green-500; }
-.type-ice { @apply bg-cyan-300; }
+.type-ice { @apply bg-cyan-300 dark:bg-cyan-400; }
 .type-fighting { @apply bg-red-700; }
 .type-poison { @apply bg-purple-500; }
 .type-ground { @apply bg-amber-600; }
-.type-flying { @apply bg-indigo-300; }
+.type-flying { @apply bg-indigo-300 dark:bg-indigo-400; }
 .type-psychic { @apply bg-pink-500; }
 .type-bug { @apply bg-lime-500; }
 .type-rock { @apply bg-amber-700; }
 .type-ghost { @apply bg-purple-700; }
 .type-dragon { @apply bg-indigo-600; }
-.type-dark { @apply bg-gray-700; }
-.type-steel { @apply bg-gray-400; }
-.type-fairy { @apply bg-pink-300; }
+.type-dark { @apply bg-gray-700 dark:bg-gray-600; }
+.type-steel { @apply bg-gray-400 dark:bg-gray-500; }
+.type-fairy { @apply bg-pink-300 dark:bg-pink-400; }
 
 /* Card hover effects */
 .pokemon-card {
-  @apply transition-transform duration-200 hover:scale-105 hover:shadow-lg;
+  @apply transition-transform duration-200 hover:scale-105 hover:shadow-lg dark:hover:shadow-gray-900/50;
 }
 
-/* Button styles */
+/* Button styles with dark mode */
 .btn-primary {
-  @apply bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition-colors;
+  @apply bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors;
 }
 
 .btn-secondary {
-  @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg transition-colors;
+  @apply bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-bold py-2 px-4 rounded-lg transition-colors;
 }
 
-/* Type badge */
+/* Type badge with dark mode ring for visibility */
 .type-badge {
-  @apply px-2 py-1 rounded text-white text-xs font-semibold capitalize;
+  @apply px-2 py-1 rounded text-white text-xs font-semibold capitalize dark:ring-1 dark:ring-white/20;
 }
 
 /* Responsive container adjustments */
@@ -66,24 +73,29 @@ body {
   }
 }
 
-/* Error message styling */
+/* Error message styling with dark mode */
 .error-message {
-  @apply bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg;
+  @apply bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300 px-4 py-3 rounded-lg;
 }
 
-/* Loading spinner */
+/* Loading spinner with dark mode */
 .loading-spinner {
-  @apply animate-spin rounded-full border-b-2 border-blue-600;
+  @apply animate-spin rounded-full border-b-2 border-blue-600 dark:border-blue-400;
 }
 
 /* Focus styles for accessibility */
 button:focus-visible,
 a:focus-visible,
 input:focus-visible {
-  @apply outline-2 outline-offset-2 outline-blue-500;
+  @apply outline-2 outline-offset-2 outline-blue-500 dark:outline-blue-400;
 }
 
 /* Disabled button states */
 button:disabled {
   @apply opacity-50 cursor-not-allowed;
+}
+
+/* Dark mode transition for smooth theme switching */
+html {
+  @apply transition-colors duration-200;
 }

@@ -28,7 +28,7 @@ export function ZoneCard({ zone, onSelect, onPreview, disabled = false }: ZoneCa
             e.stopPropagation();
             onPreview(zone.id);
           }}
-          className="absolute top-2 right-2 w-6 h-6 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-gray-600 text-sm font-bold"
+          className="absolute top-2 right-2 w-6 h-6 rounded-full bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 flex items-center justify-center text-gray-600 dark:text-gray-300 text-sm font-bold"
           title="View zone details"
         >
           ?
@@ -47,7 +47,7 @@ export function ZoneCard({ zone, onSelect, onPreview, disabled = false }: ZoneCa
         <div className={`font-bold text-lg ${colors.text} pr-8`}>
           {zone.name}
         </div>
-        <p className="text-sm text-gray-600 mt-1 line-clamp-2">
+        <p className="text-sm text-gray-600 dark:text-gray-400 mt-1 line-clamp-2">
           {zone.description}
         </p>
         <div className="mt-3 flex flex-wrap gap-1">

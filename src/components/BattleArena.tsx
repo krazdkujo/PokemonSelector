@@ -42,7 +42,7 @@ export function BattleArena({
           <div
             key={i}
             className={`w-4 h-4 rounded-full ${
-              i < wins ? color : 'bg-gray-300'
+              i < wins ? color : 'bg-gray-300 dark:bg-gray-600'
             }`}
           />
         ))}
@@ -60,7 +60,7 @@ export function BattleArena({
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg dark:shadow-gray-900/50 p-6">
       {/* Battle Arena */}
       <div className="grid grid-cols-3 gap-4 items-center mb-6">
         {/* Player Pokemon */}
@@ -76,8 +76,8 @@ export function BattleArena({
               />
             )}
           </div>
-          <h3 className="font-bold text-gray-800">{player_pokemon?.name || 'Your Pokemon'}</h3>
-          <p className="text-sm text-gray-600">Level {player_pokemon?.level || 1}</p>
+          <h3 className="font-bold text-gray-800 dark:text-gray-100">{player_pokemon?.name || 'Your Pokemon'}</h3>
+          <p className="text-sm text-gray-600 dark:text-gray-400">Level {player_pokemon?.level || 1}</p>
           {player_pokemon?.types && (
             <div className="flex gap-1 justify-center mt-1">
               {player_pokemon.types.map((type) => (
@@ -97,16 +97,16 @@ export function BattleArena({
 
         {/* VS / DC Display */}
         <div className="text-center">
-          <div className="text-4xl font-bold text-gray-400">VS</div>
+          <div className="text-4xl font-bold text-gray-400 dark:text-gray-500">VS</div>
 
           {/* Pending Move DC Preview - Show BEFORE roll */}
           {pendingMove && !lastRound && (
-            <div className="mt-3 p-3 bg-blue-50 rounded-lg border-2 border-blue-200">
-              <div className="text-sm text-blue-600 font-medium mb-1">
+            <div className="mt-3 p-3 bg-blue-50 dark:bg-blue-900/30 rounded-lg border-2 border-blue-200 dark:border-blue-700">
+              <div className="text-sm text-blue-600 dark:text-blue-400 font-medium mb-1">
                 {pendingMove.move_name}
               </div>
               <div className="relative group">
-                <div className="text-2xl font-bold text-blue-700 cursor-help">
+                <div className="text-2xl font-bold text-blue-700 dark:text-blue-300 cursor-help">
                   DC: {pendingMove.dc}
                 </div>
                 {/* DC Calculation Tooltip */}
@@ -161,21 +161,21 @@ export function BattleArena({
                   </div>
                 </div>
               </div>
-              <div className="text-xs text-blue-500 mt-1">
+              <div className="text-xs text-blue-500 dark:text-blue-400 mt-1">
                 Roll {pendingMove.dc}+ to win
               </div>
-              <div className="text-xs text-gray-500 mt-1">
+              <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                 {Math.round(pendingMove.win_chance * 100)}% chance
               </div>
               {pendingMove.effectiveness !== 'neutral' && (
                 <div className={`text-xs mt-1 ${
-                  pendingMove.effectiveness === 'super_effective' ? 'text-green-600' : 'text-orange-600'
+                  pendingMove.effectiveness === 'super_effective' ? 'text-green-600 dark:text-green-400' : 'text-orange-600 dark:text-orange-400'
                 }`}>
                   {pendingMove.effectiveness.replace('_', ' ')}
                 </div>
               )}
               {pendingMove.has_stab && (
-                <div className="text-xs text-purple-600 mt-1">STAB bonus</div>
+                <div className="text-xs text-purple-600 dark:text-purple-400 mt-1">STAB bonus</div>
               )}
             </div>
           )}
@@ -183,14 +183,14 @@ export function BattleArena({
           {/* Last Round Result - Show AFTER roll */}
           {lastRound && (
             <>
-              <div className="mt-2 text-lg font-bold text-gray-700">
+              <div className="mt-2 text-lg font-bold text-gray-700 dark:text-gray-300">
                 DC: {lastRound.dc}
               </div>
-              <div className="text-xs text-gray-500">
+              <div className="text-xs text-gray-500 dark:text-gray-400">
                 Roll {lastRound.dc}+ to win
               </div>
               <div className={`mt-1 text-sm font-medium ${
-                lastRound.winner === 'player' ? 'text-green-600' : 'text-red-600'
+                lastRound.winner === 'player' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
               }`}>
                 Rolled {lastRound.roll}: {lastRound.winner === 'player' ? 'You won!' : 'Wild won!'}
               </div>
@@ -210,13 +210,13 @@ export function BattleArena({
                 sizes="96px"
               />
             ) : (
-              <div className="w-full h-full bg-gray-100 rounded-full flex items-center justify-center">
+              <div className="w-full h-full bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center">
                 <span className="text-4xl">?</span>
               </div>
             )}
           </div>
-          <h3 className="font-bold text-gray-800">{wild_pokemon.name}</h3>
-          <p className="text-sm text-gray-600">Level {wild_pokemon.level}</p>
+          <h3 className="font-bold text-gray-800 dark:text-gray-100">{wild_pokemon.name}</h3>
+          <p className="text-sm text-gray-600 dark:text-gray-400">Level {wild_pokemon.level}</p>
           <div className="flex gap-1 justify-center mt-1">
             {wild_pokemon.types.map((type) => (
               <span
@@ -235,29 +235,29 @@ export function BattleArena({
 
       {/* Last Round Details */}
       {lastRound && (
-        <div className="bg-gray-50 rounded-lg p-4 mb-6">
-          <h4 className="font-medium text-gray-800 mb-2">Round {lastRound.round_number} Result</h4>
+        <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 mb-6">
+          <h4 className="font-medium text-gray-800 dark:text-gray-100 mb-2">Round {lastRound.round_number} Result</h4>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
             <div>
-              <span className="text-gray-500">Move:</span>
+              <span className="text-gray-500 dark:text-gray-400">Move:</span>
               <span className="ml-1 font-medium">{lastRound.player_move}</span>
             </div>
             <div>
-              <span className="text-gray-500">DC:</span>
+              <span className="text-gray-500 dark:text-gray-400">DC:</span>
               <span className="ml-1 font-medium">{lastRound.dc}</span>
             </div>
             <div>
-              <span className="text-gray-500">Roll:</span>
+              <span className="text-gray-500 dark:text-gray-400">Roll:</span>
               <span className={`ml-1 font-medium ${
-                lastRound.roll >= lastRound.dc ? 'text-green-600' : 'text-red-600'
+                lastRound.roll >= lastRound.dc ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
               }`}>
                 {lastRound.roll} {lastRound.roll >= lastRound.dc ? '>=' : '<'} {lastRound.dc}
               </span>
             </div>
             <div>
-              <span className="text-gray-500">Result:</span>
+              <span className="text-gray-500 dark:text-gray-400">Result:</span>
               <span className={`ml-1 font-medium ${
-                lastRound.winner === 'player' ? 'text-green-600' : 'text-red-600'
+                lastRound.winner === 'player' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
               }`}>
                 {lastRound.winner === 'player' ? 'Success' : 'Failed'}
               </span>
@@ -265,17 +265,17 @@ export function BattleArena({
           </div>
           <div className="grid grid-cols-2 gap-2 text-sm mt-2">
             <div>
-              <span className="text-gray-500">Effectiveness:</span>
+              <span className="text-gray-500 dark:text-gray-400">Effectiveness:</span>
               <span className={`ml-1 font-medium ${
-                lastRound.type_effectiveness === 'super_effective' ? 'text-green-600' :
-                lastRound.type_effectiveness === 'not_very_effective' ? 'text-orange-600' :
-                'text-gray-600'
+                lastRound.type_effectiveness === 'super_effective' ? 'text-green-600 dark:text-green-400' :
+                lastRound.type_effectiveness === 'not_very_effective' ? 'text-orange-600 dark:text-orange-400' :
+                'text-gray-600 dark:text-gray-400'
               }`}>
                 {lastRound.type_effectiveness.replace('_', ' ')}
               </span>
             </div>
             <div>
-              <span className="text-gray-500">STAB:</span>
+              <span className="text-gray-500 dark:text-gray-400">STAB:</span>
               <span className="ml-1 font-medium">{lastRound.had_stab ? 'Yes' : 'No'}</span>
             </div>
           </div>
@@ -284,12 +284,12 @@ export function BattleArena({
 
       {/* Pending Move Confirmation */}
       {pendingMove && (
-        <div className="bg-blue-50 rounded-lg p-4 mb-6 border-2 border-blue-200">
-          <h4 className="font-medium text-blue-800 mb-3">Confirm Your Attack</h4>
+        <div className="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-4 mb-6 border-2 border-blue-200 dark:border-blue-700">
+          <h4 className="font-medium text-blue-800 dark:text-blue-300 mb-3">Confirm Your Attack</h4>
           <div className="flex items-center justify-between">
             <div>
-              <div className="text-lg font-bold text-gray-800">{pendingMove.move_name}</div>
-              <div className="text-sm text-gray-600">
+              <div className="text-lg font-bold text-gray-800 dark:text-gray-100">{pendingMove.move_name}</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">
                 You need to roll {pendingMove.dc}+ on a d20 to hit
               </div>
             </div>
@@ -297,7 +297,7 @@ export function BattleArena({
               <button
                 onClick={onCancelPreview}
                 disabled={isExecuting}
-                className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 disabled:opacity-50"
+                className="px-4 py-2 bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-500 disabled:opacity-50"
               >
                 Cancel
               </button>
@@ -316,7 +316,7 @@ export function BattleArena({
       {/* Move Selection - Hidden when there's a pending move */}
       {!pendingMove && (
         <div>
-          <h4 className="font-medium text-gray-800 mb-3">Choose Your Move</h4>
+          <h4 className="font-medium text-gray-800 dark:text-gray-100 mb-3">Choose Your Move</h4>
           <div className="grid grid-cols-2 gap-3">
             {availableMoves.map((move) => (
               <button
@@ -326,17 +326,17 @@ export function BattleArena({
                 className={`
                   p-3 rounded-lg border-2 text-left transition
                   ${isExecuting ? 'opacity-50 cursor-not-allowed' : 'hover:border-blue-500 cursor-pointer'}
-                  border-gray-200
+                  border-gray-200 dark:border-gray-700
                 `}
               >
-                <div className="font-medium text-gray-800">{move.name}</div>
+                <div className="font-medium text-gray-800 dark:text-gray-100">{move.name}</div>
                 <div className="flex items-center gap-2 mt-1">
                   <span className={`type-badge type-${move.type.toLowerCase()} text-xs`}>
                     {move.type}
                   </span>
                 </div>
                 {move.description && (
-                  <div className="text-xs text-gray-500 mt-1 line-clamp-2">
+                  <div className="text-xs text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">
                     {move.description}
                   </div>
                 )}
@@ -347,8 +347,8 @@ export function BattleArena({
       )}
 
       {isExecuting && (
-        <div className="mt-4 text-center text-gray-600">
-          <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600 mx-auto mb-2"></div>
+        <div className="mt-4 text-center text-gray-600 dark:text-gray-400">
+          <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600 dark:border-blue-400 mx-auto mb-2"></div>
           Rolling the dice...
         </div>
       )}
