@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { getPokemonById } from '@/lib/pokemon';
-import type { TrainerWithStarter, ApiError } from '@/lib/types';
+import type { TrainerWithStats, ApiError } from '@/lib/types';
 
 export async function GET(request: NextRequest) {
   try {
@@ -57,15 +57,40 @@ export async function GET(request: NextRequest) {
       return NextResponse.json(error, { status: 500 });
     }
 
-    // Add Pokemon details for each trainer
-    const trainersWithStarters: TrainerWithStarter[] = trainers.map((trainer) => ({
-      ...trainer,
-      starter: trainer.starter_pokemon_id
-        ? getPokemonById(trainer.starter_pokemon_id)
-        : null,
-    }));
+    // Add Pokemon details and statistics for each trainer
+    const trainersWithStats: TrainerWithStats[] = await Promise.all(
+      trainers.map(async (trainer) => {
+        // Get user stats
+        const { data: userStats } = await supabase
+          .from('user_stats')
+          .select('battles_won, battles_lost, pokemon_captured')
+          .eq('user_id', trainer.id)
+          .single();
 
-    return NextResponse.json(trainersWithStarters, { status: 200 });
+        // Get Pokemon count
+        const { count: pokemonCount } = await supabase
+          .from('pokemon_owned')
+          .select('*', { count: 'exact', head: true })
+          .eq('user_id', trainer.id);
+
+        return {
+          ...trainer,
+          starter: trainer.starter_pokemon_id
+            ? getPokemonById(trainer.starter_pokemon_id)
+            : null,
+          stats: userStats
+            ? {
+                battles_won: userStats.battles_won ?? 0,
+                battles_lost: userStats.battles_lost ?? 0,
+                pokemon_captured: userStats.pokemon_captured ?? 0,
+                pokemon_count: pokemonCount ?? 0,
+              }
+            : null,
+        };
+      })
+    );
+
+    return NextResponse.json(trainersWithStats, { status: 200 });
   } catch (err) {
     console.error('Unexpected error:', err);
     const error: ApiError = {

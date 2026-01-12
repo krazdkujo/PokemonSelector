@@ -1,21 +1,87 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { PokemonCollection } from '@/components/PokemonCollection';
 import { MoveSelector } from '@/components/MoveSelector';
+import { EvolutionModal } from '@/components/EvolutionModal';
 import { getTrainerId } from '@/lib/session';
-import type { PokemonOwnedWithDetails } from '@/lib/types';
+import { getPokemonSpriteUrl } from '@/lib/evolution';
+import type { PokemonOwnedWithDetails, EvolutionInfo } from '@/lib/types';
+
+type SortOption = 'level' | 'sr' | 'name' | 'captured_at' | 'type';
+type SortDirection = 'asc' | 'desc';
+
+type PokemonWithEvolution = PokemonOwnedWithDetails & { evolution_info?: EvolutionInfo };
 
 export default function PokecenterPage() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
-  const [pokemon, setPokemon] = useState<PokemonOwnedWithDetails[]>([]);
+  const [pokemon, setPokemon] = useState<PokemonWithEvolution[]>([]);
   const [activePokemonId, setActivePokemonId] = useState<string | null>(null);
   const [isSwapping, setIsSwapping] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+
+  // Evolution modal state
+  const [showEvolutionModal, setShowEvolutionModal] = useState(false);
+  const [isEvolving, setIsEvolving] = useState(false);
+  const [evolvingPokemonId, setEvolvingPokemonId] = useState<string | null>(null);
+  const [evolutionTarget, setEvolutionTarget] = useState<{ from: PokemonWithEvolution; to: EvolutionInfo } | null>(null);
+
+  // Sorting and filtering state
+  const [sortBy, setSortBy] = useState<SortOption>('captured_at');
+  const [sortDir, setSortDir] = useState<SortDirection>('desc');
+  const [typeFilter, setTypeFilter] = useState<string>('all');
+  const [levelMin, setLevelMin] = useState<number>(1);
+  const [levelMax, setLevelMax] = useState<number>(10);
+
+  // Extract all unique types from Pokemon collection
+  const allTypes = useMemo(() => {
+    return Array.from(new Set(pokemon.flatMap(p => p.types))).sort();
+  }, [pokemon]);
+
+  // Apply filtering and sorting
+  const displayedPokemon = useMemo(() => {
+    // Filter
+    const filtered = pokemon.filter(p => {
+      if (typeFilter !== 'all' && !p.types.includes(typeFilter)) return false;
+      if (p.level < levelMin || p.level > levelMax) return false;
+      return true;
+    });
+
+    // Sort
+    return [...filtered].sort((a, b) => {
+      let comparison = 0;
+      switch (sortBy) {
+        case 'level':
+          comparison = a.level - b.level;
+          break;
+        case 'sr':
+          comparison = a.sr - b.sr;
+          break;
+        case 'name':
+          comparison = a.name.localeCompare(b.name);
+          break;
+        case 'captured_at':
+          comparison = new Date(a.captured_at).getTime() - new Date(b.captured_at).getTime();
+          break;
+        case 'type':
+          comparison = a.types[0].localeCompare(b.types[0]);
+          break;
+      }
+      return sortDir === 'asc' ? comparison : -comparison;
+    });
+  }, [pokemon, sortBy, sortDir, typeFilter, levelMin, levelMax]);
+
+  const clearFilters = () => {
+    setTypeFilter('all');
+    setLevelMin(1);
+    setLevelMax(10);
+  };
+
+  const hasActiveFilters = typeFilter !== 'all' || levelMin !== 1 || levelMax !== 10;
 
   async function loadPokemon() {
     try {
@@ -90,6 +156,59 @@ export default function PokecenterPage() {
     }
   }
 
+  // Handle evolution button click - show modal
+  function handleEvolveClick(pokemonId: string, evolutionInfo: EvolutionInfo) {
+    const targetPokemon = pokemon.find(p => p.id === pokemonId);
+    if (!targetPokemon || !evolutionInfo.nextEvolutionId || !evolutionInfo.nextEvolutionName) return;
+
+    setEvolvingPokemonId(pokemonId);
+    setEvolutionTarget({ from: targetPokemon, to: evolutionInfo });
+    setShowEvolutionModal(true);
+  }
+
+  // Handle confirm evolution
+  async function handleEvolve() {
+    if (!evolvingPokemonId) return;
+
+    try {
+      setIsEvolving(true);
+      setError(null);
+
+      const response = await fetch('/api/pokecenter/evolve', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pokemon_id: evolvingPokemonId }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.message || 'Failed to evolve Pokemon');
+        return;
+      }
+
+      // Refresh the Pokemon list to show evolved form
+      await loadPokemon();
+
+      setSuccessMessage(`${data.evolved_from.name} evolved into ${data.evolved_to.name}!`);
+      setTimeout(() => setSuccessMessage(null), 5000);
+    } catch {
+      setError('An unexpected error occurred during evolution');
+    } finally {
+      setIsEvolving(false);
+      setShowEvolutionModal(false);
+      setEvolvingPokemonId(null);
+      setEvolutionTarget(null);
+    }
+  }
+
+  // Handle cancel evolution
+  function handleEvolveLater() {
+    setShowEvolutionModal(false);
+    setEvolvingPokemonId(null);
+    setEvolutionTarget(null);
+  }
+
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -126,15 +245,88 @@ export default function PokecenterPage() {
           </div>
         )}
 
+        {/* Sort and Filter Controls */}
+        <div className="bg-white rounded-lg shadow p-4 mb-6">
+          {/* Sort Controls */}
+          <div className="flex flex-wrap items-center gap-4 mb-4">
+            <label className="text-sm font-medium text-gray-700">Sort by:</label>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as SortOption)}
+              className="rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm"
+            >
+              <option value="captured_at">Captured Date</option>
+              <option value="level">Level</option>
+              <option value="sr">Rarity (SR)</option>
+              <option value="name">Name</option>
+              <option value="type">Type</option>
+            </select>
+            <button
+              onClick={() => setSortDir(sortDir === 'asc' ? 'desc' : 'asc')}
+              className="px-3 py-1.5 text-sm bg-gray-100 hover:bg-gray-200 rounded-md transition-colors"
+            >
+              {sortDir === 'asc' ? 'Ascending' : 'Descending'}
+            </button>
+          </div>
+
+          {/* Filter Controls */}
+          <div className="flex flex-wrap items-center gap-4">
+            <label className="text-sm font-medium text-gray-700">Filter:</label>
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-gray-600">Type</span>
+              <select
+                value={typeFilter}
+                onChange={(e) => setTypeFilter(e.target.value)}
+                className="rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm"
+              >
+                <option value="all">All Types</option>
+                {allTypes.map(type => (
+                  <option key={type} value={type}>{type}</option>
+                ))}
+              </select>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-gray-600">Level</span>
+              <input
+                type="number"
+                min={1}
+                max={10}
+                value={levelMin}
+                onChange={(e) => setLevelMin(Math.max(1, Math.min(10, parseInt(e.target.value) || 1)))}
+                className="w-16 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm"
+              />
+              <span className="text-sm text-gray-600">to</span>
+              <input
+                type="number"
+                min={1}
+                max={10}
+                value={levelMax}
+                onChange={(e) => setLevelMax(Math.max(1, Math.min(10, parseInt(e.target.value) || 10)))}
+                className="w-16 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm"
+              />
+            </div>
+            {hasActiveFilters && (
+              <button
+                onClick={clearFilters}
+                className="px-3 py-1.5 text-sm text-red-600 hover:text-red-800 hover:bg-red-50 rounded-md transition-colors"
+              >
+                Clear Filters
+              </button>
+            )}
+          </div>
+        </div>
+
         <div className="mb-4 text-gray-600">
-          Total Pokemon: {pokemon.length}
+          Showing {displayedPokemon.length} of {pokemon.length} Pokemon
         </div>
 
         <PokemonCollection
-          pokemon={pokemon}
+          pokemon={displayedPokemon}
           activePokemonId={activePokemonId}
           onSetActive={handleSetActive}
+          onEvolve={handleEvolveClick}
           isSwapping={isSwapping}
+          isEvolving={isEvolving}
         />
 
         {activePokemonId && (
@@ -151,8 +343,29 @@ export default function PokecenterPage() {
               <li>You cannot swap Pokemon during an active battle</li>
               <li>Each Pokemon can have up to 4 moves selected</li>
               <li>Visit the Move Selector to configure your Pokemon&apos;s moveset</li>
+              <li>Pokemon with a purple &quot;Evolve&quot; button can evolve to a stronger form</li>
             </ul>
           </div>
+        )}
+
+        {/* Evolution Modal */}
+        {evolutionTarget && (
+          <EvolutionModal
+            isOpen={showEvolutionModal}
+            isLoading={isEvolving}
+            fromPokemon={{
+              id: evolutionTarget.from.pokemon_id,
+              name: evolutionTarget.from.name,
+              sprite_url: evolutionTarget.from.sprite_url,
+            }}
+            toPokemon={{
+              id: evolutionTarget.to.nextEvolutionId!,
+              name: evolutionTarget.to.nextEvolutionName!,
+              sprite_url: getPokemonSpriteUrl(evolutionTarget.to.nextEvolutionId!),
+            }}
+            onEvolve={handleEvolve}
+            onLater={handleEvolveLater}
+          />
         )}
       </div>
     </div>

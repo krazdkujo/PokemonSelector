@@ -7,7 +7,8 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import { getStarterPokemon, getPokemonById } from '@/lib/pokemon';
+import { getStarterPokemon } from '@/lib/pokemon';
+import { getPokemonById } from '@/lib/battle';
 import type { ApiError } from '@/lib/types';
 
 /**
@@ -24,7 +25,7 @@ export async function GET() {
         name: p.name,
         types: p.types,
         sr: p.sr,
-        sprite_url: p.media?.sprite || null,
+        sprite_url: p.sprites?.sprite || null,
       })),
     });
   } catch (err) {
@@ -147,7 +148,7 @@ export async function POST(request: NextRequest) {
         id: newPokemon.id,
         pokemon_id: newPokemon.pokemon_id,
         name: pokemonData?.name || 'Unknown',
-        types: pokemonData?.types || [],
+        types: pokemonData?.type || [],
         level: newPokemon.level,
         sr: pokemonData?.sr || 0,
         is_starter: newPokemon.is_starter,

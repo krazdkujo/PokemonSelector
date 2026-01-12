@@ -1,0 +1,273 @@
+openapi: 3.0.3
+info:
+  title: Pokemon Starter Selector Admin API
+  description: |
+    Administrative API endpoints for the Pokemon Starter Selector platform.
+    These endpoints are only accessible to users with the admin role.
+
+    ## Authentication
+
+    Admin endpoints require both:
+    1. A valid API key in the `X-API-Key` header
+    2. The authenticated user must have the `admin` role
+
+    ## Role Management
+
+    Admin roles can be assigned in two ways:
+    1. Direct database modification (initial admin setup)
+    2. By an existing admin using the role assignment endpoint
+  version: 1.0.0
+
+servers:
+  - url: https://your-app.vercel.app
+    description: Production server
+
+security:
+  - ApiKeyAuth: []
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+
+  schemas:
+    Error:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          example: FORBIDDEN
+        message:
+          type: string
+          example: Only admins can perform this action
+
+    TrainerStatsSummary:
+      type: object
+      properties:
+        battles_won:
+          type: integer
+          example: 15
+        battles_lost:
+          type: integer
+          example: 5
+        pokemon_captured:
+          type: integer
+          example: 8
+        pokemon_count:
+          type: integer
+          example: 12
+
+    StarterPokemon:
+      type: object
+      properties:
+        number:
+          type: integer
+          example: 6
+        name:
+          type: string
+          example: Charizard
+        types:
+          type: array
+          items:
+            type: string
+          example: ["Fire", "Flying"]
+        sprites:
+          type: object
+          properties:
+            main:
+              type: string
+            sprite:
+              type: string
+
+    TrainerWithStats:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          example: Ash
+        role:
+          type: string
+          enum: [trainer, admin]
+        starter_pokemon_id:
+          type: integer
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        starter:
+          $ref: '#/components/schemas/StarterPokemon'
+          nullable: true
+        stats:
+          $ref: '#/components/schemas/TrainerStatsSummary'
+          nullable: true
+
+    RoleUpdateRequest:
+      type: object
+      required:
+        - role
+      properties:
+        role:
+          type: string
+          enum: [trainer, admin]
+          description: The new role to assign
+
+    RoleUpdateResponse:
+      type: object
+      properties:
+        trainer_id:
+          type: string
+          format: uuid
+        previous_role:
+          type: string
+          enum: [trainer, admin]
+        new_role:
+          type: string
+          enum: [trainer, admin]
+        updated_at:
+          type: string
+          format: date-time
+
+paths:
+  /api/trainers:
+    get:
+      summary: List All Trainers with Statistics
+      description: |
+        Returns a list of all registered trainers with their statistics.
+        Only accessible to admin users.
+      tags: [Admin]
+      parameters:
+        - name: requester_id
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: ID of the requesting admin (for authorization)
+      responses:
+        '200':
+          description: List of trainers with statistics
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TrainerWithStats'
+              example:
+                - id: "550e8400-e29b-41d4-a716-446655440000"
+                  name: "Ash"
+                  role: "admin"
+                  starter_pokemon_id: 25
+                  created_at: "2026-01-01T00:00:00Z"
+                  updated_at: "2026-01-10T12:00:00Z"
+                  starter:
+                    number: 25
+                    name: "Pikachu"
+                    types: ["Electric"]
+                    sprites:
+                      sprite: "/sprites/pikachu.png"
+                  stats:
+                    battles_won: 42
+                    battles_lost: 8
+                    pokemon_captured: 23
+                    pokemon_count: 45
+        '401':
+          description: Invalid requester ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Requester is not an admin
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/trainers/{trainerId}/role:
+    patch:
+      summary: Update Trainer Role
+      description: |
+        Assigns a new role to a trainer. Only accessible to admin users.
+
+        **Important constraints:**
+        - Cannot demote the last remaining admin
+        - Role must be either 'trainer' or 'admin'
+      tags: [Admin]
+      parameters:
+        - name: trainerId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: ID of the trainer to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleUpdateRequest'
+            example:
+              role: "admin"
+      responses:
+        '200':
+          description: Role updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoleUpdateResponse'
+              example:
+                trainer_id: "550e8400-e29b-41d4-a716-446655440001"
+                previous_role: "trainer"
+                new_role: "admin"
+                updated_at: "2026-01-11T14:30:00Z"
+        '400':
+          description: Invalid role value or cannot remove last admin
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                invalid_role:
+                  summary: Invalid role value
+                  value:
+                    error: "VALIDATION_ERROR"
+                    message: "Role must be 'trainer' or 'admin'"
+                last_admin:
+                  summary: Cannot remove last admin
+                  value:
+                    error: "CANNOT_REMOVE_LAST_ADMIN"
+                    message: "Cannot demote the last admin. Assign another admin first."
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Requester is not an admin
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Trainer not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+tags:
+  - name: Admin
+    description: Administrative operations (admin role required)

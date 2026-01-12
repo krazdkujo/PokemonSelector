@@ -9,7 +9,9 @@ import { createClient } from '@/lib/supabase/server';
 import { attemptCapture, calculateCaptureDC } from '@/lib/capture';
 import { getPokemonById } from '@/lib/battle';
 import { getDefaultMoves } from '@/lib/moves';
-import type { ApiError, CaptureResult, PokemonOwnedWithDetails } from '@/lib/types';
+import { applyExperience } from '@/lib/experience';
+import { checkEvolutionEligibility, getPokemonSpriteUrl } from '@/lib/evolution';
+import type { ApiError, CaptureResult, PokemonOwnedWithDetails, ExperienceGainedWithEvolution } from '@/lib/types';
 
 /**
  * POST /api/capture
@@ -51,6 +53,22 @@ export async function POST(request: NextRequest) {
       const error: ApiError = {
         error: 'NOT_ENOUGH_WINS',
         message: 'You need at least 1 round win to attempt capture',
+      };
+      return NextResponse.json(error, { status: 400 });
+    }
+
+    // Check if player already owns this Pokemon species
+    const { data: existingOwned } = await supabase
+      .from('pokemon_owned')
+      .select('id')
+      .eq('user_id', trainerId)
+      .eq('pokemon_id', battle.wild_pokemon.pokemon_id)
+      .limit(1);
+
+    if (existingOwned && existingOwned.length > 0) {
+      const error: ApiError = {
+        error: 'ALREADY_OWNED',
+        message: 'You already have this Pokemon species in your collection',
       };
       return NextResponse.json(error, { status: 400 });
     }
@@ -130,14 +148,6 @@ export async function POST(request: NextRequest) {
         return NextResponse.json(error, { status: 500 });
       }
 
-      // Update user stats
-      await supabase
-        .from('user_stats')
-        .update({
-          pokemon_captured: supabase.rpc ? undefined : 0, // Will be incremented below
-        })
-        .eq('user_id', trainerId);
-
       // Increment pokemon_captured
       const { data: stats } = await supabase
         .from('user_stats')
@@ -150,6 +160,96 @@ export async function POST(request: NextRequest) {
           .from('user_stats')
           .update({ pokemon_captured: (stats.pokemon_captured || 0) + 1 })
           .eq('user_id', trainerId);
+      }
+
+      // Grant 1 XP for successful capture
+      const xpAwarded = 1;
+      const previousLevel = playerPokemon.level;
+      const previousExperience = playerPokemon.experience || 0;
+      const levelUpResult = applyExperience(playerPokemon, xpAwarded);
+
+      // Check if Pokemon is now eligible for evolution
+      const evolutionInfo = checkEvolutionEligibility(playerPokemon.pokemon_id, levelUpResult.newLevel);
+      const canEvolveNow = evolutionInfo.canEvolve && evolutionInfo.nextEvolutionId !== null;
+
+      // Update Pokemon in database (including can_evolve flag)
+      const coreUpdateFields = {
+        experience: levelUpResult.newExperience,
+        level: levelUpResult.newLevel,
+      };
+
+      // Build update with optional can_evolve field
+      const updateFields: Record<string, unknown> = { ...coreUpdateFields };
+      const setCanEvolve = canEvolveNow && levelUpResult.levelsGained > 0;
+      if (setCanEvolve) {
+        updateFields.can_evolve = true;
+      }
+
+      console.log('Updating Pokemon experience on capture:', {
+        pokemonId: playerPokemon.id,
+        updateFields,
+        previousLevel,
+        previousExperience,
+      });
+
+      let { data: updatedPlayerPokemon, error: xpUpdateError } = await supabase
+        .from('pokemon_owned')
+        .update(updateFields)
+        .eq('id', playerPokemon.id)
+        .select()
+        .single();
+
+      // If update failed and we tried to set can_evolve, retry without it
+      if (xpUpdateError && setCanEvolve) {
+        console.warn('Update with can_evolve failed, retrying without:', xpUpdateError.message);
+        const retryResult = await supabase
+          .from('pokemon_owned')
+          .update(coreUpdateFields)
+          .eq('id', playerPokemon.id)
+          .select()
+          .single();
+        updatedPlayerPokemon = retryResult.data;
+        xpUpdateError = retryResult.error;
+      }
+
+      let experienceGained: ExperienceGainedWithEvolution | null = null;
+
+      if (xpUpdateError) {
+        console.error('Failed to update Pokemon experience on capture:', xpUpdateError);
+      } else if (!updatedPlayerPokemon) {
+        console.error('Capture update returned no data');
+      } else {
+        console.log('Pokemon updated successfully on capture:', {
+          id: updatedPlayerPokemon.id,
+          newLevel: updatedPlayerPokemon.level,
+          newExperience: updatedPlayerPokemon.experience,
+        });
+
+        experienceGained = {
+          xp_awarded: xpAwarded,
+          previous_level: previousLevel,
+          new_level: updatedPlayerPokemon.level,
+          previous_experience: previousExperience,
+          new_experience: updatedPlayerPokemon.experience,
+          levels_gained: updatedPlayerPokemon.level - previousLevel,
+          evolution_available: canEvolveNow,
+        };
+      }
+
+      // Add evolution details if available
+      if (experienceGained && canEvolveNow && evolutionInfo.nextEvolutionId && evolutionInfo.nextEvolutionName) {
+        experienceGained.evolution_details = {
+          from_name: playerPokemonData?.name || 'Unknown',
+          from_id: playerPokemon.pokemon_id,
+          to_name: evolutionInfo.nextEvolutionName,
+          to_id: evolutionInfo.nextEvolutionId,
+          from_sprite: getPokemonSpriteUrl(playerPokemon.pokemon_id),
+          to_sprite: getPokemonSpriteUrl(evolutionInfo.nextEvolutionId),
+        };
+      }
+
+      if (experienceGained) {
+        console.log('Capture XP granted:', experienceGained);
       }
 
       // Update battle
@@ -183,6 +283,7 @@ export async function POST(request: NextRequest) {
         } as CaptureResult,
         battle: updatedBattle,
         captured_pokemon: capturedPokemonWithDetails,
+        experience_gained: experienceGained,
       });
     } else if (result.fled) {
       // Pokemon fled!
@@ -327,11 +428,23 @@ export async function GET(request: NextRequest) {
       captureAttempts: battle.capture_attempts,
     });
 
+    // Check if player already owns this Pokemon species
+    const { data: existingOwned } = await supabase
+      .from('pokemon_owned')
+      .select('id')
+      .eq('user_id', trainerId)
+      .eq('pokemon_id', battle.wild_pokemon.pokemon_id)
+      .limit(1);
+
+    const alreadyOwned = existingOwned && existingOwned.length > 0;
+
     return NextResponse.json({
       dc,
-      can_capture: battle.player_wins >= 1,
+      can_capture: battle.player_wins >= 1 && !alreadyOwned,
       player_wins: battle.player_wins,
       wild_pokemon: battle.wild_pokemon.name,
+      already_owned: alreadyOwned,
+      ownership_message: alreadyOwned ? 'Already caught - can only knock out' : null,
     });
   } catch (err) {
     console.error('Unexpected error:', err);

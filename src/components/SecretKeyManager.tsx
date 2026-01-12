@@ -162,6 +162,79 @@ export function SecretKeyManager({ trainerId }: SecretKeyManagerProps) {
           Use this key with the X-API-Key header to authenticate API requests.
         </p>
       </div>
+
+      {/* API Quick Reference */}
+      <div className="mt-4 pt-3 border-t border-gray-200">
+        <h4 className="font-medium text-gray-800 mb-3">API Quick Reference</h4>
+
+        <div className="space-y-2 text-sm">
+          <div className="bg-white rounded p-2 border">
+            <div className="font-mono text-xs text-green-600">GET /api/external/trainer</div>
+            <div className="text-gray-600 text-xs">Get your trainer profile and stats</div>
+          </div>
+
+          <div className="bg-white rounded p-2 border">
+            <div className="font-mono text-xs text-green-600">GET /api/dashboard</div>
+            <div className="text-gray-600 text-xs">Get dashboard data with active Pokemon</div>
+          </div>
+
+          <div className="bg-white rounded p-2 border">
+            <div className="font-mono text-xs text-green-600">GET /api/pokecenter</div>
+            <div className="text-gray-600 text-xs">List all your Pokemon</div>
+          </div>
+
+          <div className="bg-white rounded p-2 border">
+            <div className="font-mono text-xs text-green-600">GET /api/pokedex</div>
+            <div className="text-gray-600 text-xs">Browse all available Pokemon</div>
+          </div>
+
+          <div className="bg-white rounded p-2 border">
+            <div className="font-mono text-xs text-blue-600">GET /api/zones</div>
+            <div className="text-gray-600 text-xs">List combat zones (public)</div>
+          </div>
+
+          <div className="bg-white rounded p-2 border">
+            <div className="font-mono text-xs text-green-600">POST /api/battle</div>
+            <div className="text-gray-600 text-xs">Start a new battle in a zone</div>
+          </div>
+
+          <div className="bg-white rounded p-2 border">
+            <div className="font-mono text-xs text-green-600">POST /api/capture</div>
+            <div className="text-gray-600 text-xs">Attempt to capture a wild Pokemon</div>
+          </div>
+        </div>
+
+        {/* Example cURL */}
+        <div className="mt-4">
+          <h5 className="font-medium text-gray-700 text-xs mb-2">Example Request</h5>
+          <div className="bg-gray-800 rounded p-2 overflow-x-auto">
+            <code className="text-xs text-green-400 whitespace-pre">
+{`curl -H "X-API-Key: YOUR_KEY" \\
+  https://your-domain/api/external/trainer`}
+            </code>
+          </div>
+        </div>
+
+        {/* Link to full docs */}
+        <div className="mt-3 flex gap-4">
+          <a
+            href="/docs/API.md"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+          >
+            Full API Docs
+          </a>
+          <a
+            href="/docs/openapi.yaml"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+          >
+            OpenAPI Spec
+          </a>
+        </div>
+      </div>
     </div>
   );
 }

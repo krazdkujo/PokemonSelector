@@ -7,7 +7,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { getPokemonById } from '@/lib/battle';
-import type { ApiError, PokemonOwnedWithDetails } from '@/lib/types';
+import { getExperienceToNext } from '@/lib/experience';
+import { checkEvolutionEligibility } from '@/lib/evolution';
+import type { ApiError, PokemonOwnedWithDetails, EvolutionInfo } from '@/lib/types';
 
 /**
  * GET /api/pokecenter
@@ -33,7 +35,7 @@ export async function GET(request: NextRequest) {
       .from('pokemon_owned')
       .select('*')
       .eq('user_id', trainerId)
-      .order('captured_at', { ascending: true });
+      .order('captured_at', { ascending: false });
 
     if (dbError) {
       console.error('Database error:', dbError);
@@ -44,15 +46,18 @@ export async function GET(request: NextRequest) {
       return NextResponse.json(error, { status: 500 });
     }
 
-    // Enrich with Pokemon data
-    const pokemonWithDetails: PokemonOwnedWithDetails[] = (ownedPokemon || []).map(pokemon => {
+    // Enrich with Pokemon data and evolution info
+    const pokemonWithDetails: (PokemonOwnedWithDetails & { evolution_info: EvolutionInfo })[] = (ownedPokemon || []).map(pokemon => {
       const data = getPokemonById(pokemon.pokemon_id);
+      const evolutionInfo = checkEvolutionEligibility(pokemon.pokemon_id, pokemon.level);
       return {
         ...pokemon,
         name: data?.name || 'Unknown',
         types: data?.type || [],
         sr: data?.sr || 0,
         sprite_url: data?.media.sprite || '',
+        experience_to_next: getExperienceToNext(pokemon),
+        evolution_info: evolutionInfo,
       };
     });
 

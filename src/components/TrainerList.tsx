@@ -1,13 +1,15 @@
 'use client';
 
 import Image from 'next/image';
-import type { TrainerWithStarter } from '@/lib/types';
+import type { TrainerWithStats } from '@/lib/types';
 
 interface TrainerListProps {
-  trainers: TrainerWithStarter[];
+  trainers: TrainerWithStats[];
+  currentUserId?: string;
+  onRoleChange?: (trainerId: string, newRole: 'trainer' | 'admin') => void;
 }
 
-export function TrainerList({ trainers }: TrainerListProps) {
+export function TrainerList({ trainers, currentUserId, onRoleChange }: TrainerListProps) {
   if (trainers.length === 0) {
     return (
       <div className="text-center py-12">
@@ -29,6 +31,15 @@ export function TrainerList({ trainers }: TrainerListProps) {
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Starter Pokemon
+            </th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Battles
+            </th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Captured
+            </th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Collection
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Role
@@ -77,16 +88,55 @@ export function TrainerList({ trainers }: TrainerListProps) {
                   <span className="text-gray-400 italic">Not selected</span>
                 )}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap">
-                <span
-                  className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                    trainer.role === 'admin'
-                      ? 'bg-purple-100 text-purple-800'
-                      : 'bg-green-100 text-green-800'
-                  }`}
-                >
-                  {trainer.role}
+              <td className="px-6 py-4 whitespace-nowrap text-sm">
+                <span className="text-green-600 font-medium">
+                  {trainer.stats?.battles_won ?? 0}W
                 </span>
+                <span className="text-gray-400 mx-1">/</span>
+                <span className="text-red-600 font-medium">
+                  {trainer.stats?.battles_lost ?? 0}L
+                </span>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                {trainer.stats?.pokemon_captured ?? 0}
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                {trainer.stats?.pokemon_count ?? 0}
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <div className="flex items-center gap-2">
+                  <span
+                    className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
+                      trainer.role === 'admin'
+                        ? 'bg-purple-100 text-purple-800'
+                        : 'bg-green-100 text-green-800'
+                    }`}
+                  >
+                    {trainer.role}
+                  </span>
+                  {onRoleChange && trainer.id !== currentUserId && (
+                    <button
+                      onClick={() =>
+                        onRoleChange(
+                          trainer.id,
+                          trainer.role === 'admin' ? 'trainer' : 'admin'
+                        )
+                      }
+                      className={`text-xs px-2 py-1 rounded transition-colors ${
+                        trainer.role === 'admin'
+                          ? 'bg-yellow-100 text-yellow-800 hover:bg-yellow-200'
+                          : 'bg-purple-100 text-purple-800 hover:bg-purple-200'
+                      }`}
+                      title={
+                        trainer.role === 'admin'
+                          ? 'Demote to trainer'
+                          : 'Promote to admin'
+                      }
+                    >
+                      {trainer.role === 'admin' ? 'Demote' : 'Promote'}
+                    </button>
+                  )}
+                </div>
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 {new Date(trainer.created_at).toLocaleDateString()}

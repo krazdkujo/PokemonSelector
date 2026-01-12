@@ -73,10 +73,12 @@ export interface PokemonOwned {
   user_id: string;
   pokemon_id: number;
   level: number;
+  experience: number;
   selected_moves: string[];
   is_active: boolean;
   is_starter: boolean;
   captured_at: string;
+  can_evolve: boolean;
 }
 
 // Wild Pokemon encountered in battle
@@ -184,6 +186,24 @@ export interface PokemonOwnedWithDetails extends PokemonOwned {
   types: string[];
   sr: number;
   sprite_url: string;
+  experience_to_next: number;
+}
+
+// Experience information for display
+export interface ExperienceInfo {
+  current: number;
+  required: number;
+  isMaxLevel: boolean;
+}
+
+// Experience gained result from battle API
+export interface ExperienceGained {
+  xp_awarded: number;
+  previous_level: number;
+  new_level: number;
+  previous_experience: number;
+  new_experience: number;
+  levels_gained: number;
 }
 
 // Move data from moves-cleaned.json
@@ -257,6 +277,7 @@ export interface ZoneDifficultyPreview {
   description: string;
   example_pokemon: string[];
   pokemon_count: number;
+  all_pokemon?: string[];
 }
 
 export interface ZonePreviewResponse {
@@ -265,5 +286,124 @@ export interface ZonePreviewResponse {
     easy: ZoneDifficultyPreview;
     medium: ZoneDifficultyPreview;
     hard: ZoneDifficultyPreview;
+  };
+}
+
+// ============================================
+// Combat Refinement Types (008-combat-refinement)
+// ============================================
+
+// Post-battle summary for XP and level-up display
+export interface PostBattleSummary {
+  outcome: 'victory' | 'defeat' | 'capture' | 'fled';
+  wild_pokemon: {
+    name: string;
+    level: number;
+    sprite_url: string;
+  };
+  experience: ExperienceGained;
+  score: {
+    player_wins: number;
+    wild_wins: number;
+  };
+}
+
+// Capture eligibility check response
+export interface CaptureEligibility {
+  dc: number;
+  can_capture: boolean;
+  player_wins: number;
+  wild_pokemon: string;
+  already_owned: boolean;
+  ownership_message: string | null;
+}
+
+// Move preview with DC calculation
+export interface MovePreview {
+  move_id: string;
+  move_name: string;
+  move_type: string;
+  dc: number;
+  win_chance: number;
+  factors: {
+    base: number;
+    level_bonus: number;
+    sr_bonus: number;
+    type_bonus: number;
+    stab_bonus: number;
+  };
+  effectiveness: TypeEffectiveness;
+  has_stab: boolean;
+}
+
+// ============================================
+// Admin Dashboard Types (009-admin-dashboard-api)
+// ============================================
+
+// Statistics summary for admin dashboard display
+export interface TrainerStatsSummary {
+  battles_won: number;
+  battles_lost: number;
+  pokemon_captured: number;
+  pokemon_count: number;
+}
+
+// Extended trainer type with statistics for admin dashboard
+export interface TrainerWithStats extends Trainer {
+  starter: Pokemon | null;
+  stats: TrainerStatsSummary | null;
+}
+
+// Request body for role assignment endpoint
+export interface RoleUpdateRequest {
+  role: 'trainer' | 'admin';
+}
+
+// Response from role assignment endpoint
+export interface RoleUpdateResponse {
+  trainer_id: string;
+  previous_role: 'trainer' | 'admin';
+  new_role: 'trainer' | 'admin';
+  updated_at: string;
+}
+
+// ============================================
+// Evolution System Types (012-pokemon-evolution)
+// ============================================
+
+// Evolution eligibility info
+export interface EvolutionInfo {
+  canEvolve: boolean;
+  currentStage: number;
+  totalStages: number;
+  evolvesAtLevel: number | null;
+  nextEvolutionId: number | null;
+  nextEvolutionName: string | null;
+}
+
+// Evolution result from API
+export interface EvolutionResult {
+  success: boolean;
+  pokemon: PokemonOwnedWithDetails;
+  evolved_from: {
+    pokemon_id: number;
+    name: string;
+  };
+  evolved_to: {
+    pokemon_id: number;
+    name: string;
+  };
+}
+
+// Extended experience gained with evolution flag
+export interface ExperienceGainedWithEvolution extends ExperienceGained {
+  evolution_available: boolean;
+  evolution_details?: {
+    from_name: string;
+    from_id: number;
+    to_name: string;
+    to_id: number;
+    from_sprite: string;
+    to_sprite: string;
   };
 }

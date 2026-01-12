@@ -60,11 +60,21 @@ export async function GET(request: NextRequest) {
       .eq('id', battle.player_pokemon_id)
       .single();
 
-    let enrichedBattle = battle;
+    // Check if player already owns the wild Pokemon species
+    const { data: existingOwned } = await supabase
+      .from('pokemon_owned')
+      .select('id')
+      .eq('user_id', trainerId)
+      .eq('pokemon_id', battle.wild_pokemon.pokemon_id)
+      .limit(1);
+
+    const wildPokemonOwned = existingOwned && existingOwned.length > 0;
+
+    let enrichedBattle = { ...battle, wild_pokemon_owned: wildPokemonOwned };
     if (playerPokemon) {
       const pokemonData = getPokemonById(playerPokemon.pokemon_id);
       enrichedBattle = {
-        ...battle,
+        ...enrichedBattle,
         player_pokemon: {
           ...playerPokemon,
           name: pokemonData?.name,
@@ -227,9 +237,20 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(error, { status: 500 });
     }
 
+    // Check if player already owns the wild Pokemon species
+    const { data: existingOwned } = await supabase
+      .from('pokemon_owned')
+      .select('id')
+      .eq('user_id', trainerId)
+      .eq('pokemon_id', wildPokemon.pokemon_id)
+      .limit(1);
+
+    const wildPokemonOwned = existingOwned && existingOwned.length > 0;
+
     // Enrich with player Pokemon data
     const enrichedBattle = {
       ...battle,
+      wild_pokemon_owned: wildPokemonOwned,
       player_pokemon: {
         ...activePokemon,
         name: playerPokemonData?.name,
