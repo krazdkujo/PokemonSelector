@@ -5,11 +5,14 @@
 -- Enable UUID extension
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
--- Drop existing table if it exists (for clean setup)
-DROP TABLE IF EXISTS trainers CASCADE;
+-- ============================================================
+-- WARNING: DO NOT ADD DROP TABLE STATEMENTS TO MIGRATIONS
+-- This migration should only create tables if they don't exist
+-- Use ALTER TABLE for schema changes, never DROP + CREATE
+-- ============================================================
 
--- Trainers table
-CREATE TABLE trainers (
+-- Trainers table (only create if not exists - NEVER drop existing data)
+CREATE TABLE IF NOT EXISTS trainers (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   name VARCHAR(20) NOT NULL CHECK (char_length(trim(name)) >= 1),
   role VARCHAR(10) NOT NULL DEFAULT 'trainer' CHECK (role IN ('trainer', 'admin')),
@@ -18,8 +21,8 @@ CREATE TABLE trainers (
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- Index for admin queries
-CREATE INDEX idx_trainers_role ON trainers(role);
+-- Index for admin queries (only if not exists)
+CREATE INDEX IF NOT EXISTS idx_trainers_role ON trainers(role);
 
 -- Updated_at trigger function
 CREATE OR REPLACE FUNCTION update_updated_at()

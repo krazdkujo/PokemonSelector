@@ -5,15 +5,22 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getTrainerId, clearTrainerId } from '@/lib/session';
+import { usePinGuard } from '@/lib/usePinGuard';
 import type { Dashboard } from '@/lib/types';
 
 export default function DashboardPage() {
   const router = useRouter();
+  const { isChecking: isPinChecking, isAuthorized: isPinAuthorized } = usePinGuard();
   const [isLoading, setIsLoading] = useState(true);
   const [dashboard, setDashboard] = useState<Dashboard | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // Wait for PIN check to complete before loading dashboard
+    if (isPinChecking || !isPinAuthorized) {
+      return;
+    }
+
     const loadDashboardData = async () => {
       const trainerId = getTrainerId();
 
@@ -62,14 +69,15 @@ export default function DashboardPage() {
     };
 
     loadDashboardData();
-  }, [router]);
+  }, [router, isPinChecking, isPinAuthorized]);
 
   const handleLogout = () => {
     clearTrainerId();
     router.push('/');
   };
 
-  if (isLoading) {
+  // Show loading while PIN check is in progress
+  if (isPinChecking || isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
@@ -78,6 +86,11 @@ export default function DashboardPage() {
         </div>
       </div>
     );
+  }
+
+  // Don't render content until PIN is authorized
+  if (!isPinAuthorized) {
+    return null;
   }
 
   if (error) {

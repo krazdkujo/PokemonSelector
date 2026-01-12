@@ -135,3 +135,25 @@ Every task MUST strictly follow this format:
   - Within each story: Tests (if requested) → Models → Services → Endpoints → Integration
   - Each phase should be a complete, independently testable increment
 - **Final Phase**: Polish & Cross-Cutting Concerns
+
+### Database Migration Safety Rules
+
+**CRITICAL**: When generating tasks that involve database migrations:
+
+1. **NEVER generate migrations with destructive operations** unless explicitly required:
+   - `DROP TABLE` - Avoid; use `ALTER TABLE` instead
+   - `DROP DATABASE` - NEVER include
+   - `TRUNCATE` - NEVER include unless explicitly requested
+   - `DELETE FROM` without WHERE - NEVER include
+   - `CASCADE` - Flag as dangerous, require explicit user story justification
+
+2. **Migration task naming**: Always include `[MIGRATION]` label for database migration tasks
+   - Example: `- [ ] T003 [MIGRATION] Add PIN columns to trainers table in sql/011_add_pin.sql`
+
+3. **Prefer non-destructive operations**:
+   - Use `ADD COLUMN IF NOT EXISTS` instead of recreating tables
+   - Use `ALTER TABLE` instead of `DROP TABLE` + `CREATE TABLE`
+   - Use `CREATE TABLE IF NOT EXISTS` for new tables
+
+4. **If destructive operations ARE required**: Add explicit warning in task description
+   - Example: `- [ ] T005 [MIGRATION] [DESTRUCTIVE] Drop legacy_users table in sql/cleanup.sql - WARNING: Data loss`

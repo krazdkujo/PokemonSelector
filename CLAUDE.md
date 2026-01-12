@@ -19,6 +19,7 @@ Auto-generated from all feature plans. Last updated: 2026-01-07
 - Supabase Postgres (`pokemon_owned` table with `captured_at` column) (011-pokecenter-api-sorting)
 - TypeScript 5.x (strict mode) with Next.js 14.2 + `@supabase/supabase-js` 2.89, `@supabase/ssr` 0.8, React 18 (012-pokemon-evolution)
 - Supabase Postgres (`pokemon_owned` table, new `can_evolve` column) (012-pokemon-evolution)
+- Supabase PostgreSQL (existing `trainers` table extended with PIN fields) (013-pin-auth)
 
 - TypeScript 5.x (or Node.js script) + None (pure JSON transformation, native fs/JSON APIs) (001-sanitize-pokemon-data)
 
@@ -38,9 +39,9 @@ npm test; npm run lint
 TypeScript 5.x (or Node.js script): Follow standard conventions
 
 ## Recent Changes
+- 013-pin-auth: Added TypeScript 5.x (strict mode) + Next.js 14.2, React 18, @supabase/supabase-js 2.89, @supabase/ssr 0.8, bcryptjs
 - 012-pokemon-evolution: Added TypeScript 5.x (strict mode) with Next.js 14.2 + `@supabase/supabase-js` 2.89, `@supabase/ssr` 0.8, React 18
 - 011-pokecenter-api-sorting: Added TypeScript 5.x (strict mode) with Next.js 14.2 + `@supabase/supabase-js` 2.89, `@supabase/ssr` 0.8, Next.js App Router
-- 010-api-security-separation: Added TypeScript 5.x (strict mode) + Next.js 14.2, @supabase/supabase-js 2.89, @supabase/ssr 0.8, bcryptjs
 
 
 <!-- MANUAL ADDITIONS START -->

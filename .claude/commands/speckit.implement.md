@@ -53,7 +53,51 @@ You **MUST** consider the user input before proceeding (if not empty).
    - **IF EXISTS**: Read research.md for technical decisions and constraints
    - **IF EXISTS**: Read quickstart.md for integration scenarios
 
-4. **Project Setup Verification**:
+4. **CRITICAL: Destructive Database Operation Check**:
+   - **MANDATORY**: Before ANY implementation begins, scan ALL SQL files for destructive operations
+   - **Scan locations**:
+     - `sql/` directory (all *.sql files)
+     - `migrations/` directory (all *.sql files)
+     - Any SQL files referenced in tasks.md
+     - Any files matching `*migration*.sql` pattern
+
+   - **Destructive patterns to detect** (case-insensitive):
+     - `DROP TABLE` - Deletes entire tables
+     - `DROP DATABASE` - Deletes entire database
+     - `DROP SCHEMA` - Deletes entire schema
+     - `TRUNCATE` - Removes all data from table
+     - `DELETE FROM` without WHERE clause - Mass deletion
+     - `CASCADE` - Cascading deletes that destroy related data
+     - `ALTER TABLE ... DROP COLUMN` - Removes columns permanently
+
+   - **If ANY destructive patterns found**:
+     ```text
+     ===========================================================
+     DESTRUCTIVE DATABASE OPERATIONS DETECTED - EXECUTION BLOCKED
+     ===========================================================
+
+     The following files contain operations that will PERMANENTLY DESTROY DATA:
+
+     | File | Line | Operation | Impact |
+     |------|------|-----------|--------|
+     | sql/001_schema.sql | 9 | DROP TABLE trainers CASCADE | Deletes trainers table AND all related data |
+     | sql/003_cleanup.sql | 15 | TRUNCATE battles | Removes ALL battle records |
+
+     These operations CANNOT be undone. There is NO automatic backup.
+
+     ===========================================================
+     ```
+
+     - **STOP COMPLETELY** - Do not proceed under any circumstances without explicit confirmation
+     - Ask: "These SQL files contain DESTRUCTIVE operations that will permanently delete data. Type 'I UNDERSTAND THE RISK AND WANT TO PROCEED' to continue, or 'CANCEL' to abort."
+     - **ONLY proceed if user types the EXACT confirmation phrase**
+     - If user types anything else, abort and suggest reviewing the SQL files first
+
+   - **If no destructive patterns found**:
+     - Display: "Database safety check passed - no destructive operations detected"
+     - Proceed to next step
+
+5. **Project Setup Verification**:
    - **REQUIRED**: Create/verify ignore files based on actual project setup:
 
    **Detection & Creation Logic**:
@@ -97,27 +141,27 @@ You **MUST** consider the user input before proceeding (if not empty).
    - **Terraform**: `.terraform/`, `*.tfstate*`, `*.tfvars`, `.terraform.lock.hcl`
    - **Kubernetes/k8s**: `*.secret.yaml`, `secrets/`, `.kube/`, `kubeconfig*`, `*.key`, `*.crt`
 
-5. Parse tasks.md structure and extract:
+6. Parse tasks.md structure and extract:
    - **Task phases**: Setup, Tests, Core, Integration, Polish
    - **Task dependencies**: Sequential vs parallel execution rules
    - **Task details**: ID, description, file paths, parallel markers [P]
    - **Execution flow**: Order and dependency requirements
 
-6. Execute implementation following the task plan:
+7. Execute implementation following the task plan:
    - **Phase-by-phase execution**: Complete each phase before moving to the next
    - **Respect dependencies**: Run sequential tasks in order, parallel tasks [P] can run together  
    - **Follow TDD approach**: Execute test tasks before their corresponding implementation tasks
    - **File-based coordination**: Tasks affecting the same files must run sequentially
    - **Validation checkpoints**: Verify each phase completion before proceeding
 
-7. Implementation execution rules:
+8. Implementation execution rules:
    - **Setup first**: Initialize project structure, dependencies, configuration
    - **Tests before code**: If you need to write tests for contracts, entities, and integration scenarios
    - **Core development**: Implement models, services, CLI commands, endpoints
    - **Integration work**: Database connections, middleware, logging, external services
    - **Polish and validation**: Unit tests, performance optimization, documentation
 
-8. Progress tracking and error handling:
+9. Progress tracking and error handling:
    - Report progress after each completed task
    - Halt execution if any non-parallel task fails
    - For parallel tasks [P], continue with successful tasks, report failed ones
@@ -125,7 +169,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Suggest next steps if implementation cannot proceed
    - **IMPORTANT** For completed tasks, make sure to mark the task off as [X] in the tasks file.
 
-9. Completion validation:
+10. Completion validation:
    - Verify all required tasks are completed
    - Check that implemented features match the original specification
    - Validate that tests pass and coverage meets requirements

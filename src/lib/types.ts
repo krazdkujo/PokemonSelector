@@ -407,3 +407,31 @@ export interface ExperienceGainedWithEvolution extends ExperienceGained {
     to_sprite: string;
   };
 }
+
+// ============================================
+// PIN Authentication Types (013-pin-auth)
+// ============================================
+
+// PIN verification result from verify API
+export interface PinVerifyResult {
+  valid: boolean;
+  locked?: boolean;
+  lockout_remaining_seconds?: number;
+  must_change?: boolean;
+  message?: string;
+}
+
+// PIN status for UI (from status API)
+export interface PinStatus {
+  has_pin: boolean;
+  is_locked: boolean;
+  is_temporary: boolean;
+  lockout_remaining_seconds?: number;
+}
+
+// Admin action log entry
+export interface PinAdminLogEntry {
+  id: string;
+  action_type: 'reset' | 'unlock' | 'set_temp';
+  created_at: string;
+}

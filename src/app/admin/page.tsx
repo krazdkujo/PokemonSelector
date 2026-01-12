@@ -4,10 +4,12 @@ import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { TrainerList } from '@/components/TrainerList';
 import { getTrainerId, clearTrainerId } from '@/lib/session';
+import { usePinGuard } from '@/lib/usePinGuard';
 import type { TrainerWithStats } from '@/lib/types';
 
 export default function AdminPage() {
   const router = useRouter();
+  const { isChecking: isPinChecking, isAuthorized: isPinAuthorized } = usePinGuard();
   const [isLoading, setIsLoading] = useState(true);
   const [trainers, setTrainers] = useState<TrainerWithStats[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -72,8 +74,12 @@ export default function AdminPage() {
   }, [router]);
 
   useEffect(() => {
+    // Wait for PIN check to complete
+    if (isPinChecking || !isPinAuthorized) {
+      return;
+    }
     loadData();
-  }, [loadData]);
+  }, [loadData, isPinChecking, isPinAuthorized]);
 
   const handleLogout = () => {
     clearTrainerId();
@@ -131,7 +137,8 @@ export default function AdminPage() {
     setRoleChangeError(null);
   };
 
-  if (isLoading) {
+  // Show loading while PIN check is in progress
+  if (isPinChecking || isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
@@ -140,6 +147,11 @@ export default function AdminPage() {
         </div>
       </div>
     );
+  }
+
+  // Don't render content until PIN is authorized
+  if (!isPinAuthorized) {
+    return null;
   }
 
   if (error) {
@@ -179,6 +191,7 @@ export default function AdminPage() {
           trainers={trainers}
           currentUserId={currentUserId ?? undefined}
           onRoleChange={handleRoleChangeRequest}
+          onPinActionComplete={loadData}
         />
       </div>
 

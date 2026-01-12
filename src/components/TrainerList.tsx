@@ -2,14 +2,16 @@
 
 import Image from 'next/image';
 import type { TrainerWithStats } from '@/lib/types';
+import { AdminPinManager } from './AdminPinManager';
 
 interface TrainerListProps {
   trainers: TrainerWithStats[];
   currentUserId?: string;
   onRoleChange?: (trainerId: string, newRole: 'trainer' | 'admin') => void;
+  onPinActionComplete?: () => void;
 }
 
-export function TrainerList({ trainers, currentUserId, onRoleChange }: TrainerListProps) {
+export function TrainerList({ trainers, currentUserId, onRoleChange, onPinActionComplete }: TrainerListProps) {
   if (trainers.length === 0) {
     return (
       <div className="text-center py-12">
@@ -43,6 +45,9 @@ export function TrainerList({ trainers, currentUserId, onRoleChange }: TrainerLi
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Role
+            </th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              PIN Management
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Joined
@@ -137,6 +142,15 @@ export function TrainerList({ trainers, currentUserId, onRoleChange }: TrainerLi
                     </button>
                   )}
                 </div>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                {trainer.id !== currentUserId && (
+                  <AdminPinManager
+                    trainerId={trainer.id}
+                    trainerName={trainer.name}
+                    onActionComplete={onPinActionComplete}
+                  />
+                )}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 {new Date(trainer.created_at).toLocaleDateString()}
