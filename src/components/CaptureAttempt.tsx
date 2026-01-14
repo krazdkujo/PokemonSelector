@@ -159,7 +159,7 @@ export function CaptureAttempt({
               </span>
             </div>
             <p className="text-xs font-mono text-[var(--fg-300)] mt-1">
-              Roll d20 >= {captureDC} to capture
+              Roll d20 &gt;= {captureDC} to capture
             </p>
           </div>
 

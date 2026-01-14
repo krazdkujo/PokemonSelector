@@ -256,15 +256,22 @@ export default function BattlePage() {
   }
 
   // Handle evolve button click
-  async function handleEvolve() {
+  async function handleEvolve(targetEvolutionId?: number) {
     if (!ownedPokemonId) return;
 
     try {
       setIsEvolving(true);
+      const requestBody: { pokemon_id: string; target_evolution_id?: number } = {
+        pokemon_id: ownedPokemonId,
+      };
+      if (targetEvolutionId) {
+        requestBody.target_evolution_id = targetEvolutionId;
+      }
+
       const response = await fetch('/api/pokecenter/evolve', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ pokemon_id: ownedPokemonId }),
+        body: JSON.stringify(requestBody),
       });
 
       if (response.ok) {
@@ -569,11 +576,12 @@ export default function BattlePage() {
               name: experienceGained.evolution_details.from_name,
               sprite_url: experienceGained.evolution_details.from_sprite,
             }}
-            toPokemon={{
+            toPokemon={experienceGained.evolution_details.has_multiple_evolutions ? undefined : {
               id: experienceGained.evolution_details.to_id,
               name: experienceGained.evolution_details.to_name,
               sprite_url: experienceGained.evolution_details.to_sprite,
             }}
+            evolutionOptions={experienceGained.evolution_details.evolution_options}
             onEvolve={handleEvolve}
             onLater={handleEvolveLater}
           />

@@ -21,6 +21,36 @@ interface PokemonDataEntry {
 
 const allPokemon = pokemonData as PokemonDataEntry[];
 
+// Eevee special evolution handling - can evolve into multiple Pokemon
+const EEVEE_ID = 133;
+const EEVEE_EVOLUTIONS = [
+  { id: 134, name: 'Vaporeon' },
+  { id: 135, name: 'Jolteon' },
+  { id: 136, name: 'Flareon' },
+];
+
+/**
+ * Check if a Pokemon is Eevee
+ */
+export function isEevee(pokemonId: number): boolean {
+  return pokemonId === EEVEE_ID;
+}
+
+/**
+ * Get all possible Eevee evolutions
+ */
+export function getEeveeEvolutions(): Array<{ id: number; name: string; sprite_url: string; type: string[] }> {
+  return EEVEE_EVOLUTIONS.map(evo => {
+    const pokemon = allPokemon.find(p => p.number === evo.id);
+    return {
+      id: evo.id,
+      name: evo.name,
+      sprite_url: pokemon?.media.sprite || '',
+      type: pokemon?.type || [],
+    };
+  });
+}
+
 /**
  * Parse evolution stage from string like "Stage 2 of 3"
  * @param evolutionString Evolution string from Pokemon data
@@ -63,15 +93,30 @@ export function getEvolutionThreshold(stage: number, totalStages: number): numbe
 /**
  * Get the next evolution for a Pokemon
  * @param pokemonId Current Pokemon number
+ * @param targetEvolutionId Optional specific evolution ID (for Eevee)
  * @returns Next evolution info or null if at final stage
  */
-export function getNextEvolution(pokemonId: number): { id: number; name: string } | null {
+export function getNextEvolution(pokemonId: number, targetEvolutionId?: number): { id: number; name: string } | null {
   const pokemon = allPokemon.find(p => p.number === pokemonId);
   if (!pokemon) return null;
 
   const stages = parseEvolutionStage(pokemon.evolution);
   if (!stages || stages.stage >= stages.total) {
     return null; // Already at final stage or no evolution
+  }
+
+  // Special handling for Eevee - has multiple evolution options
+  if (isEevee(pokemonId)) {
+    if (targetEvolutionId) {
+      // Validate the target is a valid Eevee evolution
+      const validEvolution = EEVEE_EVOLUTIONS.find(e => e.id === targetEvolutionId);
+      if (validEvolution) {
+        return { id: validEvolution.id, name: validEvolution.name };
+      }
+      return null; // Invalid target for Eevee
+    }
+    // Default to first evolution (Vaporeon) for backward compatibility
+    return { id: EEVEE_EVOLUTIONS[0].id, name: EEVEE_EVOLUTIONS[0].name };
   }
 
   // Next evolution is the next sequential Pokemon number (Gen 1 pattern)
@@ -125,6 +170,10 @@ export function checkEvolutionEligibility(pokemonId: number, level: number): Evo
   const nextEvolution = getNextEvolution(pokemonId);
   const canEvolve = threshold !== null && level >= threshold && nextEvolution !== null;
 
+  // Check for Eevee's multiple evolution options
+  const hasMultipleEvolutions = isEevee(pokemonId);
+  const evolutionOptions = hasMultipleEvolutions ? getEeveeEvolutions() : undefined;
+
   return {
     canEvolve,
     currentStage: stages.stage,
@@ -132,6 +181,8 @@ export function checkEvolutionEligibility(pokemonId: number, level: number): Evo
     evolvesAtLevel: threshold,
     nextEvolutionId: nextEvolution?.id ?? null,
     nextEvolutionName: nextEvolution?.name ?? null,
+    hasMultipleEvolutions,
+    evolutionOptions,
   };
 }
 

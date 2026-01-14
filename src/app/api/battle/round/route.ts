@@ -339,6 +339,8 @@ export async function POST(request: NextRequest) {
               to_id: evolutionInfo.nextEvolutionId,
               from_sprite: getPokemonSpriteUrl(playerPokemon.pokemon_id),
               to_sprite: getPokemonSpriteUrl(evolutionInfo.nextEvolutionId),
+              has_multiple_evolutions: evolutionInfo.hasMultipleEvolutions,
+              evolution_options: evolutionInfo.evolutionOptions,
             };
           }
 

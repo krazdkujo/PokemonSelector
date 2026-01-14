@@ -6,6 +6,52 @@ import Link from 'next/link';
 import { getTrainerId } from '@/lib/session';
 import type { SecretKeyMeta, SecretKeyResponse } from '@/lib/types';
 
+// Recent API changes - update this when making breaking changes
+const API_CHANGELOG_VERSION = '2025-01-14';
+const API_CHANGELOG = [
+  {
+    date: '2025-01-14',
+    version: '2.0.0',
+    breaking: true,
+    changes: [
+      {
+        type: 'breaking' as const,
+        endpoint: 'POST /api/trainer',
+        title: 'PIN Required for Login',
+        description: 'Existing accounts with a PIN set now require the PIN to be included in the login request. New accounts can still be created without a PIN.',
+        before: '{ "name": "Ash" }',
+        after: '{ "name": "Ash", "pin": "1234" }',
+      },
+      {
+        type: 'breaking' as const,
+        endpoint: 'GET /api/trainers',
+        title: 'Auth Method Changed',
+        description: 'Removed requester_id query parameter. Now uses session cookie or X-API-Key header for authentication (admin role required).',
+        before: 'GET /api/trainers?requester_id=uuid',
+        after: 'GET /api/trainers with X-API-Key header',
+      },
+      {
+        type: 'improved' as const,
+        endpoint: 'POST /api/trainer',
+        title: 'Account Lockout Protection',
+        description: 'After 5 failed PIN attempts, accounts are locked for 15 minutes. Response includes lockout_remaining_seconds when locked.',
+      },
+      {
+        type: 'improved' as const,
+        endpoint: 'All Admin Endpoints',
+        title: 'Consistent Auth',
+        description: 'All admin endpoints now support both session cookie (trainer_id) and API key (X-User-ID header) authentication.',
+      },
+      {
+        type: 'fixed' as const,
+        endpoint: 'POST /api/capture',
+        title: 'Level 10 Capture Bug',
+        description: 'Fixed bug where capturing wild Pokemon in medium/hard zones with a level 10 Pokemon would fail due to wild Pokemon exceeding max level.',
+      },
+    ],
+  },
+];
+
 interface EndpointDoc {
   method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
   path: string;
@@ -24,12 +70,55 @@ interface EndpointDoc {
 }
 
 const ENDPOINTS: Record<string, EndpointDoc[]> = {
-  Trainer: [
+  'Account': [
+    {
+      method: 'GET',
+      path: '/api/trainer',
+      summary: 'Get your trainer profile',
+      description: 'Returns the authenticated trainer\'s basic profile information including ID, name, role, and creation date.',
+      auth: true,
+      response: {
+        description: 'Trainer profile',
+        example: `{
+  "id": "uuid",
+  "name": "Ash",
+  "role": "trainer",
+  "created_at": "2024-01-01T00:00:00Z"
+}`,
+      },
+      curl: 'curl -H "X-API-Key: YOUR_KEY" https://domain.com/api/trainer',
+    },
+    {
+      method: 'POST',
+      path: '/api/trainer',
+      summary: 'Create or login as trainer',
+      description: 'Creates a new trainer account or logs into existing one. New accounts: PIN optional. Existing accounts with PIN: PIN required (5 attempts, then 15 min lockout).',
+      auth: false,
+      requestBody: {
+        description: 'Trainer name and PIN (if account has PIN set)',
+        example: `{
+  "name": "Ash",
+  "pin": "1234"
+}`,
+      },
+      response: {
+        description: 'Trainer profile (201 for new, 200 for existing)',
+        example: `{
+  "id": "uuid",
+  "name": "Ash",
+  "role": "trainer",
+  "created_at": "2024-01-01T00:00:00Z",
+  "pin_not_set": true
+}`,
+      },
+      curl: `curl -X POST -H "Content-Type: application/json" \\
+  -d '{"name": "Ash", "pin": "1234"}' https://domain.com/api/trainer`,
+    },
     {
       method: 'GET',
       path: '/api/external/trainer',
-      summary: 'Get your trainer profile and statistics',
-      description: 'Returns complete trainer information including name, role, statistics (battles won/lost, Pokemon captured), money, and items.',
+      summary: 'Get trainer profile with full statistics (External API)',
+      description: 'Returns complete trainer information including name, role, statistics (battles won/lost, Pokemon captured), money, and items. For use with external API key authentication.',
       auth: true,
       response: {
         description: 'Trainer profile with stats',
@@ -78,6 +167,116 @@ const ENDPOINTS: Record<string, EndpointDoc[]> = {
 }`,
       },
       curl: 'curl -H "X-API-Key: YOUR_KEY" https://domain.com/api/dashboard',
+    },
+    {
+      method: 'PUT',
+      path: '/api/trainer/[id]/nickname',
+      summary: 'Set nickname for your starter Pokemon',
+      description: 'Sets or updates a nickname for your starter Pokemon. Nickname must be 1-20 characters. Send null or empty string to clear.',
+      auth: true,
+      requestBody: {
+        description: 'Nickname to set (null to clear)',
+        example: `{
+  "nickname": "Sparky"
+}`,
+      },
+      response: {
+        description: 'Updated trainer with starter details',
+        example: `{
+  "id": "uuid",
+  "name": "Ash",
+  "starter_pokemon_id": 25,
+  "starter_pokemon_nickname": "Sparky",
+  "starter": {
+    "number": 25,
+    "name": "Pikachu",
+    "types": ["Electric"],
+    "sr": 0.45
+  }
+}`,
+      },
+      curl: `curl -X PUT -H "X-API-Key: YOUR_KEY" -H "Content-Type: application/json" \\
+  -d '{"nickname": "Sparky"}' https://domain.com/api/trainer/{id}/nickname`,
+    },
+    {
+      method: 'DELETE',
+      path: '/api/trainer/[id]/nickname',
+      summary: 'Clear nickname for your starter Pokemon',
+      description: 'Removes the nickname from your starter Pokemon.',
+      auth: true,
+      response: {
+        description: 'Updated trainer with nickname cleared',
+        example: `{
+  "id": "uuid",
+  "name": "Ash",
+  "starter_pokemon_id": 25,
+  "starter_pokemon_nickname": null,
+  "starter": { ... }
+}`,
+      },
+      curl: 'curl -X DELETE -H "X-API-Key: YOUR_KEY" https://domain.com/api/trainer/{id}/nickname',
+    },
+  ],
+  'Starter': [
+    {
+      method: 'GET',
+      path: '/api/starter',
+      summary: 'List available starter Pokemon',
+      description: 'Returns all Pokemon eligible as starters (SR <= 0.5). Use this to populate the starter selection screen.',
+      auth: false,
+      response: {
+        description: 'List of starter-eligible Pokemon',
+        example: `{
+  "starters": [
+    {
+      "id": 25,
+      "name": "Pikachu",
+      "types": ["Electric"],
+      "sr": 0.45,
+      "sprite_url": "https://..."
+    },
+    {
+      "id": 1,
+      "name": "Bulbasaur",
+      "types": ["Grass", "Poison"],
+      "sr": 0.3,
+      "sprite_url": "https://..."
+    }
+  ]
+}`,
+      },
+      curl: 'curl https://domain.com/api/starter',
+    },
+    {
+      method: 'POST',
+      path: '/api/starter',
+      summary: 'Select your starter Pokemon',
+      description: 'Selects a starter Pokemon for your trainer. Can only be done once. Creates initial user_stats with 100 money.',
+      auth: true,
+      requestBody: {
+        description: 'Pokemon ID (number) of the starter to select',
+        example: `{
+  "pokemon_id": 25
+}`,
+      },
+      response: {
+        description: 'Created starter Pokemon details',
+        example: `{
+  "pokemon": {
+    "id": "uuid",
+    "pokemon_id": 25,
+    "name": "Pikachu",
+    "types": ["Electric"],
+    "level": 1,
+    "sr": 0.45,
+    "is_starter": true,
+    "is_active": true,
+    "sprite_url": "https://..."
+  }
+}`,
+      },
+      curl: `curl -X POST -H "X-API-Key: YOUR_KEY" -H "Content-Type: application/json" \\
+  -d '{"pokemon_id": 25}' https://domain.com/api/starter`,
     },
   ],
   Pokemon: [
@@ -262,70 +461,104 @@ const ENDPOINTS: Record<string, EndpointDoc[]> = {
       method: 'GET',
       path: '/api/zones',
       summary: 'List all combat zones (public)',
-      description: 'Returns all available combat zones. This endpoint is public and does not require authentication.',
+      description: 'Returns all 8 combat zones with their type associations. Each zone contains Pokemon of specific types.',
       auth: false,
       response: {
         description: 'List of combat zones',
-        example: `[
-  {
-    "id": "viridian-forest",
-    "name": "Viridian Forest",
-    "description": "A dense forest with bug Pokemon",
-    "min_level": 1,
-    "max_level": 5,
-    "pokemon_types": ["Bug", "Grass"]
-  }
-]`,
+        example: `{
+  "zones": [
+    {
+      "id": "jungle",
+      "name": "Jungle",
+      "description": "Dense vegetation filled with bugs, plants, and venomous creatures",
+      "types": ["bug", "grass", "poison"],
+      "color": "green"
+    },
+    {
+      "id": "ocean",
+      "name": "Ocean",
+      "description": "Coastal and aquatic environments with sea creatures",
+      "types": ["water", "flying", "normal"],
+      "color": "blue"
+    }
+  ]
+}`,
       },
       curl: 'curl https://domain.com/api/zones',
     },
     {
       method: 'GET',
       path: '/api/zones/[zoneId]/preview',
-      summary: 'Preview wild Pokemon in a zone',
-      description: 'Returns a preview of the wild Pokemon that can be encountered in the specified zone, including the difficulty rating.',
+      summary: 'Preview wild Pokemon available in a zone',
+      description: 'Returns preview information for a zone including example Pokemon and counts for each difficulty level (easy, medium, hard). Results are personalized based on your active Pokemon\'s SR.',
       auth: true,
       response: {
-        description: 'Zone preview with wild Pokemon',
+        description: 'Zone preview with difficulty breakdowns',
         example: `{
   "zone": {
-    "id": "viridian-forest",
-    "name": "Viridian Forest"
+    "id": "jungle",
+    "name": "Jungle",
+    "types": ["bug", "grass", "poison"]
   },
-  "wild_pokemon": {
-    "name": "Caterpie",
-    "level": 3,
-    "types": ["Bug"],
-    "sprite_url": "https://..."
-  },
-  "difficulty": "Easy"
+  "difficulties": {
+    "easy": {
+      "description": "Pokemon at your level or lower, up to +2 SR above yours",
+      "example_pokemon": ["Caterpie", "Weedle", "Oddish", "Bellsprout", "Paras"],
+      "pokemon_count": 15,
+      "all_pokemon": ["Caterpie", "Weedle", ...]
+    },
+    "medium": {
+      "description": "Pokemon 0-3 levels higher, up to +5 SR above yours",
+      "example_pokemon": ["Butterfree", "Beedrill", "Vileplume"],
+      "pokemon_count": 25,
+      "all_pokemon": [...]
+    },
+    "hard": {
+      "description": "Pokemon 4-6 levels higher, any SR - maximum challenge!",
+      "example_pokemon": ["Venusaur", "Victreebel"],
+      "pokemon_count": 30,
+      "all_pokemon": [...]
+    }
+  }
 }`,
       },
-      curl: 'curl -H "X-API-Key: YOUR_KEY" https://domain.com/api/zones/viridian-forest/preview',
+      curl: 'curl -H "X-API-Key: YOUR_KEY" https://domain.com/api/zones/jungle/preview',
     },
     {
       method: 'GET',
       path: '/api/battle',
       summary: 'Get current active battle status',
-      description: 'Returns the current battle state if one is active, including your Pokemon HP, wild Pokemon HP, and battle log.',
+      description: 'Returns the current battle state if one is active, or null if no battle. Includes player Pokemon, wild Pokemon, round wins, and whether the wild Pokemon is already owned.',
       auth: true,
       response: {
-        description: 'Active battle status',
+        description: 'Active battle status (or null)',
         example: `{
-  "battle_id": "uuid",
+  "id": "uuid",
+  "user_id": "uuid",
   "status": "active",
-  "your_pokemon": {
-    "name": "Pikachu",
-    "current_hp": 80,
-    "max_hp": 100
-  },
+  "zone_id": "jungle",
+  "difficulty": "medium",
+  "player_wins": 2,
+  "wild_wins": 1,
+  "capture_attempts": 0,
   "wild_pokemon": {
-    "name": "Rattata",
-    "current_hp": 30,
-    "max_hp": 50
+    "pokemon_id": 12,
+    "name": "Butterfree",
+    "level": 5,
+    "sr": 0.8,
+    "types": ["Bug", "Flying"],
+    "current_hp": 100,
+    "sprite_url": "https://..."
   },
-  "round": 3,
-  "can_capture": true
+  "wild_pokemon_owned": false,
+  "player_pokemon": {
+    "id": "uuid",
+    "pokemon_id": 25,
+    "name": "Pikachu",
+    "level": 4,
+    "types": ["Electric"],
+    "sprite_url": "https://..."
+  }
 }`,
       },
       curl: 'curl -H "X-API-Key: YOUR_KEY" https://domain.com/api/battle',
@@ -334,64 +567,81 @@ const ENDPOINTS: Record<string, EndpointDoc[]> = {
       method: 'POST',
       path: '/api/battle',
       summary: 'Start a new battle in a zone',
-      description: 'Initiates a new battle in the specified zone. Cannot start if a battle is already active.',
+      description: 'Initiates a new battle in the specified zone at the chosen difficulty. Cannot start if a battle is already active. Wild Pokemon level and SR are determined by difficulty.',
       auth: true,
       requestBody: {
-        description: 'Zone ID to battle in',
+        description: 'Zone ID and difficulty level',
         example: `{
-  "zone_id": "viridian-forest"
+  "zone_id": "jungle",
+  "difficulty": "medium"
 }`,
       },
       response: {
         description: 'New battle details',
         example: `{
-  "battle_id": "uuid",
+  "id": "uuid",
+  "status": "active",
+  "zone_id": "jungle",
+  "difficulty": "medium",
   "wild_pokemon": {
-    "name": "Pidgey",
-    "level": 4,
-    "types": ["Normal", "Flying"]
+    "pokemon_id": 12,
+    "name": "Butterfree",
+    "level": 5,
+    "sr": 0.8,
+    "types": ["Bug", "Flying"],
+    "sprite_url": "https://..."
   },
-  "your_pokemon": {
+  "player_pokemon": {
+    "id": "uuid",
     "name": "Pikachu",
-    "level": 5
-  }
+    "level": 4
+  },
+  "player_wins": 0,
+  "wild_wins": 0
 }`,
       },
       curl: `curl -X POST -H "X-API-Key: YOUR_KEY" -H "Content-Type: application/json" \\
-  -d '{"zone_id": "viridian-forest"}' https://domain.com/api/battle`,
+  -d '{"zone_id": "jungle", "difficulty": "medium"}' https://domain.com/api/battle`,
     },
     {
       method: 'POST',
       path: '/api/battle/round',
       summary: 'Execute a battle round with a move',
-      description: 'Executes one round of battle using the specified move. Returns the result including damage dealt and received. When battle ends with victory, may include evolution_available if your Pokemon can evolve.',
+      description: 'Executes one round using the specified move. Uses d20 roll vs DC based on level/SR/type matchups. First to 3 round wins takes the battle. On victory, awards XP and may trigger evolution eligibility.',
       auth: true,
       requestBody: {
-        description: 'Move ID to use',
+        description: 'Move ID to use this round',
         example: `{
   "move_id": "thunderbolt"
 }`,
       },
       response: {
-        description: 'Round result (with evolution on victory)',
+        description: 'Round result with battle state',
         example: `{
   "round": {
     "round_number": 3,
     "player_move": "Thunderbolt",
+    "move_type": "Electric",
     "winner": "player",
     "roll": 15,
-    "dc": 8
+    "dc": 8,
+    "win_chance": 0.65,
+    "effectiveness": "super_effective",
+    "stab_bonus": true
   },
   "battle": {
+    "id": "uuid",
+    "status": "player_won",
     "player_wins": 3,
-    "wild_wins": 1,
-    "status": "player_won"
+    "wild_wins": 1
   },
   "battle_ended": true,
   "experience_gained": {
     "xp_awarded": 3,
     "previous_level": 2,
     "new_level": 3,
+    "previous_experience": 5,
+    "new_experience": 0,
     "levels_gained": 1,
     "evolution_available": true,
     "evolution_details": {
@@ -413,20 +663,18 @@ const ENDPOINTS: Record<string, EndpointDoc[]> = {
     {
       method: 'GET',
       path: '/api/capture',
-      summary: 'Check capture eligibility for current battle',
-      description: 'Returns whether the wild Pokemon can be captured and the estimated success rate based on remaining HP.',
+      summary: 'Check capture DC for current battle',
+      description: 'Returns the current capture DC (Difficulty Class) and whether capture is allowed. Requires at least 1 round win. Cannot capture Pokemon species you already own.',
       auth: true,
       response: {
-        description: 'Capture eligibility',
+        description: 'Capture eligibility and DC',
         example: `{
+  "dc": 12,
   "can_capture": true,
-  "wild_pokemon": {
-    "name": "Rattata",
-    "current_hp": 10,
-    "max_hp": 50
-  },
-  "capture_rate": 0.75,
-  "message": "Wild Pokemon is weakened and ready for capture!"
+  "player_wins": 2,
+  "wild_pokemon": "Butterfree",
+  "already_owned": false,
+  "ownership_message": null
 }`,
       },
       curl: 'curl -H "X-API-Key: YOUR_KEY" https://domain.com/api/capture',
@@ -435,22 +683,237 @@ const ENDPOINTS: Record<string, EndpointDoc[]> = {
       method: 'POST',
       path: '/api/capture',
       summary: 'Attempt to capture the wild Pokemon',
-      description: 'Attempts to capture the wild Pokemon in the current battle. Success depends on the Pokemon remaining HP and rarity.',
+      description: 'Rolls d20 vs capture DC. Success captures the Pokemon. Failure gives wild Pokemon +1 round win (and 25% flee chance). Awards 1 XP on successful capture.',
       auth: true,
       response: {
-        description: 'Capture result',
+        description: 'Capture attempt result',
         example: `{
-  "success": true,
-  "pokemon": {
-    "id": "uuid",
-    "name": "Rattata",
-    "level": 4,
-    "types": ["Normal"]
+  "result": {
+    "success": true,
+    "roll": 15,
+    "dc": 12,
+    "fled": false
   },
-  "message": "Congratulations! You caught Rattata!"
+  "battle": {
+    "id": "uuid",
+    "status": "captured"
+  },
+  "captured_pokemon": {
+    "id": "uuid",
+    "pokemon_id": 12,
+    "name": "Butterfree",
+    "level": 5,
+    "types": ["Bug", "Flying"],
+    "sr": 0.8,
+    "sprite_url": "https://..."
+  },
+  "experience_gained": {
+    "xp_awarded": 1,
+    "previous_level": 4,
+    "new_level": 4,
+    "levels_gained": 0,
+    "evolution_available": false
+  }
 }`,
       },
       curl: 'curl -X POST -H "X-API-Key: YOUR_KEY" https://domain.com/api/capture',
+    },
+  ],
+  'API Key': [
+    {
+      method: 'GET',
+      path: '/api/secret-key',
+      summary: 'Get API key metadata',
+      description: 'Returns metadata about your API secret key including whether one exists, when it was created, and when last used. Does not return the key itself.',
+      auth: true,
+      response: {
+        description: 'Key metadata',
+        example: `{
+  "has_key": true,
+  "created_at": "2024-01-15T10:30:00Z",
+  "last_used_at": "2024-01-16T14:22:00Z"
+}`,
+      },
+      curl: 'curl -H "Cookie: trainer_id=YOUR_SESSION" https://domain.com/api/secret-key',
+    },
+    {
+      method: 'POST',
+      path: '/api/secret-key',
+      summary: 'Generate or regenerate API key',
+      description: 'Generates a new API secret key. The plaintext key is returned only once - save it immediately. Regenerating invalidates any previous key.',
+      auth: true,
+      response: {
+        description: 'New key (save immediately!)',
+        example: `{
+  "key": "sk_live_abc123def456...",
+  "created_at": "2024-01-16T15:00:00Z"
+}`,
+      },
+      curl: 'curl -X POST -H "Cookie: trainer_id=YOUR_SESSION" https://domain.com/api/secret-key',
+    },
+  ],
+  'PIN Security': [
+    {
+      method: 'GET',
+      path: '/api/pin/status',
+      summary: 'Check PIN status',
+      description: 'Returns whether a PIN is set, if the account is locked, and if the PIN is temporary (requires change).',
+      auth: true,
+      response: {
+        description: 'PIN status',
+        example: `{
+  "has_pin": true,
+  "is_locked": false,
+  "is_temporary": false
+}`,
+      },
+      curl: 'curl -H "Cookie: trainer_id=YOUR_SESSION" https://domain.com/api/pin/status',
+    },
+    {
+      method: 'POST',
+      path: '/api/pin/create',
+      summary: 'Create or update PIN',
+      description: 'Sets a new 4-digit PIN. Both pin and confirm_pin must match.',
+      auth: true,
+      requestBody: {
+        description: 'PIN and confirmation',
+        example: `{
+  "pin": "1234",
+  "confirm_pin": "1234"
+}`,
+      },
+      response: {
+        description: 'Success confirmation',
+        example: `{
+  "success": true,
+  "message": "PIN created successfully"
+}`,
+      },
+      curl: `curl -X POST -H "Cookie: trainer_id=YOUR_SESSION" -H "Content-Type: application/json" \\
+  -d '{"pin": "1234", "confirm_pin": "1234"}' https://domain.com/api/pin/create`,
+    },
+    {
+      method: 'POST',
+      path: '/api/pin/verify',
+      summary: 'Verify PIN',
+      description: 'Verifies the entered PIN. After 5 failed attempts, account is locked for 15 minutes.',
+      auth: true,
+      requestBody: {
+        description: 'PIN to verify',
+        example: `{
+  "pin": "1234"
+}`,
+      },
+      response: {
+        description: 'Verification result',
+        example: `{
+  "valid": true,
+  "must_change": false
+}`,
+      },
+      curl: `curl -X POST -H "Cookie: trainer_id=YOUR_SESSION" -H "Content-Type: application/json" \\
+  -d '{"pin": "1234"}' https://domain.com/api/pin/verify`,
+    },
+  ],
+  'Admin': [
+    {
+      method: 'GET',
+      path: '/api/trainers',
+      summary: 'List all trainers (Admin only)',
+      description: 'Returns all trainers with their stats and Pokemon counts. Requires admin role.',
+      auth: true,
+      response: {
+        description: 'List of trainers with stats',
+        example: `[
+  {
+    "id": "uuid",
+    "name": "Ash",
+    "role": "trainer",
+    "starter_pokemon_id": 25,
+    "created_at": "2024-01-01T00:00:00Z",
+    "starter": {
+      "number": 25,
+      "name": "Pikachu",
+      "types": ["Electric"]
+    },
+    "stats": {
+      "battles_won": 10,
+      "battles_lost": 2,
+      "pokemon_captured": 5,
+      "pokemon_count": 6
+    }
+  }
+]`,
+      },
+      curl: 'curl -H "X-API-Key: ADMIN_API_KEY" https://domain.com/api/trainers',
+    },
+    {
+      method: 'PATCH',
+      path: '/api/trainers/[id]/role',
+      summary: 'Change trainer role (Admin only)',
+      description: 'Changes a trainer\'s role between "trainer" and "admin". Cannot demote the last admin.',
+      auth: true,
+      requestBody: {
+        description: 'New role',
+        example: `{
+  "role": "admin"
+}`,
+      },
+      response: {
+        description: 'Role change confirmation',
+        example: `{
+  "trainer_id": "uuid",
+  "previous_role": "trainer",
+  "new_role": "admin",
+  "updated_at": "2024-01-16T15:30:00Z"
+}`,
+      },
+      curl: `curl -X PATCH -H "Cookie: trainer_id=ADMIN_SESSION" -H "Content-Type: application/json" \\
+  -d '{"role": "admin"}' https://domain.com/api/trainers/{id}/role`,
+    },
+    {
+      method: 'POST',
+      path: '/api/pin/admin/reset',
+      summary: 'Reset user PIN (Admin only)',
+      description: 'Clears a user\'s PIN, allowing them to set a new one.',
+      auth: true,
+      requestBody: {
+        description: 'Target trainer ID',
+        example: `{
+  "trainer_id": "uuid"
+}`,
+      },
+      response: {
+        description: 'Reset confirmation',
+        example: `{
+  "success": true,
+  "message": "PIN has been reset"
+}`,
+      },
+      curl: `curl -X POST -H "Cookie: trainer_id=ADMIN_SESSION" -H "Content-Type: application/json" \\
+  -d '{"trainer_id": "uuid"}' https://domain.com/api/pin/admin/reset`,
+    },
+    {
+      method: 'POST',
+      path: '/api/pin/admin/unlock',
+      summary: 'Unlock locked account (Admin only)',
+      description: 'Removes the lockout from an account that has too many failed PIN attempts.',
+      auth: true,
+      requestBody: {
+        description: 'Target trainer ID',
+        example: `{
+  "trainer_id": "uuid"
+}`,
+      },
+      response: {
+        description: 'Unlock confirmation',
+        example: `{
+  "success": true,
+  "message": "Account has been unlocked"
+}`,
+      },
+      curl: `curl -X POST -H "Cookie: trainer_id=ADMIN_SESSION" -H "Content-Type: application/json" \\
+  -d '{"trainer_id": "uuid"}' https://domain.com/api/pin/admin/unlock`,
     },
   ],
 };
@@ -464,6 +927,7 @@ export default function ApiDocsPage() {
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [selectedEndpoint, setSelectedEndpoint] = useState<EndpointDoc | null>(null);
+  const [showChangelog, setShowChangelog] = useState(false);
 
   useEffect(() => {
     const trainerId = getTrainerId();
@@ -472,7 +936,27 @@ export default function ApiDocsPage() {
       return;
     }
     fetchKeyMeta();
+
+    // Check if user has seen this version of changelog
+    const seenVersion = localStorage.getItem('api_changelog_seen');
+    if (seenVersion !== API_CHANGELOG_VERSION) {
+      setShowChangelog(true);
+    }
   }, [router]);
+
+  function dismissChangelog() {
+    localStorage.setItem('api_changelog_seen', API_CHANGELOG_VERSION);
+    setShowChangelog(false);
+  }
+
+  function getChangeTypeStyles(type: string) {
+    switch (type) {
+      case 'breaking': return 'bg-[var(--accent-error)]/20 text-[var(--accent-error)] border-[var(--accent-error)]/30';
+      case 'improved': return 'bg-[var(--accent-primary)]/20 text-[var(--accent-primary)] border-[var(--accent-primary)]/30';
+      case 'fixed': return 'bg-[var(--accent-success)]/20 text-[var(--accent-success)] border-[var(--accent-success)]/30';
+      default: return 'bg-[var(--bg-200)] text-[var(--fg-100)] border-[var(--border)]';
+    }
+  }
 
   async function fetchKeyMeta() {
     try {
@@ -566,9 +1050,18 @@ export default function ApiDocsPage() {
             <h1 className="text-3xl font-bold text-[var(--fg-0)]">API Documentation</h1>
             <p className="text-[var(--fg-100)]">Access the Pokemon API programmatically</p>
           </div>
-          <Link href="/dashboard" className="btn-secondary">
-            Back to Dashboard
-          </Link>
+          <div className="flex gap-3">
+            <button
+              onClick={() => setShowChangelog(true)}
+              className="btn-secondary flex items-center gap-2"
+            >
+              <span className="w-2 h-2 bg-[var(--accent-warning)] rounded-full animate-pulse"></span>
+              Recent Changes
+            </button>
+            <Link href="/dashboard" className="btn-secondary">
+              Back to Dashboard
+            </Link>
+          </div>
         </div>
 
         {/* API Secret Key Section */}
@@ -790,6 +1283,92 @@ export default function ApiDocsPage() {
               >
                 Close
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Recent Changes Modal */}
+      {showChangelog && (
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[60] p-4">
+          <div className="card max-w-2xl w-full max-h-[90vh] overflow-y-auto border-2 border-[var(--accent-warning)]">
+            <div className="sticky top-0 bg-[var(--bg-100)] border-b border-[var(--border)] px-6 py-4">
+              <div className="flex items-center gap-3">
+                <span className="text-2xl">!</span>
+                <div>
+                  <h2 className="text-xl font-bold text-[var(--fg-0)]">API Changes</h2>
+                  <p className="text-sm text-[var(--fg-200)]">Important updates that may affect your integration</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-6 space-y-6">
+              {API_CHANGELOG.map((release) => (
+                <div key={release.version}>
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-lg font-semibold text-[var(--fg-0)]">v{release.version}</span>
+                    <span className="text-sm text-[var(--fg-200)]">{release.date}</span>
+                    {release.breaking && (
+                      <span className="px-2 py-0.5 text-xs font-medium bg-[var(--accent-error)]/20 text-[var(--accent-error)] rounded-full border border-[var(--accent-error)]/30">
+                        Breaking Changes
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="space-y-4">
+                    {release.changes.map((change, idx) => (
+                      <div
+                        key={idx}
+                        className={`rounded-lg border p-4 ${getChangeTypeStyles(change.type)}`}
+                      >
+                        <div className="flex items-start gap-3">
+                          <span className={`px-2 py-0.5 text-xs font-medium rounded uppercase ${
+                            change.type === 'breaking' ? 'bg-[var(--accent-error)] text-white' :
+                            change.type === 'improved' ? 'bg-[var(--accent-primary)] text-white' :
+                            'bg-[var(--accent-success)] text-white'
+                          }`}>
+                            {change.type}
+                          </span>
+                          <div className="flex-1">
+                            <div className="font-medium text-[var(--fg-0)]">{change.title}</div>
+                            <div className="text-sm font-mono text-[var(--fg-200)] mt-0.5">{change.endpoint}</div>
+                            <p className="text-sm text-[var(--fg-100)] mt-2">{change.description}</p>
+
+                            {change.before && change.after && (
+                              <div className="mt-3 space-y-2">
+                                <div>
+                                  <span className="text-xs font-medium text-[var(--accent-error)]">Before:</span>
+                                  <code className="block mt-1 text-xs bg-[var(--bg-0)] p-2 rounded font-mono text-[var(--fg-100)]">
+                                    {change.before}
+                                  </code>
+                                </div>
+                                <div>
+                                  <span className="text-xs font-medium text-[var(--accent-success)]">After:</span>
+                                  <code className="block mt-1 text-xs bg-[var(--bg-0)] p-2 rounded font-mono text-[var(--fg-100)]">
+                                    {change.after}
+                                  </code>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="sticky bottom-0 bg-[var(--bg-200)] border-t border-[var(--border)] px-6 py-4">
+              <button
+                onClick={dismissChangelog}
+                className="w-full btn-primary"
+              >
+                I Understand - Continue to API Docs
+              </button>
+              <p className="text-xs text-[var(--fg-300)] text-center mt-2">
+                This notice won&apos;t appear again until the next API update
+              </p>
             </div>
           </div>
         </div>

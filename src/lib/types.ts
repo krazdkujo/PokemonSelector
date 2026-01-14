@@ -371,6 +371,14 @@ export interface RoleUpdateResponse {
 // Evolution System Types (012-pokemon-evolution)
 // ============================================
 
+// Evolution option for Pokemon with multiple evolutions (e.g., Eevee)
+export interface EvolutionOption {
+  id: number;
+  name: string;
+  sprite_url: string;
+  type: string[];
+}
+
 // Evolution eligibility info
 export interface EvolutionInfo {
   canEvolve: boolean;
@@ -379,6 +387,8 @@ export interface EvolutionInfo {
   evolvesAtLevel: number | null;
   nextEvolutionId: number | null;
   nextEvolutionName: string | null;
+  hasMultipleEvolutions?: boolean;
+  evolutionOptions?: EvolutionOption[];
 }
 
 // Evolution result from API
@@ -405,6 +415,8 @@ export interface ExperienceGainedWithEvolution extends ExperienceGained {
     to_id: number;
     from_sprite: string;
     to_sprite: string;
+    has_multiple_evolutions?: boolean;
+    evolution_options?: EvolutionOption[];
   };
 }
 

@@ -313,7 +313,7 @@ export function generateZoneWildPokemon(
 
   // Calculate level based on difficulty constraints
   const levelOffset = calculateZoneLevelOffset(difficulty, rng);
-  const wildLevel = Math.max(1, playerLevel + levelOffset);
+  const wildLevel = Math.max(1, Math.min(10, playerLevel + levelOffset));
 
   return {
     pokemon_id: selected.number,

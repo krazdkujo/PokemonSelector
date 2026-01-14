@@ -167,17 +167,24 @@ export default function PokecenterPage() {
   }
 
   // Handle confirm evolution
-  async function handleEvolve() {
+  async function handleEvolve(targetEvolutionId?: number) {
     if (!evolvingPokemonId) return;
 
     try {
       setIsEvolving(true);
       setError(null);
 
+      const requestBody: { pokemon_id: string; target_evolution_id?: number } = {
+        pokemon_id: evolvingPokemonId,
+      };
+      if (targetEvolutionId) {
+        requestBody.target_evolution_id = targetEvolutionId;
+      }
+
       const response = await fetch('/api/pokecenter/evolve', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ pokemon_id: evolvingPokemonId }),
+        body: JSON.stringify(requestBody),
       });
 
       const data = await response.json();
@@ -358,11 +365,12 @@ export default function PokecenterPage() {
               name: evolutionTarget.from.name,
               sprite_url: evolutionTarget.from.sprite_url,
             }}
-            toPokemon={{
+            toPokemon={evolutionTarget.to.hasMultipleEvolutions ? undefined : {
               id: evolutionTarget.to.nextEvolutionId!,
               name: evolutionTarget.to.nextEvolutionName!,
               sprite_url: getPokemonSpriteUrl(evolutionTarget.to.nextEvolutionId!),
             }}
+            evolutionOptions={evolutionTarget.to.evolutionOptions}
             onEvolve={handleEvolve}
             onLater={handleEvolveLater}
           />

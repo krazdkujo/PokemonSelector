@@ -5,6 +5,19 @@ info:
     External API for the Pokemon Starter Selector platform. This API allows authenticated
     users to interact with their trainer account, manage Pokemon, and participate in battles.
 
+    ## Changelog
+
+    ### v2.0.0 (2025-01-14) - Breaking Changes
+
+    **Breaking:**
+    - `POST /api/trainer`: Existing accounts with PIN now require PIN for login
+    - `GET /api/trainers`: Removed `requester_id` query param, use X-API-Key header
+
+    **Improvements:**
+    - Account lockout after 5 failed PIN attempts (15 min)
+    - Consistent auth across all admin endpoints
+    - Fixed level 10 capture bug
+
     ## Authentication
 
     All endpoints (except where noted) require authentication via an API key. Include your
@@ -23,7 +36,7 @@ info:
     ## Error Handling
 
     All errors follow a consistent format with an error code and human-readable message.
-  version: 1.0.0
+  version: 2.0.0
   contact:
     name: API Support
   license:
@@ -325,7 +338,342 @@ components:
             name:
               type: string
 
+    TrainerWithStarter:
+      type: object
+      description: Trainer with starter Pokemon details
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        role:
+          type: string
+          enum: [trainer, admin]
+        starter_pokemon_id:
+          type: integer
+          nullable: true
+        starter_pokemon_nickname:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        starter:
+          type: object
+          nullable: true
+          properties:
+            number:
+              type: integer
+            name:
+              type: string
+            types:
+              type: array
+              items:
+                type: string
+            sr:
+              type: number
+
+    TrainerWithStats:
+      type: object
+      description: Trainer with statistics (for admin listing)
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        role:
+          type: string
+          enum: [trainer, admin]
+        starter_pokemon_id:
+          type: integer
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        starter:
+          type: object
+          nullable: true
+          properties:
+            number:
+              type: integer
+            name:
+              type: string
+            types:
+              type: array
+              items:
+                type: string
+        stats:
+          type: object
+          properties:
+            battles_won:
+              type: integer
+            battles_lost:
+              type: integer
+            pokemon_captured:
+              type: integer
+            pokemon_count:
+              type: integer
+
 paths:
+  /api/trainer:
+    get:
+      summary: Get Your Trainer Profile
+      description: Retrieve your basic trainer profile information.
+      tags: [Account]
+      responses:
+        '200':
+          description: Trainer profile retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trainer'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    post:
+      summary: Create or Login as Trainer
+      description: |
+        Creates a new trainer account or logs into an existing one (case-insensitive name match).
+
+        **Authentication Rules:**
+        - New accounts: PIN is optional (can be set later)
+        - Existing accounts with PIN: PIN is required
+        - Existing accounts without PIN: Login allowed, response includes `pin_not_set: true`
+
+        Failed PIN attempts (5 max) will lock the account for 15 minutes.
+      tags: [Account]
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  minLength: 1
+                  maxLength: 20
+                  description: Trainer name (1-20 characters)
+                pin:
+                  type: string
+                  pattern: '^\d{4}$'
+                  description: 4-digit PIN (required for existing accounts with PIN set)
+      responses:
+        '200':
+          description: Existing trainer found and authenticated
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Trainer'
+                  - type: object
+                    properties:
+                      pin_not_set:
+                        type: boolean
+                        description: True if account has no PIN set
+                      must_change_pin:
+                        type: boolean
+                        description: True if PIN was admin-reset and must be changed
+        '201':
+          description: New trainer created
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Trainer'
+                  - type: object
+                    properties:
+                      pin_not_set:
+                        type: boolean
+                        description: Always true for new accounts
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: PIN required or invalid PIN
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                pin_required:
+                  summary: PIN required
+                  value:
+                    error: PIN_REQUIRED
+                    message: PIN is required for this account
+                invalid_pin:
+                  summary: Invalid PIN
+                  value:
+                    error: INVALID_PIN
+                    message: Incorrect PIN. 4 attempts remaining.
+        '423':
+          description: Account locked due to too many failed attempts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  message:
+                    type: string
+                  lockout_remaining_seconds:
+                    type: integer
+
+  /api/trainer/{id}/nickname:
+    put:
+      summary: Set Pokemon Nickname
+      description: Set or update the nickname for your starter Pokemon.
+      tags: [Account]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: Trainer UUID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nickname:
+                  type: string
+                  maxLength: 20
+                  nullable: true
+                  description: Nickname (1-20 chars) or null to clear
+      responses:
+        '200':
+          description: Nickname updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrainerWithStarter'
+        '400':
+          description: Validation error or no Pokemon
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Trainer not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    delete:
+      summary: Clear Pokemon Nickname
+      description: Remove the nickname from your starter Pokemon.
+      tags: [Account]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: Trainer UUID
+      responses:
+        '200':
+          description: Nickname cleared successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrainerWithStarter'
+        '404':
+          description: Trainer not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/starter:
+    get:
+      summary: List Available Starters
+      description: Returns all Pokemon eligible as starters (SR <= 0.5).
+      tags: [Starter]
+      security: []
+      responses:
+        '200':
+          description: Starters retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  starters:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        types:
+                          type: array
+                          items:
+                            type: string
+                        sr:
+                          type: number
+                        sprite_url:
+                          type: string
+
+    post:
+      summary: Select Starter Pokemon
+      description: Select your starter Pokemon. Can only be done once per trainer.
+      tags: [Starter]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - pokemon_id
+              properties:
+                pokemon_id:
+                  type: integer
+                  description: National Pokedex number of the starter
+      responses:
+        '201':
+          description: Starter selected successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pokemon:
+                    $ref: '#/components/schemas/PokemonOwned'
+        '400':
+          description: Invalid starter or already has starter
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
   /api/external/trainer:
     get:
       summary: Get Your Trainer Data
@@ -954,7 +1302,379 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 
+  /api/secret-key:
+    get:
+      summary: Get API Key Metadata
+      description: Returns metadata about your API secret key including whether one exists, when it was created, and when last used.
+      tags: [API Key]
+      responses:
+        '200':
+          description: Key metadata retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  has_key:
+                    type: boolean
+                  created_at:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  last_used_at:
+                    type: string
+                    format: date-time
+                    nullable: true
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    post:
+      summary: Generate API Key
+      description: Generates a new API secret key. The plaintext key is returned only once - save it immediately! Regenerating invalidates any previous key.
+      tags: [API Key]
+      responses:
+        '201':
+          description: Key generated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  key:
+                    type: string
+                    description: Your new API key (save immediately!)
+                  created_at:
+                    type: string
+                    format: date-time
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/pin/status:
+    get:
+      summary: Get PIN Status
+      description: Returns the PIN status for your account including lock state.
+      tags: [PIN Security]
+      responses:
+        '200':
+          description: PIN status retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  has_pin:
+                    type: boolean
+                  is_locked:
+                    type: boolean
+                  is_temporary:
+                    type: boolean
+                  lockout_remaining_seconds:
+                    type: integer
+                    description: Seconds until unlock (only present if locked)
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/pin/create:
+    post:
+      summary: Create or Update PIN
+      description: Sets a new 4-digit PIN. Both pin and confirm_pin must match.
+      tags: [PIN Security]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - pin
+                - confirm_pin
+              properties:
+                pin:
+                  type: string
+                  pattern: '^\d{4}$'
+                  description: 4-digit PIN
+                confirm_pin:
+                  type: string
+                  pattern: '^\d{4}$'
+                  description: PIN confirmation (must match)
+      responses:
+        '200':
+          description: PIN created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Invalid PIN format or mismatch
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/pin/verify:
+    post:
+      summary: Verify PIN
+      description: Verifies the entered PIN. After 5 failed attempts, account is locked for 15 minutes.
+      tags: [PIN Security]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - pin
+              properties:
+                pin:
+                  type: string
+                  pattern: '^\d{4}$'
+                  description: 4-digit PIN to verify
+      responses:
+        '200':
+          description: Verification result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  valid:
+                    type: boolean
+                  must_change:
+                    type: boolean
+                    description: True if PIN was admin-reset and needs to be changed
+                  message:
+                    type: string
+        '423':
+          description: Account locked
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  valid:
+                    type: boolean
+                  locked:
+                    type: boolean
+                  lockout_remaining_seconds:
+                    type: integer
+                  message:
+                    type: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/trainers:
+    get:
+      summary: List All Trainers (Admin)
+      description: Returns all trainers with their stats and Pokemon counts. Requires admin role - your API key must belong to an admin account.
+      tags: [Admin]
+      responses:
+        '200':
+          description: Trainers list retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TrainerWithStats'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden (not admin)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/trainers/{id}/role:
+    patch:
+      summary: Change Trainer Role (Admin)
+      description: Changes a trainer's role between "trainer" and "admin". Cannot demote the last admin.
+      tags: [Admin]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: Target trainer UUID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - role
+              properties:
+                role:
+                  type: string
+                  enum: [trainer, admin]
+      responses:
+        '200':
+          description: Role changed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  trainer_id:
+                    type: string
+                    format: uuid
+                  previous_role:
+                    type: string
+                    enum: [trainer, admin]
+                  new_role:
+                    type: string
+                    enum: [trainer, admin]
+                  updated_at:
+                    type: string
+                    format: date-time
+        '400':
+          description: Validation error or cannot remove last admin
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden (not admin)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Trainer not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/pin/admin/reset:
+    post:
+      summary: Reset User PIN (Admin)
+      description: Clears a user's PIN, allowing them to set a new one. Admin only.
+      tags: [Admin]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - trainer_id
+              properties:
+                trainer_id:
+                  type: string
+                  format: uuid
+      responses:
+        '200':
+          description: PIN reset successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden (not admin)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/pin/admin/unlock:
+    post:
+      summary: Unlock Account (Admin)
+      description: Removes the lockout from an account that has too many failed PIN attempts. Admin only.
+      tags: [Admin]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - trainer_id
+              properties:
+                trainer_id:
+                  type: string
+                  format: uuid
+      responses:
+        '200':
+          description: Account unlocked successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden (not admin)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
 tags:
+  - name: Account
+    description: Account creation and management
+  - name: Starter
+    description: Starter Pokemon selection
   - name: Trainer
     description: Trainer account and profile operations
   - name: Pokemon
@@ -967,3 +1687,9 @@ tags:
     description: Combat zones information
   - name: Battle
     description: Battle system operations
+  - name: API Key
+    description: API key management
+  - name: PIN Security
+    description: PIN authentication management
+  - name: Admin
+    description: Administrative operations (admin role required)

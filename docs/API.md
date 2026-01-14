@@ -4,12 +4,15 @@ Complete API documentation for the Pokemon Starter Selector platform.
 
 ## Table of Contents
 
+- [Changelog](#changelog)
 - [Overview](#overview)
 - [Authentication](#authentication)
 - [Base URL](#base-url)
 - [Rate Limiting](#rate-limiting)
 - [Quick Reference](#quick-reference)
 - [Endpoints](#endpoints)
+  - [Account](#account-endpoints)
+  - [Starter](#starter-endpoints)
   - [Trainer](#trainer-endpoints)
   - [Pokemon Collection](#pokemon-collection-endpoints)
   - [Evolution](#evolution-endpoints)
@@ -17,9 +20,65 @@ Complete API documentation for the Pokemon Starter Selector platform.
   - [Zones](#zones-endpoints)
   - [Battle System](#battle-system-endpoints)
   - [Capture](#capture-endpoints)
+  - [API Key](#api-key-endpoints)
+  - [PIN Security](#pin-security-endpoints)
+  - [Admin](#admin-endpoints)
 - [Error Reference](#error-reference)
 - [Code Examples](#code-examples)
 - [Troubleshooting](#troubleshooting)
+
+---
+
+## Changelog
+
+### v2.0.0 (2025-01-14) - Breaking Changes
+
+This release includes breaking changes that may affect existing integrations.
+
+#### Breaking Changes
+
+| Change | Endpoint | Description |
+|--------|----------|-------------|
+| PIN Required for Login | `POST /api/trainer` | Existing accounts with a PIN set now **require** the PIN in the login request. New accounts can still be created without a PIN. |
+| Auth Method Changed | `GET /api/trainers` | Removed `requester_id` query parameter. Now uses session cookie or `X-API-Key` header (admin role required). |
+
+#### Migration Guide
+
+**For `POST /api/trainer`:**
+
+Before:
+```json
+{ "name": "Ash" }
+```
+
+After (for accounts with PIN):
+```json
+{ "name": "Ash", "pin": "1234" }
+```
+
+**New Error Responses:**
+- `401 PIN_REQUIRED` - Account has PIN but none provided
+- `401 INVALID_PIN` - Incorrect PIN (shows attempts remaining)
+- `423 ACCOUNT_LOCKED` - Too many failed attempts (15 min lockout)
+
+**For `GET /api/trainers`:**
+
+Before:
+```
+GET /api/trainers?requester_id=your-uuid
+```
+
+After:
+```
+GET /api/trainers
+Headers: X-API-Key: your-admin-api-key
+```
+
+#### Improvements
+
+- **Account Lockout Protection**: After 5 failed PIN attempts, accounts are locked for 15 minutes
+- **Consistent Admin Auth**: All admin endpoints now support both session cookie and API key authentication
+- **Bug Fix**: Fixed capture failure for level 10 Pokemon in medium/hard zones
 
 ---
 
@@ -76,9 +135,22 @@ There are currently no rate limits enforced. Please be respectful of server reso
 
 ## Quick Reference
 
+### Account & Starter
+
 | Endpoint | Method | Description | Auth Required |
 |----------|--------|-------------|---------------|
-| `/api/external/trainer` | GET | Get your trainer data | Yes |
+| `/api/trainer` | GET | Get your trainer profile | Yes |
+| `/api/trainer` | POST | Create or login as trainer | No |
+| `/api/trainer/{id}/nickname` | PUT | Set Pokemon nickname | Yes |
+| `/api/trainer/{id}/nickname` | DELETE | Clear Pokemon nickname | Yes |
+| `/api/starter` | GET | List available starters | No |
+| `/api/starter` | POST | Select your starter | Yes |
+
+### Trainer & Pokemon
+
+| Endpoint | Method | Description | Auth Required |
+|----------|--------|-------------|---------------|
+| `/api/external/trainer` | GET | Get trainer with full stats | Yes |
 | `/api/dashboard` | GET | Get dashboard overview | Yes |
 | `/api/pokecenter` | GET | List your Pokemon | Yes |
 | `/api/pokecenter/swap` | POST | Change active Pokemon | Yes |
@@ -86,6 +158,11 @@ There are currently no rate limits enforced. Please be respectful of server reso
 | `/api/pokedex` | GET | Get Pokedex progress | Yes |
 | `/api/moves` | GET | Get available moves | Yes |
 | `/api/moves` | PUT | Update selected moves | Yes |
+
+### Zones & Battle
+
+| Endpoint | Method | Description | Auth Required |
+|----------|--------|-------------|---------------|
 | `/api/zones` | GET | List combat zones | No |
 | `/api/zones/{id}/preview` | GET | Preview zone encounters | Yes |
 | `/api/battle` | GET | Get active battle | Yes |
@@ -94,9 +171,243 @@ There are currently no rate limits enforced. Please be respectful of server reso
 | `/api/capture` | GET | Check capture eligibility | Yes |
 | `/api/capture` | POST | Attempt capture | Yes |
 
+### API Key & Security
+
+| Endpoint | Method | Description | Auth Required |
+|----------|--------|-------------|---------------|
+| `/api/secret-key` | GET | Get API key metadata | Session |
+| `/api/secret-key` | POST | Generate/regenerate API key | Session |
+| `/api/pin/status` | GET | Check PIN status | Session |
+| `/api/pin/create` | POST | Create or update PIN | Session |
+| `/api/pin/verify` | POST | Verify PIN | Session |
+
+### Admin Only
+
+| Endpoint | Method | Description | Auth Required |
+|----------|--------|-------------|---------------|
+| `/api/trainers` | GET | List all trainers | Admin |
+| `/api/trainers/{id}/role` | PATCH | Change trainer role | Admin |
+| `/api/pin/admin/reset` | POST | Reset user's PIN | Admin |
+| `/api/pin/admin/unlock` | POST | Unlock locked account | Admin |
+
 ---
 
 ## Endpoints
+
+### Account Endpoints
+
+#### GET /api/trainer
+
+Retrieve your basic trainer profile information.
+
+**Headers:**
+
+| Header | Required | Description |
+|--------|----------|-------------|
+| `X-API-Key` | Yes | Your API key |
+
+**Response (200 OK):**
+
+```json
+{
+  "id": "550e8400-e29b-41d4-a716-446655440000",
+  "name": "Ash",
+  "role": "trainer",
+  "created_at": "2024-01-01T00:00:00Z"
+}
+```
+
+---
+
+#### POST /api/trainer
+
+Create a new trainer account or login to an existing one (case-insensitive name match).
+
+**Request Body:**
+
+```json
+{
+  "name": "Ash",
+  "pin": "1234"
+}
+```
+
+**Validation Rules:**
+- Name must be 1-20 characters
+- Name must contain at least 1 non-whitespace character
+- **New accounts:** PIN is optional (can be set later via `/api/pin/create`)
+- **Existing accounts with PIN:** PIN is **required** for authentication
+- **Existing accounts without PIN:** Login allowed, response includes `pin_not_set: true`
+
+**Response (201 Created) - New Account:**
+
+```json
+{
+  "id": "550e8400-e29b-41d4-a716-446655440000",
+  "name": "Ash",
+  "role": "trainer",
+  "created_at": "2024-01-01T00:00:00Z",
+  "pin_not_set": true
+}
+```
+
+**Response (200 OK) - Existing Account (PIN verified):**
+
+```json
+{
+  "id": "550e8400-e29b-41d4-a716-446655440000",
+  "name": "Ash",
+  "role": "trainer",
+  "created_at": "2024-01-01T00:00:00Z"
+}
+```
+
+**Response (200 OK) - Existing Account (no PIN set):**
+
+```json
+{
+  "id": "...",
+  "name": "Ash",
+  "pin_not_set": true
+}
+```
+
+**Errors:**
+
+- `401 PIN_REQUIRED` - Account has PIN set but none provided
+- `401 INVALID_PIN` - Incorrect PIN (includes attempts remaining)
+- `423 ACCOUNT_LOCKED` - Too many failed attempts (15 min lockout)
+
+**Note:** This endpoint sets a `trainer_id` cookie (30-day expiration) for session management.
+
+---
+
+#### PUT /api/trainer/{id}/nickname
+
+Set or update the nickname for your starter Pokemon.
+
+**Path Parameters:**
+
+| Parameter | Description |
+|-----------|-------------|
+| `id` | Your trainer UUID |
+
+**Request Body:**
+
+```json
+{
+  "nickname": "Sparky"
+}
+```
+
+**Validation Rules:**
+- Nickname must be 1-20 characters
+- Send `null` or empty string to clear nickname
+
+**Response (200 OK):**
+
+```json
+{
+  "id": "uuid",
+  "name": "Ash",
+  "starter_pokemon_id": 25,
+  "starter_pokemon_nickname": "Sparky",
+  "starter": {
+    "number": 25,
+    "name": "Pikachu",
+    "types": ["Electric"],
+    "sr": 0.45
+  }
+}
+```
+
+---
+
+#### DELETE /api/trainer/{id}/nickname
+
+Clear the nickname from your starter Pokemon.
+
+**Response (200 OK):**
+
+```json
+{
+  "id": "uuid",
+  "name": "Ash",
+  "starter_pokemon_id": 25,
+  "starter_pokemon_nickname": null,
+  "starter": { ... }
+}
+```
+
+---
+
+### Starter Endpoints
+
+#### GET /api/starter
+
+Returns all Pokemon eligible as starters (SR <= 0.5). **No authentication required.**
+
+**Response (200 OK):**
+
+```json
+{
+  "starters": [
+    {
+      "id": 25,
+      "name": "Pikachu",
+      "types": ["Electric"],
+      "sr": 0.45,
+      "sprite_url": "/sprites/pikachu.png"
+    },
+    {
+      "id": 1,
+      "name": "Bulbasaur",
+      "types": ["Grass", "Poison"],
+      "sr": 0.3,
+      "sprite_url": "/sprites/bulbasaur.png"
+    }
+  ]
+}
+```
+
+---
+
+#### POST /api/starter
+
+Select your starter Pokemon. Can only be done once per trainer.
+
+**Request Body:**
+
+```json
+{
+  "pokemon_id": 25
+}
+```
+
+**Response (201 Created):**
+
+```json
+{
+  "pokemon": {
+    "id": "uuid",
+    "pokemon_id": 25,
+    "name": "Pikachu",
+    "types": ["Electric"],
+    "level": 1,
+    "sr": 0.45,
+    "is_starter": true,
+    "is_active": true,
+    "sprite_url": "/sprites/pikachu.png"
+  }
+}
+```
+
+**Errors:**
+
+- `400 INVALID_STARTER` - Pokemon is not available as starter (SR > 0.5)
+- `400 ALREADY_HAS_STARTER` - You already have a starter Pokemon
+
+---
 
 ### Trainer Endpoints
 
@@ -777,6 +1088,288 @@ The `experience_gained` object may include `evolution_available` and `evolution_
 
 ---
 
+### API Key Endpoints
+
+#### GET /api/secret-key
+
+Returns metadata about your API secret key. **Requires session authentication (cookie).**
+
+**Response (200 OK):**
+
+```json
+{
+  "has_key": true,
+  "created_at": "2024-01-15T10:30:00Z",
+  "last_used_at": "2024-01-16T14:22:00Z"
+}
+```
+
+**Response Fields:**
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `has_key` | boolean | Whether an API key exists |
+| `created_at` | string/null | When the key was created |
+| `last_used_at` | string/null | Last time the key was used |
+
+---
+
+#### POST /api/secret-key
+
+Generates a new API secret key. The plaintext key is returned **only once** - save it immediately! Regenerating invalidates any previous key.
+
+**Response (201 Created):**
+
+```json
+{
+  "key": "sk_live_abc123def456ghi789...",
+  "created_at": "2024-01-16T15:00:00Z"
+}
+```
+
+**Important:** Store this key securely. It cannot be retrieved again.
+
+---
+
+### PIN Security Endpoints
+
+PIN authentication provides an additional security layer for account access.
+
+#### GET /api/pin/status
+
+Returns the PIN status for your account. **Requires session authentication.**
+
+**Response (200 OK):**
+
+```json
+{
+  "has_pin": true,
+  "is_locked": false,
+  "is_temporary": false
+}
+```
+
+**When Account is Locked:**
+
+```json
+{
+  "has_pin": true,
+  "is_locked": true,
+  "is_temporary": false,
+  "lockout_remaining_seconds": 540
+}
+```
+
+---
+
+#### POST /api/pin/create
+
+Create or update your 4-digit PIN. **Requires session authentication.**
+
+**Request Body:**
+
+```json
+{
+  "pin": "1234",
+  "confirm_pin": "1234"
+}
+```
+
+**Validation Rules:**
+- PIN must be exactly 4 numeric digits
+- `pin` and `confirm_pin` must match
+
+**Response (200 OK):**
+
+```json
+{
+  "success": true,
+  "message": "PIN created successfully"
+}
+```
+
+**Errors:**
+
+- `400 INVALID_PIN_FORMAT` - PIN must be exactly 4 numeric digits
+- `400 PIN_MISMATCH` - PINs do not match
+
+---
+
+#### POST /api/pin/verify
+
+Verify a PIN. After 5 failed attempts, account is locked for 15 minutes.
+
+**Request Body:**
+
+```json
+{
+  "pin": "1234"
+}
+```
+
+**Response (200 OK) - Success:**
+
+```json
+{
+  "valid": true
+}
+```
+
+**Response (200 OK) - Temporary PIN (must change):**
+
+```json
+{
+  "valid": true,
+  "must_change": true,
+  "message": "Your PIN was reset by support. Please create a new PIN."
+}
+```
+
+**Response (200 OK) - Failed:**
+
+```json
+{
+  "valid": false,
+  "message": "Incorrect PIN. 3 attempts remaining."
+}
+```
+
+**Response (423 Locked):**
+
+```json
+{
+  "valid": false,
+  "locked": true,
+  "lockout_remaining_seconds": 900,
+  "message": "Account locked. Try again in 15 minutes."
+}
+```
+
+---
+
+### Admin Endpoints
+
+These endpoints require admin role. Regular trainers will receive `403 FORBIDDEN`.
+
+#### GET /api/trainers
+
+List all trainers with their statistics and Pokemon counts. **Requires admin role.**
+
+**Headers:**
+
+| Header | Required | Description |
+|--------|----------|-------------|
+| `X-API-Key` | Yes | Your API key (must belong to an admin) |
+
+**Response (200 OK):**
+
+```json
+[
+  {
+    "id": "uuid",
+    "name": "Ash",
+    "role": "trainer",
+    "starter_pokemon_id": 25,
+    "created_at": "2024-01-01T00:00:00Z",
+    "starter": {
+      "number": 25,
+      "name": "Pikachu",
+      "types": ["Electric"]
+    },
+    "stats": {
+      "battles_won": 10,
+      "battles_lost": 2,
+      "pokemon_captured": 5,
+      "pokemon_count": 6
+    }
+  }
+]
+```
+
+---
+
+#### PATCH /api/trainers/{id}/role
+
+Change a trainer's role between "trainer" and "admin".
+
+**Path Parameters:**
+
+| Parameter | Description |
+|-----------|-------------|
+| `id` | Target trainer UUID |
+
+**Request Body:**
+
+```json
+{
+  "role": "admin"
+}
+```
+
+**Response (200 OK):**
+
+```json
+{
+  "trainer_id": "uuid",
+  "previous_role": "trainer",
+  "new_role": "admin",
+  "updated_at": "2024-01-16T15:30:00Z"
+}
+```
+
+**Errors:**
+
+- `400 CANNOT_REMOVE_LAST_ADMIN` - Cannot demote the last admin
+- `400 VALIDATION_ERROR` - Role must be 'trainer' or 'admin'
+
+---
+
+#### POST /api/pin/admin/reset
+
+Reset a user's PIN, allowing them to set a new one. **Admin only.**
+
+**Request Body:**
+
+```json
+{
+  "trainer_id": "uuid-of-trainer"
+}
+```
+
+**Response (200 OK):**
+
+```json
+{
+  "success": true,
+  "message": "PIN has been reset"
+}
+```
+
+---
+
+#### POST /api/pin/admin/unlock
+
+Unlock an account that was locked due to too many failed PIN attempts. **Admin only.**
+
+**Request Body:**
+
+```json
+{
+  "trainer_id": "uuid-of-trainer"
+}
+```
+
+**Response (200 OK):**
+
+```json
+{
+  "success": true,
+  "message": "Account has been unlocked"
+}
+```
+
+---
+
 ## Error Reference
 
 All errors follow this format:
@@ -799,10 +1392,17 @@ All errors follow this format:
 | `BATTLE_IN_PROGRESS` | 400 | Cannot perform action during battle |
 | `NO_ACTIVE_BATTLE` | 400 | No active battle exists |
 | `NO_ACTIVE_POKEMON` | 400 | No active Pokemon selected |
+| `NO_POKEMON` | 400 | You must select a Pokemon first |
 | `INVALID_MOVE` | 400 | Move not available to your Pokemon |
 | `INVALID_MOVES` | 400 | One or more moves are invalid |
+| `INVALID_STARTER` | 400 | Pokemon is not available as starter |
+| `ALREADY_HAS_STARTER` | 400 | You already have a starter Pokemon |
 | `CANNOT_EVOLVE` | 400 | Pokemon is not eligible for evolution |
 | `FINAL_STAGE` | 400 | Pokemon is already at its final evolution |
+| `INVALID_PIN_FORMAT` | 400 | PIN must be exactly 4 numeric digits |
+| `PIN_MISMATCH` | 400 | PINs do not match |
+| `NO_PIN` | 400 | No PIN set for this account |
+| `CANNOT_REMOVE_LAST_ADMIN` | 400 | Cannot demote the last admin |
 | `DATABASE_ERROR` | 500 | Server database error |
 | `INTERNAL_ERROR` | 500 | Unexpected server error |
 

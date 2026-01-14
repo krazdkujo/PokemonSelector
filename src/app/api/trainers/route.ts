@@ -1,18 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 import { createClient } from '@/lib/supabase/server';
 import { getPokemonById } from '@/lib/pokemon';
 import type { TrainerWithStats, ApiError } from '@/lib/types';
 
 export async function GET(request: NextRequest) {
   try {
-    // Get trainer ID from query params for role check
-    const { searchParams } = new URL(request.url);
-    const requesterId = searchParams.get('requester_id');
+    // Get trainer ID from session cookie (secure) or API key header
+    const cookieStore = await cookies();
+    const requesterId = cookieStore.get('trainer_id')?.value || request.headers.get('X-User-ID');
 
     if (!requesterId) {
       const error: ApiError = {
         error: 'UNAUTHORIZED',
-        message: 'Requester ID is required',
+        message: 'Authentication required',
       };
       return NextResponse.json(error, { status: 401 });
     }
@@ -29,7 +30,7 @@ export async function GET(request: NextRequest) {
     if (requesterError || !requester) {
       const error: ApiError = {
         error: 'UNAUTHORIZED',
-        message: 'Invalid requester',
+        message: 'Invalid session',
       };
       return NextResponse.json(error, { status: 401 });
     }

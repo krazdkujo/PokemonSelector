@@ -16,12 +16,13 @@ interface SetTempPinRequest {
 export async function POST(request: NextRequest) {
   try {
     const cookieStore = await cookies();
-    const adminId = cookieStore.get('trainer_id')?.value;
+    // Support both session cookie and API key authentication
+    const adminId = cookieStore.get('trainer_id')?.value || request.headers.get('X-User-ID');
 
     if (!adminId) {
       const error: ApiError = {
         error: 'UNAUTHORIZED',
-        message: 'Not authenticated',
+        message: 'Authentication required',
       };
       return NextResponse.json(error, { status: 401 });
     }

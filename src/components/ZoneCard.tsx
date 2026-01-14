@@ -11,7 +11,8 @@ interface ZoneCardProps {
 }
 
 export function ZoneCard({ zone, onSelect, onPreview, disabled = false }: ZoneCardProps) {
-  const colors = getZoneColorClasses(zone);
+  // Zone colors available via getZoneColorClasses(zone) if needed
+  void getZoneColorClasses;
 
   return (
     <div

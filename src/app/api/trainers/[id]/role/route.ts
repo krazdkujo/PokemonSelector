@@ -21,13 +21,13 @@ export async function PATCH(request: NextRequest, { params }: RouteParams) {
     const { id: trainerId } = await params;
     const supabase = await createClient();
 
-    // Get requester from session cookie
-    const requesterId = request.cookies.get('trainer_id')?.value;
+    // Get requester from session cookie or API key header
+    const requesterId = request.cookies.get('trainer_id')?.value || request.headers.get('X-User-ID');
 
     if (!requesterId) {
       const error: ApiError = {
         error: 'UNAUTHORIZED',
-        message: 'You must be logged in to perform this action',
+        message: 'Authentication required',
       };
       return NextResponse.json(error, { status: 401 });
     }

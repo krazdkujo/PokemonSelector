@@ -13,6 +13,7 @@ import type { ApiError, EvolutionResult, PokemonOwnedWithDetails } from '@/lib/t
 
 interface EvolveRequest {
   pokemon_id: string; // The owned Pokemon record ID (UUID)
+  target_evolution_id?: number; // Optional: specific evolution ID for Pokemon with multiple options (e.g., Eevee)
 }
 
 /**
@@ -36,7 +37,7 @@ export async function POST(request: NextRequest) {
 
     // Parse request body
     const body: EvolveRequest = await request.json();
-    const { pokemon_id } = body;
+    const { pokemon_id, target_evolution_id } = body;
 
     if (!pokemon_id) {
       const error: ApiError = {
@@ -81,9 +82,21 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(error, { status: 400 });
     }
 
+    // For Pokemon with multiple evolutions (e.g., Eevee), require a target
+    if (evolutionInfo.hasMultipleEvolutions && !target_evolution_id) {
+      const error: ApiError = {
+        error: 'TARGET_REQUIRED',
+        message: 'This Pokemon has multiple evolutions. Please specify target_evolution_id.',
+      };
+      return NextResponse.json({
+        ...error,
+        evolution_options: evolutionInfo.evolutionOptions,
+      }, { status: 400 });
+    }
+
     // Get the Pokemon names for the response
     const fromPokemon = getEvolutionPokemonById(ownedPokemon.pokemon_id);
-    const nextEvolution = getNextEvolution(ownedPokemon.pokemon_id);
+    const nextEvolution = getNextEvolution(ownedPokemon.pokemon_id, target_evolution_id);
 
     if (!fromPokemon || !nextEvolution) {
       const error: ApiError = {
