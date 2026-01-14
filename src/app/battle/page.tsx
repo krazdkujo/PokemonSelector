@@ -287,10 +287,10 @@ export default function BattlePage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center dark:bg-gray-900">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 dark:border-blue-400 mx-auto"></div>
-          <p className="mt-4 text-gray-600 dark:text-gray-400">Loading battle...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--accent-primary)] mx-auto"></div>
+          <p className="mt-4 text-[var(--fg-100)]">Loading battle...</p>
         </div>
       </div>
     );
@@ -301,24 +301,24 @@ export default function BattlePage() {
     // Step 1: Zone selection
     if (!selectedZone) {
       return (
-        <div className="min-h-screen py-8 dark:bg-gray-900">
+        <div className="min-h-screen py-8">
           <div className="max-w-6xl mx-auto px-4">
             <div className="flex justify-between items-center mb-8">
-              <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">Battle</h1>
+              <h1 className="text-3xl font-bold text-[var(--fg-0)]">Battle</h1>
               <Link href="/dashboard" className="btn-secondary">
                 Back to Dashboard
               </Link>
             </div>
 
             {error && (
-              <div className="bg-red-100 dark:bg-red-900 border border-red-400 dark:border-red-600 text-red-700 dark:text-red-300 px-4 py-3 rounded mb-6">
+              <div className="error-message mb-6">
                 {error}
               </div>
             )}
 
             <PokemonSearch />
 
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+            <div className="card p-6">
               <ZoneSelector onSelect={handleZoneSelect} disabled={isStarting} />
             </div>
           </div>
@@ -328,34 +328,34 @@ export default function BattlePage() {
 
     // Step 2: Difficulty selection (after zone is selected)
     return (
-      <div className="min-h-screen py-8 dark:bg-gray-900">
+      <div className="min-h-screen py-8">
         <div className="max-w-2xl mx-auto px-4">
           <div className="flex justify-between items-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">Battle</h1>
+            <h1 className="text-3xl font-bold text-[var(--fg-0)]">Battle</h1>
             <Link href="/dashboard" className="btn-secondary">
               Back to Dashboard
             </Link>
           </div>
 
           {error && (
-            <div className="bg-red-100 dark:bg-red-900 border border-red-400 dark:border-red-600 text-red-700 dark:text-red-300 px-4 py-3 rounded mb-6">
+            <div className="error-message mb-6">
               {error}
             </div>
           )}
 
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+          <div className="card p-6">
             {/* Show selected zone */}
-            <div className="mb-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+            <div className="mb-6 p-4 bg-[var(--bg-200)] rounded-lg">
               <div className="flex justify-between items-center">
                 <div>
-                  <span className="text-sm text-gray-500 dark:text-gray-400">Selected Zone:</span>
-                  <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100">{selectedZoneData?.name}</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">{selectedZoneData?.description}</p>
+                  <span className="text-sm text-[var(--fg-200)]">Selected Zone:</span>
+                  <h3 className="text-lg font-semibold text-[var(--fg-0)]">{selectedZoneData?.name}</h3>
+                  <p className="text-sm text-[var(--fg-100)]">{selectedZoneData?.description}</p>
                   <div className="mt-2 flex flex-wrap gap-1">
                     {selectedZoneData?.types.map(type => (
                       <span
                         key={type}
-                        className="px-2 py-0.5 text-xs rounded-full bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300"
+                        className="px-2 py-0.5 text-xs rounded-full bg-[var(--bg-300)] text-[var(--fg-100)]"
                       >
                         {type.charAt(0).toUpperCase() + type.slice(1)}
                       </span>
@@ -364,15 +364,15 @@ export default function BattlePage() {
                 </div>
                 <button
                   onClick={handleBackToZones}
-                  className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm"
+                  className="text-[var(--accent-primary)] hover:text-[var(--accent-primary)]/80 text-sm"
                 >
                   Change Zone
                 </button>
               </div>
             </div>
 
-            <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Select Difficulty</h2>
-            <p className="text-gray-600 dark:text-gray-400 mb-6">
+            <h2 className="text-xl font-semibold text-[var(--fg-0)] mb-4">Select Difficulty</h2>
+            <p className="text-[var(--fg-100)] mb-6">
               Choose the difficulty for your encounter. Higher difficulty means stronger opponents!
             </p>
 
@@ -380,10 +380,10 @@ export default function BattlePage() {
               <button
                 onClick={() => startBattle('easy')}
                 disabled={isStarting}
-                className="p-4 bg-green-100 dark:bg-green-900 hover:bg-green-200 dark:hover:bg-green-800 border-2 border-green-300 dark:border-green-600 rounded-lg text-left transition disabled:opacity-50"
+                className="p-4 bg-[var(--accent-success)]/10 hover:bg-[var(--accent-success)]/20 border-2 border-[var(--accent-success)]/30 hover:border-[var(--accent-success)]/50 rounded-lg text-left transition disabled:opacity-50"
               >
-                <div className="font-bold text-green-800 dark:text-green-300">Easy</div>
-                <div className="text-sm text-green-700 dark:text-green-400">
+                <div className="font-bold text-[var(--accent-success)]">Easy</div>
+                <div className="text-sm text-[var(--fg-100)]">
                   {getDifficultyDescription('easy')}
                 </div>
               </button>
@@ -391,10 +391,10 @@ export default function BattlePage() {
               <button
                 onClick={() => startBattle('medium')}
                 disabled={isStarting}
-                className="p-4 bg-yellow-100 dark:bg-yellow-900 hover:bg-yellow-200 dark:hover:bg-yellow-800 border-2 border-yellow-300 dark:border-yellow-600 rounded-lg text-left transition disabled:opacity-50"
+                className="p-4 bg-[var(--accent-warning)]/10 hover:bg-[var(--accent-warning)]/20 border-2 border-[var(--accent-warning)]/30 hover:border-[var(--accent-warning)]/50 rounded-lg text-left transition disabled:opacity-50"
               >
-                <div className="font-bold text-yellow-800 dark:text-yellow-300">Medium</div>
-                <div className="text-sm text-yellow-700 dark:text-yellow-400">
+                <div className="font-bold text-[var(--accent-warning)]">Medium</div>
+                <div className="text-sm text-[var(--fg-100)]">
                   {getDifficultyDescription('medium')}
                 </div>
               </button>
@@ -402,18 +402,18 @@ export default function BattlePage() {
               <button
                 onClick={() => startBattle('hard')}
                 disabled={isStarting}
-                className="p-4 bg-red-100 dark:bg-red-900 hover:bg-red-200 dark:hover:bg-red-800 border-2 border-red-300 dark:border-red-600 rounded-lg text-left transition disabled:opacity-50"
+                className="p-4 bg-[var(--accent-error)]/10 hover:bg-[var(--accent-error)]/20 border-2 border-[var(--accent-error)]/30 hover:border-[var(--accent-error)]/50 rounded-lg text-left transition disabled:opacity-50"
               >
-                <div className="font-bold text-red-800 dark:text-red-300">Hard</div>
-                <div className="text-sm text-red-700 dark:text-red-400">
+                <div className="font-bold text-[var(--accent-error)]">Hard</div>
+                <div className="text-sm text-[var(--fg-100)]">
                   {getDifficultyDescription('hard')}
                 </div>
               </button>
             </div>
 
             {isStarting && (
-              <div className="mt-4 text-center text-gray-600 dark:text-gray-400">
-                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600 dark:border-blue-400 mx-auto mb-2"></div>
+              <div className="mt-4 text-center text-[var(--fg-100)]">
+                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-[var(--accent-primary)] mx-auto mb-2"></div>
                 Starting battle...
               </div>
             )}
@@ -466,7 +466,7 @@ export default function BattlePage() {
     };
 
     return (
-      <div className="min-h-screen py-8 dark:bg-gray-900">
+      <div className="min-h-screen py-8">
         <div className="max-w-2xl mx-auto px-4">
           <PostBattleScreen summary={summary} onNewBattle={handleNewBattle} />
         </div>
@@ -476,11 +476,11 @@ export default function BattlePage() {
 
   // Active battle - show arena
   return (
-    <div className="min-h-screen py-8 dark:bg-gray-900">
+    <div className="min-h-screen py-8">
       <div className="max-w-2xl mx-auto px-4">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-100">Battle!</h1>
-          <div className="text-sm text-gray-600 dark:text-gray-400 text-right">
+          <h1 className="text-2xl font-bold text-[var(--fg-0)]">Battle!</h1>
+          <div className="text-sm text-[var(--fg-100)] text-right">
             {battle.zone && (
               <div className="font-medium">{getZoneById(battle.zone)?.name || 'Unknown Zone'}</div>
             )}
@@ -489,7 +489,7 @@ export default function BattlePage() {
         </div>
 
         {error && (
-          <div className="bg-red-100 dark:bg-red-900 border border-red-400 dark:border-red-600 text-red-700 dark:text-red-300 px-4 py-3 rounded mb-6">
+          <div className="error-message mb-6">
             {error}
           </div>
         )}
@@ -554,7 +554,7 @@ export default function BattlePage() {
         )}
 
         <div className="mt-6 text-center">
-          <Link href="/dashboard" className="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
+          <Link href="/dashboard" className="text-[var(--fg-200)] hover:text-[var(--fg-0)]">
             Forfeit and return to dashboard
           </Link>
         </div>

@@ -40,13 +40,13 @@ export function NameEntryForm({ onSubmit, isLoading = false }: NameEntryFormProp
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto">
-      <div className="mb-4">
+    <form onSubmit={handleSubmit} className="w-full">
+      <div className="mb-6">
         <label
           htmlFor="trainer-name"
-          className="block text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2"
+          className="block text-xs font-mono uppercase tracking-wider text-[var(--fg-200)] mb-3"
         >
-          What is your name, trainer?
+          Trainer Name
         </label>
         <input
           id="trainer-name"
@@ -56,24 +56,24 @@ export function NameEntryForm({ onSubmit, isLoading = false }: NameEntryFormProp
             setName(e.target.value);
             if (error) setError(null);
           }}
-          placeholder="Enter your name"
+          placeholder="Enter name"
           maxLength={20}
-          className="w-full px-4 py-3 text-lg border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:border-blue-500 dark:focus:border-blue-400 focus:outline-none transition-colors bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+          className="input py-3"
           disabled={isLoading}
           autoFocus
         />
-        <div className="flex justify-between mt-1 text-sm text-gray-500 dark:text-gray-400">
-          <span>{error && <span className="text-red-500">{error}</span>}</span>
-          <span>{name.trim().length}/20</span>
+        <div className="flex justify-between mt-2 text-xs">
+          <span>{error && <span className="text-[var(--accent-error)]">{error}</span>}</span>
+          <span className="font-mono text-[var(--fg-300)]">{name.trim().length}/20</span>
         </div>
       </div>
 
       <button
         type="submit"
         disabled={isLoading || name.trim().length === 0}
-        className="w-full btn-primary py-3 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full btn-primary py-2.5"
       >
-        {isLoading ? 'Starting your journey...' : 'Start Your Journey!'}
+        {isLoading ? 'Loading...' : 'Continue'}
       </button>
     </form>
   );

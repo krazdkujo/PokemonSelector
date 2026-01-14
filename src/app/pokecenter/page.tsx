@@ -213,8 +213,8 @@ export default function PokecenterPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pink-600 dark:border-pink-400 mx-auto"></div>
-          <p className="mt-4 text-gray-600 dark:text-gray-400">Loading your Pokemon collection...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--accent-primary)] mx-auto"></div>
+          <p className="mt-4 text-[var(--fg-100)]">Loading your Pokemon collection...</p>
         </div>
       </div>
     );
@@ -225,8 +225,8 @@ export default function PokecenterPage() {
       <div className="max-w-4xl mx-auto px-4">
         <div className="flex justify-between items-center mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">Pokecenter</h1>
-            <p className="text-gray-600 dark:text-gray-400">Manage your Pokemon collection</p>
+            <h1 className="text-3xl font-bold text-[var(--fg-0)]">Pokecenter</h1>
+            <p className="text-[var(--fg-100)]">Manage your Pokemon collection</p>
           </div>
           <Link href="/dashboard" className="btn-secondary">
             Back to Dashboard
@@ -234,26 +234,26 @@ export default function PokecenterPage() {
         </div>
 
         {error && (
-          <div className="bg-red-100 dark:bg-red-900/30 border border-red-400 dark:border-red-600 text-red-700 dark:text-red-400 px-4 py-3 rounded mb-6">
+          <div className="error-message mb-6">
             {error}
           </div>
         )}
 
         {successMessage && (
-          <div className="bg-green-100 dark:bg-green-900/30 border border-green-400 dark:border-green-600 text-green-700 dark:text-green-400 px-4 py-3 rounded mb-6">
+          <div className="success-message mb-6">
             {successMessage}
           </div>
         )}
 
         {/* Sort and Filter Controls */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 mb-6">
+        <div className="card p-4 mb-6">
           {/* Sort Controls */}
           <div className="flex flex-wrap items-center gap-4 mb-4">
-            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Sort by:</label>
+            <label className="text-sm font-medium text-[var(--fg-100)]">Sort by:</label>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as SortOption)}
-              className="rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm"
+              className="input text-sm py-1.5 w-auto"
             >
               <option value="captured_at">Captured Date</option>
               <option value="level">Level</option>
@@ -263,7 +263,7 @@ export default function PokecenterPage() {
             </select>
             <button
               onClick={() => setSortDir(sortDir === 'asc' ? 'desc' : 'asc')}
-              className="px-3 py-1.5 text-sm bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-100 rounded-md transition-colors"
+              className="btn-ghost text-sm"
             >
               {sortDir === 'asc' ? 'Ascending' : 'Descending'}
             </button>
@@ -271,13 +271,13 @@ export default function PokecenterPage() {
 
           {/* Filter Controls */}
           <div className="flex flex-wrap items-center gap-4">
-            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Filter:</label>
+            <label className="text-sm font-medium text-[var(--fg-100)]">Filter:</label>
             <div className="flex items-center gap-2">
-              <span className="text-sm text-gray-600 dark:text-gray-400">Type</span>
+              <span className="text-sm text-[var(--fg-200)]">Type</span>
               <select
                 value={typeFilter}
                 onChange={(e) => setTypeFilter(e.target.value)}
-                className="rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm"
+                className="input text-sm py-1.5 w-auto"
               >
                 <option value="all">All Types</option>
                 {allTypes.map(type => (
@@ -286,29 +286,29 @@ export default function PokecenterPage() {
               </select>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-sm text-gray-600 dark:text-gray-400">Level</span>
+              <span className="text-sm text-[var(--fg-200)]">Level</span>
               <input
                 type="number"
                 min={1}
                 max={10}
                 value={levelMin}
                 onChange={(e) => setLevelMin(Math.max(1, Math.min(10, parseInt(e.target.value) || 1)))}
-                className="w-16 rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm"
+                className="input text-sm py-1.5 w-16"
               />
-              <span className="text-sm text-gray-600 dark:text-gray-400">to</span>
+              <span className="text-sm text-[var(--fg-200)]">to</span>
               <input
                 type="number"
                 min={1}
                 max={10}
                 value={levelMax}
                 onChange={(e) => setLevelMax(Math.max(1, Math.min(10, parseInt(e.target.value) || 10)))}
-                className="w-16 rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm"
+                className="input text-sm py-1.5 w-16"
               />
             </div>
             {hasActiveFilters && (
               <button
                 onClick={clearFilters}
-                className="px-3 py-1.5 text-sm text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-md transition-colors"
+                className="px-3 py-1.5 text-sm text-[var(--accent-error)] hover:text-[var(--accent-error)]/80 hover:bg-[var(--accent-error)]/10 rounded-md transition-colors"
               >
                 Clear Filters
               </button>
@@ -316,7 +316,7 @@ export default function PokecenterPage() {
           </div>
         </div>
 
-        <div className="mb-4 text-gray-600 dark:text-gray-400">
+        <div className="mb-4 text-[var(--fg-100)] font-mono text-sm">
           Showing {displayedPokemon.length} of {pokemon.length} Pokemon
         </div>
 
@@ -336,9 +336,9 @@ export default function PokecenterPage() {
         )}
 
         {pokemon.length > 0 && (
-          <div className="mt-8 bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
-            <h2 className="font-semibold text-gray-800 dark:text-gray-100 mb-2">Tips</h2>
-            <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1 list-disc list-inside">
+          <div className="mt-8 card p-4">
+            <h2 className="font-semibold text-[var(--fg-0)] mb-2">Tips</h2>
+            <ul className="text-sm text-[var(--fg-100)] space-y-1 list-disc list-inside">
               <li>Your active Pokemon is used in battles</li>
               <li>You cannot swap Pokemon during an active battle</li>
               <li>Each Pokemon can have up to 4 moves selected</li>

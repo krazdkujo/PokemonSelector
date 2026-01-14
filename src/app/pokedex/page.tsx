@@ -75,24 +75,24 @@ export default function PokedexPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 dark:border-red-400 mx-auto"></div>
-          <p className="mt-4 text-gray-600 dark:text-gray-400">Loading Pokedex...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--accent-primary)] mx-auto"></div>
+          <p className="mt-4 text-[var(--fg-100)]">Loading Pokedex...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen py-8 bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen py-8">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
           <div>
-            <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">Pokedex</h1>
+            <h1 className="text-3xl font-bold text-[var(--fg-0)]">Pokedex</h1>
             {stats && (
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-[var(--fg-100)] font-mono">
                 Caught: {stats.caught}/{stats.total} | Seen: {stats.seen}/{stats.total}
               </p>
             )}
@@ -103,7 +103,7 @@ export default function PokedexPage() {
         </div>
 
         {error && (
-          <div className="bg-red-100 dark:bg-red-900/30 border border-red-400 dark:border-red-600 text-red-700 dark:text-red-400 px-4 py-3 rounded mb-6">
+          <div className="error-message mb-6">
             {error}
           </div>
         )}
@@ -114,10 +114,10 @@ export default function PokedexPage() {
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`px-4 py-2 rounded-lg font-medium transition ${
+              className={`px-4 py-2 rounded-md font-medium transition-all duration-150 ${
                 filter === f
-                  ? 'bg-red-600 dark:bg-red-500 text-white'
-                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                  ? 'bg-[var(--accent-primary)] text-white'
+                  : 'bg-[var(--bg-200)] text-[var(--fg-100)] border border-[var(--border)] hover:border-[var(--border-hover)] hover:text-[var(--fg-0)]'
               }`}
             >
               {f === 'all' && `All (${pokedex.length})`}
@@ -134,20 +134,20 @@ export default function PokedexPage() {
             <div
               key={pokemon.number}
               className={`
-                bg-white dark:bg-gray-800 rounded-lg p-3 text-center shadow-sm relative
+                card p-3 text-center relative
                 ${pokemon.status === 'unknown' ? 'opacity-60' : ''}
               `}
             >
               {/* Pokemon Number */}
-              <div className="text-xs text-gray-400 dark:text-gray-500 mb-1">
+              <div className="text-xs text-[var(--fg-200)] mb-1 font-mono">
                 #{pokemon.number.toString().padStart(3, '0')}
               </div>
 
               {/* Pokemon Image or Question Mark */}
               <div className="relative w-16 h-16 mx-auto mb-2">
                 {pokemon.status === 'unknown' ? (
-                  <div className="w-full h-full bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center">
-                    <span className="text-3xl text-gray-400 dark:text-gray-500">?</span>
+                  <div className="w-full h-full bg-[var(--bg-200)] rounded-full flex items-center justify-center">
+                    <span className="text-3xl text-[var(--fg-200)]">?</span>
                   </div>
                 ) : (
                   <Image
@@ -161,7 +161,7 @@ export default function PokedexPage() {
               </div>
 
               {/* Pokemon Name */}
-              <div className="text-sm font-medium text-gray-800 dark:text-gray-200 truncate">
+              <div className="text-sm font-medium text-[var(--fg-0)] truncate">
                 {pokemon.status === 'unknown' ? '???' : pokemon.name}
               </div>
 
@@ -183,14 +183,14 @@ export default function PokedexPage() {
               {/* Caught Indicator */}
               {pokemon.status === 'caught' && (
                 <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2">
-                  <div className="w-4 h-4 bg-green-500 rounded-full border-2 border-white dark:border-gray-800 shadow"></div>
+                  <div className="w-4 h-4 bg-[var(--accent-success)] rounded-full border-2 border-[var(--bg-100)] shadow"></div>
                 </div>
               )}
 
               {/* Seen but not caught indicator */}
               {pokemon.status === 'seen' && (
                 <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2">
-                  <div className="w-4 h-4 bg-yellow-500 rounded-full border-2 border-white dark:border-gray-800 shadow"></div>
+                  <div className="w-4 h-4 bg-[var(--accent-warning)] rounded-full border-2 border-[var(--bg-100)] shadow"></div>
                 </div>
               )}
             </div>
@@ -198,28 +198,28 @@ export default function PokedexPage() {
         </div>
 
         {filteredPokedex.length === 0 && (
-          <div className="text-center py-12 text-gray-500 dark:text-gray-400">
+          <div className="text-center py-12 text-[var(--fg-200)]">
             No Pokemon found matching this filter.
           </div>
         )}
 
         {/* Legend */}
-        <div className="mt-8 bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm">
-          <h3 className="font-medium text-gray-800 dark:text-gray-100 mb-3">Legend</h3>
+        <div className="mt-8 card p-4">
+          <h3 className="font-medium text-[var(--fg-0)] mb-3">Legend</h3>
           <div className="flex flex-wrap gap-6">
             <div className="flex items-center gap-2">
-              <div className="w-4 h-4 bg-green-500 rounded-full"></div>
-              <span className="text-sm text-gray-600 dark:text-gray-400">Caught</span>
+              <div className="w-4 h-4 bg-[var(--accent-success)] rounded-full"></div>
+              <span className="text-sm text-[var(--fg-100)]">Caught</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-4 h-4 bg-yellow-500 rounded-full"></div>
-              <span className="text-sm text-gray-600 dark:text-gray-400">Seen (not caught)</span>
+              <div className="w-4 h-4 bg-[var(--accent-warning)] rounded-full"></div>
+              <span className="text-sm text-[var(--fg-100)]">Seen (not caught)</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-4 h-4 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center justify-center">
-                <span className="text-xs text-gray-500 dark:text-gray-400">?</span>
+              <div className="w-4 h-4 bg-[var(--bg-300)] rounded-full flex items-center justify-center">
+                <span className="text-xs text-[var(--fg-200)]">?</span>
               </div>
-              <span className="text-sm text-gray-600 dark:text-gray-400">Unknown</span>
+              <span className="text-sm text-[var(--fg-100)]">Unknown</span>
             </div>
           </div>
         </div>

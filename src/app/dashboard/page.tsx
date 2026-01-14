@@ -81,8 +81,8 @@ export default function DashboardPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 dark:border-blue-400 mx-auto"></div>
-          <p className="mt-4 text-gray-600 dark:text-gray-400">Loading your dashboard...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--accent-primary)] mx-auto"></div>
+          <p className="mt-4 text-[var(--fg-100)]">Loading your dashboard...</p>
         </div>
       </div>
     );
@@ -97,7 +97,7 @@ export default function DashboardPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <p className="text-red-600 mb-4">{error}</p>
+          <p className="text-[var(--accent-error)] mb-4">{error}</p>
           <button onClick={handleLogout} className="btn-primary">
             Return to Login
           </button>
@@ -114,110 +114,108 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen py-8">
-      <div className="max-w-4xl mx-auto px-4">
+      <div className="max-w-5xl mx-auto px-4">
         {/* Header */}
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">
-            Welcome, {trainer_name}!
-          </h1>
+        <div className="flex justify-between items-start mb-8 border-b border-[var(--border)] pb-6">
+          <div>
+            <p className="text-xs font-mono text-[var(--fg-300)] uppercase tracking-widest mb-1">Dashboard</p>
+            <h1 className="text-2xl font-semibold text-[var(--fg-0)]">
+              {trainer_name}
+            </h1>
+          </div>
           <button
             onClick={handleLogout}
-            className="btn-secondary"
+            className="btn-ghost text-xs"
           >
-            Logout
+            Sign Out
           </button>
         </div>
 
         {/* Active Battle Banner */}
         {has_active_battle && (
-          <div className="bg-red-100 dark:bg-red-900/30 border border-red-400 dark:border-red-800 rounded-lg p-4 mb-6">
+          <div className="border border-[var(--accent-error)] bg-[var(--accent-error)]/5 p-4 mb-6" style={{borderRadius: '4px'}}>
             <div className="flex items-center justify-between">
-              <div>
-                <h3 className="font-semibold text-red-800 dark:text-red-300">Battle in Progress!</h3>
-                <p className="text-red-700 dark:text-red-400 text-sm">You have an active battle waiting.</p>
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 bg-[var(--accent-error)] animate-pulse"></div>
+                <div>
+                  <p className="font-mono text-sm text-[var(--fg-0)]">Battle in progress</p>
+                  <p className="text-xs text-[var(--fg-200)]">Active encounter waiting</p>
+                </div>
               </div>
-              <Link
-                href="/battle"
-                className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
-              >
-                Continue Battle
+              <Link href="/battle" className="btn-primary text-xs px-3 py-1.5">
+                Resume
               </Link>
             </div>
           </div>
         )}
 
         {/* Main Content Grid */}
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
           {/* Active Pokemon Card */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/50 p-6">
-            <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Active Pokemon</h2>
+          <div className="card p-5">
+            <p className="text-xs font-mono text-[var(--fg-300)] uppercase tracking-wider mb-4">Active Pokemon</p>
             <div className="flex items-center gap-4">
-              <div className="relative w-24 h-24">
+              <div className="relative w-20 h-20 bg-[var(--bg-200)]" style={{borderRadius: '4px'}}>
                 <Image
                   src={active_pokemon.sprite_url}
                   alt={active_pokemon.name}
                   fill
                   className="object-contain"
-                  sizes="96px"
+                  sizes="80px"
                 />
               </div>
-              <div>
-                <h3 className="font-bold text-lg text-gray-800 dark:text-gray-100">{active_pokemon.name}</h3>
-                <p className="text-gray-600 dark:text-gray-400">Level {active_pokemon.level}</p>
-                <div className="flex gap-1 mt-1">
+              <div className="flex-1">
+                <div className="flex items-baseline gap-2">
+                  <h3 className="font-semibold text-[var(--fg-0)]">{active_pokemon.name}</h3>
+                  <span className="text-xs font-mono text-[var(--fg-300)]">LV{active_pokemon.level}</span>
+                </div>
+                <div className="flex gap-1 mt-2">
                   {active_pokemon.types.map((type) => (
-                    <span
-                      key={type}
-                      className={`type-badge type-${type.toLowerCase()}`}
-                    >
+                    <span key={type} className={`type-badge type-${type.toLowerCase()}`}>
                       {type}
                     </span>
                   ))}
                 </div>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">SR: {active_pokemon.sr}</p>
+                <p className="text-xs font-mono text-[var(--fg-300)] mt-2">SR {active_pokemon.sr}</p>
               </div>
             </div>
             {active_pokemon.is_starter && (
-              <div className="mt-3 text-sm text-blue-600 dark:text-blue-400 font-medium">
-                Your Starter Pokemon
+              <div className="mt-4 pt-3 border-t border-[var(--border)]">
+                <p className="text-xs font-mono text-[var(--fg-200)]">STARTER</p>
               </div>
             )}
           </div>
 
           {/* Stats Card */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/50 p-6">
-            <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Trainer Stats</h2>
-            <div className="space-y-3">
-              <div className="flex justify-between items-center">
-                <span className="text-gray-600 dark:text-gray-400">Money</span>
-                <span className="font-semibold text-yellow-600">${stats.money}</span>
+          <div className="card p-5">
+            <p className="text-xs font-mono text-[var(--fg-300)] uppercase tracking-wider mb-4">Statistics</p>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <p className="text-2xl font-mono text-[var(--accent-warning)]">${stats.money}</p>
+                <p className="text-xs text-[var(--fg-300)]">Money</p>
               </div>
-              <div className="flex justify-between items-center">
-                <span className="text-gray-600 dark:text-gray-400">Pokemon Owned</span>
-                <span className="font-semibold">{pokemon_count}</span>
+              <div>
+                <p className="text-2xl font-mono text-[var(--fg-0)]">{pokemon_count}</p>
+                <p className="text-xs text-[var(--fg-300)]">Pokemon</p>
               </div>
-              <div className="flex justify-between items-center">
-                <span className="text-gray-600 dark:text-gray-400">Battles Won</span>
-                <span className="font-semibold text-green-600">{stats.battles_won}</span>
+              <div>
+                <p className="text-2xl font-mono text-[var(--accent-success)]">{stats.battles_won}</p>
+                <p className="text-xs text-[var(--fg-300)]">Wins</p>
               </div>
-              <div className="flex justify-between items-center">
-                <span className="text-gray-600 dark:text-gray-400">Battles Lost</span>
-                <span className="font-semibold text-red-600">{stats.battles_lost}</span>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-gray-600 dark:text-gray-400">Pokemon Captured</span>
-                <span className="font-semibold text-blue-600">{stats.pokemon_captured}</span>
+              <div>
+                <p className="text-2xl font-mono text-[var(--accent-error)]">{stats.battles_lost}</p>
+                <p className="text-xs text-[var(--fg-300)]">Losses</p>
               </div>
             </div>
 
             {/* Items Section */}
             {Object.keys(stats.items).length > 0 && (
-              <div className="mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
-                <h3 className="font-medium text-gray-800 dark:text-gray-200 mb-2">Items</h3>
+              <div className="mt-4 pt-3 border-t border-[var(--border)]">
+                <p className="text-xs font-mono text-[var(--fg-300)] mb-2">ITEMS</p>
                 <div className="flex flex-wrap gap-2">
                   {Object.entries(stats.items).map(([item, count]) => (
-                    <span key={item} className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-sm text-gray-800 dark:text-gray-200">
-                      {item}: {count}
+                    <span key={item} className="text-xs font-mono text-[var(--fg-100)] bg-[var(--bg-200)] px-2 py-1" style={{borderRadius: '2px'}}>
+                      {item} x{count}
                     </span>
                   ))}
                 </div>
@@ -226,47 +224,31 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Navigation Buttons */}
-        <div className="mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          <Link
-            href="/battle"
-            className="bg-red-600 hover:bg-red-700 text-white rounded-lg p-4 text-center transition"
-          >
-            <div className="text-2xl mb-1">Battle</div>
-            <div className="text-sm opacity-75">Find Wild Pokemon</div>
-          </Link>
-
-          <Link
-            href="/pokedex"
-            className="bg-orange-600 hover:bg-orange-700 text-white rounded-lg p-4 text-center transition"
-          >
-            <div className="text-2xl mb-1">Pokedex</div>
-            <div className="text-sm opacity-75">View All Pokemon</div>
-          </Link>
-
-          <Link
-            href="/pokecenter"
-            className="bg-pink-600 hover:bg-pink-700 text-white rounded-lg p-4 text-center transition"
-          >
-            <div className="text-2xl mb-1">Pokecenter</div>
-            <div className="text-sm opacity-75">Manage Pokemon</div>
-          </Link>
-
-          <Link
-            href="/admin"
-            className="bg-purple-600 hover:bg-purple-700 text-white rounded-lg p-4 text-center transition"
-          >
-            <div className="text-2xl mb-1">Admin</div>
-            <div className="text-sm opacity-75">View Trainers</div>
-          </Link>
-
-          <Link
-            href="/api-docs"
-            className="bg-gray-600 hover:bg-gray-700 text-white rounded-lg p-4 text-center transition"
-          >
-            <div className="text-2xl mb-1">API Docs</div>
-            <div className="text-sm opacity-75">Documentation</div>
-          </Link>
+        {/* Navigation - Minimal list style */}
+        <div className="border-t border-[var(--border)] pt-6">
+          <p className="text-xs font-mono text-[var(--fg-300)] uppercase tracking-wider mb-4">Navigation</p>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+            <Link href="/battle" className="card-interactive px-4 py-3 group">
+              <p className="font-medium text-sm text-[var(--fg-0)] group-hover:text-white">Battle</p>
+              <p className="text-xs text-[var(--fg-300)]">Wild encounters</p>
+            </Link>
+            <Link href="/pokedex" className="card-interactive px-4 py-3 group">
+              <p className="font-medium text-sm text-[var(--fg-0)] group-hover:text-white">Pokedex</p>
+              <p className="text-xs text-[var(--fg-300)]">All Pokemon</p>
+            </Link>
+            <Link href="/pokecenter" className="card-interactive px-4 py-3 group">
+              <p className="font-medium text-sm text-[var(--fg-0)] group-hover:text-white">Pokecenter</p>
+              <p className="text-xs text-[var(--fg-300)]">Manage team</p>
+            </Link>
+            <Link href="/admin" className="card-interactive px-4 py-3 group">
+              <p className="font-medium text-sm text-[var(--fg-0)] group-hover:text-white">Admin</p>
+              <p className="text-xs text-[var(--fg-300)]">Trainers</p>
+            </Link>
+            <Link href="/api-docs" className="card-interactive px-4 py-3 group">
+              <p className="font-medium text-sm text-[var(--fg-0)] group-hover:text-white">API</p>
+              <p className="text-xs text-[var(--fg-300)]">Documentation</p>
+            </Link>
+          </div>
         </div>
 
       </div>

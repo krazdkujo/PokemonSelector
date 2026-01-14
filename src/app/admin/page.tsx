@@ -142,8 +142,8 @@ export default function AdminPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 dark:border-blue-400 mx-auto"></div>
-          <p className="mt-4 text-gray-600 dark:text-gray-400">Loading admin panel...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--accent-primary)] mx-auto"></div>
+          <p className="mt-4 text-[var(--fg-100)]">Loading admin panel...</p>
         </div>
       </div>
     );
@@ -158,7 +158,7 @@ export default function AdminPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <p className="text-red-600 dark:text-red-400 mb-4">{error}</p>
+          <p className="text-[var(--accent-error)] mb-4">{error}</p>
           <button onClick={handleLogout} className="btn-primary">
             Return to Login
           </button>
@@ -172,8 +172,8 @@ export default function AdminPage() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">Admin Panel</h1>
-            <p className="text-gray-600 dark:text-gray-400 mt-1">
+            <h1 className="text-3xl font-bold text-[var(--fg-0)]">Admin Panel</h1>
+            <p className="text-[var(--fg-100)] mt-1">
               Viewing all {trainers.length} registered trainers
             </p>
           </div>
@@ -197,20 +197,20 @@ export default function AdminPage() {
 
       {/* Role Change Confirmation Dialog */}
       {showConfirmDialog && pendingRoleChange && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-md w-full mx-4 shadow-xl dark:shadow-gray-900/50">
-            <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
+          <div className="card p-6 max-w-md w-full mx-4">
+            <h2 className="text-xl font-bold text-[var(--fg-0)] mb-4">
               Confirm Role Change
             </h2>
-            <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <p className="text-[var(--fg-100)] mb-4">
               Are you sure you want to{' '}
               {pendingRoleChange.newRole === 'admin' ? 'promote' : 'demote'}{' '}
-              <span className="font-semibold">{pendingRoleChange.trainerName}</span>{' '}
-              to <span className="font-semibold">{pendingRoleChange.newRole}</span>?
+              <span className="font-semibold text-[var(--fg-0)]">{pendingRoleChange.trainerName}</span>{' '}
+              to <span className="font-semibold text-[var(--fg-0)]">{pendingRoleChange.newRole}</span>?
             </p>
 
             {roleChangeError && (
-              <div className="bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded mb-4">
+              <div className="error-message mb-4">
                 {roleChangeError}
               </div>
             )}
@@ -218,17 +218,17 @@ export default function AdminPage() {
             <div className="flex justify-end gap-3">
               <button
                 onClick={handleRoleChangeCancel}
-                className="px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
+                className="btn-ghost"
               >
                 Cancel
               </button>
               <button
                 onClick={handleRoleChangeConfirm}
-                className={`px-4 py-2 rounded font-medium transition-colors ${
+                className={`btn ${
                   pendingRoleChange.newRole === 'admin'
-                    ? 'bg-purple-600 text-white hover:bg-purple-700'
-                    : 'bg-yellow-500 text-white hover:bg-yellow-600'
-                }`}
+                    ? 'bg-[var(--accent-primary)] text-white hover:bg-blue-600'
+                    : 'bg-[var(--accent-warning)] text-white hover:bg-amber-600'
+                } px-4 py-2 rounded-md font-medium`}
               >
                 {pendingRoleChange.newRole === 'admin' ? 'Promote' : 'Demote'}
               </button>

@@ -15,74 +15,74 @@ export function TrainerList({ trainers, currentUserId, onRoleChange, onPinAction
   if (trainers.length === 0) {
     return (
       <div className="text-center py-12">
-        <p className="text-gray-500 dark:text-gray-400 text-lg">No trainers have registered yet.</p>
+        <p className="text-[var(--fg-200)] text-sm font-mono">No trainers have registered yet.</p>
       </div>
     );
   }
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-gray-900/50 overflow-hidden">
+    <div className="card overflow-hidden" style={{ borderRadius: '6px' }}>
       <table className="w-full">
-        <thead className="bg-gray-50 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
+        <thead className="bg-[var(--bg-200)] border-b border-[var(--border)]">
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+            <th className="px-4 py-3 text-left text-xs font-mono font-medium text-[var(--fg-200)] uppercase tracking-wider">
               Trainer
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-              Trainer ID
+            <th className="px-4 py-3 text-left text-xs font-mono font-medium text-[var(--fg-200)] uppercase tracking-wider">
+              ID
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-              Starter Pokemon
+            <th className="px-4 py-3 text-left text-xs font-mono font-medium text-[var(--fg-200)] uppercase tracking-wider">
+              Starter
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-              Battles
+            <th className="px-4 py-3 text-left text-xs font-mono font-medium text-[var(--fg-200)] uppercase tracking-wider">
+              W/L
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+            <th className="px-4 py-3 text-left text-xs font-mono font-medium text-[var(--fg-200)] uppercase tracking-wider">
               Captured
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-              Collection
+            <th className="px-4 py-3 text-left text-xs font-mono font-medium text-[var(--fg-200)] uppercase tracking-wider">
+              Total
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+            <th className="px-4 py-3 text-left text-xs font-mono font-medium text-[var(--fg-200)] uppercase tracking-wider">
               Role
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-              PIN Management
+            <th className="px-4 py-3 text-left text-xs font-mono font-medium text-[var(--fg-200)] uppercase tracking-wider">
+              PIN
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+            <th className="px-4 py-3 text-left text-xs font-mono font-medium text-[var(--fg-200)] uppercase tracking-wider">
               Joined
             </th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+        <tbody className="divide-y divide-[var(--border)]">
           {trainers.map((trainer) => (
-            <tr key={trainer.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/50">
-              <td className="px-6 py-4 whitespace-nowrap">
-                <span className="font-medium text-gray-900 dark:text-gray-100">{trainer.name}</span>
+            <tr key={trainer.id} className="hover:bg-[var(--bg-200)]">
+              <td className="px-4 py-3 whitespace-nowrap">
+                <span className="font-medium text-[var(--fg-0)]">{trainer.name}</span>
               </td>
-              <td className="px-6 py-4 whitespace-nowrap">
-                <code className="text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded font-mono text-gray-600 dark:text-gray-400">
-                  {trainer.id.slice(0, 8)}...
+              <td className="px-4 py-3 whitespace-nowrap">
+                <code className="text-xs bg-[var(--bg-200)] px-2 py-0.5 font-mono text-[var(--fg-200)]" style={{ borderRadius: '2px' }}>
+                  {trainer.id.slice(0, 8)}
                 </code>
               </td>
-              <td className="px-6 py-4 whitespace-nowrap">
+              <td className="px-4 py-3 whitespace-nowrap">
                 {trainer.starter ? (
                   <div className="flex items-center gap-2">
-                    <div className="relative w-8 h-8">
+                    <div className="relative w-6 h-6">
                       <Image
                         src={trainer.starter.sprites.sprite}
                         alt={trainer.starter.name}
                         fill
                         className="object-contain"
-                        sizes="32px"
+                        sizes="24px"
                       />
                     </div>
-                    <span className="text-gray-700 dark:text-gray-300">{trainer.starter.name}</span>
+                    <span className="text-[var(--fg-100)] text-sm">{trainer.starter.name}</span>
                     <div className="flex gap-1">
                       {trainer.starter.types.map((type) => (
                         <span
                           key={type}
-                          className={`type-badge type-${type.toLowerCase()} text-xs`}
+                          className={`type-badge type-${type.toLowerCase()}`}
                         >
                           {type}
                         </span>
@@ -90,32 +90,33 @@ export function TrainerList({ trainers, currentUserId, onRoleChange, onPinAction
                     </div>
                   </div>
                 ) : (
-                  <span className="text-gray-400 dark:text-gray-500 italic">Not selected</span>
+                  <span className="text-[var(--fg-300)] text-sm font-mono">--</span>
                 )}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                <span className="text-green-600 dark:text-green-400 font-medium">
-                  {trainer.stats?.battles_won ?? 0}W
+              <td className="px-4 py-3 whitespace-nowrap text-sm font-mono">
+                <span className="text-[var(--accent-success)]">
+                  {trainer.stats?.battles_won ?? 0}
                 </span>
-                <span className="text-gray-400 mx-1">/</span>
-                <span className="text-red-600 dark:text-red-400 font-medium">
-                  {trainer.stats?.battles_lost ?? 0}L
+                <span className="text-[var(--fg-300)]">/</span>
+                <span className="text-[var(--accent-error)]">
+                  {trainer.stats?.battles_lost ?? 0}
                 </span>
               </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
+              <td className="px-4 py-3 whitespace-nowrap text-sm font-mono text-[var(--fg-100)]">
                 {trainer.stats?.pokemon_captured ?? 0}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
+              <td className="px-4 py-3 whitespace-nowrap text-sm font-mono text-[var(--fg-100)]">
                 {trainer.stats?.pokemon_count ?? 0}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap">
+              <td className="px-4 py-3 whitespace-nowrap">
                 <div className="flex items-center gap-2">
                   <span
-                    className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
+                    className={`inline-flex px-2 py-0.5 text-xs font-mono uppercase ${
                       trainer.role === 'admin'
-                        ? 'bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300'
-                        : 'bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300'
+                        ? 'bg-[var(--accent-primary)] text-white'
+                        : 'bg-[var(--bg-300)] text-[var(--fg-100)]'
                     }`}
+                    style={{ borderRadius: '2px' }}
                   >
                     {trainer.role}
                   </span>
@@ -127,11 +128,7 @@ export function TrainerList({ trainers, currentUserId, onRoleChange, onPinAction
                           trainer.role === 'admin' ? 'trainer' : 'admin'
                         )
                       }
-                      className={`text-xs px-2 py-1 rounded transition-colors ${
-                        trainer.role === 'admin'
-                          ? 'bg-yellow-100 dark:bg-yellow-900/50 text-yellow-800 dark:text-yellow-300 hover:bg-yellow-200 dark:hover:bg-yellow-900/70'
-                          : 'bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 hover:bg-purple-200 dark:hover:bg-purple-900/70'
-                      }`}
+                      className="btn-ghost text-xs py-0.5 px-2"
                       title={
                         trainer.role === 'admin'
                           ? 'Demote to trainer'
@@ -143,7 +140,7 @@ export function TrainerList({ trainers, currentUserId, onRoleChange, onPinAction
                   )}
                 </div>
               </td>
-              <td className="px-6 py-4 whitespace-nowrap">
+              <td className="px-4 py-3 whitespace-nowrap">
                 {trainer.id !== currentUserId && (
                   <AdminPinManager
                     trainerId={trainer.id}
@@ -152,7 +149,7 @@ export function TrainerList({ trainers, currentUserId, onRoleChange, onPinAction
                   />
                 )}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+              <td className="px-4 py-3 whitespace-nowrap text-xs font-mono text-[var(--fg-200)]">
                 {new Date(trainer.created_at).toLocaleDateString()}
               </td>
             </tr>

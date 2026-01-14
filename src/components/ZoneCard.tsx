@@ -16,10 +16,11 @@ export function ZoneCard({ zone, onSelect, onPreview, disabled = false }: ZoneCa
   return (
     <div
       className={`
-        relative p-4 rounded-lg border-2 text-left transition-all duration-200
-        ${colors.bgLight} ${colors.border}
-        ${!disabled ? 'hover:shadow-lg' : 'opacity-50'}
+        relative p-4 border text-left transition-all duration-100
+        bg-[var(--bg-100)] border-[var(--border)]
+        ${!disabled ? 'hover:border-[var(--fg-200)] hover:bg-[var(--bg-200)]' : 'opacity-50'}
       `}
+      style={{ borderRadius: '6px' }}
     >
       {/* Info button */}
       {onPreview && (
@@ -28,7 +29,8 @@ export function ZoneCard({ zone, onSelect, onPreview, disabled = false }: ZoneCa
             e.stopPropagation();
             onPreview(zone.id);
           }}
-          className="absolute top-2 right-2 w-6 h-6 rounded-full bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 flex items-center justify-center text-gray-600 dark:text-gray-300 text-sm font-bold"
+          className="absolute top-2 right-2 w-6 h-6 bg-[var(--bg-200)] hover:bg-[var(--bg-300)] flex items-center justify-center text-[var(--fg-100)] text-xs font-mono"
+          style={{ borderRadius: '4px' }}
           title="View zone details"
         >
           ?
@@ -44,22 +46,19 @@ export function ZoneCard({ zone, onSelect, onPreview, disabled = false }: ZoneCa
           focus:outline-none
         `}
       >
-        <div className={`font-bold text-lg ${colors.text} pr-8`}>
+        <div className="font-semibold text-[var(--fg-0)] pr-8">
           {zone.name}
         </div>
-        <p className="text-sm text-gray-600 dark:text-gray-400 mt-1 line-clamp-2">
+        <p className="text-sm text-[var(--fg-200)] mt-1 line-clamp-2">
           {zone.description}
         </p>
         <div className="mt-3 flex flex-wrap gap-1">
           {zone.types.map(type => (
             <span
               key={type}
-              className={`
-                px-2 py-0.5 text-xs rounded-full
-                ${colors.bg} text-white font-medium
-              `}
+              className={`type-badge type-${type.toLowerCase()}`}
             >
-              {type.charAt(0).toUpperCase() + type.slice(1)}
+              {type}
             </span>
           ))}
         </div>

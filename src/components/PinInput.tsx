@@ -90,7 +90,7 @@ export function PinInput({
 
   return (
     <div className="space-y-2">
-      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+      <label className="block text-sm font-medium text-[var(--fg-100)]">
         {label}
       </label>
       <div className="flex gap-3 justify-center">
@@ -108,14 +108,15 @@ export function PinInput({
             disabled={disabled}
             aria-label={`PIN digit ${index + 1} of 4`}
             className={`
-              w-14 h-14 text-center text-2xl font-bold
-              border-2 rounded-lg bg-white dark:bg-gray-700
-              text-gray-900 dark:text-gray-100
-              focus:outline-none focus:ring-2 focus:ring-blue-500
-              disabled:bg-gray-100 dark:disabled:bg-gray-600 disabled:cursor-not-allowed
+              w-14 h-14 text-center text-2xl font-bold font-mono
+              border rounded-md bg-[var(--bg-0)]
+              text-[var(--fg-0)]
+              transition-all duration-150
+              focus:outline-none focus:ring-2 focus:ring-[var(--border-focus)] focus:border-[var(--border-focus)]
+              disabled:bg-[var(--bg-200)] disabled:text-[var(--fg-200)] disabled:cursor-not-allowed
               ${error
-                ? 'border-red-500 bg-red-50 dark:bg-red-900/30'
-                : 'border-gray-600 dark:border-gray-500'
+                ? 'border-[var(--accent-error)] bg-[var(--accent-error)]/10'
+                : 'border-[var(--border)] hover:border-[var(--border-hover)]'
               }
             `}
           />

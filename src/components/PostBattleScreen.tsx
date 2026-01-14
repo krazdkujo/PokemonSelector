@@ -31,25 +31,25 @@ export function PostBattleScreen({ summary, onNewBattle }: PostBattleScreenProps
   }
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg dark:shadow-gray-900/50 p-8">
+    <div className="card p-8">
       {/* Battle Outcome Header */}
       <div className="text-center mb-8">
-        <div className={`text-5xl font-bold mb-2 ${
-          isVictory ? 'text-green-500' : isFled ? 'text-yellow-500' : 'text-red-500'
+        <div className={`text-4xl font-mono font-bold uppercase mb-2 ${
+          isVictory ? 'text-[var(--accent-success)]' : isFled ? 'text-[var(--accent-warning)]' : 'text-[var(--accent-error)]'
         }`}>
-          {outcome === 'victory' && 'Victory!'}
-          {outcome === 'capture' && 'Captured!'}
+          {outcome === 'victory' && 'Victory'}
+          {outcome === 'capture' && 'Captured'}
           {outcome === 'defeat' && 'Defeat'}
-          {outcome === 'fled' && 'Fled!'}
+          {outcome === 'fled' && 'Fled'}
         </div>
 
-        <p className={`text-lg ${
-          isVictory ? 'text-green-700 dark:text-green-400' : isFled ? 'text-yellow-700 dark:text-yellow-400' : 'text-red-700 dark:text-red-400'
+        <p className={`text-sm ${
+          isVictory ? 'text-[var(--accent-success)]' : isFled ? 'text-[var(--accent-warning)]' : 'text-[var(--accent-error)]'
         }`}>
-          {outcome === 'victory' && 'You defeated the wild Pokemon!'}
-          {outcome === 'capture' && `You captured ${wild_pokemon.name}!`}
-          {outcome === 'defeat' && 'The wild Pokemon won...'}
-          {outcome === 'fled' && 'The wild Pokemon escaped!'}
+          {outcome === 'victory' && 'Wild Pokemon defeated'}
+          {outcome === 'capture' && `${wild_pokemon.name} captured`}
+          {outcome === 'defeat' && 'The wild Pokemon won'}
+          {outcome === 'fled' && 'The wild Pokemon escaped'}
         </p>
       </div>
 
@@ -67,104 +67,102 @@ export function PostBattleScreen({ summary, onNewBattle }: PostBattleScreenProps
               />
               {isCapture && (
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-4xl">+</div>
+                  <div className="text-4xl font-mono text-[var(--accent-success)]">+</div>
                 </div>
               )}
             </div>
           )}
-          <div className="font-medium text-gray-800 dark:text-gray-100">{wild_pokemon.name}</div>
-          <div className="text-sm text-gray-500 dark:text-gray-400">Level {wild_pokemon.level}</div>
+          <div className="font-medium text-[var(--fg-0)]">{wild_pokemon.name}</div>
+          <div className="text-xs font-mono text-[var(--fg-200)]">LVL {wild_pokemon.level}</div>
         </div>
       </div>
 
       {/* Battle Score */}
       <div className="text-center mb-6">
-        <div className="text-sm text-gray-500 dark:text-gray-400">Final Score</div>
-        <div className="text-xl font-bold text-gray-800 dark:text-gray-100">
-          <span className="text-green-600 dark:text-green-400">{score.player_wins}</span>
-          {' - '}
-          <span className="text-red-600 dark:text-red-400">{score.wild_wins}</span>
+        <div className="text-xs font-mono uppercase text-[var(--fg-300)]">Final Score</div>
+        <div className="text-2xl font-mono font-bold">
+          <span className="text-[var(--accent-success)]">{score.player_wins}</span>
+          <span className="text-[var(--fg-300)]"> - </span>
+          <span className="text-[var(--accent-error)]">{score.wild_wins}</span>
         </div>
       </div>
 
       {/* Level Up Banner */}
       {didLevelUp && (
-        <div className={`mb-6 p-4 rounded-lg text-center ${
-          reachedMaxLevel ? 'bg-purple-100 dark:bg-purple-900/30 border-2 border-purple-300 dark:border-purple-700' : 'bg-yellow-100 dark:bg-yellow-900/30 border-2 border-yellow-300 dark:border-yellow-700'
-        }`}>
-          <div className={`text-2xl font-bold ${
-            reachedMaxLevel ? 'text-purple-700 dark:text-purple-300' : 'text-yellow-700 dark:text-yellow-300'
+        <div className={`mb-6 p-4 text-center border ${
+          reachedMaxLevel ? 'bg-[var(--bg-200)] border-[var(--accent-primary)]' : 'bg-[var(--bg-200)] border-[var(--accent-warning)]'
+        }`} style={{ borderRadius: '4px' }}>
+          <div className={`text-xl font-mono font-bold uppercase ${
+            reachedMaxLevel ? 'text-[var(--accent-primary)]' : 'text-[var(--accent-warning)]'
           }`}>
-            {reachedMaxLevel ? 'MAX LEVEL REACHED!' : 'LEVEL UP!'}
+            {reachedMaxLevel ? 'MAX LEVEL' : 'LEVEL UP'}
           </div>
-          <div className={`text-lg ${
-            reachedMaxLevel ? 'text-purple-600 dark:text-purple-400' : 'text-yellow-600 dark:text-yellow-400'
-          }`}>
-            Level {experience.previous_level} {'->'} Level {experience.new_level}!
+          <div className="text-lg font-mono text-[var(--fg-0)]">
+            {experience.previous_level} {'>'} {experience.new_level}
           </div>
           {experience.levels_gained > 1 && (
-            <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-              (+{experience.levels_gained} levels)
+            <div className="text-xs font-mono text-[var(--fg-200)] mt-1">
+              +{experience.levels_gained} levels
             </div>
           )}
         </div>
       )}
 
       {/* XP Display Section */}
-      <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 mb-6">
-        <h3 className="font-medium text-gray-800 dark:text-gray-100 mb-3 text-center">Experience Gained</h3>
+      <div className="bg-[var(--bg-200)] p-4 mb-6" style={{ borderRadius: '4px' }}>
+        <h3 className="text-xs font-mono uppercase tracking-wider text-[var(--fg-200)] mb-3 text-center">Experience</h3>
 
         <div className="grid grid-cols-3 gap-4 text-center mb-4">
           <div>
-            <div className="text-sm text-gray-500 dark:text-gray-400">Previous</div>
-            <div className="text-lg font-bold text-gray-700 dark:text-gray-300">{experience.previous_experience} XP</div>
+            <div className="text-xs font-mono text-[var(--fg-300)]">PREV</div>
+            <div className="text-lg font-mono font-bold text-[var(--fg-100)]">{experience.previous_experience}</div>
           </div>
           <div>
-            <div className="text-sm text-gray-500 dark:text-gray-400">Gained</div>
-            <div className={`text-lg font-bold ${experience.xp_awarded > 0 ? 'text-green-600 dark:text-green-400' : 'text-gray-400'}`}>
-              +{experience.xp_awarded} XP
+            <div className="text-xs font-mono text-[var(--fg-300)]">GAIN</div>
+            <div className={`text-lg font-mono font-bold ${experience.xp_awarded > 0 ? 'text-[var(--accent-success)]' : 'text-[var(--fg-300)]'}`}>
+              +{experience.xp_awarded}
             </div>
           </div>
           <div>
-            <div className="text-sm text-gray-500 dark:text-gray-400">Total</div>
-            <div className="text-lg font-bold text-blue-600 dark:text-blue-400">{experience.new_experience} XP</div>
+            <div className="text-xs font-mono text-[var(--fg-300)]">TOTAL</div>
+            <div className="text-lg font-mono font-bold text-[var(--accent-primary)]">{experience.new_experience}</div>
           </div>
         </div>
 
         {/* XP Progress Bar */}
         {!reachedMaxLevel && (
           <div>
-            <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mb-1">
-              <span>Level {experience.new_level}</span>
-              <span>{experience.new_experience} / {getXpToNext(experience.new_level)} XP</span>
+            <div className="flex justify-between text-xs font-mono text-[var(--fg-300)] mb-1">
+              <span>LVL {experience.new_level}</span>
+              <span>{experience.new_experience}/{getXpToNext(experience.new_level)}</span>
             </div>
-            <div className="w-full h-3 bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden">
+            <div className="w-full h-2 bg-[var(--bg-300)] overflow-hidden" style={{ borderRadius: '2px' }}>
               <div
-                className="h-full bg-blue-500 rounded-full transition-all duration-500"
-                style={{ width: `${Math.min(100, xpProgressPercent)}%` }}
+                className="h-full bg-[var(--accent-primary)] transition-all duration-500"
+                style={{ width: `${Math.min(100, xpProgressPercent)}%`, borderRadius: '2px' }}
               />
             </div>
           </div>
         )}
 
         {reachedMaxLevel && (
-          <div className="text-center text-purple-600 dark:text-purple-400 font-medium">
-            Maximum Level Achieved
+          <div className="text-center text-[var(--accent-primary)] font-mono text-sm uppercase">
+            Max Level
           </div>
         )}
       </div>
 
       {/* Action Buttons */}
-      <div className="flex justify-center gap-4">
+      <div className="flex justify-center gap-3">
         <Link
           href="/dashboard"
-          className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+          className="btn-primary px-6 py-2"
         >
-          Return to Dashboard
+          Dashboard
         </Link>
         <button
           onClick={onNewBattle}
-          className="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition"
+          className="btn-secondary px-6 py-2"
         >
           New Battle
         </button>

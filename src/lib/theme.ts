@@ -26,20 +26,21 @@ export function setStoredTheme(theme: Theme): void {
 }
 
 export function getSystemTheme(): Theme {
-  if (typeof window === 'undefined') return 'light';
+  if (typeof window === 'undefined') return 'dark'; // Dark is default
   try {
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   } catch {
-    return 'light';
+    return 'dark';
   }
 }
 
 export function applyTheme(theme: Theme): void {
   if (typeof document === 'undefined') return;
-  if (theme === 'dark') {
-    document.documentElement.classList.add('dark');
+  // Dark is default (no class), light mode adds .light class
+  if (theme === 'light') {
+    document.documentElement.classList.add('light');
   } else {
-    document.documentElement.classList.remove('dark');
+    document.documentElement.classList.remove('light');
   }
 }
 

@@ -102,92 +102,86 @@ export function CaptureAttempt({
   }
 
   const getDifficultyColor = (dc: number) => {
-    if (dc <= 7) return 'text-green-600';
-    if (dc <= 10) return 'text-green-500';
-    if (dc <= 13) return 'text-yellow-600';
-    if (dc <= 16) return 'text-orange-500';
-    if (dc <= 19) return 'text-red-500';
-    return 'text-red-700';
+    if (dc <= 7) return 'text-[var(--accent-success)]';
+    if (dc <= 10) return 'text-[var(--accent-success)]';
+    if (dc <= 13) return 'text-[var(--accent-warning)]';
+    if (dc <= 16) return 'text-[var(--accent-warning)]';
+    if (dc <= 19) return 'text-[var(--accent-error)]';
+    return 'text-[var(--accent-error)]';
   };
 
   const getDifficultyLabel = (dc: number) => {
-    if (dc <= 7) return 'Very Easy';
-    if (dc <= 10) return 'Easy';
-    if (dc <= 13) return 'Moderate';
-    if (dc <= 16) return 'Difficult';
-    if (dc <= 19) return 'Very Difficult';
-    return 'Extremely Difficult';
+    if (dc <= 7) return 'EASY';
+    if (dc <= 10) return 'EASY';
+    if (dc <= 13) return 'MODERATE';
+    if (dc <= 16) return 'HARD';
+    if (dc <= 19) return 'VERY HARD';
+    return 'EXTREME';
   };
 
   // Show ownership message if already owned
   if (isOwned) {
     return (
-      <div className="bg-gray-100 dark:bg-gray-700 rounded-lg p-4 border border-gray-300 dark:border-gray-600">
-        <h3 className="font-semibold text-gray-600 dark:text-gray-300 mb-2">Capture Unavailable</h3>
-        <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="bg-[var(--bg-200)] p-4 border border-[var(--border)]" style={{ borderRadius: '4px' }}>
+        <h3 className="text-xs font-mono uppercase tracking-wider text-[var(--fg-200)] mb-2">Capture Unavailable</h3>
+        <div className="flex items-center gap-2 text-[var(--fg-200)]">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <span>{ownedMessage || 'Already caught - can only knock out'}</span>
+          <span className="text-sm">{ownedMessage || 'Already caught - can only knock out'}</span>
         </div>
-        <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-          You already have {wildPokemonName} in your collection. Defeat it for XP instead!
+        <p className="text-xs text-[var(--fg-300)] mt-2">
+          You already have {wildPokemonName} in your collection. Defeat it for XP.
         </p>
       </div>
     );
   }
 
   return (
-    <div className="bg-purple-50 dark:bg-purple-900/30 rounded-lg p-4 border border-purple-200 dark:border-purple-700">
-      <h3 className="font-semibold text-purple-800 dark:text-purple-300 mb-2">Capture {wildPokemonName}?</h3>
+    <div className="bg-[var(--bg-200)] p-4 border border-[var(--accent-primary)]" style={{ borderRadius: '4px' }}>
+      <h3 className="text-xs font-mono uppercase tracking-wider text-[var(--accent-primary)] mb-2">Capture {wildPokemonName}</h3>
 
       {error && (
-        <div className="bg-red-100 dark:bg-red-900/30 border border-red-400 dark:border-red-700 text-red-700 dark:text-red-400 px-3 py-2 rounded mb-3 text-sm">
+        <div className="error-message text-sm mb-3">
           {error}
         </div>
       )}
 
       {isLoading ? (
-        <div className="text-gray-600 dark:text-gray-400">Calculating capture difficulty...</div>
+        <div className="text-[var(--fg-200)] text-sm font-mono">Calculating DC...</div>
       ) : (
         <>
           <div className="mb-3">
-            <div className="flex items-center justify-between">
-              <span className="text-gray-600 dark:text-gray-400">Capture DC:</span>
+            <div className="flex items-center justify-between font-mono">
+              <span className="text-[var(--fg-200)] text-sm">Capture DC:</span>
               <span className={`font-bold ${getDifficultyColor(captureDC || 15)}`}>
-                {captureDC} ({getDifficultyLabel(captureDC || 15)})
+                {captureDC} <span className="text-xs">({getDifficultyLabel(captureDC || 15)})</span>
               </span>
             </div>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-              Roll d20. Need {captureDC} or higher to capture.
+            <p className="text-xs font-mono text-[var(--fg-300)] mt-1">
+              Roll d20 >= {captureDC} to capture
             </p>
           </div>
 
-          <div className="mb-3 text-sm text-gray-600 dark:text-gray-400">
-            <p>Your round wins: {playerWins} (-{playerWins * 3} to DC)</p>
-            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-              Warning: Failed capture gives the wild Pokemon a round win (25% flee chance)
+          <div className="mb-3 text-xs font-mono text-[var(--fg-200)]">
+            <p>Round wins: {playerWins} (-{playerWins * 3} DC)</p>
+            <p className="text-[var(--fg-300)] mt-1">
+              Failed capture = wild gets +1 round (25% flee)
             </p>
           </div>
 
           <button
             onClick={attemptCapture}
             disabled={isAttempting}
-            className={`
-              w-full py-3 rounded-lg font-semibold transition
-              ${isAttempting
-                ? 'bg-gray-400 cursor-not-allowed'
-                : 'bg-purple-600 hover:bg-purple-700 text-white'
-              }
-            `}
+            className="btn-primary w-full py-2"
           >
             {isAttempting ? (
               <span className="flex items-center justify-center gap-2">
-                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                Attempting Capture...
+                <div className="loading-spinner h-4 w-4"></div>
+                Capturing...
               </span>
             ) : (
-              'Throw Pokeball!'
+              'Throw Pokeball'
             )}
           </button>
         </>

@@ -2,100 +2,258 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --pokemon-red: #ff0000;
-  --pokemon-blue: #3b4cca;
-  --pokemon-yellow: #ffde00;
-}
+/* ========================================
+   DESIGN TOKENS - Vercel/Geist Inspired
+   ======================================== */
 
-/* Dark mode color adjustments */
-.dark {
+:root {
+  /* Dark theme (default) - Vercel aesthetic */
+  --bg-0: #000000;
+  --bg-100: #0a0a0a;
+  --bg-200: #141414;
+  --bg-300: #1f1f1f;
+
+  --fg-0: #fafafa;
+  --fg-100: #a1a1aa;
+  --fg-200: #71717a;
+  --fg-300: #52525b;
+
+  --border: #27272a;
+  --border-hover: #3f3f46;
+  --border-focus: #3b82f6;
+
+  --accent-primary: #3b82f6;
+  --accent-success: #22c55e;
+  --accent-warning: #f59e0b;
+  --accent-error: #ef4444;
+
+  /* Shadows for dark theme */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.4);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.5);
+  --shadow-glow: 0 0 20px rgba(59,130,246,0.3);
+
+  /* Animation tokens */
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+
+  /* Legacy Pokemon colors */
   --pokemon-red: #ff4444;
   --pokemon-blue: #5b6cda;
   --pokemon-yellow: #ffee44;
 }
 
-body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+/* Light theme override */
+.light {
+  --bg-0: #ffffff;
+  --bg-100: #fafafa;
+  --bg-200: #f4f4f5;
+  --bg-300: #e4e4e7;
+
+  --fg-0: #09090b;
+  --fg-100: #3f3f46;
+  --fg-200: #71717a;
+  --fg-300: #a1a1aa;
+
+  --border: #d4d4d8;
+  --border-hover: #a1a1aa;
+  --border-focus: #3b82f6;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.15);
+  --shadow-glow: 0 0 20px rgba(59,130,246,0.2);
+
+  --pokemon-red: #ff0000;
+  --pokemon-blue: #3b4cca;
+  --pokemon-yellow: #ffde00;
 }
 
-/* Pokemon type colors - enhanced visibility in dark mode */
-.type-normal { @apply bg-gray-400 dark:bg-gray-500; }
-.type-fire { @apply bg-orange-500; }
-.type-water { @apply bg-blue-500; }
-.type-electric { @apply bg-yellow-400 dark:bg-yellow-500; }
-.type-grass { @apply bg-green-500; }
-.type-ice { @apply bg-cyan-300 dark:bg-cyan-400; }
-.type-fighting { @apply bg-red-700; }
-.type-poison { @apply bg-purple-500; }
-.type-ground { @apply bg-amber-600; }
-.type-flying { @apply bg-indigo-300 dark:bg-indigo-400; }
-.type-psychic { @apply bg-pink-500; }
-.type-bug { @apply bg-lime-500; }
-.type-rock { @apply bg-amber-700; }
-.type-ghost { @apply bg-purple-700; }
-.type-dragon { @apply bg-indigo-600; }
-.type-dark { @apply bg-gray-700 dark:bg-gray-600; }
-.type-steel { @apply bg-gray-400 dark:bg-gray-500; }
-.type-fairy { @apply bg-pink-300 dark:bg-pink-400; }
+/* ========================================
+   BASE COMPONENT CLASSES
+   ======================================== */
 
-/* Card hover effects */
-.pokemon-card {
-  @apply transition-transform duration-200 hover:scale-105 hover:shadow-lg dark:hover:shadow-gray-900/50;
+/* Buttons - Vercel style: minimal, sharp */
+.btn {
+  @apply inline-flex items-center justify-center
+         font-medium transition-all duration-100
+         focus-visible:outline-none focus-visible:ring-1
+         disabled:opacity-50 disabled:cursor-not-allowed;
+  border-radius: 4px;
 }
 
-/* Button styles with dark mode */
 .btn-primary {
-  @apply bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors;
+  @apply btn px-4 py-2 text-sm
+         bg-white text-black
+         hover:bg-gray-200 active:bg-gray-300;
 }
 
 .btn-secondary {
-  @apply bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-bold py-2 px-4 rounded-lg transition-colors;
+  @apply btn px-4 py-2 text-sm
+         bg-transparent text-[var(--fg-0)]
+         border border-[var(--border)]
+         hover:bg-[var(--bg-200)] hover:border-[var(--fg-200)];
 }
 
-/* Type badge with dark mode ring for visibility */
+.btn-ghost {
+  @apply btn px-3 py-1.5 text-sm
+         bg-transparent text-[var(--fg-100)]
+         hover:text-[var(--fg-0)] hover:bg-[var(--bg-200)];
+}
+
+.btn-danger {
+  @apply btn px-4 py-2 text-sm
+         bg-[var(--accent-error)] text-white
+         hover:bg-red-500 active:bg-red-600;
+}
+
+/* Cards - Vercel style: flat, sharp corners, subtle */
+.card {
+  @apply bg-[var(--bg-100)] border border-[var(--border)];
+  border-radius: 6px;
+}
+
+.card-interactive {
+  @apply card transition-all duration-100
+         hover:border-[var(--fg-200)] hover:bg-[var(--bg-200)]
+         cursor-pointer;
+}
+
+/* Inputs - Sharp, minimal */
+.input {
+  @apply w-full bg-[var(--bg-0)] border border-[var(--border)]
+         px-3 py-2 text-[var(--fg-0)] placeholder:text-[var(--fg-300)]
+         focus:outline-none focus:border-[var(--fg-100)]
+         transition-colors duration-100;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Type badges - sharp, technical style */
 .type-badge {
-  @apply px-2 py-1 rounded text-white text-xs font-semibold capitalize dark:ring-1 dark:ring-white/20;
+  @apply px-2 py-0.5 text-white text-xs font-mono uppercase tracking-wide;
+  border-radius: 2px;
+  font-size: 10px;
 }
 
-/* Responsive container adjustments */
+/* ========================================
+   POKEMON TYPE COLORS - Refined
+   ======================================== */
+
+.type-normal { @apply bg-[#9ca3af]; }
+.type-fire { @apply bg-[#f97316]; }
+.type-water { @apply bg-[#3b82f6]; }
+.type-electric { @apply bg-[#facc15] text-black; }
+.type-grass { @apply bg-[#22c55e]; }
+.type-ice { @apply bg-[#22d3ee] text-black; }
+.type-fighting { @apply bg-[#dc2626]; }
+.type-poison { @apply bg-[#a855f7]; }
+.type-ground { @apply bg-[#d97706]; }
+.type-flying { @apply bg-[#818cf8]; }
+.type-psychic { @apply bg-[#ec4899]; }
+.type-bug { @apply bg-[#84cc16]; }
+.type-rock { @apply bg-[#a16207]; }
+.type-ghost { @apply bg-[#7c3aed]; }
+.type-dragon { @apply bg-[#4f46e5]; }
+.type-dark { @apply bg-[#57534e]; }
+.type-steel { @apply bg-[#64748b]; }
+.type-fairy { @apply bg-[#f472b6]; }
+
+/* ========================================
+   LEGACY COMPONENT CLASSES (for compatibility)
+   ======================================== */
+
+.pokemon-card {
+  @apply card-interactive p-4;
+}
+
+.error-message {
+  @apply px-4 py-3 rounded-lg;
+  background-color: rgb(239 68 68 / 0.1);
+  border: 1px solid rgb(239 68 68 / 0.3);
+  color: var(--accent-error);
+}
+
+.success-message {
+  @apply px-4 py-3 rounded-lg;
+  background-color: rgb(34 197 94 / 0.1);
+  border: 1px solid rgb(34 197 94 / 0.3);
+  color: var(--accent-success);
+}
+
+.loading-spinner {
+  @apply animate-spin rounded-full border-2 border-[var(--border)]
+         border-t-[var(--accent-primary)];
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+/* Text utilities */
+.text-primary { @apply text-[var(--fg-0)]; }
+.text-secondary { @apply text-[var(--fg-100)]; }
+.text-muted { @apply text-[var(--fg-200)]; }
+.text-disabled { @apply text-[var(--fg-300)]; }
+
+/* Background utilities */
+.bg-base { @apply bg-[var(--bg-0)]; }
+.bg-elevated { @apply bg-[var(--bg-100)]; }
+.bg-hover { @apply bg-[var(--bg-200)]; }
+.bg-active { @apply bg-[var(--bg-300)]; }
+
+/* Border utilities */
+.border-default { @apply border-[var(--border)]; }
+
+/* ========================================
+   RESPONSIVE ADJUSTMENTS
+   ======================================== */
+
 @media (max-width: 640px) {
   .container {
     @apply px-3;
   }
-}
 
-/* Mobile-friendly buttons */
-@media (max-width: 640px) {
   .btn-primary,
-  .btn-secondary {
+  .btn-secondary,
+  .btn-ghost {
     @apply text-sm py-2 px-3;
   }
 }
 
-/* Error message styling with dark mode */
-.error-message {
-  @apply bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300 px-4 py-3 rounded-lg;
-}
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
 
-/* Loading spinner with dark mode */
-.loading-spinner {
-  @apply animate-spin rounded-full border-b-2 border-blue-600 dark:border-blue-400;
-}
-
-/* Focus styles for accessibility */
+/* Focus styles */
 button:focus-visible,
 a:focus-visible,
-input:focus-visible {
-  @apply outline-2 outline-offset-2 outline-blue-500 dark:outline-blue-400;
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  @apply outline-2 outline-offset-2 outline-[var(--accent-primary)];
 }
 
-/* Disabled button states */
-button:disabled {
-  @apply opacity-50 cursor-not-allowed;
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
-/* Dark mode transition for smooth theme switching */
+/* ========================================
+   SMOOTH THEME TRANSITION
+   ======================================== */
+
 html {
+  @apply transition-colors duration-200;
+}
+
+body {
   @apply transition-colors duration-200;
 }

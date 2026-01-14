@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -14,7 +16,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${GeistSans.variable} ${GeistMono.variable}`}
+    >
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -23,8 +29,9 @@ export default function RootLayout({
                 try {
                   var theme = localStorage.getItem('theme');
                   var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                  if (theme === 'dark' || (!theme && prefersDark)) {
-                    document.documentElement.classList.add('dark');
+                  // Dark is default, only add 'light' class if explicitly set or system prefers light
+                  if (theme === 'light' || (!theme && !prefersDark)) {
+                    document.documentElement.classList.add('light');
                   }
                 } catch (e) {}
               })();
@@ -32,10 +39,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased min-h-screen bg-gradient-to-b from-blue-50 to-blue-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-gray-100">
+      <body className="antialiased min-h-screen bg-[var(--bg-0)] text-[var(--fg-0)] font-sans">
         <ThemeProvider>
           <ThemeToggle />
-          <main className="container mx-auto px-4 py-8">
+          <main className="container mx-auto px-4 py-8 max-w-6xl">
             {children}
           </main>
         </ThemeProvider>

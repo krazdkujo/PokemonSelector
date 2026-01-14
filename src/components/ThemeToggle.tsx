@@ -8,7 +8,7 @@ export function ThemeToggle() {
   // Don't render until mounted to avoid hydration mismatch
   if (!mounted) {
     return (
-      <div className="fixed top-4 right-4 w-9 h-9 rounded-lg bg-white dark:bg-gray-700 shadow-md border border-gray-200 dark:border-gray-600" />
+      <div className="fixed top-4 right-4 w-9 h-9 rounded-md bg-[var(--bg-200)] border border-[var(--border)]" />
     );
   }
 
@@ -16,10 +16,12 @@ export function ThemeToggle() {
     <button
       onClick={toggleTheme}
       aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-      className="fixed top-4 right-4 p-2 rounded-lg bg-white dark:bg-gray-700
-                 shadow-md hover:shadow-lg transition-all z-50
-                 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-600
-                 hover:bg-gray-50 dark:hover:bg-gray-600"
+      className="fixed top-4 right-4 p-2 rounded-md z-50
+                 bg-[var(--bg-200)] text-[var(--fg-100)]
+                 border border-[var(--border)]
+                 hover:bg-[var(--bg-300)] hover:text-[var(--fg-0)] hover:border-[var(--border-hover)]
+                 transition-all duration-150
+                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)]"
       title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       {theme === 'dark' ? (

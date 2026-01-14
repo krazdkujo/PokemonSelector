@@ -112,8 +112,8 @@ export default function SelectPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 dark:border-blue-400 mx-auto"></div>
-          <p className="mt-4 text-gray-600 dark:text-gray-400">Loading Pokemon...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--accent-primary)] mx-auto"></div>
+          <p className="mt-4 text-[var(--fg-100)]">Loading Pokemon...</p>
         </div>
       </div>
     );
@@ -122,14 +122,14 @@ export default function SelectPage() {
   return (
     <div className="min-h-screen py-8">
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-2">
+        <h1 className="text-3xl font-bold text-[var(--fg-0)] mb-2">
           Choose Your Starter Pokemon
         </h1>
-        <p className="text-gray-600 dark:text-gray-400">
+        <p className="text-[var(--fg-100)]">
           Select wisely - this choice is final!
         </p>
         {error && (
-          <p className="mt-4 text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/30 px-4 py-2 rounded-lg inline-block">
+          <p className="mt-4 error-message px-4 py-2 inline-block">
             {error}
           </p>
         )}
@@ -141,7 +141,7 @@ export default function SelectPage() {
         onTypeSelect={setSelectedType}
       />
 
-      <div className="mb-4 text-sm text-gray-500 dark:text-gray-400">
+      <div className="mb-4 text-sm text-[var(--fg-200)]">
         Showing {selectedType ? `${starterPokemon.filter(p => p.types.some(t => t.toLowerCase() === selectedType.toLowerCase())).length} ${selectedType}` : starterPokemon.length} starter-eligible Pokemon (SR 0.5 or less)
       </div>
 
