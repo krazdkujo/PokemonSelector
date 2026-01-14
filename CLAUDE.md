@@ -24,6 +24,7 @@ Auto-generated from all feature plans. Last updated: 2026-01-07
 - Browser localStorage for theme preference persistence (no database changes) (014-dark-mode)
 - [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION] + [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION] (015-vercel-ui-redesign)
 - [if applicable, e.g., PostgreSQL, CoreData, files or N/A] (015-vercel-ui-redesign)
+- Static JSON file bundled with application (read-only, versioned with app) (016-build-changelog)
 
 - TypeScript 5.x (or Node.js script) + None (pure JSON transformation, native fs/JSON APIs) (001-sanitize-pokemon-data)
 
@@ -43,9 +44,9 @@ npm test; npm run lint
 TypeScript 5.x (or Node.js script): Follow standard conventions
 
 ## Recent Changes
+- 016-build-changelog: Added TypeScript 5.x (strict mode) with Next.js 14.2 + `@supabase/supabase-js` 2.89, `@supabase/ssr` 0.8, React 18
 - 015-vercel-ui-redesign: Added [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION] + [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]
 - 014-dark-mode: Added TypeScript 5.x (strict mode) with Next.js 14.2 + React 18, Tailwind CSS 3.4.1, @supabase/supabase-js 2.89, @supabase/ssr 0.8
-- 013-pin-auth: Added TypeScript 5.x (strict mode) + Next.js 14.2, React 18, @supabase/supabase-js 2.89, @supabase/ssr 0.8, bcryptjs
 
 
 <!-- MANUAL ADDITIONS START -->

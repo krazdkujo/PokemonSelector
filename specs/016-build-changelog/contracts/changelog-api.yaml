@@ -1,0 +1,202 @@
+openapi: 3.0.3
+info:
+  title: Changelog API
+  description: API for retrieving application changelog data
+  version: 1.0.0
+
+servers:
+  - url: /api
+    description: Application API
+
+paths:
+  /changelog:
+    get:
+      summary: Get changelog entries
+      description: |
+        Returns changelog entries with optional filtering and pagination.
+        Data is sourced from a static JSON file bundled with the application.
+      operationId: getChangelog
+      parameters:
+        - name: page
+          in: query
+          description: Page number (1-indexed)
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+        - name: limit
+          in: query
+          description: Number of entries per page
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 20
+        - name: search
+          in: query
+          description: Search term for version number (case-insensitive substring match)
+          required: false
+          schema:
+            type: string
+            maxLength: 20
+        - name: category
+          in: query
+          description: Filter by change category (can specify multiple)
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - Added
+                - Changed
+                - Fixed
+                - Removed
+                - Deprecated
+                - Security
+          style: form
+          explode: true
+      responses:
+        '200':
+          description: Changelog entries retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChangelogResponse'
+              examples:
+                default:
+                  summary: Sample response
+                  value:
+                    versions:
+                      - version: "1.2.0"
+                        date: "2026-01-14"
+                        changes:
+                          - category: "Added"
+                            description: "Changelog page to track version history"
+                          - category: "Added"
+                            description: "Search and filter functionality"
+                    pagination:
+                      page: 1
+                      limit: 20
+                      total: 15
+                      totalPages: 1
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+              example:
+                error: "VALIDATION_ERROR"
+                message: "Invalid page number"
+
+components:
+  schemas:
+    ChangelogResponse:
+      type: object
+      required:
+        - versions
+        - pagination
+      properties:
+        versions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Version'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+
+    Version:
+      type: object
+      required:
+        - version
+        - date
+        - changes
+      properties:
+        version:
+          type: string
+          description: Semantic version number (MAJOR.MINOR.PATCH)
+          pattern: '^\d+\.\d+\.\d+$'
+          example: "1.2.0"
+        date:
+          type: string
+          format: date
+          description: Release date in ISO 8601 format
+          example: "2026-01-14"
+        changes:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/ChangeEntry'
+
+    ChangeEntry:
+      type: object
+      required:
+        - category
+        - description
+      properties:
+        category:
+          $ref: '#/components/schemas/ChangeCategory'
+        description:
+          type: string
+          description: Human-readable description of the change
+          minLength: 1
+          maxLength: 500
+          example: "Added changelog page to track version history"
+
+    ChangeCategory:
+      type: string
+      description: Category of change following Keep a Changelog conventions
+      enum:
+        - Added
+        - Changed
+        - Fixed
+        - Removed
+        - Deprecated
+        - Security
+
+    Pagination:
+      type: object
+      required:
+        - page
+        - limit
+        - total
+        - totalPages
+      properties:
+        page:
+          type: integer
+          description: Current page number (1-indexed)
+          minimum: 1
+          example: 1
+        limit:
+          type: integer
+          description: Number of entries per page
+          minimum: 1
+          maximum: 100
+          example: 20
+        total:
+          type: integer
+          description: Total number of entries
+          minimum: 0
+          example: 15
+        totalPages:
+          type: integer
+          description: Total number of pages
+          minimum: 0
+          example: 1
+
+    ApiError:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: "VALIDATION_ERROR"
+        message:
+          type: string
+          description: Human-readable error message
+          example: "Invalid page number"

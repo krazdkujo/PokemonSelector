@@ -1,0 +1,83 @@
+{
+  "versions": [
+    {
+      "version": "1.2.0",
+      "date": "2026-01-14",
+      "changes": [
+        { "category": "Added", "description": "Changelog page to track application version history" },
+        { "category": "Added", "description": "Search and filter functionality for changelog entries" },
+        { "category": "Fixed", "description": "PIN verification redirect on login for accounts with PIN set" }
+      ]
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-01-11",
+      "changes": [
+        { "category": "Added", "description": "Eevee multi-evolution support with branching evolution paths" },
+        { "category": "Changed", "description": "API improvements for trainer lookup functionality" }
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "date": "2026-01-11",
+      "changes": [
+        { "category": "Added", "description": "Vercel v0 UI redesign with modern styling" },
+        { "category": "Added", "description": "Dark mode support with theme toggle" },
+        { "category": "Added", "description": "PIN authentication layer for user accounts" },
+        { "category": "Added", "description": "Pokemon evolution system with experience tracking" },
+        { "category": "Fixed", "description": "Secure trigger functions with immutable search_path" }
+      ]
+    },
+    {
+      "version": "0.9.0",
+      "date": "2026-01-10",
+      "changes": [
+        { "category": "Added", "description": "Admin dashboard with trainer management" },
+        { "category": "Added", "description": "API security separation with role-based access" },
+        { "category": "Added", "description": "PokeCenter API with sorting capabilities" }
+      ]
+    },
+    {
+      "version": "0.8.0",
+      "date": "2026-01-09",
+      "changes": [
+        { "category": "Added", "description": "Combat refinement with improved battle mechanics" },
+        { "category": "Added", "description": "Experience and leveling system for Pokemon" },
+        { "category": "Changed", "description": "Battle rounds now track individual move outcomes" }
+      ]
+    },
+    {
+      "version": "0.7.0",
+      "date": "2026-01-08",
+      "changes": [
+        { "category": "Added", "description": "Combat zones with wild Pokemon encounters" },
+        { "category": "Added", "description": "Zone-specific Pokemon spawning based on environment" }
+      ]
+    },
+    {
+      "version": "0.6.0",
+      "date": "2026-01-07",
+      "changes": [
+        { "category": "Added", "description": "Project constitution establishing core development principles" },
+        { "category": "Added", "description": "External trainer API for public lookups" }
+      ]
+    },
+    {
+      "version": "0.5.0",
+      "date": "2026-01-06",
+      "changes": [
+        { "category": "Added", "description": "Pokemon nickname feature allowing trainers to rename their Pokemon" },
+        { "category": "Added", "description": "Starter Pokemon flow with initial selection" }
+      ]
+    },
+    {
+      "version": "0.1.0",
+      "date": "2026-01-05",
+      "changes": [
+        { "category": "Added", "description": "Initial application setup with Next.js and Supabase" },
+        { "category": "Added", "description": "Trainer registration system" },
+        { "category": "Added", "description": "Pokemon data sanitization pipeline" }
+      ]
+    }
+  ]
+}
