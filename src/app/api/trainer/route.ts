@@ -108,7 +108,16 @@ export async function POST(request: NextRequest) {
             error: 'PIN_REQUIRED',
             message: 'PIN is required for this account',
           };
-          return NextResponse.json(error, { status: 401 });
+          // Include trainer ID so frontend can set session and redirect to PIN verify
+          const response = NextResponse.json({ ...error, trainer_id: existingTrainer.id }, { status: 401 });
+          response.cookies.set('trainer_id', existingTrainer.id, {
+            httpOnly: false,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'lax',
+            maxAge: 60 * 60 * 24 * 30,
+            path: '/',
+          });
+          return response;
         }
 
         // Validate PIN format

@@ -63,6 +63,12 @@ export default function LoginPage() {
       const data = await response.json();
 
       if (!response.ok) {
+        // Check if PIN is required - redirect to PIN verify page
+        if (data.error === 'PIN_REQUIRED' && data.trainer_id) {
+          setTrainerId(data.trainer_id);
+          router.push('/pin/verify');
+          return;
+        }
         const error = data as ApiError;
         throw new Error(error.message);
       }
