@@ -43,18 +43,24 @@ export default function RootLayout({
       <body className="antialiased min-h-screen bg-[var(--bg-0)] text-[var(--fg-0)] font-sans">
         <ThemeProvider>
           <ThemeToggle />
-          <main className="container mx-auto px-4 py-8 max-w-6xl">
-            {children}
-          </main>
-          <footer className="container mx-auto px-4 py-6 max-w-6xl border-t border-[var(--border)]">
+          <nav className="container mx-auto px-4 py-4 max-w-6xl border-b border-[var(--border)]">
             <div className="flex justify-center items-center gap-4 text-xs font-mono text-[var(--fg-300)]">
-              <span>Pokemon Selector</span>
+              <Link href="/" className="hover:text-[var(--fg-100)] transition-colors">
+                Pokemon Selector
+              </Link>
               <span>|</span>
               <Link href="/changelog" className="hover:text-[var(--fg-100)] transition-colors">
                 Changelog
               </Link>
+              <span>|</span>
+              <Link href="/types" className="hover:text-[var(--fg-100)] transition-colors">
+                Types
+              </Link>
             </div>
-          </footer>
+          </nav>
+          <main className="container mx-auto px-4 py-8 max-w-6xl">
+            {children}
+          </main>
         </ThemeProvider>
       </body>
     </html>

@@ -815,6 +815,62 @@ const ENDPOINTS: Record<string, EndpointDoc[]> = {
   -d '{"pin": "1234"}' https://domain.com/api/pin/verify`,
     },
   ],
+  'Types': [
+    {
+      method: 'GET',
+      path: '/api/types',
+      summary: 'List all Pokemon types',
+      description: 'Returns a list of all 18 Pokemon types available in the game. Use this to populate type selection dropdowns or to discover valid type names for the type parameter.',
+      auth: false,
+      response: {
+        description: 'List of type names',
+        example: `{
+  "types": [
+    "normal",
+    "fire",
+    "water",
+    "electric",
+    "grass",
+    "ice",
+    "fighting",
+    "poison",
+    "ground",
+    "flying",
+    "psychic",
+    "bug",
+    "rock",
+    "ghost",
+    "dragon",
+    "dark",
+    "steel",
+    "fairy"
+  ]
+}`,
+      },
+      curl: 'curl https://domain.com/api/types',
+    },
+    {
+      method: 'GET',
+      path: '/api/types?type={name}',
+      summary: 'Get type effectiveness data',
+      description: 'Returns detailed type effectiveness data for a specific type including what it is strong against (2x damage), weak against (0.5x damage), and immune to (0x damage). Type name is case-insensitive.',
+      auth: false,
+      requestBody: {
+        description: 'Query parameter: type (string, case-insensitive)',
+        example: `GET /api/types?type=fire`,
+      },
+      response: {
+        description: 'Type effectiveness data',
+        example: `{
+  "type": "fire",
+  "strongAgainst": ["grass", "ice", "bug", "steel"],
+  "weakAgainst": ["fire", "water", "rock", "dragon"],
+  "immuneTo": []
+}`,
+      },
+      curl: 'curl https://domain.com/api/types?type=fire',
+    },
+  ],
   'Admin': [
     {
       method: 'GET',

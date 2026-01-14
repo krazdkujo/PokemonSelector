@@ -1,0 +1,161 @@
+openapi: 3.0.3
+info:
+  title: Type Effectiveness API
+  description: API for querying Pokemon type effectiveness data
+  version: 1.0.0
+
+servers:
+  - url: /api
+    description: Application API
+
+paths:
+  /types:
+    get:
+      summary: Get type effectiveness data
+      description: |
+        Returns type effectiveness information. Without a type parameter, returns
+        a list of all available types. With a type parameter, returns detailed
+        effectiveness data for that type.
+      operationId: getTypeEffectiveness
+      parameters:
+        - name: type
+          in: query
+          description: The Pokemon type to look up (case-insensitive)
+          required: false
+          schema:
+            type: string
+            example: fire
+      responses:
+        '200':
+          description: Type data retrieved successfully
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/TypeListResponse'
+                  - $ref: '#/components/schemas/TypeEffectivenessResponse'
+              examples:
+                typeList:
+                  summary: List all types (no parameter)
+                  value:
+                    types:
+                      - normal
+                      - fire
+                      - water
+                      - electric
+                      - grass
+                      - ice
+                      - fighting
+                      - poison
+                      - ground
+                      - flying
+                      - psychic
+                      - bug
+                      - rock
+                      - ghost
+                      - dragon
+                      - dark
+                      - steel
+                      - fairy
+                singleType:
+                  summary: Single type lookup
+                  value:
+                    type: fire
+                    strongAgainst:
+                      - grass
+                      - ice
+                      - bug
+                      - steel
+                    weakAgainst:
+                      - fire
+                      - water
+                      - rock
+                      - dragon
+                    immuneTo: []
+        '404':
+          description: Type not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TypeErrorResponse'
+              example:
+                error: "TYPE_NOT_FOUND"
+                message: "Type 'fir' not found. Did you mean 'fire'?"
+                availableTypes:
+                  - fire
+
+components:
+  schemas:
+    TypeListResponse:
+      type: object
+      required:
+        - types
+      properties:
+        types:
+          type: array
+          items:
+            type: string
+          description: List of all available Pokemon types
+          example:
+            - normal
+            - fire
+            - water
+
+    TypeEffectivenessResponse:
+      type: object
+      required:
+        - type
+        - strongAgainst
+        - weakAgainst
+        - immuneTo
+      properties:
+        type:
+          type: string
+          description: The queried type name
+          example: fire
+        strongAgainst:
+          type: array
+          items:
+            type: string
+          description: Types this attack is super effective against (2x damage)
+          example:
+            - grass
+            - ice
+            - bug
+            - steel
+        weakAgainst:
+          type: array
+          items:
+            type: string
+          description: Types this attack is not very effective against (0.5x damage)
+          example:
+            - fire
+            - water
+            - rock
+            - dragon
+        immuneTo:
+          type: array
+          items:
+            type: string
+          description: Types that are immune to this attack (0x damage)
+          example: []
+
+    TypeErrorResponse:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: "TYPE_NOT_FOUND"
+        message:
+          type: string
+          description: Human-readable error message
+          example: "Type 'fir' not found. Did you mean 'fire'?"
+        availableTypes:
+          type: array
+          items:
+            type: string
+          description: List of valid types (for suggestions)
